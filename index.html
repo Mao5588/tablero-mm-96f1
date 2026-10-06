@@ -1725,15 +1725,8 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
     document.head.appendChild(s);
   }
 
-  // Trae la versión más nueva publicada en el gist (sin caché) y vuelve a pintar.
-  const GIST_ID = "96f1ccc9e2c63e82cf657c067e8cf5f5";
-  async function loadGist(){
-    const r = await fetch("https://api.github.com/gists/" + GIST_ID + "?t=" + Date.now(), {cache:"no-store", headers:{Accept:"application/vnd.github+json"}});
-    if(!r.ok) throw new Error("api " + r.status);
-    const j = await r.json(); const f = j.files && j.files["index.html"];
-    if(!f) throw new Error("sin index.html");
-    let html = f.content;
-    if(f.truncated || !html){ const r2 = await fetch(f.raw_url, {cache:"no-store"}); if(!r2.ok) throw new Error("raw " + r2.status); html = await r2.text(); }
+  // Extrae el bloque /*__DASH_DATA_*__/ de un HTML y vuelve a pintar (sin api.github.com).
+  function applyEmbeddedData(html){
     const A = "/*__DASH_DATA_" + "START__*/", B = "/*__DASH_DATA_" + "END__*/";
     const i = html.indexOf(A), e = html.indexOf(B, i + A.length);
     if(i < 0 || e < 0) throw new Error("sin bloque de datos");
@@ -1744,12 +1737,37 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
     return true;
   }
 
+  // Pages / mismo origen: recarga el HTML publicado con bypass de caché y re-render in-place.
+  async function loadFromPage(){
+    const url = location.pathname + (location.pathname.endsWith("/") ? "index.html" : "") + "?t=" + Date.now();
+    const r = await fetch(url, {cache:"no-store"});
+    if(!r.ok) throw new Error("page " + r.status);
+    return applyEmbeddedData(await r.text());
+  }
+
+  // gistpreview: trae la versión más nueva del gist vía API (sin caché).
+  const GIST_ID = "96f1ccc9e2c63e82cf657c067e8cf5f5";
+  async function loadGist(){
+    const r = await fetch("https://api.github.com/gists/" + GIST_ID + "?t=" + Date.now(), {cache:"no-store", headers:{Accept:"application/vnd.github+json"}});
+    if(!r.ok) throw new Error("api " + r.status);
+    const j = await r.json(); const f = j.files && j.files["index.html"];
+    if(!f) throw new Error("sin index.html");
+    let html = f.content;
+    if(f.truncated || !html){ const r2 = await fetch(f.raw_url, {cache:"no-store"}); if(!r2.ok) throw new Error("raw " + r2.status); html = await r2.text(); }
+    return applyEmbeddedData(html);
+  }
+
   let busy = false;
   $("#refresh").addEventListener("click", ()=>{
     if(busy) return; busy = true;
     const btn = $("#refresh"); btn.classList.add("loading"); btn.setAttribute("aria-busy","true");
     const t0 = Date.now();
     flush();
+    const doneOk = (extra) => setTimeout(()=>{
+      render();
+      toast("Actualizado ✓ " + hhmm() + (extra || ""));
+      btn.classList.remove("loading"); btn.removeAttribute("aria-busy"); busy = false;
+    }, Math.max(0, 700-(Date.now()-t0)));
     const viaLocal = () => loadData(ok=>{
       setTimeout(()=>{
         if(ok){
@@ -1762,10 +1780,17 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
         }
       }, Math.max(0, 700-(Date.now()-t0)));
     });
-    // En línea (gistpreview, etc.): primero el gist vía API sin caché; en archivo local: data.js
+    const hardReload = () => {
+      toast("Recargando… 🔄");
+      setTimeout(()=>{ location.href = location.pathname + "?t=" + Date.now(); }, 400);
+    };
+    // file:// → data.js; gistpreview → API del gist; Pages (y demás hosts) → mismo origen sin api.github.com
     if(location.protocol === "file:") viaLocal();
-    else loadGist().then(()=>{ setTimeout(()=>{ render(); toast("Actualizado ✓ " + hhmm() + " · datos de " + (D.META.updated||"")); btn.classList.remove("loading"); btn.removeAttribute("aria-busy"); busy = false; }, Math.max(0, 700-(Date.now()-t0))); })
-      .catch(err=>{ console.warn("gist:", err); viaLocal(); });
+    else if(/gistpreview\.github\.io$/.test(location.hostname)){
+      loadGist().then(()=> doneOk(" · datos de " + (D.META.updated||""))).catch(err=>{ console.warn("gist:", err); viaLocal(); });
+    } else {
+      loadFromPage().then(()=> doneOk(" · datos de " + (D.META.updated||""))).catch(err=>{ console.warn("page:", err); hardReload(); });
+    }
   });
 
   render();
