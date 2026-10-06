@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hola Mau 👋 · Tablero del día</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script id="dash-embedded">
+/* Respaldo incrustado de data.js — se regenera con `node build.js`. No editar a mano: edita data.js. */
+/*__DASH_DATA_START__*/
+/* =====================================================================
+   data.js — DATOS DEL TABLERO DE MAU
+   Edita este archivo y presiona "Actualizar 🔄" en el tablero (o corre `node build.js`
+   para incrustar estos datos como respaldo dentro de index.html).
+   urg: "rojo" (urgente) · "amarillo" (esta semana) · "verde" (FYI)
+   ===================================================================== */
+(function(){
+const META = {
+  nombre: "Mau",
+  fecha: "Martes 6 de octubre de 2026",
+  updated: "mar 6 oct 2026, 9:48 AM",
+  filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
+  ciudad: "Mérida",
+  ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
+};
+
+const SOLAR = {
+  fuente: "Luxpowertek · leído mar 6 oct, 10:10 AM",
+  leido: "10:10 AM",
+  hoy:  { generado: 14.4, consumido: 18.3, exportada: 8.8, descargada: 0, nota: "" },
+  ayer: { generado: 54.3, consumido: 56.2 },
+  mesActual:   { nombre: "Octubre", dias: "1–6", gen: 285.4, cons: 290.5, exportada: 205.1, bateriaDescargada: 2.9 },
+  mesAnterior: { nombre: "Septiembre", gen: 2161.4, cons: 1158.1, exportada: 1791.6 },
+  porDia: [
+    { dia: 1, gen: 72,   cons: 55.5 },
+    { dia: 2, gen: 61.6, cons: 42.5 },
+    { dia: 3, gen: 44.8, cons: 60.9 },
+    { dia: 4, gen: 38.3, cons: 57.1 },
+    { dia: 5, gen: 54.3, cons: 56.2 },
+    { dia: 6, gen: 14.4, cons: 18.3, enCurso: true }
+  ],
+  bateria: 100
+};
+
+/* 1) RECORDATORIOS — hora de Mérida. fuente: "cal" (Google Calendar), "nota" (lista de Mau), "cal+nota" (deduplicado) */
+const G   = id => "https://mail.google.com/mail/u/0/#inbox/" + id;
+/* ids de correo para el botón "Hecho": cuenta + conector + threadId + messageId (último mensaje del hilo) */
+const GM   = (t,m) => ({ cuenta:"mau5588@gmail.com", conector:"user-Gmail", threadId:t, messageId:m });
+const OUTM = m => ({ cuenta:"mau5588@hotmail.com", conector:"user-Outlook-xai", messageId:m });
+const CAL = e  => "https://www.google.com/calendar/event?eid=" + e + "&ctz=America/Merida";
+const TC_SHEET = "https://docs.google.com/spreadsheets/d/1Dro8qc3SM1SRV93KK0NRl4APLwNyNUEYJHVjCZuSRwM/edit";
+const RECORDATORIOS = [
+  { id:"r-telmex",  dia:"Mar 6 oct",  hora:"9:00 AM",      txt:"Pagar Telmex (vence día 8)", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-guille", hasta:"2026-10-06T13:00:00-06:00",  dia:"Mar 6 oct",  hora:"10:00 AM",     txt:"Visita del Sr. Guillermo", urg:"rojo", fuente:"nota" },
+  { id:"r-isai", hasta:"2026-10-06T15:00:00-06:00",    dia:"Mar 6 oct",  hora:"2:00 PM",      txt:"Cita con internista Isaí (Doctoralia) — llevar labs del 13 jul en PDF y registro de presión; preguntar lípidos y vitamina D", urg:"rojo", fuente:"cal+nota", link:CAL("MGFibTlqN2gzbjVodGFoNWFpdDJ2cmgwcjQgbWF1NTU4OEBt") },
+  { id:"r-amexp",   dia:"Mié 7 oct",  hora:"Vence",        txt:"Pagar Platinum AMEX $36,700 — el 7 oct o antes", urg:"rojo", fuente:"nota", link:TC_SHEET },
+  { id:"r-rhom",    dia:"Mié 7 oct",  hora:"Por confirmar",txt:"RHOM en Casa Capital", urg:"amarillo", fuente:"nota" },
+  { id:"r-plinio7", dia:"Mié 7 oct",  hora:"Sin hora",     txt:"Plinio Lavin: “te veo miércoles de esposas” (WhatsApp, lun 5 oct)", urg:"amarillo", fuente:"cal", link:CAL("bWVsOTZidjd2OXBwbTJ2NDE3Zjlvb2FlZmMgbWF1NTU4OEBt") },
+  { id:"r-plinio8", dia:"Jue 8 oct",  hora:"Sin hora",     txt:"Plinio Lavin: “te veo el jueves” — en RHOM aún se decide martes o jueves", urg:"amarillo", fuente:"cal", link:CAL("OXRwMmg0NGg2a2NpcWpwbGM5NmVubm9zcXMgbWF1NTU4OEBt") },
+  { id:"r-telcel",  dia:"Jue 8 oct",  hora:"9:00 AM",      txt:"Pagar Telcel (vence día 10)", urg:"amarillo", fuente:"cal", link:CAL("dmhzNmxjNm51NWkzYWZ0ODBuaDcwb2RhdmNfMjAyNjEwMDhUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-areli",   dia:"Jue 8 oct",  hora:"2:00–6:00 PM", txt:"Revisar Ahorro Areli: foto, cuánto ahorra y cuánto se le paga (en calendario: “Eli… foto cada hora”)", urg:"amarillo", fuente:"cal+nota", link:CAL("ZDRuaW1rdDBtajFocjA3YjZpZjFmYW03ZGdfMjAyNjEwMDhUMjAwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-tortas",  dia:"Jue 8 oct",  hora:"Todo el día",  txt:"Tortas René 🥖", urg:"amarillo", fuente:"nota" },
+  { id:"r-diana",   dia:"Jue 8 oct",  hora:"Noche",        txt:"Cena con Diana 🍷", urg:"amarillo", fuente:"nota" },
+  { id:"r-plat",    dia:"Dom 11 oct", hora:"9:00 AM",      txt:"Pagar TC Platinum (vence día 13) — saldo en tu hoja TC: $10,300.00", urg:"amarillo", fuente:"cal", link:CAL("cGU3YnE5MW52dTFrOW40ajZrZmwzdHM0cDBfMjAyNjEwMTFUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-salv13",  dia:"Mar 13 oct", hora:"9:00 AM",      txt:"Cobrar mes — Salvador Jacobo (regresa)", urg:"verde", fuente:"cal", link:CAL("NWlkbTJoZzhwZGFwaXNpNDZpdGIwam1tZWsgbWF1NTU4OEBt") },
+  { id:"r-inbursa", dia:"Mié 14 oct", hora:"Todo el día",  txt:"Corte de Inbursa", urg:"verde", fuente:"nota" },
+  { id:"r-totalplay",dia:"Mié 14 oct",hora:"9:00 AM",      txt:"Pagar Totalplay (vence día 16)", urg:"verde", fuente:"cal", link:CAL("YWF0b2xwcmFsZ3ZjZGhrZmhxZjRrZTZvcDRfMjAyNjEwMTRUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-unani",   dia:"Mié 14 oct", hora:"11:00 AM–1:00 PM", txt:"Curso Unani 🌿 — “Unani Paso a Paso: inicio del programa” (19:00 Madrid)", urg:"verde", fuente:"cal+nota", link:CAL("M3U4NmUwbW5vMjc1djVzNXZrc29ucGk5NTggbWF1NTU4OEBt") },
+  { id:"r-open",    dia:"Jue 15 oct", hora:"9:00 AM",      txt:"Pagar TC Open (vence día 17) — saldo en hoja TC: $350.00", urg:"verde", fuente:"cal", link:CAL("NGc0ODdobzE5bTZhbWMwcDA5cDJpdWxrb2NfMjAyNjEwMTVUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-salv15",  dia:"Jue 15 oct", hora:"9:00 AM",      txt:"Cobrar renta a Salvador Jacobo", urg:"verde", fuente:"cal", link:CAL("ZXA4ZGZoMGdjZzRrNnF0djk1b3Z0ZWFtM2cgbWF1NTU4OEBt") },
+  { id:"r-gema",    dia:"Lun 19 oct", hora:"Todo el día",  txt:"Depósito a Gema Celeste (prometido)", urg:"verde", fuente:"cal", link:CAL("MTRuMmhmcnFuYnR0bTByYmhpbjIxb2ltNGcgbWF1NTU4OEBt") },
+  { id:"r-unani19", dia:"Lun 19 oct", hora:"11:00 AM",     txt:"Unani — clase dinámica", urg:"verde", fuente:"cal", link:CAL("ZzBxcGw5YTRmZzNxbGh2bGFrajc3ZmUwM3MgbWF1NTU4OEBt") }
+];
+
+/* 2) CORREOS IMPORTANTES — solo lectura; links directos al mensaje */
+const CORREOS = [
+  { id:"c-google", urg:"rojo", de:"Google", cuenta:"Gmail", cuando:"mié 30 sep",
+    asunto:"Alerta crítica: se bloqueó un intento de inicio de sesión",
+    porque:"Alguien usó tu contraseña de Google. Cámbiala y revisa la actividad de la cuenta (ver 🔐 Seguridad).",
+    gmail:GM("1a0f424223c2aa13","1a0f424223c2aa13"), link:"https://mail.google.com/mail/u/0/#inbox/1a0f424223c2aa13" },
+  { id:"c-lizeth", urg:"amarillo", de:"Lizeth (RH CORAH)", cuenta:"Gmail", cuando:"lun 5 oct, 10:58 AM",
+    asunto:"RE: Incidencias Herramax tienda — semana 28 sep al 4 oct",
+    porque:"Sin leer. Cruce sem 41: descuentos $2,367.82 por faltas/permisos (ver 💼 Trabajo).",
+    gmail:GM("1a10ccdd83480a4c","1a10d00def49cb7d"), link:"https://mail.google.com/mail/u/0/#inbox/1a10ccdd83480a4c" },
+  { id:"c-connor", urg:"amarillo", de:"Michael Connor", cuenta:"Gmail", cuando:"vie 2 oct",
+    asunto:"Vidriero canadiense – Oportunidad de trabajo",
+    porque:"En WhatsApp sigue sin respuesta; por correo (2 oct) te dejó su WhatsApp +1 (672) 200-9523.",
+    gmail:GM("1a0f4876b25d73ca","1a0fdedc6ebe539c"), link:"https://mail.google.com/mail/u/0/#inbox/1a0f4876b25d73ca" },
+  { id:"c-nrf", urg:"rojo", de:"Santander", cuenta:"Gmail", cuando:"vie 2 oct, 3:00 PM",
+    asunto:"Notificación por cargo fallido",
+    porque:"4 cargos domiciliados de NR Finance México rechazados por fondos insuficientes ($1,037–$1,054 c/u, cuenta *302). Paga directo a NR Finance para evitar recargos.",
+    gmail:GM("1a0fe725c33494d2","1a0fe725c33494d2"), link:"https://mail.google.com/mail/u/0/#inbox/1a0fe725c33494d2" },
+  { id:"c-trade", urg:"rojo", de:"Apple Trade In", cuenta:"Gmail", cuando:"dom 4 oct, 6:00 AM",
+    asunto:"¿Aún quieres proceder con el canje de tu dispositivo?",
+    porque:"No han recibido tu Mac mini M4 (pedido W1586694951). El valor de canje solo vale 14 días tras recibir el nuevo: envíalo o cancela.",
+    gmail:GM("1a106c973123f7ef","1a106c973123f7ef"), link:"https://mail.google.com/mail/u/0/#inbox/1a106c973123f7ef" },
+  { id:"c-amazon", urg:"amarillo", de:"Amazon.com.mx", cuenta:"Hotmail", cuando:"dom 4 oct, 2:31 PM",
+    asunto:"Enviado: 5 “Caja Bento De 3 Capas De...”",
+    porque:"Llega HOY martes 6 oct a Mérida. Total $1,752.75 (pedido 701-6949454-1033851). Que haya alguien para recibir.",
+    outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDasAAAA="), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDasAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem" },
+  { id:"c-subs", urg:"amarillo", de:"Apple (suscripciones)", cuenta:"Gmail", cuando:"dom 4, lun 5 y hoy 3:48 AM",
+    asunto:"Your Subscription Renewal (Withings+, Lumosity y Substack)",
+    porque:"Se renuevan Withings+ $199/mes (11 oct), Lumosity Premium $299/mes (10 oct) y Substack “Predictive History” $135/mes (12 oct). Cancela la que no uses al menos 1 día antes.",
+    gmail:GM("1a10b76be799b0c0","1a10b76be799b0c0"), link:"https://mail.google.com/mail/u/0/#inbox/1a10b76be799b0c0" },
+  { id:"c-audible", urg:"amarillo", de:"Audible", cuenta:"Gmail", cuando:"dom 4 oct, 9:31 AM",
+    asunto:"Tu membresía de Audible se renovará automáticamente",
+    porque:"Revisa el plan si no quieres el cargo automático.",
+    gmail:GM("1a1078ad6b716a07","1a1078ad6b716a07"), link:"https://mail.google.com/mail/u/0/#inbox/1a1078ad6b716a07" },
+  { id:"c-edocta", urg:"verde", de:"Santander", cuenta:"Gmail", cuando:"lun 5 oct, 9:31 AM",
+    asunto:"Estado de Cuenta Santander Integral (PDF y XML)",
+    porque:"Ya está tu estado de cuenta; checa saldo antes de cubrir NR Finance y las tarjetas.",
+    gmail:GM("1a10cb153ac022fb","1a10cb153ac022fb"), link:"https://mail.google.com/mail/u/0/#inbox/1a10cb153ac022fb" },
+  { id:"c-login", urg:"verde", de:"x.ai / OpenAI", cuenta:"Gmail", cuando:"lun 5 oct 8:14 PM y 9:30 AM · dom 12:17 AM",
+    asunto:"New login to your SpaceXAI account · New sign-in to your OpenAI account",
+    porque:"Avisos de inicio de sesión nuevo (OpenAI desde Mérida). Si fuiste tú, todo bien.",
+    gmail:GM("1a10cafc5d272131","1a10cafc5d272131"), link:"https://mail.google.com/mail/u/0/#inbox/1a10cafc5d272131" },
+  { id:"c-plata", urg:"verde", de:"Banco Plata", cuenta:"Hotmail", cuando:"lun 5 oct, 6:33 PM",
+    asunto:"Actualización de tasas de Ahorro Fijo y Flexible",
+    porque:"Desde el 7 oct cambian las tasas (Ahorro Flexible 8.5% con Plata+). Solo para que lo tengas en el radar.",
+    outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDeEAAAA="), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDeEAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem" }
+];
+
+/* 3) COMPROMISOS EN WHATSAPP */
+const WHATSAPP = [
+  { id:"w-areli",   urg:"rojo",     whatsapp:{ chat:"Ahorro Areli", verificado:true, nota:"nombre del chat según la revisión de WhatsApp" }, txt:"Contestarle a Areli el adelanto de $500", det:"Ahorro Areli · 2:16 PM" },
+  { id:"w-gabriel", urg:"rojo",     whatsapp:{ chat:"Gabriel Canto Trabajo", verificado:false, nota:"probable: así aparece el contacto en “Carteras credimotors”" }, txt:"Avisarle a Gabriel Canto cuando llegues por su factura", det:"Y recoger tu carta factura" },
+  { id:"w-fernando",urg:"amarillo", whatsapp:{ chat:"Herrajes Administración", verificado:true, nota:"grupo" }, txt:"Explicarle a Don Fernando Rivadeneira lo del tornillo aglomerado 12x2½ para Monarca", det:"Pedir cabeza DMT · Herrajes Administración" },
+  { id:"w-ruben",   urg:"amarillo", whatsapp:{ chat:"REDES VA PRIVADO", verificado:true, nota:"grupo donde Rubén ofreció $7,500" }, txt:"Rubén: paquete de redes Buen Fin $7,500 (REDES)", det:"Pendiente de cerrar con él" },
+  { id:"w-dany",    urg:"amarillo", whatsapp:{ chat:"Dany Dany Pot", verificado:false, nota:"probable: nombre del contacto en búsquedas de WhatsApp" }, txt:"Dany: ventas sin IVA", det:"Seguimiento pendiente" },
+  { id:"w-connor",  urg:"verde",    whatsapp:{ chat:"Michael", verificado:true, nota:"chat “Michael” (vidriero canadiense)" }, txt:"Michael Connor (Canadá): sin respuesta en WhatsApp", det:"Ojo: te escribió por correo el vie 2 oct con su WhatsApp +1 (672) 200-9523" },
+  { id:"w-inbursa", urg:"rojo",     whatsapp:{ chat:null, verificado:false, nota:"chat s/d — el pendiente vino de la revisión de WhatsApp" }, txt:"Pagar Inbursa *9142: mínimo $1,454.06 no reflejado", det:"Vencía 4 oct · saldo ~$3,941.72" }
+];
+
+/* 4) SUGERENCIAS */
+const SUGERENCIAS = [
+  { id:"s-inbursa", emo:"💳", urg:"rojo", txt:"Paga Inbursa *9142 hoy (mínimo $1,454.06, vencía 4 oct) para cortar intereses y moratorios." },
+  { id:"s-nrf",     emo:"🚗", urg:"rojo", txt:"NR Finance: 4 cargos rechazados en Santander *302. Paga directo o deposita antes de que caigan recargos." },
+  { id:"s-pdf", hasta:"2026-10-06T15:00:00-06:00",     emo:"🩺", urg:"rojo", txt:"Arma hoy el PDF con labs del 13 jul + registro de presión para Isaí, y pregúntale por suplemento de vitamina D (16.9, deficiente)." },
+  { id:"s-pastilla", hasta:"2026-10-06T15:00:00-06:00",emo:"💊", urg:"rojo", txt:"Tómate la pastilla de la presión hoy temprano: ayer (5 oct) marcó 147/87, y hoy a las 2 PM es la cita con Isaí." },
+  { id:"s-areli",   emo:"💬", urg:"amarillo", txt:"Contéstale a Areli lo del adelanto de $500 antes de que se le haga tarde." },
+  { id:"s-herrajes",emo:"⏰", urg:"amarillo", txt:"Bloquea 15 min hoy temprano (antes del Sr. Guillermo, 10 AM) para explicarle a Don Fernando lo del tornillo DMT para Monarca." },
+  { id:"s-solar",   emo:"☀️", urg:"verde", txt:"Ayer los paneles cubrieron ~97% de lo que gastaste (54.3 de 56.2 kWh): hoy usa lavadora, secadora y aire en horas de sol." }
+];
+
+/* 5) SALUD — base histórica. Los datos del día vienen de salud_hoy.json (lo escribe el agente Personal cada hora a los :48);
+   build.js lo incrusta como SALUD_HOY y el tablero lo usa encima de esto. */
+const SALUD = {
+  avisos: [
+    "Sin acceso a Apple Watch / Apple Health.",
+    "Ultrahuman: datos del anillo al 6 oct, 8:15 AM (sin pasos de hoy ni CGM)."
+  ],
+  cita: { txt:"Cita con internista Isaí", cuando:"HOY mar 6 oct, 2:00 PM", hasta:"2026-10-06T15:00:00-06:00" },
+  tarjetas: [
+    { key:"sueno", emo:"😴", titulo:"Sueño",
+      hoy:[ ["Whoop rendimiento","81%","durmió 7:35 h · necesitaba 7:42","Whoop"],
+            ["Ultrahuman sueño","83","7h 52m (11:50 PM–7:48 AM) · en cama 8h 3m · profundo 1h 41m · REM 1h 51m","Ultrahuman"] ],
+      ayer:[ ["Whoop rendimiento","76%","durmió 9:49 h","Whoop"],
+             ["Oura sueño","79","","Oura"],["Ultrahuman sueño","80","9h 11m","Ultrahuman"] ] },
+    { key:"pasos", emo:"👟", titulo:"Pasos",
+      hoy:[ ["Pasos","--","aún sin dato hoy","Ultrahuman"] ],
+      ayer:[ ["Pasos","7,024","","Ultrahuman"] ],
+      notaEmo:"👟", nota:"Dom 4 oct: 3,206 · Sáb 3 oct: 4,052 pasos (Ultrahuman). Meta: 7,000+." },
+    { key:"fc", emo:"💓", titulo:"FC / HRV",
+      hoy:[ ["Whoop recuperación","74%","","Whoop"],["HRV","45 ms","","Whoop"],["Pulso en reposo","62","lpm","Whoop"],["Ultrahuman recuperación","79","HRV 62 ms · FC mín 55","Ultrahuman"] ],
+      ayer:[ ["Whoop recuperación","82%","HRV 49 · reposo 66","Whoop"],["Oura readiness","94","","Oura"] ] },
+    { key:"actividad", emo:"🔥", titulo:"Actividad",
+      hoy:[ ["Whoop esfuerzo","4.3","en curso","Whoop"] ],
+      ayer:[ ["Whoop esfuerzo","8.7","","Whoop"],["Oura actividad","82","","Oura"],["Ultrahuman movimiento","66","","Ultrahuman"] ] },
+    { key:"presion", emo:"🩸", titulo:"Presión",
+      hoy:[],
+      ayer:[ ["Presión","147/87","pulso 100/96 · 3:38–3:40 PM","Withings"],["Vel. onda de pulso","6.2 m/s","","Withings"],["ECG","inconcluso","","Withings"] ],
+      nota:"Sin lectura hoy todavía: mídete antes de la cita. Toma pastillas para la presión — controlada si las toma." },
+    { key:"peso", emo:"⚖️", titulo:"Peso y composición",
+      hoy:[],
+      ayer:[ ["Peso","138.4 kg","5 oct, 8:04 AM","Withings"],["Masa grasa","48.6 kg","","Withings"],["IMC","37.5","estatura 1.92 m",""] ] }
+  ],
+  /* Ultrahuman (anillo) — leído lun 5 oct 2026, 8:00 PM Mérida; fechas del sitio en UTC. Sin horarios de dormir/despertar. */
+  ultrahuman: {
+    leido: "mar 6 oct, 8:50 AM (sync 8:15 AM)",
+    dias: [
+      { fecha:"Mar 6 oct", sueno:83, recovery:79, movement:"--", total:"7h 52m", enCama:"8h 3m", pasos:"--", fc:55, hrv:62, temp:"34.75 °C prom." },
+      { fecha:"Lun 5 oct", sueno:80, recovery:79, movement:66, total:"9h 11m", enCama:"9h 40m", pasos:"7,024", fc:58, hrv:71, temp:"33.96 °C prom." },
+      { fecha:"Dom 4 oct", sueno:77, recovery:73, movement:55, total:"10h 9m", enCama:"10h 32m", pasos:"3,206", fc:59, hrv:68, temp:"−0.48 °C" }
+    ],
+    hrvForm: "62 ms (promedio 7 días) · zona 59–75 ms",
+    metabolic: "-- (sin CGM)"
+  },
+  /* Recuperación 3/4/5 oct: Whoop % vs Ultrahuman índice */
+  comparaRecuperacion: [ ["4 oct",70,73],["5 oct",82,79],["6 oct",74,79] ],
+  comparaHRV: { whoop:[["4 oct",43],["5 oct",49],["6 oct",45]], ultrahuman:[["4 oct",68],["5 oct",71],["6 oct",62]], nota:"miden distinto, no comparar directo" },
+  tendencias: {
+    recuperacion: [ ["2 oct",94],["3 oct",56],["4 oct",70],["5 oct",82],["6 oct",74] ],          // Whoop %
+    hrv:          [ ["2 oct",58,"58"],["3 oct",38,"37–39"],["4 oct",43,"43"],["5 oct",49,"49"],["6 oct",45,"45"] ], // ms
+    peso:   { de:"136.8 kg (30 sep)", a:"138.4 kg (5 oct)", delta:"+1.6 kg" },
+    presion:{ de:"135/87 (2 sep)", a:"147/87 (5 oct)" }
+  },
+  /* Tendencia 3 meses — báscula Withings. fecha "YYYY-MM-DD"; null si falta el dato.
+     Huecos de más de `tendencia3mGapDias` días se dibujan punteados. `nota` opcional aparece en el tooltip. */
+  tendencia3m: [
+    { fecha:"2026-07-12", peso:138.5, grasa:45.4, grasaPct:32.8 },
+    { fecha:"2026-07-13", peso:134.5, grasa:43.5, grasaPct:32.3 },
+    { fecha:"2026-07-14", peso:135.3, grasa:42.7, grasaPct:31.6 },
+    { fecha:"2026-07-15", peso:136.5, grasa:42.6, grasaPct:31.2 },
+    { fecha:"2026-07-24", peso:137.8, grasa:51.3, grasaPct:37.2 },
+    { fecha:"2026-07-25", peso:137.5, grasa:48.2, grasaPct:35.1 },
+    { fecha:"2026-07-27", peso:137.2, grasa:50.5, grasaPct:36.8 },
+    { fecha:"2026-08-16", peso:135.1, grasa:46.3, grasaPct:34.3 },
+    { fecha:"2026-08-17", peso:136.4, grasa:47.7, grasaPct:35.0 },
+    { fecha:"2026-08-18", peso:135.2, grasa:46.5, grasaPct:34.4 },
+    { fecha:"2026-08-19", peso:134.8, grasa:46.2, grasaPct:34.3 },
+    { fecha:"2026-08-22", peso:136.1, grasa:45.3, grasaPct:33.3 },
+    { fecha:"2026-08-23", peso:136.5, grasa:46.1, grasaPct:33.8 },
+    { fecha:"2026-08-24", peso:135.7, grasa:46.8, grasaPct:34.5 },
+    { fecha:"2026-08-26", peso:135.9, grasa:45.1, grasaPct:33.2 },
+    { fecha:"2026-08-27", peso:134.6, grasa:45.2, grasaPct:33.6 },
+    { fecha:"2026-08-31", peso:137.0, grasa:null, grasaPct:null },
+    { fecha:"2026-09-01", peso:136.6, grasa:46.7, grasaPct:34.2 },
+    { fecha:"2026-09-05", peso:137.6, grasa:46.8, grasaPct:34.0 },
+    { fecha:"2026-09-07", peso:136.8, grasa:47.3, grasaPct:34.6 },
+    { fecha:"2026-09-18", peso:137.0, grasa:null, grasaPct:null },
+    { fecha:"2026-09-24", peso:137.0, grasa:47.0, grasaPct:34.3 },
+    { fecha:"2026-09-30", peso:136.8, grasa:44.5, grasaPct:32.5, nota:"composición incompleta" },
+    { fecha:"2026-10-05", peso:138.4, grasa:48.6, grasaPct:35.1 }
+  ],
+  tendencia3mGapDias: 10,
+  tendencia3mResumen: "Peso: 134.5–138.5 kg en julio → 138.4 kg (5 oct) · Grasa: ~43–45 kg → 48.6 kg",
+  tendencia3mNota: "Fuente: báscula Withings, 12 jul–5 oct 2026. Días sin medición no se muestran.",
+  labs: { fecha:"13 jul 2026", items:[
+    ["TG",482,"alto"],["Colesterol",279,"alto"],["HDL",35,"bajo"],["LDL",152,"alto"],["ALT",56,"alto"],
+    ["HbA1c","5.50","ok"],["Glucosa",97,"ok"],["Vitamina D","16.9","bajo","deficiente"],["eGFR",117,"ok"] ] },
+  conclusiones: [
+    "Anoche dormiste 7h 52m (11:50 PM–7:48 AM): más corto y en un horario más normal que los días anteriores (9–10 h); sueño 83 en Ultrahuman y 81% en Whoop.",
+    "La recuperación sigue buena pero bajó un poco vs ayer: Whoop 74% (ayer 82%), HRV 45 ms (ayer 49); Ultrahuman 79.",
+    "El pulso en reposo bajó a 62 (ayer 66), buena señal.",
+    "Peso +1.6 kg en 5 días y presión del 5 oct alta (147/87); tomas pastillas y está controlada si te las tomas.",
+    "Reportas cansancio, hambre que no se sacia, insomnio, jadeo y no aguantas más de 1 min corriendo."
+  ],
+  sugerencias: [
+    "Esta noche cena ligera baja en sal, sin refresco ni alcohol, y a la cama ~11 PM.",
+    "Hoy antes de la cita: mide la presión sentado tras 5 min de reposo, 2 lecturas, y llévalas.",
+    "Cita Isaí mar 6 oct 2 PM: pide orden de labs (últimos 13 jul: TG 482, col 279, HDL 35, LDL 152, ALT 56, HbA1c 5.50, vit D 16.9), comenta presión 147/87, jadeo, cansancio, ECG inconcluso de Withings, y pregunta por Foundayz (orforglipron).",
+    "Hoy camina 30 min a ritmo cómodo y busca 7,000+ pasos."
+  ]
+};
+
+/* ===================== SECCIONES NUEVAS (lun 5 oct, 7:50 PM) =====================
+   Regla: solo montos y fechas leídos en correo / calendario / tu hoja "TC" de Drive.
+   monto:null = no se conoce (se muestra "s/d"). */
+const OUT_AMAZON = "https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDasAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem";
+const OUT_PLATA  = "https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDeEAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem";
+const SEM41_SHEET = "https://docs.google.com/spreadsheets/d/1KQ6xPrrVTK2FmnDnIMlP9axWC9hybtby8PsKeW_SjIU/edit";
+
+/* 💳 FINANZAS
+   vencimientos: semana:true = cae del lun 5 al dom 11 oct · pendiente:true = suma al total "por pagar esta semana" */
+const FINANZAS = {
+  semanaTxt: "lun 5 – dom 11 oct",
+  pagadas: "TC Juan Citibanamex (corte $5,350, vence 8 oct) · Tesla Santander (15 oct) · Mifel (16 oct) · Plata (corte $26,350, 20 oct) · Scotiabank (21 oct, saldo −$5,800 a favor) · HSBC TDC *5670 ($8,345.62 venció 4 oct): probablemente pagada (hoja TC en $0, siguiente límite 1 nov) — confírmalo en la app.",
+  nota: "Saldos “hoja TC” = lo que tú anotaste en tu Google Sheet TC (corte / saldo pendiente). Telmex y Telcel: monto s/d.",
+  vencimientos: [
+    { id:"v-inbursa",fecha:"Dom 4 oct",  txt:"Inbursa *9142 — pago mínimo (saldo ~$3,941.72)", monto:1454.06, estado:"VENCIDO · no reflejado", urg:"rojo", semana:true, pendiente:true, link:null, src:"WhatsApp" },
+    { id:"v-nrf",    fecha:"Jue 1 oct",  txt:"NR Finance (Kix) — pago de octubre: 4 cargos domiciliados rechazados en Santander *302", monto:null, estado:"RECHAZADO · fondos insuficientes", urg:"rojo", semana:true, pendiente:false, gmail:GM("1a0fe725c33494d2","1a0fe725c33494d2"), link:G("1a0fe725c33494d2"), src:"Gmail" },
+    { id:"v-amexp",  fecha:"Mié 7 oct",  txt:"PLATINUM AMEX — corte $36,700.00 · pagar el 7 o antes", monto:36700, estado:"Mauricio: aún no pagada (la hoja dice $0)", urg:"amarillo", semana:true, pendiente:true, link:TC_SHEET, src:"Drive" },
+    { id:"v-apple7", fecha:"Mié 7 oct",  txt:"Cargo automático Apple: ChatGPT Pro $1,989 + YouTube Music $169", monto:2158, estado:"se renueva solo", urg:"amarillo", semana:true, pendiente:true, gmail:GM("1a0fc02b07dd8bbd","1a0fc02b07dd8bbd"), link:G("1a0fc02b07dd8bbd"), src:"Gmail" },
+    { id:"v-telmex", fecha:"Jue 8 oct",  txt:"Telmex", monto:null, estado:"monto s/d (sept: pagado 21 sep tras un intento rechazado)", urg:"amarillo", semana:true, pendiente:false, link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
+    { id:"v-telcel", fecha:"Sáb 10 oct", txt:"Telcel", monto:null, estado:"monto s/d", urg:"amarillo", semana:true, pendiente:false, link:CAL("dmhzNmxjNm51NWkzYWZ0ODBuaDcwb2RhdmNfMjAyNjEwMDhUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
+    { id:"v-lumo",   fecha:"Sáb 10 oct", txt:"Cargo automático Apple: Lumosity Premium", monto:299, estado:"se renueva solo", urg:"amarillo", semana:true, pendiente:true, gmail:GM("1a1064fef3400eae","1a1064fef3400eae"), link:G("1a1064fef3400eae"), src:"Gmail" },
+    { id:"v-with",   fecha:"Dom 11 oct", txt:"Cargo automático Apple: Withings+", monto:199, estado:"se renueva solo", urg:"amarillo", semana:true, pendiente:true, gmail:GM("1a10b76be799b0c0","1a10b76be799b0c0"), link:G("1a10b76be799b0c0"), src:"Gmail" },
+    { id:"v-plat",   fecha:"Dom 11 oct", txt:"TC Platinum (vence 13 oct) — pagar el 11", monto:10300, estado:"hoja TC: saldo pendiente", urg:"amarillo", semana:true, pendiente:true, link:CAL("cGU3YnE5MW52dTFrOW40ajZrZmwzdHM0cDBfMjAyNjEwMTFUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
+    { id:"v-inbcorte",fecha:"Mié 14 oct",txt:"Corte Inbursa *9142", monto:null, estado:"corte", urg:"verde", link:null, src:"WhatsApp" },
+    { id:"v-totalplay",fecha:"Vie 16 oct",txt:"Totalplay (sept: $1,469.82 por PayPal)", monto:null, estado:"monto de oct s/d", urg:"verde", link:CAL("YWF0b2xwcmFsZ3ZjZGhrZmhxZjRrZTZvcDRfMjAyNjEwMTRUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
+    { id:"v-open",   fecha:"Sáb 17 oct", txt:"TC Open — corte $350.00", monto:350, estado:"hoja TC: saldo pendiente", urg:"verde", link:CAL("NGc0ODdobzE5bTZhbWMwcDA5cDJpdWxrb2NfMjAyNjEwMTVUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
+    { id:"v-gema",   fecha:"Lun 19 oct", txt:"Depósito prometido a Gema Celeste", monto:null, estado:"monto s/d", urg:"verde", link:CAL("MTRuMmhmcnFuYnR0bTByYmhpbjIxb2ltNGcgbWF1NTU4OEBt"), src:"Calendar" },
+    { id:"v-amex",   fecha:"Mié 28 oct", txt:"AMEX ••••6007 — saldo $30,500.00 (corte $80,500.00)", monto:30500, estado:"hoja TC: saldo pendiente · son tarjetas distintas de PLATINUM AMEX", urg:"verde", link:TC_SHEET, src:"Drive" }
+  ],
+  cobros: [
+    { id:"f-salv", txt:"Cobrar a Salvador Jacobo: “cobrar mes (regresa)” mar 13 oct y renta jue 15 oct", monto:null, link:CAL("ZXA4ZGZoMGdjZzRrNnF0djk1b3Z0ZWFtM2cgbWF1NTU4OEBt") }
+  ],
+  items: [
+    { id:"f-nrf", grupo:"⚠️ Cargos rechazados / avisos", urg:"rojo", txt:"Santander: 4 cargos de NR Finance México rechazados por fondos insuficientes (cuenta *302)", det:"$1,041.38 · $1,037.19 · $1,049.74 · $1,053.92 — vie 2 oct. Hubo otro intento fallido el 1 oct. NRFM mandó “Aviso importante: insuficiencia de fondos” (contrato 992025061824014); el pago vencía el 1° de octubre.", gmail:GM("1a0fe725c33494d2","1a0fe725c33494d2"), link:G("1a0fe725c33494d2"), src:"Gmail" },
+    { id:"f-nrf2", grupo:"⚠️ Cargos rechazados / avisos", urg:"rojo", txt:"NRFM: “Aviso Importante: Insuficiencia de fondos”", det:"jue 1 oct · paga directo a NR Finance o deposita en *302", gmail:GM("1a0fa081d85944d0","1a0fa081d85944d0"), link:G("1a0fa081d85944d0"), src:"Gmail" },
+    { id:"f-limite", grupo:"⚠️ Cargos rechazados / avisos", urg:"amarillo", txt:"Banamex: “Superaste tu límite de transacción”", det:"mié 30 sep", gmail:GM("1a0f328c45b6be0d","1a0f328c45b6be0d"), link:G("1a0f328c45b6be0d"), src:"Gmail" },
+    { id:"f-hsbcc", grupo:"⚠️ Cargos rechazados / avisos", urg:"verde", txt:"HSBC: aviso de cambios a tu contrato (vigentes desde 3 nov 2026)", det:"vie 2 oct", gmail:GM("1a0fb766430d24b8","1a0fb766430d24b8"), link:G("1a0fb766430d24b8"), src:"Gmail" },
+    { id:"f-plata", grupo:"⚠️ Cargos rechazados / avisos", urg:"verde", txt:"Banco Plata: cambian tasas de Ahorro Fijo y Flexible desde el 7 oct", det:"Ahorro Flexible 8.5% con Plata+ · lun 5 oct, 6:33 PM", outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDeEAAAA="), link:OUT_PLATA, src:"Outlook" },
+    { id:"f-ec-sant", grupo:"📄 Estados de cuenta que llegaron", urg:"verde", txt:"Santander Integral — estado de cuenta (PDF + XML)", det:"lun 5 oct, 9:31 AM", gmail:GM("1a10cb153ac022fb","1a10cb153ac022fb"), link:G("1a10cb153ac022fb"), src:"Gmail" },
+    { id:"f-ec-494", grupo:"📄 Estados de cuenta que llegaron", urg:"verde", txt:"Banamex tarjeta ****494 — estado de cuenta (PDF adjunto)", det:"lun 28 sep", gmail:GM("1a0ea7d356e48e4d","1a0ea7d356e48e4d"), link:G("1a0ea7d356e48e4d"), src:"Gmail" },
+    { id:"f-ec-862", grupo:"📄 Estados de cuenta que llegaron", urg:"verde", txt:"Banamex tarjeta ****862 — estado de cuenta", det:"lun 21 sep", gmail:GM("1a0c7a70574e6b98","1a0c7a70574e6b98"), link:G("1a0c7a70574e6b98"), src:"Gmail" },
+    { id:"f-ec-617", grupo:"📄 Estados de cuenta que llegaron", urg:"verde", txt:"Banamex cuenta ****617 — estado de cuenta", det:"dom 20 sep", gmail:GM("1a0c1cc0c9726498","1a0c1cc0c9726498"), link:G("1a0c1cc0c9726498"), src:"Gmail" },
+    { id:"f-ec-ph", grupo:"📄 Estados de cuenta que llegaron", urg:"verde", txt:"Palacio de Hierro — estado de cuenta", det:"vie 25 sep", gmail:GM("1a0dbdee9da2b67d","1a0dbdee9da2b67d"), link:G("1a0dbdee9da2b67d"), src:"Gmail" },
+    { id:"f-amexinfo", grupo:"📄 Estados de cuenta que llegaron", urg:"verde", txt:"AMEX: “Información sobre el pago de su Tarjeta”", det:"mié 23 sep", gmail:GM("1a0cedaddc2acfe8","1a0cedaddc2acfe8"), link:G("1a0cedaddc2acfe8"), src:"Gmail" },
+    { id:"f-dep26", grupo:"💸 Movimientos grandes / transferencias", urg:"verde", txt:"Depósito en efectivo en ventanilla: $26,000.00", det:"mar 29 sep", gmail:GM("1a0ef2e9b4b33b10","1a0ef2e9b4b33b10"), link:G("1a0ef2e9b4b33b10"), src:"Gmail" },
+    { id:"f-spei", grupo:"💸 Movimientos grandes / transferencias", urg:"verde", txt:"SPEI recibido $699.26 en cuenta *4598", det:"vie 2 oct", gmail:GM("1a0fee169c3dfa69","1a0fee169c3dfa69"), link:G("1a0fee169c3dfa69"), src:"Gmail" },
+    { id:"f-mifel", grupo:"💸 Movimientos grandes / transferencias", urg:"verde", txt:"Mifel: transferencia SPEI abonada", det:"mié 30 sep · monto s/d", gmail:GM("1a0f37d83e8fc0f0","1a0f37d83e8fc0f0"), link:G("1a0f37d83e8fc0f0"), src:"Gmail" },
+    { id:"f-banadep", grupo:"💸 Movimientos grandes / transferencias", urg:"verde", txt:"Banamex: avisos de depósito", det:"30 sep y 1 oct · montos s/d", gmail:GM("1a0f76abe8e912b8","1a0f76abe8e912b8"), link:G("1a0f76abe8e912b8"), src:"Gmail" },
+    { id:"f-camino", grupo:"💸 Movimientos grandes / transferencias", urg:"verde", txt:"Camino Real Aeropuerto: CFDI de estancia por $12,218.24", det:"lun 21 sep", gmail:GM("1a0c57e1e81e6e7d","1a0c57e1e81e6e7d"), link:G("1a0c57e1e81e6e7d"), src:"Gmail" }
+  ]
+};
+
+
+
+/* 💳 PAGO DE TARJETAS (hoja TC de Drive) — leída lun 5 oct, 8:40 PM.
+   Solo columnas no sensibles: banco, últimos 4 (solo si la celda es un número de tarjeta), día de corte, fecha límite,
+   monto del corte, saldo por pagar y plan de pago (digital / efectivo). NUNCA usuarios, claves ni números completos.
+   La hoja no tiene columna de pago mínimo. Estado: saldo 0 = sin saldo pendiente (pagado), >0 = por pagar, <0 = a favor. */
+const TARJETAS_TC = {
+  link: TC_SHEET,
+  hoy: "2026-10-06", finSemana: "2026-10-11",
+  leida: "mar 6 oct, 9:46 AM (sin cambios)",
+  colFecha: "columna C “Due day” = fecha límite de pago",
+  totalesHoja: { cortes:300750, saldo:35350, digital:210200, efectivo:55200 },
+  filas: [
+    { id:"tc-scotia",  banco:"Scotiabank",        ult4:"",     corteDia:3,  limite:"2026-10-21", corte:2700,  saldo:-5800, digital:null,  efectivo:8500 },
+    { id:"tc-hd",      banco:"Home Depot",        ult4:"",     corteDia:9,  limite:"2026-10-28", corte:5100,  saldo:0,     digital:5100,  efectivo:null },
+    { id:"tc-rappi",   banco:"Rappi",             ult4:"",     corteDia:10, limite:"2026-10-28", corte:15800, saldo:0,     digital:15800, efectivo:null },
+    { id:"tc-santj",   banco:"Santander (Juan)",  ult4:"8728", corteDia:11, limite:"2026-10-22", corte:37000, saldo:0,     digital:null,  efectivo:37000 },
+    { id:"tc-scotj",   banco:"Scotia (Juan)",     ult4:"9387", corteDia:11, limite:"2026-10-28", corte:2000,  saldo:0,     digital:2000,  efectivo:null },
+    { id:"tc-amex",    banco:"AMEX",              ult4:"6007", corteDia:11, limite:"2026-10-28", corte:80500, saldo:30500, digital:50000, efectivo:null, nota:"son tarjetas distintas de PLATINUM AMEX" },
+    { id:"tc-walmart", banco:"Walmart",           ult4:"",     corteDia:12, limite:"2026-10-29", corte:5200,  saldo:0,     digital:5200,  efectivo:null },
+    { id:"tc-volj",    banco:"Volaris (Juan)",    ult4:"4533", corteDia:12, limite:"2026-11-02", corte:33500, saldo:0,     digital:33500, efectivo:null },
+    { id:"tc-vol",     banco:"Volaris",           ult4:"2962", corteDia:12, limite:"2026-11-02", corte:null,  saldo:0,     digital:null,  efectivo:null },
+    { id:"tc-merc",    banco:"Mercado Pago",      ult4:"",     corteDia:13, limite:"2026-10-23", corte:1600,  saldo:0,     digital:null,  efectivo:1600 },
+    { id:"tc-inbj",    banco:"Inbursa (Juan)",    ult4:"",     corteDia:13, limite:"2026-10-28", corte:28500, saldo:0,     digital:28500, efectivo:null },
+    { id:"tc-inb",     banco:"Inbursa",           ult4:"0713", corteDia:14, limite:"2026-11-01", corte:1500,  saldo:0,     digital:1500,  efectivo:null },
+    { id:"tc-hsbcj",   banco:"HSBC (Juan)",       ult4:"9904", corteDia:14, limite:"2026-11-02", corte:null,  saldo:0,     digital:null,  efectivo:null },
+    { id:"tc-tesla",   banco:"Tesla Santander",   ult4:"",     corteDia:15, limite:"2026-10-15", corte:null,  saldo:0,     digital:null,  efectivo:null },
+    { id:"tc-hsbc",    banco:"HSBC",              ult4:"",     corteDia:15, limite:"2026-11-01", corte:1500,  saldo:0,     digital:1500,  efectivo:null },
+    { id:"tc-costco",  banco:"Costco",            ult4:"",     corteDia:16, limite:"2026-11-03", corte:6800,  saldo:0,     digital:6800,  efectivo:null },
+    { id:"tc-citij",   banco:"Citibanamex (Juan)",ult4:"",     corteDia:21, limite:"2026-10-08", corte:5350,  saldo:0,     digital:5350,  efectivo:null },
+    { id:"tc-plata",   banco:"Plata",             ult4:"",     corteDia:22, limite:"2026-10-20", corte:26350, saldo:0,     digital:26350, efectivo:null },
+    { id:"tc-bbva",    banco:"BBVA Casa",         ult4:"",     corteDia:24, limite:"2026-10-30", corte:null,  saldo:null,  digital:null,  efectivo:null },
+    { id:"tc-mifel",   banco:"Mifel (mía)",       ult4:"",     corteDia:25, limite:"2026-10-16", corte:null,  saldo:0,     digital:null,  efectivo:null },
+    { id:"tc-plat",    banco:"Platinum",          ult4:"",     corteDia:26, limite:"2026-10-13", corte:10300, saldo:10300, digital:null,  efectivo:null, nota:"recordatorio: pagar dom 11 oct" },
+    { id:"tc-open",    banco:"Open",              ult4:"",     corteDia:26, limite:"2026-10-17", corte:350,   saldo:350,   digital:null,  efectivo:null },
+    { id:"tc-amexp",   banco:"AMEX Platinum",     ult4:"",     corteDia:27, limite:"2026-10-07", corte:36700, saldo:36700, digital:28600, efectivo:8100, nota:"Mauricio: aún no pagada (la hoja dice $0) · pagar el 7 o antes" }
+  ],
+  otros: [
+    { txt:"Telmex", limite:"2026-10-08", nota:"monto s/d" },
+    { txt:"Telcel", limite:"2026-10-10", nota:"monto s/d" },
+    { txt:"Totalplay", limite:"2026-10-16", nota:"monto s/d" },
+    { txt:"Coche Kix NR", limite:"2026-10-29", nota:"monto s/d · ojo: 4 cargos rechazados en Santander *302" },
+    { txt:"Renta", limite:"2026-11-01", monto:13600, nota:"" }
+  ],
+  conflictos: [
+    "Inbursa: la hoja TC (terminación 0713) está en $0, pero en WhatsApp quedó pendiente el mínimo de Inbursa *9142 ($1,454.06, vencido 4 oct) — parecen tarjetas distintas.",
+    "Platinum (corte 26, límite 13 oct, $10,300) vs Control sep “Banamex Platinum **3494” ($57,277.34, límite ~15 oct): si es la misma tarjeta, los montos no cuadran.",
+    "AMEX Platinum (corte 27, límite 7 oct, $36,700; la hoja dice saldo $0 pero Mauricio dice que aún no está pagada) vs Control sep “AmEx **42005 (Juan)” ($27,088.54, límite 12 oct, “paga 30-sep”).",
+    "Volaris: la hoja TC termina en 2962 y 4533 (Juan); el Control sep usa **3189 y **4110 — revisa si cambiaron las tarjetas.",
+    "Aeroméxico **6603 (Juan) $53,517.42 con límite 3 oct (Control sep) no aparece en la hoja TC."
+  ],
+  conflictosPagadas: [
+    "Walmart: Control de gastos sep dice **5072 (Juan) $2,356.49 (mín. $495) con límite 5 oct; la hoja TC ya tiene el siguiente límite (29 oct, corte $5,200) y saldo $0 → parece pagado, confírmalo.",
+    "Costco: Control sep dice **4862 $44,957.13 con límite 6 oct; la hoja TC: siguiente límite 3 nov, corte $6,800, saldo $0 → montos muy distintos; confirma que el de $44,957.13 ya se pagó.",
+    "HSBC: Control sep dice **5670 $1,475.93 con límite 4 oct; el correo de HSBC dice $8,345.62 con límite 4 oct; la hoja TC: siguiente límite 1 nov, corte $1,500, saldo $0."
+  ]
+};
+
+/* 📒 CONTROL DE GASTOS SEPTIEMBRE 2026 — de tu archivo de Drive Control_Gastos_Septiembre_2026.xlsx (editado 4 oct).
+   El archivo NO tiene columna de "pagado": "pendiente" = fecha límite de hoy en adelante, o vencida sin marca. */
+const CONTROL_SEP = {
+  archivo: "Control_Gastos_Septiembre_2026.xlsx",
+  link: "https://docs.google.com/spreadsheets/d/15srdGI_B2e90Xk6JZ6UurCl7d8BW5xjd/edit",
+  editado: "dom 4 oct",
+  kpis: [
+    ["💸 Total gastado (13 categorías)", 738159.13],
+    ["🧾 Total a pagar del ciclo (sin intereses)", 437018.18],
+    ["🔻 Pago mínimo total del ciclo", 49283.71],
+    ["💼 Ingresos fijos / mes", 145785.71],
+    ["🏠 Egresos fijos / mes", 102691],
+    ["➕ Neto mensual (ingresos − egresos)", 43094.71],
+    ["📆 MSI a pagar en octubre", 177422.71],
+    ["⚠️ Sobrante final del mes (hoja Resumen)", -191764.44]
+  ],
+  categorias: [
+    ["Otros",397213.35,54],["Viajes / Aerolíneas",98644.04,3],["Meses sin intereses (mensualidad)",83305.04,12],["Seguros",73323.79,3],
+    ["Suscripciones / Digital",28940.37,50],["Amazon",18859.35,18],["Rappi (delivery)",15020.82,21],["Restaurantes / Comida",11354.06,13],
+    ["Electrónica / Apple",6889.66,4],["Café / Snack",2301,1],["Compras Mercado Libre / Pago",1833.15,1],["OXXO / Conveniencia",313,4],["Farmacia",161.5,1]
+  ],
+  ingresos: [["Rentas herencia",70000],["Comisión",35000],["Salario",19285.71],["Casa Santa Fe",10000],["Comisión",7500],["Herencia mamá",4000]],
+  pendientes: [
+    { id:"cg-aerom", fecha:"Sáb 3 oct",  tarjeta:"Aeroméxico Horizon **6603 (Juan)", monto:53517.42, minimo:4013.81, nota:"fecha límite ya pasó · el archivo no marca si se pagó", urg:"rojo" },
+    { id:"cg-hsbc", probPagada:true,  fecha:"Dom 4 oct",  tarjeta:"HSBC Viva Plus **5670", monto:1475.93, minimo:1475.93, nota:"ya pasó · ojo: el correo de HSBC dice $8,345.62 con límite 4 oct", urg:"rojo" },
+    { id:"cg-walm", probPagada:true,  fecha:"Lun 5 oct",  tarjeta:"Walmart INVEX Clásica **5072 (Juan)", monto:2356.49, minimo:495.00, nota:"venció ayer · tu hoja TC lo marca con saldo $0", urg:"rojo" },
+    { id:"cg-costco", probPagada:true,fecha:"Mar 6 oct",  tarjeta:"Costco Banamex **4862", monto:44957.13, minimo:1940.00, nota:"vence HOY · tu hoja TC lo marca con saldo $0", urg:"rojo" },
+    { id:"cg-amexj", fecha:"Lun 12 oct", tarjeta:"AmEx Platinum **42005 (Juan)", monto:27088.54, minimo:4063.28, nota:"el archivo dice “paga 30-sep”", urg:"amarillo" },
+    { id:"cg-bnmx",  fecha:"~15 oct",    tarjeta:"Banamex Platinum **3494", monto:57277.34, minimo:11770.00, nota:"fecha aproximada en el archivo", urg:"amarillo" },
+    { id:"cg-plata", fecha:"~22 oct",    tarjeta:"Plata Card **9109", monto:4401.06, minimo:950.00, nota:"fecha aproximada en el archivo", urg:"verde" }
+  ],
+  porAgregar: [
+    ["Mercado Pago **88179992","Mauricio","~13 sep","ya debió salir"],
+    ["Scotia Travel **9387","Juan","~11 sep","ya debió salir"],
+    ["Openbank Santander **9516","Mauricio","~28 sep","sale por estos días"]
+  ],
+  octubre: "Revisado mar 6 oct, 8:50 AM: todavía no existe un Control_Gastos_Octubre_2026 en Drive (el de septiembre no ha cambiado desde el 4 oct)."
+};
+
+/* 🔁 SUSCRIPCIONES — mensual:true = cobro mensual confirmado (entra al total/mes) */
+const SUSCRIPCIONES = [
+  { id:"u-grok",    servicio:"SuperGrok Plus (Apple)",       monto:1999, moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"27 oct", nota:"factura 27 sep", gmail:GM("1a0e32be96f3f9fc","1a0e32be96f3f9fc"), link:G("1a0e32be96f3f9fc") },
+  { id:"u-chatgpt", servicio:"ChatGPT Pro 100 (Apple)",      monto:1989, moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"7 oct", nota:"aviso de renovación 2 oct", gmail:GM("1a0fc02b07dd8bbd","1a0fc02b07dd8bbd"), link:G("1a0fc02b07dd8bbd") },
+  { id:"u-one",     servicio:"Apple One Premier",            monto:529,  moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"19 oct", nota:"factura 19 sep", gmail:GM("1a0bb1f2b8a3f739","1a0bb1f2b8a3f739"), link:G("1a0bb1f2b8a3f739") },
+  { id:"u-icloud6", servicio:"iCloud+ 6 TB",                 monto:499,  moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"21 oct", nota:"subiste de plan el 21 sep", gmail:GM("1a0c743f5e247179","1a0c7efd32d2ce13"), link:G("1a0c743f5e247179") },
+  { id:"u-lumo",    servicio:"Lumosity Premium (Apple)",     monto:299,  moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"10 oct", nota:"aviso 4 oct", gmail:GM("1a1064fef3400eae","1a1064fef3400eae"), link:G("1a1064fef3400eae") },
+  { id:"u-with",    servicio:"Withings+ (Apple)",            monto:199,  moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"11 oct", nota:"aviso 5 oct", gmail:GM("1a10b76be799b0c0","1a10b76be799b0c0"), link:G("1a10b76be799b0c0") },
+  { id:"u-substack", servicio:"Substack “Predictive History” (Apple)", monto:135, moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"12 oct", nota:"aviso de renovación 6 oct", gmail:GM("1a1109d681b2f2eb","1a1109d681b2f2eb"), link:G("1a1109d681b2f2eb") },
+  { id:"u-icloud2", servicio:"iCloud+ 2 TB (cuenta mendicuti@hotmail.com)", monto:179, moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"20 oct", nota:"factura 20 sep", gmail:GM("1a0c068dcfdcfa11","1a0c2413aa41d07d"), link:G("1a0c068dcfdcfa11") },
+  { id:"u-ytm",     servicio:"YouTube Music Premium (Apple)",monto:169,  moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"7 oct", nota:"aviso 2 oct", gmail:GM("1a0fc02b07dd8bbd","1a0fc02b07dd8bbd"), link:G("1a0fc02b07dd8bbd") },
+  { id:"u-m365",    servicio:"Microsoft 365 Family (Apple)", monto:169,  moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"s/d", nota:"aviso 21 sep (renovaba desde el 27)", gmail:GM("1a0c73dfb50048bc","1a0c73dfb50048bc"), link:G("1a0c73dfb50048bc") },
+  { id:"u-g100",    servicio:"Google 100 GB (cuenta Apple ige.carrillopalma)", monto:39, moneda:"MXN", cadencia:"mensual", mensual:true, proxima:"21 oct", nota:"factura 1 oct", gmail:GM("1a0fa8b53c772cff","1a0fa8b53c772cff"), link:G("1a0fa8b53c772cff") },
+  { id:"u-spotify", servicio:"Spotify (PayPal)",             monto:239,  moneda:"MXN", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"último cobro 30 sep", gmail:GM("1a0f5a5fa2e56589","1a0f5a5fa2e56589"), link:G("1a0f5a5fa2e56589") },
+  { id:"u-scribd",  servicio:"Scribd (PayPal)",              monto:149,  moneda:"MXN", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"último cobro 13 sep", gmail:GM("1a09c5e98b0c7c1a","1a09c5e98b0c7c1a"), link:G("1a09c5e98b0c7c1a") },
+  { id:"u-netflix", servicio:"Netflix (PayPal)",             monto:34.98,moneda:"USD", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"último cobro 12 sep", gmail:GM("1a094bc736f9b8c2","1a094bc736f9b8c2"), link:G("1a094bc736f9b8c2") },
+  { id:"u-ipv",     servicio:"IPVanish VPN (PayPal)",        monto:4.49, moneda:"USD", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"último cobro 1 oct", gmail:GM("1a0faad4259747f9","1a0faad4259747f9"), link:G("1a0faad4259747f9") },
+  { id:"u-hayu",    servicio:"Hayu (PayPal)",                monto:52.99,moneda:"GBP", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"cobro 9 sep", gmail:GM("1a0884f3ca7d2e70","1a0884f3ca7d2e70"), link:G("1a0884f3ca7d2e70") },
+  { id:"u-msgp",    servicio:"Microsoft vía Google Play",    monto:38.99,moneda:"MXN", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"renovó 25 sep (PayPal a Google ese día $38.99); otra renovación 15 sep", gmail:GM("1a0db4cabe91183e","1a0db4cabe91183e"), link:G("1a0db4cabe91183e") },
+  { id:"u-norton",  servicio:"Norton vía Google Play",       monto:null, moneda:"MXN", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"renovó 23 sep", gmail:GM("1a0d0066d793e6f8","1a0d0066d793e6f8"), link:G("1a0d0066d793e6f8") },
+  { id:"u-loora",   servicio:"Loora AI (cuenta Apple ige.carrillopalma)", monto:null, moneda:"MXN", cadencia:"mensual", mensual:false, proxima:"20 oct", nota:"monto s/d", gmail:GM("1a0c068dcfdcfa11","1a0c2413aa41d07d"), link:G("1a0c068dcfdcfa11") },
+  { id:"u-audible", servicio:"Audible",                      monto:null, moneda:"MXN", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"aviso de renovación automática 4 oct", gmail:GM("1a1078ad6b716a07","1a1078ad6b716a07"), link:G("1a1078ad6b716a07") },
+  { id:"u-oura",    servicio:"Oura (PayPal)",                monto:135,  moneda:"MXN", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"cobro hoy 6 oct, 4:05 AM", gmail:GM("1a110acd44cb9e4f","1a110acd44cb9e4f"), link:G("1a110acd44cb9e4f") },
+  { id:"u-windy",   servicio:"Windy Premium (Apple)",        monto:299,  moneda:"MXN", cadencia:"anual", mensual:false, proxima:"24 sep 2027", nota:"renovó 24 sep", gmail:GM("1a0d575d3f9bd4e5","1a0d575d3f9bd4e5"), link:G("1a0d575d3f9bd4e5") },
+  { id:"u-nso",     servicio:"Nintendo Switch Online + Expansion (familiar)", monto:79.99, moneda:"USD", cadencia:"anual", mensual:false, proxima:"fin de periodo s/d", nota:"para apagar la renovación: antes del 28 oct, 10:50 PM Mérida", gmail:GM("1a0eb83b72491e35","1a0eb83b72491e35"), link:G("1a0eb83b72491e35") }
+];
+
+/* 📦 PAQUETES Y COMPRAS — activo:true = en camino o pendiente de acción */
+const PAQUETES = [
+  { id:"p-bento",  urg:"amarillo", activo:true, estado:"🚚 En camino", txt:"Amazon: 5 “Caja Bento de 3 capas”", det:"Llega HOY mar 6 oct · total $1,752.75 · pedido 701-6949454-1033851", outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDasAAAA="), link:OUT_AMAZON, src:"Outlook" },
+  { id:"p-trade",  urg:"rojo", activo:true, estado:"📮 Por enviar", txt:"Apple Trade In: no han recibido tu Mac mini M4", det:"Pedido W1586694951 — envíalo o cancela; el valor de canje vence 14 días después de recibir el nuevo", gmail:GM("1a106c973123f7ef","1a106c973123f7ef"), link:G("1a106c973123f7ef"), src:"Gmail" }
+];
+const PAQUETES_NOTA = "Mercado Libre: no hay envíos en los correos de los últimos 30 días. Sin devoluciones ni reembolsos pendientes.";
+
+/* 💼 TRABAJO / NEGOCIO (correos corah.com.mx sí; grupos de WhatsApp excluidos no se incluyen) */
+const TRABAJO = [
+  { id:"t-lizeth", urg:"rojo", txt:"Lizeth (RH): incidencias Herramax tienda, semana 41 (28 sep – 4 oct)", det:"Cruce RH: descuentos por faltas/permisos $2,367.82 · retardos $0.00. Correo sin leer del lun 5 oct, 10:58 AM.", gmail:GM("1a10ccdd83480a4c","1a10d00def49cb7d"), link:G("1a10ccdd83480a4c"), link2:SEM41_SHEET, link2txt:"hoja Sem41", src:"Gmail" },
+  { id:"t-guille", hasta:"2026-10-06T13:00:00-06:00", urg:"rojo", txt:"Visita del Sr. Guillermo", det:"HOY mar 6 oct, 10:00 AM", link:null, src:"tu lista" },
+  { id:"t-connor", urg:"amarillo", txt:"Michael Connor (vidriero canadiense): sin respuesta en WhatsApp", det:"Por correo (vie 2 oct) te pasó su WhatsApp +1 (672) 200-9523", gmail:GM("1a0f4876b25d73ca","1a0fdedc6ebe539c"), link:G("1a0f4876b25d73ca"), src:"Gmail" },
+  { id:"t-freddy", urg:"amarillo", txt:"Freddy Castillo: “NÓMINA”", det:"vie 2 oct (antes: “NÓMINA CORRECTA” 25 sep)", gmail:GM("1a0fd613e0fc650b","1a0fd613e0fc650b"), link:G("1a0fd613e0fc650b"), src:"Gmail" },
+  { id:"t-horas",  urg:"amarillo", txt:"Lizeth: “RE: HORAS EXTRAS”", det:"vie 2 oct", gmail:GM("1a0fd67786dc380d","1a0fd937a0b53d58"), link:G("1a0fd67786dc380d"), src:"Gmail" },
+  { id:"t-devol",  urg:"amarillo", txt:"Autorización de devolución de 9 m de película (clave 154400000)", det:"dpoot@corah · vie 2 oct", gmail:GM("1a0fd16383854ca3","1a0fd16383854ca3"), link:G("1a0fd16383854ca3"), src:"Gmail" },
+  { id:"t-cancel", urg:"amarillo", txt:"Herramax: “CANCELADOS Y N.C.” (notas de crédito)", det:"rmejia · vie 2 oct", gmail:GM("1a0fddf91e6eb7f2","1a0fddf91e6eb7f2"), link:G("1a0fddf91e6eb7f2"), src:"Gmail" },
+  { id:"t-costos", urg:"verde", txt:"Tatiana (costos): entradas de material y validaciones SLT", det:"4 correos · mié 30 sep", gmail:GM("1a0f4bbb13c05186","1a0f4c3741cad15c"), link:G("1a0f4bbb13c05186"), src:"Gmail" },
+  { id:"t-fact1",  urg:"verde", txt:"Factura No. 100401 de Plaza Dorada (XML + PDF)", det:"jue 1 oct · monto s/d", gmail:GM("1a0f8dedcae4d068","1a0f8dedcae4d068"), link:G("1a0f8dedcae4d068"), src:"Gmail" },
+  { id:"t-fact2",  urg:"verde", txt:"Factura de Grupo Megamedia", det:"lun 28 sep · monto s/d", gmail:GM("1a0ea3f6b07409b2","1a0ea3f6b07409b2"), link:G("1a0ea3f6b07409b2"), src:"Gmail" },
+  { id:"t-fact3",  urg:"verde", txt:"DSI corporativo: factura INV/2026/00843 a Armadora Mexicana de Aluminio", det:"lun 21 sep · monto s/d", gmail:GM("1a0c4fa69907f4ae","1a0c4fa69907f4ae"), link:G("1a0c4fa69907f4ae"), src:"Gmail" },
+  { id:"t-gbp",    urg:"verde", txt:"Google Business “Vidrios y Aluminios Circuito”: 122 vistas en agosto", det:"reporte mensual", gmail:GM("1a0d087dd6ed63ba","1a0d087dd6ed63ba"), link:G("1a0d087dd6ed63ba"), src:"Gmail" }
+];
+
+/* ✈️ VIAJES Y EVENTOS */
+const EVENTOS = [
+  { id:"e-rhom",   urg:"amarillo", cuando:"Mié 7 oct · por confirmar", txt:"RHOM en Casa Capital", link:null, src:"tu lista" },
+  { id:"e-diana",  urg:"amarillo", cuando:"Jue 8 oct · noche", txt:"Cena con Diana 🍷", link:null, src:"tu lista" },
+  { id:"e-unani",  urg:"amarillo", cuando:"Mié 14 oct · 11:00 AM–1:00 PM", txt:"Curso Unani: “Unani Paso a Paso — inicio del programa” (19:00 Madrid)", link:CAL("M3U4NmUwbW5vMjc1djVzNXZrc29ucGk5NTggbWF1NTU4OEBt"), link2:"https://docs.google.com/document/d/1v8VI65r-YJ_CPXTddMt3o2PX9bk3VrdwEMs1PWJ-Owo/edit", link2txt:"bitácora", src:"Calendar" },
+  { id:"e-unani19",urg:"verde", cuando:"Lun 19 oct · 11:00 AM", txt:"Unani — clase dinámica", link:CAL("ZzBxcGw5YTRmZzNxbGh2bGFrajc3ZmUwM3MgbWF1NTU4OEBt"), src:"Calendar" },
+  { id:"e-mteresa",urg:"verde", cuando:"Mié 11 nov", txt:"Taller con María Teresa", link:null, src:"tu lista" }
+];
+const EVENTOS_NOTA = "Sin vuelos, hoteles ni reservas próximas en correo o calendario. Sin cumpleaños en el calendario en los próximos 14 días.";
+
+/* 📄 DOCUMENTOS RECIENTES (Google Drive) */
+const DOCUMENTOS = [
+  { id:"d-sem41", tipo:"📊", txt:"Asistencias_Tienda_Sem41_Cruce_RH", det:"Hoja · mod. lun 5 oct · acumulado oct: $2,367.82 faltas/permisos", link:SEM41_SHEET },
+  { id:"d-tc",    tipo:"📊", txt:"TC (tarjetas: cortes, vencimientos y saldos)", det:"Hoja · mod. lun 5 oct", link:TC_SHEET },
+  { id:"d-bitu",  tipo:"📝", txt:"Bitácora Academia Unani", det:"Doc · mod. lun 5 oct", link:"https://docs.google.com/document/d/1v8VI65r-YJ_CPXTddMt3o2PX9bk3VrdwEMs1PWJ-Owo/edit" },
+  { id:"d-bitu2", tipo:"📝", txt:"Bitácora Unani", det:"Doc · mod. lun 5 oct", link:"https://docs.google.com/document/d/1rR8Ix-rK_knoBMWsI1RtfOaT0gPSDF4x55ycSYh8Ln0/edit" },
+  { id:"d-erika", tipo:"📊", txt:"Erika Lopez Gener", det:"Hoja · mod. lun 5 oct", link:"https://docs.google.com/spreadsheets/d/1M7PgVMhEt-1fnynjz_foAKTW0Y4Okf4qk7PWj9892a8/edit" },
+  { id:"d-avance",tipo:"📗", txt:"Avance1.xlsx", det:"Excel · mod. lun 5 oct", link:"https://drive.google.com/file/d/1-DZcC7r9nF14aREFGi532MeGKGXfaCCi/view" },
+  { id:"d-herra", tipo:"📁", txt:"Carpeta HERRAMAX (“Última junta de este sep”)", det:"Carpeta · mod. lun 5 oct", link:"https://drive.google.com/drive/folders/1c-2jkHjK5qWgkJJJi2So505t0u2Qk5-q" },
+  { id:"d-revwa", tipo:"📄", txt:"revision-whatsapp-2026-10-05-1108.md", det:"Nota · lun 5 oct, 11:08 AM", link:"https://drive.google.com/file/d/1hLaGDJ8XpVmoi_ZgQjU9YyKvX8Go8ZMd/view" },
+  { id:"d-agenda",tipo:"📄", txt:"verificacion-chief-agenda-2026-10-05.md", det:"Nota · lun 5 oct", link:"https://drive.google.com/file/d/1n_DF8-TId3sMqbtqQ6pNVXcrhLJmP2R_/view" }
+];
+
+/* 🔐 SEGURIDAD Y CUENTAS (se ignoró phishing: casinos, préstamos, MyChart falso, MyCloudStorage, Mercadona) */
+const SEGURIDAD = [
+  { id:"x-google", urg:"rojo", txt:"Google: alerta crítica — bloquearon un inicio de sesión con TU contraseña", det:"mié 30 sep · cambia la contraseña de Google y revisa la actividad de la cuenta", gmail:GM("1a0f424223c2aa13","1a0f424223c2aa13"), link:G("1a0f424223c2aa13"), src:"Gmail" },
+  { id:"x-tcsheet",urg:"amarillo", txt:"Tu hoja “TC” en Drive guarda usuarios y claves en texto", det:"Muévelas a un gestor de contraseñas (llavero de iCloud / 1Password) y bórralas de la hoja", link:TC_SHEET, src:"Drive" },
+  { id:"x-bancos", urg:"amarillo", txt:"Altas bancarias: tarjetas de terceros en Santander SuperMóvil (29 sep) y destinatario STP en BBVA (30 sep)", det:"Confirma que fuiste tú", gmail:GM("1a0ef31df4c3df3d","1a0ef31df4c3df3d"), link:G("1a0ef31df4c3df3d"), gmail2:GM("1a0f497e5688f62e","1a0f497e5688f62e"), link2:G("1a0f497e5688f62e"), link2txt:"BBVA", src:"Gmail" },
+  { id:"x-ultra",  urg:"verde", txt:"Ultrahuman: link para iniciar sesión", det:"lun 5 oct, 7:20 PM · válido 7 días; si no lo pediste, ignóralo", gmail:GM("1a10ecc00a05cbd8","1a10ecc00a05cbd8"), link:G("1a10ecc00a05cbd8"), src:"Gmail" },
+  { id:"x-xai",    urg:"verde", txt:"x.ai: inicio de sesión nuevo", det:"lun 5 oct, 9:30 AM", gmail:GM("1a10cafc5d272131","1a10cafc5d272131"), link:G("1a10cafc5d272131"), src:"Gmail" },
+  { id:"x-openai", urg:"verde", txt:"OpenAI: inicio de sesión nuevo", det:"dom 4 oct, 12:17 AM", gmail:GM("1a1058f505fe281d","1a1058f505fe281d"), link:G("1a1058f505fe281d"), src:"Gmail" },
+  { id:"x-claude", urg:"verde", txt:"Google: compartiste datos de tu cuenta con Claude", det:"lun 5 oct · también typesafe.ai y Plaud el 28 sep", gmail:GM("1a10ce64df72b902","1a10ce64df72b902"), link:G("1a10ce64df72b902"), src:"Gmail" },
+  { id:"x-whoop",  urg:"verde", txt:"Whoop: inicios de sesión nuevos", det:"28 y 30 sep", gmail:GM("1a0f2f88e1f6f1e2","1a0f2f88e1f6f1e2"), link:G("1a0f2f88e1f6f1e2"), src:"Gmail" },
+  { id:"x-buro",   urg:"verde", txt:"Buró de Crédito: bienvenida / cuenta nueva", det:"lun 28 sep", gmail:GM("1a0e8f033b43416b","1a0e8f033b43416b"), link:G("1a0e8f033b43416b"), src:"Gmail" },
+  { id:"x-debito", urg:"verde", txt:"Santander: tarjeta de débito entregada en sucursal", det:"mié 30 sep", gmail:GM("1a0f38b8dfd13558","1a0f38b8dfd13558"), link:G("1a0f38b8dfd13558"), src:"Gmail" },
+  { id:"x-oura",   urg:"verde", txt:"Oura: cambio de términos (desde 4 nov)", det:"sáb 3 oct", gmail:GM("1a1024df04282804","1a1024df04282804"), link:G("1a1024df04282804"), src:"Gmail" }
+];
+
+
+/* 🔥 URGENTES — lo más importante (tema único, sin repetir) */
+const URGENTES = [
+  { id:"u1", txt:"Google: alguien usó tu contraseña (intento bloqueado 30 sep) → cámbiala", gmail:GM("1a0f424223c2aa13","1a0f424223c2aa13"), link:G("1a0f424223c2aa13"), sec:"seguridad" },
+  { id:"u3", txt:"Inbursa *9142: mínimo $1,454.06 vencido el 4 oct", link:null, sec:"finanzas" },
+  { id:"u11", txt:"Platinum AMEX: pagar $36,700 el mié 7 oct o antes (aún no pagada; la hoja dice $0)", link:TC_SHEET, sec:"finanzas" },
+  { id:"u5", txt:"NR Finance: 4 cargos rechazados en Santander *302 → deposita o paga directo", gmail:GM("1a0fe725c33494d2","1a0fe725c33494d2"), link:G("1a0fe725c33494d2"), sec:"finanzas" },
+  { id:"u6", txt:"Apple Trade In: envía la Mac mini M4 o cancela (pedido W1586694951)", gmail:GM("1a106c973123f7ef","1a106c973123f7ef"), link:G("1a106c973123f7ef"), sec:"paquetes" },
+  { id:"u7", hasta:"2026-10-06T15:00:00-06:00", txt:"HOY: Sr. Guillermo 10 AM · Cita Isaí 2 PM (lleva labs y registro de presión)", link:CAL("MGFibTlqN2gzbjVodGFoNWFpdDJ2cmgwcjQgbWF1NTU4OEBt"), sec:"recordatorios" },
+  { id:"u8", hasta:"2026-10-06T15:00:00-06:00", txt:"Presión 147/87 ayer → tómate la pastilla hoy temprano, antes de la cita", link:null, sec:"salud" },
+  { id:"u9", txt:"Lizeth (RH): revisar cruce sem 41 — descuentos $2,367.82", gmail:GM("1a10ccdd83480a4c","1a10d00def49cb7d"), link:G("1a10ccdd83480a4c"), sec:"trabajo" }
+];
+
+/* ✅ HECHOS — ids ya procesados (por la rutina horaria o porque Mau tocó “Hecho”). No se pintan. */
+const HECHOS = ["r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8"];
+
+window.DASH_DATA = { HECHOS, META, SOLAR, RECORDATORIOS, CORREOS, WHATSAPP, SUGERENCIAS, SALUD, FINANZAS, SUSCRIPCIONES, PAQUETES, PAQUETES_NOTA, TRABAJO, EVENTOS, EVENTOS_NOTA, DOCUMENTOS, SEGURIDAD, URGENTES, CONTROL_SEP, TARJETAS_TC };
+})();
+;(function(){ if (window.DASH_DATA) window.DASH_DATA.SALUD_HOY = {"fecha":"2026-10-06","leido_a":"2026-10-06 09:59 America/Merida","whoop":{"fecha":"2026-10-06","rendimiento_sueno_pct":81,"horas_dormidas":"7:35","horas_necesarias":"7:42","tiempo_en_cama":"8:04","recuperacion_pct":74,"hrv_ms":45,"fc_reposo_bpm":62,"strain":4.7,"previo":{"fecha":"2026-10-05","recuperacion_pct":82,"hrv_ms":49,"fc_reposo_bpm":66,"rendimiento_sueno_pct":76},"leido":"2026-10-06 09:59"},"ultrahuman":{"hoy":{"fecha":"2026-10-06","sleep_index":83,"sueno_total":"7h 52m","tiempo_en_cama":"8h 15m","ventana_sueno":"23:50-08:00","profundo":"1h 34m","rem":"1h 59m","recovery":80,"fc_reposo_bpm":55,"hrv_ms":62,"hrv_7d_ms":67,"temp_piel_desviacion_c":0.44,"sincronizado":"2026-10-06 08:51"},"ayer":{"fecha":"2026-10-05","sleep_index":80,"sueno_total":"9h 11m","tiempo_en_cama":"9h 40m","eficiencia_sueno":92,"profundo":"1h 21m","rem":"2h 13m","recovery":79,"movement_index":66,"pasos":7780,"fc_reposo_bpm":58,"hrv_ms":71,"hrv_7d_ms":68,"temp_piel_desviacion_c":-0.36}},"withings":{"peso":{"fecha":"2026-10-06","hora":"08:18","peso_kg":136.2,"masa_grasa_kg":47.1},"peso_previo":{"fecha":"2026-10-05","hora":"08:04","peso_kg":138.4,"masa_grasa_kg":48.6},"presion":{"fecha":"2026-10-05","hora":"15:38-15:40","sistolica":147,"diastolica":87,"fc_bpm":[100,96]},"sueno":{"fecha":"2026-10-06","hora":"08:07","duracion":"7:40","puntuacion":85,"spo2_pct":94},"actividad_ayer":{"fecha":"2026-10-05","pasos":12854,"fc_media_bpm":88,"fc_noche_bpm":65}},"notas":["Oura: la web fue retirada ('Oura on the Web has been retired', cloud.ouraring.com/retired). Sus datos solo estan en la app Oura. Sin datos de Oura.","Ultrahuman: el sitio da ERR_CONNECTION_CLOSED en la lectura de 09:59 (6 intentos); se conservan los ultimos datos validos leidos a las 08:51-08:56. Movement y pasos de hoy sin dato.","Withings: sin peso ni presion nuevos despues de 08:18; la presion mas reciente es del 5 oct."]}; })();
+/*__DASH_DATA_END__*/
+</script>
+<style>
+:root{
+  --bg:#fff7ef; --ink:#2b2140; --muted:#6f6488;
+  --rojo:#ff3b5c; --amarillo:#ffb800; --verde:#1fbf75;
+  --c1a:#ff8a3d; --c1b:#ffc23d;   /* recordatorios */
+  --c2a:#4f7cff; --c2b:#9b5cff;   /* correos */
+  --c3a:#12c26b; --c3b:#0fb9b1;   /* whatsapp */
+  --c4a:#b14dff; --c4b:#ff4fd8;   /* sugerencias */
+  --c5a:#ff2e63; --c5b:#ff7a7a;   /* salud */
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:"Nunito",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--ink); background:var(--bg);
+  background-image:
+    radial-gradient(circle at 8% 10%, #ffd6e7 0, transparent 28%),
+    radial-gradient(circle at 92% 6%, #d6e4ff 0, transparent 30%),
+    radial-gradient(circle at 85% 90%, #d8ffe9 0, transparent 30%),
+    radial-gradient(circle at 10% 95%, #fff0c2 0, transparent 30%);
+  background-attachment:fixed;
+  min-height:100vh;
+}
+.wrap{max-width:1440px;margin:0 auto;padding:22px 18px 30px}
+h1,h2,h3{font-family:"Baloo 2","Nunito",sans-serif;margin:0}
+
+/* ---------- Header ---------- */
+header.top{
+  display:grid;grid-template-columns:1fr auto;gap:18px;align-items:stretch;
+  background:linear-gradient(120deg,#2b2140,#4b2d7f 55%,#7a2f8f);
+  color:#fff;border-radius:28px;padding:22px 24px;position:relative;overflow:hidden;
+  box-shadow:0 14px 40px -18px rgba(75,45,127,.7);
+}
+header.top::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,#ffcf5c 0,#ff8a3d 55%,transparent 70%);opacity:.35;animation:pulse 6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12);opacity:.5}}
+.hello{position:relative;z-index:1}
+.hello h1{font-size:clamp(30px,5vw,46px);line-height:1}
+.hello h1 .wave{display:inline-block;transform-origin:70% 70%;animation:wave 2.4s ease-in-out infinite}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-8deg)}}
+.hello .date{margin-top:6px;font-size:17px;opacity:.9}
+.hello .clock{display:inline-block;margin-top:10px;background:rgba(255,255,255,.14);padding:4px 12px;border-radius:999px;font-weight:700;font-size:14px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:13px}
+.legend span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);padding:3px 10px;border-radius:999px}
+
+.solar{position:relative;z-index:1;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:14px 16px;min-width:300px}
+.solar h3{font-size:18px;display:flex;align-items:center;gap:8px}
+.solar h3 .sun{display:inline-block;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.srow{display:grid;grid-template-columns:52px 1fr auto;gap:8px;align-items:center;margin-top:9px;font-size:13px}
+.bar{height:12px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden}
+.bar > i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#ffd23d,#ff8a3d);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bar.low > i{background:linear-gradient(90deg,#ff7a7a,#ff3b5c)}
+.bar.batt > i{background:linear-gradient(90deg,#3dffa8,#12c26b)}
+.pct{font-weight:800;font-size:15px}
+.bar.ok > i{background:linear-gradient(90deg,#3dffa8,#12c26b)}
+.smes{margin-top:10px;border-radius:14px;padding:8px 10px;background:rgba(61,255,168,.14);border:1.5px solid rgba(61,255,168,.55)}
+.smes.low{background:rgba(255,90,120,.14);border-color:rgba(255,90,120,.5)}
+.smh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:13px;margin-bottom:6px}
+.smh .big{font-family:"Baloo 2";font-size:20px;color:#7dffc4}
+.smes.low .smh .big{color:#ff9db0}
+.smf{font-size:11.5px;opacity:.85;margin-top:5px}
+.sminiw{display:flex;align-items:flex-end;gap:12px;margin-top:9px}
+.smini{display:flex;gap:7px;align-items:flex-end;height:46px;flex:1}
+.smini .sd{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;font-size:10px;opacity:.95}
+.smini .pair{flex:1;width:100%;display:flex;gap:2px;align-items:flex-end;justify-content:center}
+.smini .pair i{display:block;width:44%;max-width:9px;height:0;border-radius:3px 3px 1px 1px;transition:height 1s cubic-bezier(.2,.8,.2,1)}
+.smini i.g, .slg i.g{background:linear-gradient(180deg,#ffe14d,#ff9a3d)}
+.smini i.c, .slg i.c{background:linear-gradient(180deg,#ff9ec4,#ff4f8b)}
+.smini .sd.now .pair i{opacity:.75;outline:1px dashed rgba(255,255,255,.7);outline-offset:1px}
+.smini .sd span{margin-top:2px;font-weight:700}
+.slg{display:flex;flex-direction:column;gap:3px;font-size:10.5px;white-space:nowrap}
+.slg span{display:inline-flex;align-items:center;gap:5px}
+.slg i{display:inline-block;width:8px;height:8px;border-radius:2px}
+.slg .sep{margin-top:2px;background:rgba(255,255,255,.16);border-radius:999px;padding:2px 8px;font-size:11px}
+.slg .sep b{color:#7dffc4}
+.sfu{font-size:10.5px;opacity:.6;margin-top:6px;text-align:right}
+.ssub{font-size:11.5px;opacity:.8;margin:2px 0 0 60px}
+
+/* ---------- Grid ---------- */
+.grid{display:grid;gap:18px;margin-top:20px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.panel.salud{grid-column:span 2}
+@media (max-width:1100px){ .grid{grid-template-columns:repeat(2,minmax(0,1fr))} .panel.salud{grid-column:span 2} }
+@media (max-width:720px){
+  .grid{grid-template-columns:1fr} .panel.salud{grid-column:auto}
+  header.top{grid-template-columns:1fr} .solar{min-width:0}
+  .wrap{padding:14px 12px 24px}
+}
+
+.panel{border-radius:var(--radius);padding:0 0 14px;background:#fff;position:relative;overflow:hidden;
+  box-shadow:0 12px 30px -18px rgba(43,33,64,.45);animation:rise .6s both}
+.panel:nth-child(2){animation-delay:.08s}.panel:nth-child(3){animation-delay:.16s}.panel:nth-child(4){animation-delay:.24s}.panel:nth-child(5){animation-delay:.32s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.phead{display:flex;align-items:center;gap:10px;padding:16px 18px;color:#fff;position:relative}
+.phead .emo{font-size:30px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.18));animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-3px) rotate(-4deg)}}
+.phead h2{font-size:22px;letter-spacing:.5px;line-height:1.05}
+.phead small{display:block;font-family:"Nunito";font-weight:600;font-size:12.5px;opacity:.92;letter-spacing:0}
+.badge{margin-left:auto;background:#fff;color:var(--ink);font-weight:800;border-radius:999px;padding:4px 12px;font-size:14px;
+  box-shadow:0 4px 10px -4px rgba(0,0,0,.3);white-space:nowrap}
+.p1 .phead{background:linear-gradient(120deg,var(--c1a),var(--c1b))} .p1{--tint:#fff4e8;--acc:var(--c1a)}
+.p2 .phead{background:linear-gradient(120deg,var(--c2a),var(--c2b))} .p2{--tint:#eff2ff;--acc:var(--c2a)}
+.p3 .phead{background:linear-gradient(120deg,var(--c3a),var(--c3b))} .p3{--tint:#e9fbf2;--acc:var(--c3a)}
+.p4 .phead{background:linear-gradient(120deg,var(--c4a),var(--c4b))} .p4{--tint:#f7edff;--acc:var(--c4a)}
+.p5 .phead{background:linear-gradient(120deg,var(--c5a),var(--c5b))} .p5{--tint:#fff0f3;--acc:var(--c5a)}
+.panel{background:linear-gradient(180deg,var(--tint),#fff 70%)}
+
+ol.items{list-style:none;margin:0;padding:12px 12px 0;counter-reset:n;display:flex;flex-direction:column;gap:9px}
+ol.items > li{counter-increment:n;background:#fff;border-radius:16px;padding:10px 12px 10px 10px;display:grid;
+  grid-template-columns:auto auto 1fr;gap:9px;align-items:start;border:1.5px solid rgba(0,0,0,.05);
+  box-shadow:0 3px 10px -8px rgba(43,33,64,.5);transition:transform .15s, box-shadow .15s, opacity .3s}
+ol.items > li:hover{transform:translateY(-2px);box-shadow:0 8px 18px -10px rgba(43,33,64,.5)}
+ol.items > li::before{content:counter(n);font-family:"Baloo 2";font-weight:800;font-size:14px;width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;background:var(--acc);margin-top:1px}
+.ck{appearance:none;-webkit-appearance:none;width:22px;height:22px;border-radius:7px;border:2.5px solid var(--acc);margin:3px 0 0;cursor:pointer;
+  position:relative;transition:background .2s, transform .15s;background:#fff;flex:none}
+.ck:active{transform:scale(.85)}
+.ck:checked{background:var(--acc)}
+.ck:checked::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:900;font-size:14px}
+.hk{appearance:none;-webkit-appearance:none;font:inherit;cursor:pointer;flex:none;min-width:46px;min-height:40px;margin:0;padding:3px 4px 2px;
+  border-radius:12px;border:2.5px solid var(--acc);background:#fff;color:var(--acc);font-weight:900;font-size:16px;line-height:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;transition:background .2s, transform .15s, color .2s;touch-action:manipulation}
+.hk small{font-size:10px;font-weight:800;letter-spacing:.2px}
+.hk:active{transform:scale(.88)} .hk:hover{background:var(--acc);color:#fff}
+ol.items > li.bye{opacity:0;transform:translateX(40px) scale(.96);transition:opacity .28s, transform .28s}
+.undo{position:fixed;left:50%;bottom:74px;transform:translate(-50%,30px);opacity:0;pointer-events:none;z-index:60;
+  background:#2b2140;color:#fff;border-radius:999px;padding:9px 10px 9px 16px;display:flex;gap:12px;align-items:center;font-weight:700;font-size:14px;
+  box-shadow:0 12px 30px -10px rgba(0,0,0,.6);transition:opacity .25s, transform .25s;max-width:92vw}
+.undo.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.undo span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:58vw}
+.undo button{font:inherit;font-weight:900;border:0;border-radius:999px;padding:7px 14px;background:#ffd84d;color:#2b2140;cursor:pointer}
+.ocultos{margin:10px auto 0;max-width:720px;text-align:left;font-size:13px}
+.ocultos summary{cursor:pointer;font-weight:800}
+.ocultos li{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px dashed rgba(0,0,0,.1)}
+.ocultos li button{font:inherit;font-size:12px;font-weight:800;border:2px solid #8a7fb0;background:#fff;border-radius:999px;padding:3px 10px;cursor:pointer}
+.body{min-width:0}
+.t{font-weight:700;font-size:14.5px;line-height:1.3}
+.d{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.35}
+li.done{opacity:.55}
+li.done .t, li.done .d{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--acc)}
+.meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;align-items:center}
+.chip{font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.chip.rojo{background:#ffe3e8;color:#d1153a}.chip.amarillo{background:#fff2c7;color:#9a6a00}.chip.verde{background:#d9f7e8;color:#0e8a51}
+.chip.when{background:var(--tint);color:var(--ink)}
+.chip.src{background:#f1eef8;color:#5d4d86}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.dot.rojo{background:var(--rojo);animation:blink 1.6s infinite}.dot.amarillo{background:var(--amarillo)}.dot.verde{background:var(--verde)}
+@keyframes blink{50%{opacity:.3}}
+a.open{font-size:12px;font-weight:800;color:var(--acc);text-decoration:none;border:1.5px solid currentColor;padding:1px 8px;border-radius:999px}
+a.open:hover{background:var(--acc);color:#fff}
+.day{font-family:"Baloo 2";font-weight:800;font-size:13px;color:var(--acc);margin:12px 14px -2px;text-transform:uppercase;letter-spacing:.8px}
+.from{font-weight:800;color:var(--acc)}
+.emo-s{font-size:18px}
+
+/* ---------- Salud ---------- */
+.s-inner{padding:12px 14px 0}
+.s-alert{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.s-alert span{font-size:12px;background:#fff;border:1.5px dashed #ffb3c1;color:#b0123b;border-radius:999px;padding:3px 10px;font-weight:700}
+.cita{display:flex;align-items:center;gap:10px;background:linear-gradient(120deg,#ff2e63,#ff8a5c);color:#fff;border-radius:16px;padding:10px 14px;font-weight:800;margin-bottom:12px}
+.cita .big{font-size:24px}
+.hcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:1100px){.hcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.hcards{grid-template-columns:1fr}}
+.hc{background:#fff;border-radius:16px;padding:10px 12px;border:1.5px solid rgba(0,0,0,.05);box-shadow:0 3px 10px -8px rgba(43,33,64,.5)}
+.hc h3{font-size:16px;display:flex;align-items:center;gap:6px;color:var(--c5a)}
+.hc .lbl{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:8px 0 3px}
+.metric{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;padding:3px 0;border-bottom:1px dashed #f1e6ea}
+.metric:last-child{border-bottom:0}
+.metric .k{font-size:12.5px;color:var(--muted);flex:1 1 auto;min-width:90px}
+.metric .v{font-family:"Baloo 2";font-weight:800;font-size:18px;line-height:1}
+.metric .x{font-size:11.5px;color:var(--muted);flex-basis:100%}
+.metric .srcp{font-size:10px;font-weight:800;border-radius:999px;padding:1px 7px;background:#f1eef8;color:#5d4d86}
+.srcp.Whoop{background:#e8f0ff;color:#2b4dbf}.srcp.Oura{background:#ece8ff;color:#5b3fc4}.srcp.Withings{background:#e2f7f5;color:#0b7f75}
+.hc .nota{font-size:12px;background:#fff6dd;color:#7a5600;border-radius:10px;padding:5px 8px;margin-top:6px;font-weight:700}
+.empty{font-size:12px;color:#b5a9c8;font-style:italic}
+
+.trends{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+@media (max-width:1100px){.trends{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.trends{grid-template-columns:1fr}}
+.tc{background:#fff;border-radius:16px;padding:10px 12px;border:1.5px solid rgba(0,0,0,.05)}
+.tc h4{margin:0 0 6px;font-size:13px;font-family:"Baloo 2";color:var(--c5a)}
+.bars{display:flex;align-items:flex-end;gap:8px;height:74px}
+.bars .b{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:10.5px;color:var(--muted)}
+.bars .b i{display:block;width:100%;border-radius:8px 8px 4px 4px;height:0;transition:height 1s cubic-bezier(.2,.8,.2,1)}
+.bars .b b{font-size:11.5px;color:var(--ink)}
+.spark{width:100%;height:74px;display:block}
+.delta{font-family:"Baloo 2";font-weight:800;font-size:26px;line-height:1}
+.delta.up{color:var(--rojo)} .delta.down{color:#0e8a51}
+.tc .sub{font-size:12px;color:var(--muted);margin-top:4px}
+
+.labs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.lab{font-size:12px;font-weight:700;border-radius:10px;padding:4px 9px;background:#eefaf3;color:#0e8a51}
+.lab.alto,.lab.bajo{background:#ffe3e8;color:#c3123a}
+.lab b{font-family:"Baloo 2";font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media (max-width:720px){.two{grid-template-columns:1fr}}
+.box{background:#fff;border-radius:16px;padding:10px 14px;border:1.5px solid rgba(0,0,0,.05)}
+.box h4{margin:0 0 4px;font-family:"Baloo 2";font-size:15px;color:var(--c5a)}
+.box ol{margin:0;padding-left:20px;font-size:13.5px;line-height:1.45}
+.box ol li{margin:4px 0}
+.box ol li::marker{font-weight:800;color:var(--c5a)}
+
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}
+footer b{color:var(--ink)}
+.reset{background:none;border:1.5px solid #d9cfee;color:var(--muted);border-radius:999px;padding:3px 12px;font:inherit;font-size:12px;cursor:pointer;margin-left:8px}
+.reset:hover{background:#fff}
+/* ---------- Botón Actualizar + toast ---------- */
+.hello .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+.hello .actions .clock{margin-top:0}
+.refresh{font:inherit;font-weight:800;font-size:15px;border:0;cursor:pointer;color:#2b2140;
+  background:linear-gradient(120deg,#ffe14d,#ff9a3d 55%,#ff4fa3);border-radius:999px;padding:7px 16px 7px 12px;
+  display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 16px -6px rgba(255,90,140,.8), inset 0 -2px 0 rgba(0,0,0,.12);
+  transition:transform .15s, box-shadow .15s}
+.refresh:hover{transform:translateY(-2px) rotate(-1.5deg);box-shadow:0 10px 22px -8px rgba(255,90,140,.9)}
+.refresh:active{transform:scale(.95)}
+.refresh .ic{display:inline-block;font-size:18px;transition:transform .3s}
+.refresh:hover .ic{transform:rotate(90deg)}
+.refresh.loading{opacity:.9;cursor:progress}
+.refresh.loading .ic{animation:spin .7s linear infinite}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,40px) scale(.9);opacity:0;pointer-events:none;
+  background:linear-gradient(120deg,#12c26b,#0fb9b1);color:#fff;font-weight:800;padding:10px 18px;border-radius:999px;
+  box-shadow:0 12px 28px -10px rgba(15,185,177,.8);transition:all .35s cubic-bezier(.2,.9,.3,1.3);z-index:50}
+.toast.show{opacity:1;transform:translate(-50%,0) scale(1)}
+
+/* ---------- Tendencia 3 meses ---------- */
+.t3m{margin-top:10px}
+.leg3m{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin:2px 0 6px}
+.leg3m span{display:inline-flex;align-items:center;gap:6px}
+.sw{display:inline-block;width:16px;height:4px;border-radius:4px}
+.sw.p{background:linear-gradient(90deg,#6d4bff,#b14dff)}
+.sw.g{background:linear-gradient(90deg,#ff9a1a,#ff2e63)}
+.sw.gr{width:9px;height:9px;border-radius:50%;background:#ff9a1a;opacity:.4}
+.sw.dsh{background:repeating-linear-gradient(90deg,#b9a8d6 0 4px,transparent 4px 7px)}
+.chart3m{position:relative;width:100%;min-height:230px;touch-action:pan-y}
+.chart3m svg{display:block;overflow:visible}
+.chart3m .gl{stroke:#f0e8f6;stroke-width:1}
+.chart3m .tk{stroke:#d9cfee}
+.chart3m text{font-family:"Nunito",sans-serif}
+.chart3m .axp{font-size:10.5px;font-weight:800;fill:#6d4bff}
+.chart3m .axg{font-size:10.5px;font-weight:800;fill:#ff6a1a}
+.chart3m .ttl{font-size:9.5px;opacity:.85}
+.chart3m .axx{font-size:10px;fill:#8a7fa3}
+.chart3m .axx.b{font-weight:800;fill:#5d4d86}
+.chart3m .gapt{font-size:10.5px;font-weight:800;fill:#b39bd0;letter-spacing:.5px}
+.chart3m .pline{fill:none;stroke:url(#pg);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.chart3m .gline{fill:none;stroke:url(#gg);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.chart3m .dash{stroke-dasharray:3 6;stroke-width:2.2;opacity:.75}
+.chart3m .pd{fill:#fff;stroke:#6d4bff;stroke-width:2.5}
+.chart3m .gr{fill:#ff9a1a;opacity:.28}
+.chart3m .sd{fill:#ff4a3d}
+.chart3m .guide{stroke:#2b2140;stroke-width:1;stroke-dasharray:2 3;opacity:.45}
+.chart3m .hp{fill:none;stroke:#6d4bff;stroke-width:3;opacity:.5}
+.chart3m .hg{fill:none;stroke:#ff6a1a;stroke-width:3;opacity:.5}
+.chart3m .hit{fill:transparent;cursor:crosshair}
+.chart3m .tip{position:absolute;background:#2b2140;color:#fff;border-radius:12px;padding:7px 10px;font-size:12px;line-height:1.45;
+  pointer-events:none;box-shadow:0 10px 24px -10px rgba(43,33,64,.8);white-space:nowrap;z-index:5}
+.chart3m .tip .sw{margin-right:6px;vertical-align:middle}
+.chart3m .tip .sm{opacity:.75;font-size:11px}
+.chart3m .tip .nt{opacity:1;color:#ffd23d}
+.chart3m .rp{stroke:#3a1fb8;stroke-width:1.6;stroke-dasharray:7 5;opacity:.9}
+.chart3m .rg{stroke:#c2410c;stroke-width:1.6;stroke-dasharray:7 5;opacity:.9}
+.chart3m .rp-t{font-size:10.5px;font-weight:800;fill:#3a1fb8;paint-order:stroke;stroke:#fff;stroke-width:3px}
+.chart3m .rg-t{font-size:10.5px;font-weight:800;fill:#c2410c;paint-order:stroke;stroke:#fff;stroke-width:3px}
+.sw.rp{background:repeating-linear-gradient(90deg,#3a1fb8 0 5px,transparent 5px 8px);height:2px}
+.sw.rg{background:repeating-linear-gradient(90deg,#c2410c 0 5px,transparent 5px 8px);height:2px}
+.reg3m{font-size:12.5px;color:var(--ink);margin-top:3px}
+.reg3m b{font-weight:800}
+.sum3m{font-weight:800;font-size:13px;margin-top:6px;color:var(--ink)}
+.note3m{font-size:12px;color:var(--muted);margin-top:3px}
+
+/* ---------- v4: secciones nuevas, resumen y navegación ---------- */
+:root{
+  --c6a:#f59e0b; --c6b:#facc15;   /* finanzas */
+  --c7a:#0ea5e9; --c7b:#22d3ee;   /* suscripciones */
+  --c8a:#b45309; --c8b:#f59e6b;   /* paquetes */
+  --c9a:#3730a3; --c9b:#6d72ff;   /* trabajo */
+  --c10a:#0d9488; --c10b:#34e0c0; /* eventos */
+  --c11a:#4d9a12; --c11b:#a3e635; /* documentos */
+  --c12a:#2b2140; --c12b:#8b3fd9; /* seguridad */
+  --c0a:#ff3b5c; --c0b:#ff9a3d;   /* urgentes */
+}
+html{scroll-behavior:smooth}
+.p6 .phead{background:linear-gradient(120deg,var(--c6a),var(--c6b))} .p6{--tint:#fff8e1;--acc:#d48806}
+.p7 .phead{background:linear-gradient(120deg,var(--c7a),var(--c7b))} .p7{--tint:#e8f8ff;--acc:var(--c7a)}
+.p8 .phead{background:linear-gradient(120deg,var(--c8a),var(--c8b))} .p8{--tint:#fff1e6;--acc:var(--c8a)}
+.p9 .phead{background:linear-gradient(120deg,var(--c9a),var(--c9b))} .p9{--tint:#eef0ff;--acc:var(--c9a)}
+.p10 .phead{background:linear-gradient(120deg,var(--c10a),var(--c10b))} .p10{--tint:#e6fbf7;--acc:var(--c10a)}
+.p11 .phead{background:linear-gradient(120deg,var(--c11a),var(--c11b))} .p11{--tint:#f1fbe5;--acc:var(--c11a)}
+.p12 .phead{background:linear-gradient(120deg,var(--c12a),var(--c12b))} .p12{--tint:#f4eeff;--acc:var(--c12b)}
+.panel.w2{grid-column:span 2}
+@media (max-width:1100px){ .panel.w2{grid-column:span 2} .panel.w2.s1{grid-column:auto} }
+@media (max-width:720px){ .panel.w2{grid-column:auto} }
+section.panel,#resumen{scroll-margin-top:66px}
+
+/* Resumen rápido */
+#resumen{margin-top:16px}
+.resumen{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.rs{border-radius:20px;padding:12px 14px;color:#fff;text-decoration:none;display:flex;flex-direction:column;gap:2px;
+  box-shadow:0 10px 24px -16px rgba(43,33,64,.8);transition:transform .15s}
+.rs:hover{transform:translateY(-2px)}
+.rs .l{font-size:12.5px;font-weight:800;opacity:.95;text-transform:uppercase;letter-spacing:.5px}
+.rs .n{font-family:"Baloo 2";font-size:30px;font-weight:800;line-height:1.05}
+.rs .s{font-size:11.5px;opacity:.92;line-height:1.3}
+.rs.r0{background:linear-gradient(130deg,var(--c0a),var(--c0b))}
+.rs.r1{background:linear-gradient(130deg,#ff8a3d,#ffc23d)}
+.rs.r2{background:linear-gradient(130deg,#d48806,#f5b700)}
+.rs.r3{background:linear-gradient(130deg,var(--c8a),var(--c8b))}
+.rs.r4{background:linear-gradient(130deg,var(--c7a),#5b8cff)}
+@media (max-width:980px){ .resumen{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (max-width:560px){ .resumen{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px} .rs.r0{grid-column:span 2} .rs .n{font-size:26px} }
+.urgbox{margin-top:12px;background:#fff;border-radius:20px;padding:10px 12px 12px;border:2px solid #ffd0d8;box-shadow:0 8px 20px -16px rgba(209,21,58,.6);--acc:var(--c0a);--tint:#fff0f3}
+.urgbox h3{font-size:17px;color:#d1153a;display:flex;align-items:center;gap:8px;margin:2px 4px 2px}
+.urgbox ol.items{padding:8px 2px 0}
+.urgbox ol.items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:1100px){ .urgbox ol.items{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:720px){ .urgbox ol.items{grid-template-columns:1fr} }
+.go{font-size:11px;font-weight:800;color:var(--muted);text-decoration:none;border-bottom:1.5px dotted currentColor}
+
+/* Navegación fija (chips) */
+nav.snav{position:sticky;top:0;z-index:60;margin:14px -18px 0;padding:9px 18px;
+  padding-top:calc(9px + env(safe-area-inset-top));
+  background:rgba(255,247,239,.88);-webkit-backdrop-filter:saturate(1.5) blur(12px);backdrop-filter:saturate(1.5) blur(12px);
+  display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  scroll-snap-type:x proximity;border-bottom:1px solid rgba(43,33,64,.07)}
+nav.snav::-webkit-scrollbar{display:none}
+nav.snav a{flex:0 0 auto;scroll-snap-align:start;text-decoration:none;font-weight:800;font-size:13.5px;color:var(--ink);
+  background:#fff;border:2px solid var(--cc);border-radius:999px;padding:6px 12px;min-height:38px;display:inline-flex;align-items:center;gap:6px;
+  white-space:nowrap;-webkit-tap-highlight-color:transparent;transition:background .15s,color .15s}
+nav.snav a.on,nav.snav a:active{background:var(--cc);color:#fff}
+nav.snav a .k{font-size:11px;font-weight:800;background:rgba(43,33,64,.08);border-radius:999px;padding:1px 7px}
+nav.snav a.on .k{background:rgba(255,255,255,.25)}
+@media (min-width:1000px){ nav.snav{flex-wrap:wrap;justify-content:center;gap:7px} nav.snav a{font-size:13px;padding:4px 11px;min-height:34px} }
+
+/* Finanzas */
+.fin-top{display:grid;grid-template-columns:1.1fr 1fr;gap:10px;padding:12px 12px 0}
+@media (max-width:720px){ .fin-top{grid-template-columns:1fr} }
+.money{background:linear-gradient(130deg,#2b2140,#5b3a8f);color:#fff;border-radius:18px;padding:12px 14px}
+.money .l{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;opacity:.85}
+.money .n{font-family:"Baloo 2";font-size:34px;font-weight:800;line-height:1.05;color:#ffd84d}
+.money ul{margin:6px 0 0;padding:0;list-style:none;font-size:12.5px;line-height:1.5}
+.money ul li{display:flex;justify-content:space-between;gap:10px;border-top:1px dashed rgba(255,255,255,.18);padding-top:2px}
+.money ul li b{white-space:nowrap}
+.money .x{font-size:11.5px;opacity:.8;margin-top:6px}
+.cobro{background:#fff;border-radius:18px;padding:10px 12px;border:1.5px solid rgba(0,0,0,.05);font-size:13px}
+.cobro h4{margin:0 0 4px;font-family:"Baloo 2";font-size:15px;color:#0e8a51}
+.tl-amt{font-family:"Baloo 2";font-weight:800;font-size:15px;white-space:nowrap}
+.tl-amt.na{color:var(--muted);font-size:12.5px}
+.tl-amt.zero{color:#0e8a51;font-size:12.5px}
+.chip.date{background:#2b2140;color:#fff}
+.chip.date.past{background:#d1153a}
+.chip.amt{background:#fff3c4;color:#7a5600}
+.chip.ok{background:#d9f7e8;color:#0e8a51}
+.trow{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.sub-total{margin:10px 12px 0;background:#fff;border-radius:16px;padding:10px 12px;border:1.5px solid rgba(0,0,0,.05)}
+.sub-total .n{font-family:"Baloo 2";font-size:28px;font-weight:800;color:var(--acc);line-height:1}
+.sub-total .x{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
+.pnote{margin:10px 14px 0;font-size:12px;color:var(--muted);background:#fff;border:1.5px dashed rgba(43,33,64,.12);border-radius:12px;padding:6px 10px}
+
+/* Ultrahuman */
+.srcp.Ultrahuman{background:#fff1e0;color:#b45309}
+.uh{margin-top:10px;border-radius:18px;padding:12px 14px;color:#fff;background:linear-gradient(125deg,#1b1b2f,#3a2a5c 55%,#a8541e);box-shadow:0 12px 28px -18px rgba(27,27,47,.9)}
+.uh h4{margin:0;font-family:"Baloo 2";font-size:16px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.uh h4 small{font-family:Nunito;font-size:11.5px;font-weight:700;opacity:.8}
+.uh-days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+@media (max-width:720px){.uh-days{grid-template-columns:1fr}}
+.uh-day{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:9px 10px}
+.uh-day .f{font-weight:800;font-size:13px;margin-bottom:6px;display:flex;justify-content:space-between}
+.uh-day.hoy{border-color:#ffb547;background:rgba(255,181,71,.13)}
+.rings{display:flex;justify-content:space-between;gap:4px}
+.ring{display:flex;flex-direction:column;align-items:center;font-size:10.5px;font-weight:700;opacity:.95}
+.ring svg{width:58px;height:58px}
+.ring text{font-family:"Baloo 2";font-weight:800;font-size:17px;fill:#fff}
+.uh-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.uh-chips span{font-size:11.5px;font-weight:700;background:rgba(255,255,255,.14);border-radius:999px;padding:2px 8px}
+.uh-chips span.warn{background:#ffd23d;color:#5a3d00}
+.uh-foot{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;margin-top:9px;opacity:.92}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media (max-width:720px){.cmp{grid-template-columns:1fr}}
+.cmpb{background:rgba(255,255,255,.95);color:var(--ink);border-radius:14px;padding:9px 11px}
+.cmpb h5{margin:0 0 6px;font-family:"Baloo 2";font-size:14px;color:#7a3e12}
+.cmpr{display:grid;grid-template-columns:44px 1fr;gap:6px;align-items:center;font-size:11.5px;margin:4px 0}
+.cmpr .bb{display:flex;flex-direction:column;gap:3px}
+.cmpr .bb i{display:block;height:11px;border-radius:6px;font-style:normal;font-size:10px;font-weight:800;color:#fff;line-height:11px;padding-left:5px;white-space:nowrap}
+.cmpr .bb i.w{background:linear-gradient(90deg,#ff2e63,#ff7a7a)}
+.cmpr .bb i.u{background:linear-gradient(90deg,#b45309,#ffb547)}
+.cmpl{display:flex;gap:10px;font-size:11px;color:var(--muted);margin-top:4px}
+.cmpl i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.hrvs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hrvs div{background:#faf7ff;border-radius:10px;padding:6px 8px;font-size:12px}
+.hrvs b{font-family:"Baloo 2";font-size:15px}
+.cmpn{font-size:11.5px;color:#9a6a00;background:#fff6dd;border-radius:8px;padding:3px 8px;margin-top:6px;font-weight:700}
+
+/* Control de gastos septiembre */
+.cg{margin:12px 12px 0;background:#fff;border-radius:18px;border:2px solid #ffe08a;padding:12px 12px 4px}
+.cg h3{font-size:18px;color:#9a6200;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.cg h3 small{font-family:Nunito;font-size:12px;color:var(--muted);font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{border-radius:14px;padding:8px 10px;background:linear-gradient(135deg,#fff8e1,#fff1c9)}
+.kpi .k{font-size:11.5px;font-weight:800;color:#7a5600}
+.kpi .v{font-family:"Baloo 2";font-weight:800;font-size:19px;color:var(--ink)}
+.kpi.neg{background:linear-gradient(135deg,#ffe3e8,#ffd0d8)} .kpi.neg .v{color:#c3123a}
+.cats{margin-top:10px;display:flex;flex-direction:column;gap:5px}
+.cat{display:grid;grid-template-columns:minmax(120px,190px) 1fr auto;gap:8px;align-items:center;font-size:12.5px}
+.cat .bar2{height:12px;border-radius:7px;background:#f6efe0;overflow:hidden}
+.cat .bar2 i{display:block;height:100%;border-radius:7px;background:linear-gradient(90deg,#f59e0b,#ff6b6b)}
+.cat b{white-space:nowrap}
+.cg .two{margin-top:10px}
+.cg .box h4{color:#9a6200}
+
+/* Pago de tarjetas (hoja TC) */
+.tcb{margin:12px 12px 0;background:#fff;border-radius:18px;border:2px solid #b9e6ff;padding:12px 12px 4px}
+.tcb h3{font-size:18px;color:#0b6fa4;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.tcb h3 small{font-family:Nunito;font-size:12px;color:var(--muted);font-weight:700}
+.tcb .kpi{background:linear-gradient(135deg,#e8f6ff,#d6efff)} .tcb .kpi .k{color:#0b6fa4}
+.tcb .kpi.warn{background:linear-gradient(135deg,#fff3c4,#ffe39a)} .tcb .kpi.warn .k{color:#7a5600}
+.tcb .kpi.ok{background:linear-gradient(135deg,#dcf8ea,#c6f1db)} .tcb .kpi.ok .k{color:#0e8a51}
+.chip.l4{background:#eef0ff;color:#3730a3;font-family:ui-monospace,Menlo,monospace}
+.chip.st-paid{background:#d9f7e8;color:#0e8a51}.chip.st-due{background:#ffe3e8;color:#d1153a}.chip.st-fav{background:#e0f2ff;color:#0b6fa4}.chip.st-na{background:#f1eef8;color:#5d4d86}
+li.tc-over{border-color:#ffb3c1 !important;background:#fff5f7 !important}
+li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
+.conf{margin:0;padding-left:20px;font-size:13px;line-height:1.45}
+.conf li{margin:4px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="hello">
+      <h1>Hola <span id="nombre"></span> <span class="wave">👋</span></h1>
+      <div class="date" id="fecha"></div>
+      <div class="filtro" id="filtro" style="margin-top:6px;display:inline-block;background:#e9fbe9;border:2px solid #9fe0a8;color:#16683a;border-radius:999px;padding:4px 12px;font-weight:800;font-size:13px">✅ Solo pendientes; lo que ya marcaste/atendiste se oculta.</div>
+      <div class="actions">
+        <div class="clock" id="clock">🕖 —</div>
+        <button class="refresh" id="refresh" type="button" title="Volver a cargar data.js"><span class="ic">🔄</span> Actualizar</button>
+      </div>
+      <div class="legend">
+        <span><i class="dot rojo"></i> urgente</span>
+        <span><i class="dot amarillo"></i> esta semana</span>
+        <span><i class="dot verde"></i> para que lo sepas</span>
+      </div>
+    </div>
+    <div class="solar" id="solar"></div>
+  </header>
+
+  <section id="resumen" aria-label="Resumen rápido">
+    <div class="resumen" id="rstrip"></div>
+    <div class="urgbox"><h3>🔥 Lo urgente <small style="font-size:12px;color:var(--muted);font-family:Nunito">· toca para abrir la fuente</small></h3><ol class="items" id="urg"></ol></div>
+  </section>
+
+  <nav class="snav" id="snav" aria-label="Secciones"></nav>
+
+  <main class="grid">
+    <section class="panel p1" id="recordatorios"><div class="phead"><span class="emo">📅</span><h2>RECORDATORIOS<small>Próximos 14 días · hora de Mérida</small></h2><span class="badge" data-badge="rec"></span></div><div id="rec"></div></section>
+    <section class="panel p2" id="correos"><div class="phead"><span class="emo">📬</span><h2>CORREOS IMPORTANTES<small>Gmail + Hotmail · lo más importante</small></h2><span class="badge" data-badge="cor"></span></div><ol class="items" id="cor"></ol></section>
+    <section class="panel p3" id="whatsapp"><div class="phead"><span class="emo">💬</span><h2>COMPROMISOS EN WHATSAPP<small>Lo que quedaste de hacer</small></h2><span class="badge" data-badge="wa"></span></div><ol class="items" id="wa"></ol></section>
+    <section class="panel p4" id="sugerencias"><div class="phead"><span class="emo">💡</span><h2>SUGERENCIAS<small>Tips para hoy y mañana</small></h2><span class="badge" data-badge="sug"></span></div><ol class="items" id="sug"></ol></section>
+    <section class="panel p5 salud" id="salud-sec"><div class="phead"><span class="emo">❤️‍🩹</span><h2>SALUD<small>Whoop · Oura · Withings · Ultrahuman · <span id="salud-leido">al lun 5 oct, 8:00 PM</span></small></h2><span class="badge" data-badge="sal"></span></div><div class="s-inner" id="salud"></div></section>
+    <section class="panel p6 w2" id="finanzas"><div class="phead"><span class="emo">💳</span><h2>FINANZAS / CARGOS BANCARIOS<small>Vencimientos, rechazos, estados de cuenta · últimos 30 días</small></h2><span class="badge" data-badge="fin"></span></div><div id="fin"></div></section>
+    <section class="panel p7" id="suscripciones"><div class="phead"><span class="emo">🔁</span><h2>SUSCRIPCIONES<small>Cargos recurrentes y renovaciones</small></h2><span class="badge" data-badge="sus"></span></div><div id="sus"></div></section>
+    <section class="panel p8" id="paquetes"><div class="phead"><span class="emo">📦</span><h2>PAQUETES Y COMPRAS<small>En camino, por enviar y recientes</small></h2><span class="badge" data-badge="paq"></span></div><div id="paq"></div></section>
+    <section class="panel p9" id="trabajo"><div class="phead"><span class="emo">💼</span><h2>TRABAJO / NEGOCIO<small>RH, nómina, facturas, proveedores · 14 días</small></h2><span class="badge" data-badge="trab"></span></div><div id="trab"></div></section>
+    <section class="panel p10" id="eventos"><div class="phead"><span class="emo">✈️</span><h2>VIAJES Y EVENTOS<small>Próximos 14 días + cursos</small></h2><span class="badge" data-badge="ev"></span></div><div id="ev"></div></section>
+    <section class="panel p11" id="documentos"><div class="phead"><span class="emo">📄</span><h2>DOCUMENTOS RECIENTES<small>Google Drive · modificados hoy</small></h2><span class="badge" data-badge="doc"></span></div><div id="doc"></div></section>
+    <section class="panel p12 w2 s1" id="seguridad"><div class="phead"><span class="emo">🔐</span><h2>SEGURIDAD Y CUENTAS<small>Accesos, contraseñas, avisos · sin phishing</small></h2><span class="badge" data-badge="seg"></span></div><div id="seg"></div></section>
+  </main>
+
+  <footer>
+    Actualizado: <b id="upd"></b> · hecho con 💜 para Mau
+    <details class="ocultos" id="ocultos"><summary>🙈 Ocultos con “Hecho” (<span id="ocN">0</span>) · ver / restaurar</summary><ol id="ocL"></ol></details>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="undo" id="undo" role="status" aria-live="polite"><span id="undoT"></span><button type="button" id="undoB">Deshacer</button></div>
+
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+  const LS = "mau-dashboard-2026-10-05";
+  let state = {}; try{ state = JSON.parse(localStorage.getItem(LS)||"{}"); }catch(e){}
+  const save = () => { try{ localStorage.setItem(LS, JSON.stringify(state)); }catch(e){} };
+  const urgTxt = {rojo:"urgente", amarillo:"esta semana", verde:"FYI"};
+  const chip = u => `<span class="chip ${u}"><i class="dot ${u}"></i>${urgTxt[u]}</span>`;
+  const fuenteTxt = {cal:"📆 Calendar", nota:"📝 tu lista", "cal+nota":"📆 Calendar + 📝"};
+  const TZ = "America/Merida";
+  let D = window.DASH_DATA;
+
+  function tick(){
+    try{
+      const t = new Intl.DateTimeFormat("es-MX",{hour:"numeric",minute:"2-digit",hour12:true,timeZone:TZ}).format(new Date());
+      $("#clock").textContent = "🕖 " + t + " en " + ((D&&D.META&&D.META.ciudad)||"Mérida");
+    }catch(e){}
+  }
+  const hhmm = () => { try{ return new Intl.DateTimeFormat("es-MX",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:TZ}).format(new Date()); }catch(e){ const d=new Date(); return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); } };
+
+  function item(id, inner, urg){
+    return `<li data-id="${id}"${urg?` data-urg="${urg}"`:""}><button type="button" class="hk" aria-label="Hecho: ocultar" title="Hecho">✓<small>Hecho</small></button><div class="body">${inner}</div></li>`;
+  }
+
+  /* ---------- ✅ HECHO: ocultar + aviso por ntfy ---------- */
+  const HK = "mau-dash-hechos-v1", QK = "mau-dash-ntfy-queue-v1";
+  let hechos = {}; try{ hechos = JSON.parse(localStorage.getItem(HK)||"{}"); }catch(e){}
+  let queue = []; try{ queue = JSON.parse(localStorage.getItem(QK)||"[]"); }catch(e){}
+  const saveH = () => { try{ localStorage.setItem(HK, JSON.stringify(hechos)); }catch(e){} };
+  const saveQ = () => { try{ localStorage.setItem(QK, JSON.stringify(queue)); }catch(e){} };
+  const TEST_ID = "zz-test-hecho", testMode = /hecho-test/.test(location.hash);
+  // Registro id → info (tipo, título, claves de acción). Se llena en cada render.
+  let REG = {};
+  const SECS = [ // [ruta en DASH_DATA, tipo, sección]
+    ["URGENTES","urgente","urgentes"],["RECORDATORIOS","recordatorio","recordatorios"],["CORREOS","email","correos"],["WHATSAPP","whatsapp","whatsapp"],
+    ["SUGERENCIAS","otro","sugerencias"],["FINANZAS.vencimientos","pago","finanzas"],["FINANZAS.items","otro","finanzas"],["TARJETAS_TC.filas","pago","tarjetas"],
+    ["CONTROL_SEP.pendientes","pago","control-gastos"],["SUSCRIPCIONES","otro","suscripciones"],["PAQUETES","otro","paquetes"],["TRABAJO","otro","trabajo"],
+    ["EVENTOS","otro","eventos"],["DOCUMENTOS","otro","documentos"],["SEGURIDAD","otro","seguridad"]];
+  const getPath = (o, path) => path.split(".").reduce((a,k)=>a&&a[k], o);
+  const strip = h => String(h||"").replace(/<[^>]+>/g,"").replace(/\s+/g," ").trim();
+  function prune(src){
+    const hid = new Set([...(src.HECHOS||[]), ...Object.keys(hechos)]);
+    const out = JSON.parse(JSON.stringify(src, (k,v)=> (typeof v==="function"?undefined:v)));
+    REG = {};
+    SECS.forEach(([path,tipo,sec])=>{
+      const parts = path.split("."), last = parts.pop(), parent = parts.length ? getPath(out, parts.join(".")) : out;
+      const arr = parent && parent[last]; if(!Array.isArray(arr)) return;
+      arr.forEach(x=>{ if(!x || !x.id) return;
+        if(!x.gmail && typeof x.link==="string"){ const gm = /mail\.google\.com\/mail\/u\/0\/#inbox\/([0-9a-f]{16})/.exec(x.link); if(gm) x.gmail = { cuenta:"mau5588@gmail.com", conector:"user-Gmail", threadId:gm[1], messageId:null }; }
+        const t = (["TRABAJO","SEGURIDAD","FINANZAS.items"].includes(path) && (x.gmail||x.outlook)) ? "email" : tipo;
+        REG[x.id] = { tipo:t, seccion:sec, titulo:strip(x.txt||x.asunto||x.servicio||x.tarjeta||x.banco||x.id), gmail:x.gmail, gmail2:x.gmail2, outlook:x.outlook, whatsapp:x.whatsapp, de:x.de, buzon:x.cuenta, dia:x.dia||x.fecha||x.cuando, monto:x.monto };
+      });
+      parent[last] = arr.filter(x=>!(x && x.id && (hid.has(x.id) || vencido(x))));
+    });
+    if(testMode && !hid.has(TEST_ID)){
+      out.URGENTES = [{ id:TEST_ID, txt:"🧪 Prueba del botón Hecho (solo se ve con #hecho-test)", link:null, sec:null }, ...(out.URGENTES||[])];
+    }
+    REG[TEST_ID] = { tipo:"otro", seccion:"test", titulo:"Prueba del botón Hecho", test:true };
+    return out;
+  }
+  const topic = () => (D && D.META && D.META.ntfyTopic) || "";
+  function notice(accion, id, origen){
+    const r = REG[id] || (hechos[id] && hechos[id].info) || { tipo:"otro", titulo:id };
+    const m = { v:1, app:"mau-dashboard", accion, id, tipo:r.tipo, seccion:r.seccion, titulo:r.titulo };
+    ["gmail","gmail2","outlook","whatsapp","de","buzon","dia","monto"].forEach(k=>{ if(r[k]!=null && r[k]!=="") m[k]=r[k]; });
+    if(r.test || id===TEST_ID) m.test = true;
+    m.origen = origen || "tap"; m.ts = new Date().toISOString();
+    m.nonce = Math.random().toString(36).slice(2,10);
+    return m;
+  }
+  let flushing = false;
+  async function flush(){
+    if(flushing || !queue.length || !topic()) return; flushing = true;
+    try{
+      while(queue.length){
+        const m = queue[0];
+        try{
+          const r = await fetch("https://ntfy.sh/" + topic(), { method:"POST", body: JSON.stringify(m), keepalive:true, cache:"no-store" });
+          if(!r.ok) throw new Error("ntfy " + r.status);
+          queue.shift(); saveQ();
+          if(m.accion==="hecho" && hechos[m.id] && hechos[m.id].nonce===m.nonce){ hechos[m.id].sent = true; saveH(); }
+        }catch(e){ console.warn("ntfy en cola:", e); break; }
+      }
+    } finally { flushing = false; }
+  }
+  function send(m){ queue.push(m); saveQ(); return flush(); }
+  let undoT, lastId = null;
+  function markHecho(id, li){
+    const m = notice("hecho", id, "tap");
+    hechos[id] = { ts:m.ts, nonce:m.nonce, sent:false, info:REG[id]||null };
+    saveH();
+    if(li){ li.classList.add("bye"); }
+    setTimeout(()=>{ render(); }, li ? 300 : 0);
+    send(m);
+    lastId = id;
+    $("#undoT").textContent = "✓ Hecho: " + ((REG[id]&&REG[id].titulo)||id).slice(0,60);
+    $("#undo").classList.add("show"); clearTimeout(undoT);
+    undoT = setTimeout(()=>{ $("#undo").classList.remove("show"); lastId = null; }, 7000);
+  }
+  function unHecho(id){
+    const h = hechos[id]; if(!h) return;
+    const qi = queue.findIndex(q=>q.accion==="hecho" && q.id===id && q.nonce===h.nonce);
+    if(qi >= 0 && !(qi===0 && flushing)){ queue.splice(qi,1); saveQ(); }   // aún no salía: se cancela
+    else { send(Object.assign(notice("deshacer", id, "tap"), { deshaceNonce:h.nonce })); }
+    delete hechos[id]; saveH(); render();
+    toast("↩️ Restaurado");
+  }
+  function ocultosUI(){
+    const ids = Object.keys(hechos).filter(id=>id!==TEST_ID || testMode);
+    $("#ocN").textContent = ids.length;
+    $("#ocL").innerHTML = ids.length ? ids.map(id=>`<li><span>${(hechos[id].info&&hechos[id].info.titulo)||id} <small style="color:var(--muted)">· ${new Date(hechos[id].ts).toLocaleString("es-MX",{timeZone:TZ,day:"numeric",month:"short",hour:"numeric",minute:"2-digit"})}${hechos[id].sent?" · avisado ✓":" · aviso pendiente"}</small></span><button type="button" data-restore="${id}">Restaurar</button></li>`).join("") : "<li>Nada oculto todavía.</li>";
+  }
+  // Migrar marcas viejas (palomitas de la versión anterior) → ocultos + aviso
+  (function migrate(){
+    let old = {}; try{ old = JSON.parse(localStorage.getItem(LS)||"{}"); }catch(e){}
+    const ids = Object.keys(old).filter(k=>old[k] && !hechos[k]);
+    if(!ids.length) return;
+    try{ D && prune(D); }catch(e){}
+    ids.forEach(id=>{ const m = notice("hecho", id, "migrado"); hechos[id] = { ts:m.ts, nonce:m.nonce, sent:false, info:REG[id]||null }; queue.push(m); });
+    saveH(); saveQ(); try{ localStorage.removeItem(LS); }catch(e){}
+  })();
+
+  function badges(){
+    [["rec","#rec"],["cor","#cor"],["wa","#wa"],["sug","#sug"],["fin","#fin"],["sus","#sus"],["paq","#paq"],["trab","#trab"],["ev","#ev"],["doc","#doc"],["seg","#seg"]].forEach(([k,sel])=>{
+      const b = document.querySelector(`[data-badge="${k}"]`); if(!b) return;
+      if(b.dataset.fixed){ b.textContent = b.dataset.fixed; return; }
+      const lis = document.querySelectorAll(sel+" li[data-id]");
+      const pend = [...lis].filter(li=>!li.classList.contains("done")).length;
+      b.textContent = pend===0 ? `✨ ${lis.length}/${lis.length}` : `${pend} pend. · ${lis.length}`;
+    });
+  }
+
+  /* ---------- Tendencia 3 meses (SVG sin librerías) ---------- */
+  const fmtFecha = t => { try{ return new Intl.DateTimeFormat("es-MX",{weekday:"short",day:"numeric",month:"short",year:"numeric",timeZone:"UTC"}).format(new Date(t)); }catch(e){ return new Date(t).toISOString().slice(0,10); } };
+  const MES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+  function nice(lo, hi, n){
+    const steps=[0.5,1,2,2.5,5,10,20,25,50,100];
+    for(const s of steps){ const a=Math.floor(lo/s)*s; if(a+n*s>=hi) return [a,a+n*s,s]; }
+    return [lo,hi,(hi-lo)/n];
+  }
+  // Regresión lineal (mínimos cuadrados) sobre puntos reales no nulos; x = fecha (días)
+  function linReg(arr, k){
+    const a = arr.filter(p=>p[k]!=null).map(p=>[p.t/864e5, p[k]]);
+    if(a.length < 2) return null;
+    const n=a.length, mx=a.reduce((s,p)=>s+p[0],0)/n, my=a.reduce((s,p)=>s+p[1],0)/n;
+    let sxy=0, sxx=0; a.forEach(([x,y])=>{ sxy+=(x-mx)*(y-my); sxx+=(x-mx)*(x-mx); });
+    if(!sxx) return null;
+    const b = sxy/sxx;                       // kg por día
+    return { n, perDay:b, perMonth:b*30, at: t => my + b*(t/864e5 - mx) };
+  }
+  const fmtSlope = v => (v>=0?"+":"−") + Math.abs(v).toFixed(1) + " kg/mes";
+  function drawTrend(){
+    const el = $("#chart3m"); if(!el || !D || !D.SALUD) return;
+    const S = D.SALUD, DAY = 864e5, GAP = (S.tendencia3mGapDias||14)*DAY;
+    const pts = (S.tendencia3m||[]).map(p=>({...p, t: Date.parse(p.fecha+"T12:00:00Z")}))
+                  .filter(p=>!isNaN(p.t)).sort((a,b)=>a.t-b.t);
+    if(!pts.length){ el.innerHTML = `<div class="empty">sin datos todavía</div>`; return; }
+    const W = Math.max(280, Math.round(el.clientWidth || 600)), H = W < 520 ? 230 : 260;
+    const m = {l:42, r:42, t:18, b:30}, IW = W-m.l-m.r, IH = H-m.t-m.b;
+    const t0 = pts[0].t - 3*DAY, t1 = pts[pts.length-1].t + 3*DAY;
+    const X = t => m.l + (t-t0)/(t1-t0)*IW;
+    const pv = pts.filter(p=>p.peso!=null), gv = pts.filter(p=>p.grasa!=null);
+    const ext = (arr,k) => { if(!arr.length) return [0,1]; let lo=Math.min(...arr.map(p=>p[k])), hi=Math.max(...arr.map(p=>p[k])); const pad=Math.max((hi-lo)*0.1,0.6); return [lo-pad,hi+pad]; };
+    const [pL,pH,pS] = nice(...ext(pv,"peso"),5), [gL,gH,gS] = nice(...ext(gv,"grasa"),5);
+    const YP = v => m.t + (pH-v)/(pH-pL)*IH, YG = v => m.t + (gH-v)/(gH-gL)*IH;
+    const f1 = v => (Math.round(v*10)/10).toString();
+
+    // grasa suavizada: promedio móvil de 3 lecturas, sin cruzar huecos
+    const segs = []; gv.forEach((p,i)=>{ if(i===0 || p.t-gv[i-1].t > GAP) segs.push([]); segs[segs.length-1].push(p); });
+    const smooth = []; segs.forEach(s=>s.forEach((p,i)=>{ const w=s.slice(Math.max(0,i-1),i+2); p.suave = w.reduce((a,b)=>a+b.grasa,0)/w.length; smooth.push({t:p.t, v:p.suave}); }));
+
+    function path(arr, Y){
+      let solid="", dashed="";
+      arr.forEach((p,i)=>{
+        const x=X(p.t).toFixed(1), y=Y(p.v).toFixed(1);
+        if(i===0){ solid+=`M${x},${y}`; return; }
+        const q=arr[i-1], qx=X(q.t).toFixed(1), qy=Y(q.v).toFixed(1);
+        if(p.t-q.t > GAP){ dashed+=`M${qx},${qy}L${x},${y}`; solid+=`M${x},${y}`; } else solid+=`L${x},${y}`;
+      });
+      return {solid, dashed};
+    }
+    const pp = path(pv.map(p=>({t:p.t,v:p.peso})), YP), gp = path(smooth, YG);
+
+    // líneas de tendencia (primera a última fecha)
+    const rP = linReg(pts,"peso"), rG = linReg(pts,"grasa");
+    const ta = pts[0].t, tb = pts[pts.length-1].t;
+    let regs = "";
+    const regLine = (r, Y, cls, txt, above) => {
+      if(!r) return "";
+      const x1=X(ta), y1=Y(r.at(ta)), x2=X(tb), y2=Y(r.at(tb));
+      const ly = above ? Math.min(y2-9, y1-9) : Math.max(y2+16, y1+16);
+      return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="${cls}"/>` +
+             `<text x="${x2}" y="${Math.max(m.t+10, Math.min(m.t+IH-4, ly))}" text-anchor="end" class="${cls}-t">${txt}: ${fmtSlope(r.perMonth)}</text>`;
+    };
+    regs += regLine(rP, YP, "rp", "Tendencia peso", YP(rP?rP.at(tb):0) <= YG(rG?rG.at(tb):0));
+    regs += regLine(rG, YG, "rg", "Tendencia grasa", !(YP(rP?rP.at(tb):0) <= YG(rG?rG.at(tb):0)));
+    const regOut = $("#reg3m");
+    if(regOut){
+      const f = t => new Intl.DateTimeFormat("es-MX",{day:"numeric",month:"short",timeZone:"UTC"}).format(new Date(t));
+      regOut.innerHTML = `📐 Tendencia lineal (${f(ta)}–${f(tb)}): peso <b>${rP?fmtSlope(rP.perMonth):"—"}</b> (${rP?rP.n:0} lecturas) · grasa <b>${rG?fmtSlope(rG.perMonth):"—"}</b> (${rG?rG.n:0} lecturas)`;
+    }
+
+    // huecos sin datos
+    let bands = "";
+    for(let i=1;i<pts.length;i++){ if(pts[i].t-pts[i-1].t > GAP){ const a=X(pts[i-1].t)+6, b=X(pts[i].t)-6; if(b>a){ bands+=`<rect x="${a}" y="${m.t}" width="${b-a}" height="${IH}" rx="8" fill="url(#hatch)" opacity=".9"/>`; if(b-a>52) bands+=`<text x="${(a+b)/2}" y="${m.t+IH/2}" text-anchor="middle" class="gapt">sin datos</text>`; } } }
+
+    // rejilla + ejes
+    let grid="";
+    for(let k=0;k<=5;k++){
+      const y = m.t + k*IH/5;
+      grid += `<line x1="${m.l}" x2="${W-m.r}" y1="${y}" y2="${y}" class="gl"/>`;
+      grid += `<text x="${m.l-6}" y="${y+3.5}" text-anchor="end" class="axp">${f1(pH-k*pS)}</text>`;
+      grid += `<text x="${W-m.r+6}" y="${y+3.5}" class="axg">${f1(gH-k*gS)}</text>`;
+    }
+    grid += `<text x="${m.l-6}" y="${m.t-6}" text-anchor="end" class="axp ttl">kg peso</text><text x="${W-m.r+6}" y="${m.t-6}" class="axg ttl">kg grasa</text>`;
+    // marcas de tiempo: día 1 (y 15 si hay espacio)
+    const d0 = new Date(t0), wide = IW > 420; let xt="";
+    for(let y=d0.getUTCFullYear(), mo=d0.getUTCMonth(); ; mo++){
+      if(mo>11){mo=0;y++;}
+      for(const day of (wide?[1,15]:[1])){
+        const t = Date.UTC(y,mo,day,12); if(t>t1) { y=null; break; } if(t<t0) continue;
+        const x=X(t); xt += `<line x1="${x}" x2="${x}" y1="${m.t+IH}" y2="${m.t+IH+4}" class="tk"/><text x="${x}" y="${H-10}" text-anchor="middle" class="axx${day===1?" b":""}">${day} ${MES[mo]}</text>`;
+      }
+      if(y===null) break;
+    }
+
+    const rawDots = gv.map(p=>`<circle cx="${X(p.t)}" cy="${YG(p.grasa)}" r="4" class="gr"/>`).join("");
+    const pDots = pv.map(p=>`<circle cx="${X(p.t)}" cy="${YP(p.peso)}" r="4.2" class="pd"/>`).join("");
+    const sDots = smooth.map(p=>`<circle cx="${X(p.t)}" cy="${YG(p.v)}" r="2.6" class="sd"/>`).join("");
+    // zonas de hover (de punto medio a punto medio)
+    const hits = pts.map((p,i)=>{
+      const a = i? (X(pts[i-1].t)+X(p.t))/2 : m.l, b = i<pts.length-1 ? (X(p.t)+X(pts[i+1].t))/2 : W-m.r;
+      return `<rect class="hit" data-i="${i}" x="${a}" y="${m.t}" width="${Math.max(1,b-a)}" height="${IH}"><title>${p.fecha}</title></rect>`;
+    }).join("");
+
+    el.innerHTML = `
+      <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Peso y masa grasa, últimos 3 meses">
+        <defs>
+          <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#fbf4ff"/><line x1="0" y1="0" x2="0" y2="8" stroke="#eadcf7" stroke-width="3"/></pattern>
+          <linearGradient id="pg" x1="0" x2="1"><stop offset="0" stop-color="#6d4bff"/><stop offset="1" stop-color="#b14dff"/></linearGradient>
+          <linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#ff9a1a"/><stop offset="1" stop-color="#ff2e63"/></linearGradient>
+        </defs>
+        ${bands}${grid}${xt}
+        <path d="${gp.dashed}" class="gline dash"/><path d="${gp.solid}" class="gline"/>
+        <path d="${pp.dashed}" class="pline dash"/><path d="${pp.solid}" class="pline"/>
+        ${regs}${rawDots}${sDots}${pDots}
+        <line class="guide" x1="0" x2="0" y1="${m.t}" y2="${m.t+IH}" style="display:none"/>
+        <circle class="hp" r="7" style="display:none"/><circle class="hg" r="7" style="display:none"/>
+        ${hits}
+      </svg>
+      <div class="tip" style="display:none"></div>`;
+
+    const svg = el.querySelector("svg"), tip = el.querySelector(".tip"), guide = el.querySelector(".guide"), hp = el.querySelector(".hp"), hg = el.querySelector(".hg");
+    function show(i){
+      const p = pts[i], x = X(p.t);
+      guide.setAttribute("x1",x); guide.setAttribute("x2",x); guide.style.display="";
+      if(p.peso!=null){ hp.setAttribute("cx",x); hp.setAttribute("cy",YP(p.peso)); hp.style.display=""; } else hp.style.display="none";
+      if(p.grasa!=null){ hg.setAttribute("cx",x); hg.setAttribute("cy",YG(p.grasa)); hg.style.display=""; } else hg.style.display="none";
+      tip.innerHTML = `<b>${(f=>f.charAt(0).toUpperCase()+f.slice(1))(fmtFecha(p.t))}</b>
+        <div><i class="sw p"></i>Peso: <b>${p.peso!=null?p.peso+" kg":"sin dato"}</b></div>
+        <div><i class="sw g"></i>Grasa: <b>${p.grasa!=null?p.grasa+" kg":"sin dato"}</b>${p.grasaPct!=null?` · ${p.grasaPct}%`:""}</div>
+        ${p.suave!=null?`<div class="sm">Prom. 3 lecturas: ${f1(p.suave)} kg</div>`:""}${p.nota?`<div class="sm nt">⚠️ ${p.nota}</div>`:""}`;
+      tip.style.display="block";
+      const tw = tip.offsetWidth, left = Math.min(Math.max(4, x - tw/2), W - tw - 4);
+      tip.style.left = left+"px"; tip.style.top = (m.t+2)+"px";
+    }
+    const hide = () => { tip.style.display="none"; guide.style.display="none"; hp.style.display="none"; hg.style.display="none"; };
+    el.querySelectorAll(".hit").forEach(r=>{
+      r.addEventListener("pointerenter", ()=>show(+r.dataset.i));
+      r.addEventListener("pointerdown", ()=>show(+r.dataset.i));
+    });
+    svg.addEventListener("pointerleave", hide);
+  }
+
+  /* ---------- Render principal (se puede llamar varias veces) ---------- */
+  /* ---------- Fechas relativas (hora de Mérida) ---------- */
+  const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+  const DIAS = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+  function hoyMerida(){
+    const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA",{timeZone:TZ,year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+    return new Date(Date.UTC(+p.year, +p.month-1, +p.day));
+  }
+  const diaLbl = dt => `${DIAS[dt.getUTCDay()]} ${dt.getUTCDate()} ${MESES[dt.getUTCMonth()]}`;
+  function parseDia(txt, ref){ // "Mié 7 oct" → Date UTC (año de ref)
+    const m = /(\d{1,2})\s+([a-zé]{3})/i.exec(String(txt||"")); if(!m) return null;
+    const mi = MESES.indexOf(m[2].toLowerCase()); if(mi<0) return null;
+    return new Date(Date.UTC(ref.getUTCFullYear(), mi, +m[1]));
+  }
+  const vencido = x => x && x.hasta && Date.now() > Date.parse(x.hasta);
+
+  /* ---------- Salud del día (salud_hoy.json → SALUD_HOY) ---------- */
+  function saludHoy(S0, H){
+    const S = JSON.parse(JSON.stringify(S0));
+    const W = H.whoop||{}, WP = W.previo||{}, U = (H.ultrahuman||{}).hoy||{}, UA = (H.ultrahuman||{}).ayer||{}, WI = H.withings||{};
+    const fH = new Date(H.fecha+"T12:00:00Z"), fA = new Date(fH.getTime()-864e5);
+    const lbl = d => `${DIAS[d.getUTCDay()].toLowerCase()} ${d.getUTCDate()} ${MESES[d.getUTCMonth()]}`;
+    const corto = d => `${d.getUTCDate()} ${MESES[d.getUTCMonth()]}`;
+    const hm = t => { if(!t) return ""; const [h,m]=t.split(":").map(Number); const ap=h>=12?"PM":"AM"; return `${((h+11)%12)+1}:${String(m).padStart(2,"0")} ${ap}`; };
+    const leidoHM = (H.leido_a||"").match(/(\d{1,2}:\d{2})/); const leido = leidoHM ? hm(leidoHM[1]) : "";
+    const n = v => v==null ? "s/d" : Number(v).toLocaleString("es-MX");
+    const J = arr => arr.filter(Boolean).join(" · ");
+    const tmp = v => v==null ? "s/d" : (v>0?"+":v<0?"−":"")+Math.abs(v).toFixed(2).replace(/0$/,"")+" °C";
+    S.lblHoy = `Hoy · ${lbl(fH)}`; S.lblAyer = `Ayer · ${lbl(fA)}`;
+    S.leido = `al ${lbl(fH)}${leido?", "+leido:""}`;
+    const peso = WI.peso||{}, pp = WI.peso_previo||{}, bp = WI.presion||{};
+    const hmR = t => { const m = String(t||"").split("-").map(x=>x.trim()).filter(Boolean); if(m.length<2) return hm(m[0]); const a=hm(m[0]), b=hm(m[1]); return a.slice(-2)===b.slice(-2) ? a.slice(0,-3)+"–"+b : a+"–"+b; };
+    bp.hora = bp.hora ? hmR(bp.hora) : bp.hora;
+    const bpTxt = bp.sistolica ? `${bp.sistolica}/${bp.diastolica}` : "s/d";
+    const bpFecha = bp.fecha ? new Date(bp.fecha+"T12:00:00Z") : null;
+    const bpEsHoy = bp.fecha===H.fecha;
+    const imc = peso.peso_kg ? (peso.peso_kg/(1.92*1.92)).toFixed(1) : null;
+    S.avisos = ["Sin acceso a Apple Watch / Apple Health.", "Oura: sin datos hoy — la web de Oura fue retirada (sus datos solo están en la app). No se muestran números viejos."];
+    S.tarjetas = [
+      { key:"sueno", emo:"😴", titulo:"Sueño",
+        hoy:[ ["Whoop rendimiento", n(W.rendimiento_sueno_pct)+"%", `durmió ${W.horas_dormidas} h · necesitaba ${W.horas_necesarias} · en cama ${W.tiempo_en_cama}`, "Whoop"],
+              ["Ultrahuman sueño", n(U.sleep_index), J([U.sueno_total && (U.sueno_total + (U.ventana_sueno?` (${U.ventana_sueno.replace("-","–")})`:"")), U.tiempo_en_cama&&`en cama ${U.tiempo_en_cama}`, U.eficiencia_sueno!=null&&`eficiencia ${U.eficiencia_sueno}%`, U.profundo&&`profundo ${U.profundo}`, U.rem&&`REM ${U.rem}`]), "Ultrahuman"] ],
+        ayer:[ ["Whoop rendimiento", n(WP.rendimiento_sueno_pct)+"%", "", "Whoop"],
+               ["Ultrahuman sueño", n(UA.sleep_index), J([UA.sueno_total, UA.tiempo_en_cama&&`en cama ${UA.tiempo_en_cama}`, UA.eficiencia_sueno!=null&&`eficiencia ${UA.eficiencia_sueno}%`]), "Ultrahuman"] ] },
+      { key:"pasos", emo:"👟", titulo:"Pasos",
+        hoy:[ ["Pasos", U.pasos==null?"--":n(U.pasos), "el día apenas empieza", "Ultrahuman"] ],
+        ayer:[ ["Pasos", n(UA.pasos), "", "Ultrahuman"] ],
+        notaEmo:"👟", nota:"Meta: 7,000+." },
+      { key:"fc", emo:"💓", titulo:"FC / HRV",
+        hoy:[ ["Whoop recuperación", n(W.recuperacion_pct)+"%", "", "Whoop"], ["HRV Whoop", n(W.hrv_ms)+" ms", "", "Whoop"], ["Pulso en reposo", n(W.fc_reposo_bpm), "lpm", "Whoop"],
+              ["Ultrahuman recovery", n(U.recovery), `HRV ${n(U.hrv_ms)} ms (prom. 7 días ${n(U.hrv_7d_ms)}) · FC reposo ${n(U.fc_reposo_bpm)}`, "Ultrahuman"] ],
+        ayer:[ ["Whoop recuperación", n(WP.recuperacion_pct)+"%", `HRV ${n(WP.hrv_ms)} · FC reposo ${n(WP.fc_reposo_bpm)}`, "Whoop"],
+               ["Ultrahuman recovery", n(UA.recovery), `HRV ${n(UA.hrv_ms)} ms · FC reposo ${n(UA.fc_reposo_bpm)}`, "Ultrahuman"] ] },
+      { key:"actividad", emo:"🔥", titulo:"Actividad",
+        hoy:[ ["Whoop esfuerzo", n(W.strain), "", "Whoop"], ["Ultrahuman movimiento", U.movement_index==null?"--":n(U.movement_index), U.movement_index==null?"aún sin dato hoy":"", "Ultrahuman"], ["Temp. piel", tmp(U.temp_piel_desviacion_c), "vs tu base", "Ultrahuman"] ],
+        ayer:[ ["Ultrahuman movimiento", n(UA.movement_index), "", "Ultrahuman"], ["Temp. piel", tmp(UA.temp_piel_desviacion_c), "", "Ultrahuman"] ] },
+      { key:"presion", emo:"🩸", titulo:"Presión",
+        hoy: bpEsHoy ? [ ["Presión", bpTxt, `pulso ${(bp.fc_bpm||[]).join("/")} · ${bp.hora}`, "Withings"] ] : [],
+        ayer: (!bpEsHoy && bp.sistolica) ? [ ["Última presión", bpTxt, `${bpFecha?lbl(bpFecha):""} ${bp.hora||""} · pulso ${(bp.fc_bpm||[]).join("/")}`, "Withings"] ] : [],
+        nota: bpEsHoy ? "Toma pastillas para la presión — controlada si las toma." : `Hoy sin medición: mídela sentado tras 5 min de reposo (2 lecturas)${S.cita && !vencido(S.cita) ? " antes de la cita" : " y anótala"}.` },
+      { key:"peso", emo:"⚖️", titulo:"Peso y composición",
+        hoy:[ ["Peso", peso.peso_kg!=null?peso.peso_kg+" kg":"s/d", hm(peso.hora), "Withings"], ["Masa grasa", peso.masa_grasa_kg!=null?peso.masa_grasa_kg+" kg":"s/d", "", "Withings"], ...(imc?[["IMC", imc, "estatura 1.92 m", ""]]:[]) ],
+        ayer: pp.peso_kg!=null ? [ ["Peso", pp.peso_kg+" kg", hm(pp.hora), "Withings"], ["Masa grasa", (pp.masa_grasa_kg??"s/d")+" kg", "", "Withings"] ] : [] }
+    ];
+    // Ultrahuman: hoy + ayer de salud_hoy.json; días anteriores de la base
+    if(S.ultrahuman){
+      const uhDia = (x, d) => ({ fecha: `${DIAS[d.getUTCDay()]} ${d.getUTCDate()} ${MESES[d.getUTCMonth()]}`, sueno:x.sleep_index, recovery:x.recovery, movement:x.movement_index, total:x.sueno_total, enCama:x.tiempo_en_cama, pasos:x.pasos==null?"--":n(x.pasos), fc:x.fc_reposo_bpm, hrv:x.hrv_ms, temp:tmp(x.temp_piel_desviacion_c) });
+      const nuevos = [uhDia(U,fH), uhDia(UA,fA)];
+      const resto = (S.ultrahuman.dias||[]).filter(d=>{ const dd=parseDia(d.fecha,fH); return dd && dd < new Date(fA.getTime()-36e5*12); });
+      S.ultrahuman.dias = [...nuevos, ...resto].slice(0,3);
+      S.ultrahuman.leido = `${lbl(fH)}${leido?", "+leido:""}`;
+      S.ultrahuman.hrvForm = `${n(U.hrv_7d_ms)} ms (prom. 7 días)`;
+    }
+    const upsert = (arr, key, row) => { const a = (arr||[]).filter(r=>r[0]!==key); a.push(row); return a; };
+    const kH = corto(fH), kA = corto(fA);
+    S.comparaRecuperacion = upsert(upsert(S.comparaRecuperacion, kA, [kA, WP.recuperacion_pct, UA.recovery]), kH, [kH, W.recuperacion_pct, U.recovery]).slice(-3);
+    if(S.comparaHRV){
+      S.comparaHRV.whoop = upsert(upsert(S.comparaHRV.whoop, kA, [kA, WP.hrv_ms]), kH, [kH, W.hrv_ms]).slice(-3);
+      S.comparaHRV.ultrahuman = upsert(upsert(S.comparaHRV.ultrahuman, kA, [kA, UA.hrv_ms]), kH, [kH, U.hrv_ms]).slice(-3);
+    }
+    if(S.tendencias){
+      S.tendencias.recuperacion = upsert(S.tendencias.recuperacion, kH, [kH, W.recuperacion_pct]).slice(-4);
+      S.tendencias.hrv = upsert(S.tendencias.hrv, kH, [kH, W.hrv_ms, String(W.hrv_ms)]).slice(-4);
+      if(bp.sistolica) S.tendencias.presion.a = `${bpTxt} (${bpFecha?corto(bpFecha):""})`;
+    }
+    if(peso.peso_kg!=null){
+      const t3 = (S.tendencia3m||[]).filter(r=>r.fecha!==H.fecha);
+      t3.push({ fecha:H.fecha, peso:peso.peso_kg, grasa:peso.masa_grasa_kg??null, grasaPct: peso.masa_grasa_kg!=null ? Math.round(peso.masa_grasa_kg/peso.peso_kg*1000)/10 : null });
+      t3.sort((a,b)=>a.fecha.localeCompare(b.fecha)); S.tendencia3m = t3;
+      const ini = t3.find(r=>r.fecha>=new Date(fH.getTime()-6*864e5).toISOString().slice(0,10)) || t3[0];
+      const dlt = Math.round((peso.peso_kg-ini.peso)*10)/10;
+      const dias = Math.round((Date.parse(H.fecha)-Date.parse(ini.fecha))/864e5);
+      S.tendencias.peso = { de:`${ini.peso} kg (${corto(new Date(ini.fecha+"T12:00:00Z"))})`, a:`${peso.peso_kg} kg (${kH})`, delta:(dlt>0?"+":dlt<0?"−":"")+Math.abs(dlt).toFixed(1)+" kg", periodo:`en ${dias} días`, baja: dlt<0 };
+      S.tendencia3mResumen = `Peso: 134.5–138.5 kg en julio → ${peso.peso_kg} kg (${kH}) · Grasa: ~43–45 kg → ${peso.masa_grasa_kg} kg`;
+      S.tendencia3mNota = `Fuente: báscula Withings, 12 jul–${kH} 2026. Días sin medición no se muestran.`;
+    }
+    S.badge = W.recuperacion_pct!=null ? `${W.recuperacion_pct}% recup.` : S.badge;
+    // Conclusiones y sugerencias con los números del día (prácticas, sin diagnóstico)
+    const ven = (U.ventana_sueno||"").split("-");
+    const dPeso = (peso.peso_kg!=null && pp.peso_kg!=null) ? Math.round((peso.peso_kg-pp.peso_kg)*10)/10 : null;
+    const hrvBajo = U.hrv_ms!=null && U.hrv_7d_ms!=null && U.hrv_ms < U.hrv_7d_ms;
+    S.conclusiones = H.conclusiones || [
+      `Sueño: ${U.sueno_total||"s/d"}${ven.length===2?` (${ven[0]}–${ven[1]})`:""} — Whoop ${n(W.rendimiento_sueno_pct)}% de rendimiento (${W.horas_dormidas} de ${W.horas_necesarias} h), Ultrahuman ${n(U.sleep_index)}.`,
+      `Recuperación: Whoop ${n(W.recuperacion_pct)}% (ayer ${n(WP.recuperacion_pct)}%), Ultrahuman ${n(U.recovery)}. HRV Whoop ${n(W.hrv_ms)} ms (ayer ${n(WP.hrv_ms)}); Ultrahuman ${n(U.hrv_ms)} ms vs su promedio de 7 días ${n(U.hrv_7d_ms)}${hrvBajo?" — un poco abajo de lo usual":""}.`,
+      peso.peso_kg!=null ? `Peso ${peso.peso_kg} kg a las ${hm(peso.hora)}${dPeso!=null?` (${dPeso>0?"+":dPeso<0?"−":""}${Math.abs(dPeso).toFixed(1)} kg vs ayer)`:""}, masa grasa ${peso.masa_grasa_kg} kg. La báscula varía de un día a otro: cuenta la tendencia.` : "Sin peso de hoy.",
+      `Temperatura de piel ${tmp(U.temp_piel_desviacion_c)} vs tu base; pulso en reposo ${n(W.fc_reposo_bpm)} (Whoop) / ${n(U.fc_reposo_bpm)} (Ultrahuman).`,
+      bp.sistolica ? `Última presión ${bpTxt} (${bpFecha?lbl(bpFecha):""}, ${bp.hora})${bpEsHoy?"":"; hoy aún no hay medición"}.` : "Sin presión registrada."
+    ];
+    const citaPend = S.cita && !vencido(S.cita);
+    const sugBase = (S0.sugerencias||[]).filter(t=>/Isaí/.test(t) && /labs/.test(t));
+    S.sugerencias = H.sugerencias || [
+      ...(citaPend ? [ `Antes de la cita (${(S.cita.cuando||"").replace(/^HOY\s*/i,"")}): mide la presión sentado tras 5 min de reposo, 2 lecturas, y llévalas con los labs del 13 jul.`, ...sugBase ] : []),
+      `${hrvBajo?"HRV un poco abajo de tu promedio":"HRV en tu rango"}${(U.temp_piel_desviacion_c||0)>0.3?` y piel ${tmp(U.temp_piel_desviacion_c)}`:""}: esfuerzo moderado hoy — camina 30 min a ritmo cómodo y busca 7,000+ pasos (ayer ${n(UA.pasos)}).`,
+      ven.length===2 ? `Repite el horario de anoche (a dormir ~${ven[0]}) para volver a dormir 7½–8 h.` : "Busca dormir 7½–8 h a horario fijo."
+    ];
+    return S;
+  }
+
+  function render(){
+    const orig = D; D = prune(orig);
+    try{ renderInner(); } finally { D = orig; }
+    ocultosUI();
+  }
+  function renderInner(){
+    const {META,SOLAR,RECORDATORIOS,CORREOS,WHATSAPP,SUGERENCIAS,SALUD} = D;
+    $("#nombre").textContent = META.nombre;
+    $("#fecha").textContent = META.fecha + (META.updated ? " · Actualizado " + META.updated.replace(/^.*?(\d{1,2}:\d{2}\s*[AP]M).*$/i,"$1") + " (Mérida)" : "");
+    if(META.filtro) $("#filtro").textContent = "✅ " + META.filtro;
+    $("#upd").textContent = META.updated || META.actualizado || "";
+    tick();
+
+    const pct = (g,c) => { if(!c) return 0; const r=g/c*100; return (r<100 && Math.round(r)>=100) ? 99.9 : Math.round(r); };
+    const pH = pct(SOLAR.hoy.generado, SOLAR.hoy.consumido);
+    const pA = pct(SOLAR.ayer.generado, SOLAR.ayer.consumido);
+    const MA = SOLAR.mesActual, MP = SOLAR.mesAnterior;
+    const pM = MA ? pct(MA.gen, MA.cons) : null, pP = MP ? pct(MP.gen, MP.cons) : null;
+    const k = v => (Math.round(v*10)/10).toLocaleString("es-MX");
+    const sDias = SOLAR.porDia || [];
+    const dmax = Math.max(1, ...sDias.map(x=>Math.max(x.gen, x.cons)));
+    const mini = sDias.length ? `<div class="sminiw"><div class="smini">${sDias.map(x=>`
+        <div class="sd${x.enCurso?" now":""}" title="${x.dia} oct: ${k(x.gen)} kWh generados / ${k(x.cons)} kWh consumidos${x.enCurso?" (en curso)":""}">
+          <div class="pair"><i class="g" data-hh="${x.gen/dmax*100}"></i><i class="c" data-hh="${x.cons/dmax*100}"></i></div>
+          <span>${x.dia}${x.gen>=x.cons?"✓":""}</span></div>`).join("")}</div>
+        <div class="slg"><span><i class="g"></i>gen</span><span><i class="c"></i>consumo</span>${MP?`<span class="sep">${MP.nombre}: <b>${pP}%</b></span>`:""}</div></div>` : "";
+    $("#solar").innerHTML = `
+      <h3><span class="sun">☀️</span> Paneles solares ${SOLAR.leido?`<span class="sleido" style="margin-left:auto;font-family:Nunito;font-size:12px;font-weight:800;background:rgba(255,255,255,.9);color:#2b2140;border-radius:999px;padding:3px 10px">🕒 leído a las ${SOLAR.leido}</span>`:""}</h3>
+      <div class="srow"><span>Hoy</span><div class="bar ${pH>=100?"ok":"low"}"><i data-w="${Math.min(pH,100)}"></i></div><span class="pct">${pH}% ${pH>=100?"🎉":""}</span></div>
+      <div class="ssub">${k(SOLAR.hoy.generado)} gen · ${k(SOLAR.hoy.consumido)} consumo${SOLAR.hoy.exportada!=null?` · ${k(SOLAR.hoy.exportada)} exportada`:""} kWh ${SOLAR.hoy.nota?`(${SOLAR.hoy.nota})`:""}</div>
+      <div class="srow"><span>Ayer</span><div class="bar ${pA>=100?"ok":"low"}"><i data-w="${Math.min(pA,100)}"></i></div><span class="pct">${pA}%</span></div>
+      <div class="ssub">${k(SOLAR.ayer.generado)} / ${k(SOLAR.ayer.consumido)} kWh</div>
+      ${MA?`<div class="smes ${pM>=100?"ok":"low"}">
+        <div class="smh"><b>${MA.nombre} (${MA.dias})</b><span>${k(MA.gen)} / ${k(MA.cons)} kWh · <b class="big">${pM}%</b></span></div>
+        <div class="bar ${pM>=100?"ok":"low"}"><i data-w="${Math.min(pM,100)}"></i></div>
+        <div class="smf">${pM>=100?"La generación cubre el consumo del mes 💪":"Aún no cubre el consumo del mes"}${MA.exportada!=null?` · exportada ${k(MA.exportada)}`:""}${MA.bateriaDescargada!=null?` · batería ${k(MA.bateriaDescargada)}`:""} kWh</div>
+      </div>`:""}
+      ${mini}
+      <div class="srow"><span>🔋</span><div class="bar batt"><i data-w="${SOLAR.bateria}"></i></div><span class="pct">${SOLAR.bateria}%</span></div>${SOLAR.hoy.descargada!=null?`<div class="ssub">batería: ${k(SOLAR.hoy.descargada)} kWh descargada hoy</div>`:""}
+      ${SOLAR.fuente?`<div class="sfu">${SOLAR.fuente}</div>`:""}`;
+
+    // 1) Recordatorios agrupados por día (orden de aparición)
+    const HOY = hoyMerida(), MAN = new Date(HOY.getTime()+864e5);
+    const dias = [...new Set(RECORDATORIOS.map(r=>r.dia))].filter(d=>{ const dd=parseDia(d,HOY); return !dd || dd>=HOY; });
+    dias.sort((a,b)=>{ const da=parseDia(a,HOY), db=parseDia(b,HOY); return (da?da.getTime():9e15)-(db?db.getTime():9e15); });
+    let n = 0, recHTML = "";
+    dias.forEach(d=>{
+      const dd = parseDia(d,HOY), rel = dd && dd.getTime()===HOY.getTime() ? "Hoy · " : dd && dd.getTime()===MAN.getTime() ? "Mañana · " : "";
+      recHTML += `<div class="day">${rel+d}</div><ol class="items" style="counter-reset:n ${n}">`;
+      RECORDATORIOS.filter(r=>r.dia===d).forEach(r=>{
+        n++;
+        recHTML += item(r.id, `<div class="t">${r.txt}</div><div class="meta"><span class="chip when">🕒 ${r.hora}</span>${chip(r.urg)}<span class="chip src">${fuenteTxt[r.fuente]||r.fuente}</span>${r.link?`<a class="open" href="${r.link}" target="_blank" rel="noopener">abrir ↗</a>`:""}</div>`, r.urg);
+      });
+      recHTML += `</ol>`;
+    });
+    $("#rec").innerHTML = recHTML;
+
+    // 2) Correos
+    $("#cor").innerHTML = CORREOS.map(c => item(c.id,
+      `<div class="t"><span class="from">${c.de}</span> · ${c.asunto}</div>
+       <div class="d">${c.porque}</div>
+       <div class="meta">${chip(c.urg)}<span class="chip when">${c.cuenta==="Hotmail"?"📮":"✉️"} ${c.cuenta} · ${c.cuando}</span>${c.link?`<a class="open" href="${c.link}" target="_blank" rel="noopener">abrir ↗</a>`:""}</div>`, c.urg)).join("");
+
+    // 3) WhatsApp
+    $("#wa").innerHTML = WHATSAPP.map(w => item(w.id,
+      `<div class="t">${w.txt}</div>${w.det?`<div class="d">${w.det}</div>`:""}<div class="meta">${chip(w.urg)}</div>`, w.urg)).join("");
+
+    // 4) Sugerencias
+    $("#sug").innerHTML = SUGERENCIAS.map(s => item(s.id,
+      `<div class="t"><span class="emo-s">${s.emo}</span> ${s.txt}</div><div class="meta">${chip(s.urg)}</div>`, s.urg)).join("");
+
+    // 5) Salud
+    const S = D.SALUD_HOY ? saludHoy(SALUD, D.SALUD_HOY) : SALUD;
+    const sl = $("#salud-leido"); if(sl) sl.textContent = S.leido || "";
+    const met = m => `<div class="metric"><span class="k">${m[0]}</span><span class="v">${m[1]}</span>${m[3]?`<span class="srcp ${m[3]}">${m[3]}</span>`:""}${m[2]?`<span class="x">${m[2]}</span>`:""}</div>`;
+    const cards = S.tarjetas.map(c => `
+      <div class="hc"><h3>${c.emo} ${c.titulo}</h3>
+        <div class="lbl">${S.lblHoy||"Hoy"}</div>${c.hoy.length?c.hoy.map(met).join(""):`<div class="empty">sin datos</div>`}
+        ${c.ayer && c.ayer.length ? `<div class="lbl">${S.lblAyer||"Ayer"}</div>${c.ayer.map(met).join("")}`:""}
+        ${c.nota?`<div class="nota">${c.notaEmo||"💊"} ${c.nota}</div>`:""}
+      </div>`).join("");
+    const rec = S.tendencias.recuperacion;
+    const colR = v => v>=67 ? "linear-gradient(180deg,#3dd68c,#12a85e)" : v>=34 ? "linear-gradient(180deg,#ffd23d,#ffb000)" : "linear-gradient(180deg,#ff7a7a,#ff3b5c)";
+    const bars = rec.map(r=>`<div class="b"><b>${r[1]}%</b><i style="background:${colR(r[1])}" data-h="${r[1]}"></i><span>${r[0]}</span></div>`).join("");
+    const hv = S.tendencias.hrv, W=220, H=74, pad=14;
+    const vals = hv.map(h=>h[1]), mn=Math.min(...vals)-4, mx=Math.max(...vals)+4;
+    const pts = hv.map((h,i)=>[pad+i*(W-2*pad)/(hv.length-1), H-18-(h[1]-mn)/(mx-mn)*(H-34)]);
+    const spark = `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
+      <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ff2e63" stop-opacity=".35"/><stop offset="1" stop-color="#ff2e63" stop-opacity="0"/></linearGradient></defs>
+      <polygon fill="url(#g)" points="${pts.map(p=>p.join(",")).join(" ")} ${pts[pts.length-1][0]},${H-14} ${pts[0][0]},${H-14}"/>
+      <polyline fill="none" stroke="#ff2e63" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${pts.map(p=>p.join(",")).join(" ")}"/>
+      ${pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="#fff" stroke="#ff2e63" stroke-width="2.5"/><text x="${p[0]}" y="${p[1]-8}" font-size="10" font-weight="800" text-anchor="middle" fill="#2b2140">${hv[i][2]}</text><text x="${p[0]}" y="${H-2}" font-size="9.5" text-anchor="middle" fill="#6f6488">${hv[i][0]}</text>`).join("")}
+    </svg>`;
+    const T = S.tendencias;
+    const labs = S.labs.items.map(l=>`<span class="lab ${l[2]}">${l[0]} <b>${l[1]}</b>${l[3]?` · ${l[3]}`:""}</span>`).join("");
+
+    // Ultrahuman (anillo)
+    const UH = S.ultrahuman;
+    const ring = (v, lbl, c) => { const r=23, C=2*Math.PI*r, pct=Math.max(0,Math.min(100,v||0));
+      return `<div class="ring"><svg viewBox="0 0 58 58"><circle cx="29" cy="29" r="${r}" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="6"/><circle cx="29" cy="29" r="${r}" fill="none" stroke="${c}" stroke-width="6" stroke-linecap="round" stroke-dasharray="${(C*pct/100).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 29 29)"/><text x="29" y="35" text-anchor="middle">${v==null?"--":v}</text></svg>${lbl}</div>`; };
+    const cmpRows = (S.comparaRecuperacion||[]).map(r=>`<div class="cmpr"><b>${r[0]}</b><div class="bb"><i class="w" style="width:${r[1]}%">${r[1]}%</i><i class="u" style="width:${r[2]}%">${r[2]}</i></div></div>`).join("");
+    const H2 = S.comparaHRV;
+    const uhHTML = UH ? `<div class="uh">
+        <h4>💍 Ultrahuman · anillo <small>leído ${UH.leido} · 3 días</small></h4>
+        <div class="uh-days">${UH.dias.map((d,i)=>`<div class="uh-day${i===0?" hoy":""}"><div class="f"><span>${d.fecha}</span>${i===0?"<span>hoy</span>":""}</div>
+          <div class="rings">${ring(d.sueno,"Sueño","#8fb8ff")}${ring(d.recovery,"Recovery","#3dffa8")}${ring(d.movement,"Movimiento","#ffb547")}</div>
+          <div class="uh-chips"><span>😴 ${d.total} <small>(en cama ${d.enCama})</small></span><span>👟 ${d.pasos} pasos</span><span>💓 FC reposo ${d.fc}</span><span>〰️ HRV ${d.hrv} ms</span><span class="${d.tempNota?"warn":""}">🌡️ piel ${d.temp}${d.tempNota?` · ${d.tempNota}`:""}</span></div>
+        </div>`).join("")}</div>
+        <div class="uh-foot"><span>📈 HRV Form: <b>${UH.hrvForm}</b></span><span>🧪 Metabolic Score: <b>${UH.metabolic}</b></span></div>
+        <div class="cmp">
+          <div class="cmpb"><h5>🔄 Recuperación · Whoop vs Ultrahuman</h5>${cmpRows}<div class="cmpl"><span><i style="background:#ff2e63"></i>Whoop %</span><span><i style="background:#e08a2c"></i>Ultrahuman</span></div></div>
+          ${H2?`<div class="cmpb"><h5>〰️ HRV (ms) · por separado</h5><div class="hrvs"><div>Whoop<br>${H2.whoop.map(h=>`${h[0]}: <b>${h[1]}</b>`).join("<br>")}</div><div>Ultrahuman<br>${H2.ultrahuman.map(h=>`${h[0]}: <b>${h[1]}</b>`).join("<br>")}</div></div><div class="cmpn">⚠️ ${H2.nota}</div></div>`:""}
+        </div>
+      </div>` : "";
+    $("#salud").innerHTML = `
+      <div class="s-alert">${S.avisos.map(a=>`<span>⚠️ ${a}</span>`).join("")}</div>
+      ${vencido(S.cita)?"":`<div class="cita"><span class="big">🩺</span><div>${S.cita.txt}<div style="font-weight:600;font-size:13px;opacity:.95">${S.cita.cuando} · lleva labs, registro de presión y tus dudas</div></div></div>`}
+      <div class="hcards">${cards}</div>
+      ${uhHTML}
+      <div class="trends">
+        <div class="tc"><h4>📈 Recuperación Whoop</h4><div class="bars">${bars}</div></div>
+        <div class="tc"><h4>💓 HRV (ms) · Whoop</h4>${spark}</div>
+        <div class="tc"><h4>⚖️ Peso · Withings</h4><div class="delta ${T.peso.baja?"down":"up"}">${T.peso.delta}</div><div class="sub">${T.peso.de} → ${T.peso.a}<br>${T.peso.periodo||""}</div></div>
+        <div class="tc"><h4>🩸 Presión · Withings</h4><div class="delta up">${(T.presion.a||"").split(" ")[0]}</div><div class="sub">${T.presion.de} → ${T.presion.a}</div></div>
+      </div>
+      <div class="box t3m">
+        <h4>📉 Tendencia 3 meses · peso y masa grasa</h4>
+        <div class="leg3m"><span><i class="sw p"></i>Peso (kg, eje izq.)</span><span><i class="sw g"></i>Grasa suavizada · prom. 3 lecturas (kg, eje der.)</span><span><i class="sw gr"></i>Lecturas de grasa</span><span><i class="sw dsh"></i>hueco sin datos</span><span><i class="sw rp"></i>Tendencia peso (regresión)</span><span><i class="sw rg"></i>Tendencia grasa (regresión)</span></div>
+        <div class="chart3m" id="chart3m"></div>
+        ${S.tendencia3mResumen?`<div class="sum3m">${S.tendencia3mResumen}</div>`:""}
+        <div class="reg3m" id="reg3m"></div>
+        ${S.tendencia3mNota?`<div class="note3m">ℹ️ ${S.tendencia3mNota}</div>`:""}
+      </div>
+      <div class="box" style="margin-top:10px"><h4>🧪 Labs del ${S.labs.fecha}</h4><div class="labs">${labs}</div></div>
+      <div class="two">
+        <div class="box"><h4>🔎 Conclusiones</h4><ol>${S.conclusiones.map(c=>`<li>${c}</li>`).join("")}</ol></div>
+        <div class="box"><h4>✅ Sugerencias de salud</h4><ol>${S.sugerencias.map(c=>`<li>${c}</li>`).join("")}</ol></div>
+      </div>`;
+
+    /* ===================== v4: secciones nuevas ===================== */
+    const esc = v => String(v==null?"":v);
+    const money = (n, cur) => n==null ? "s/d" : (cur==="USD"?"US$":cur==="GBP"?"£":"$") + Number(n).toLocaleString("es-MX",{minimumFractionDigits: (Math.round(n)===n && cur!=="USD" && cur!=="GBP")?0:2, maximumFractionDigits:2});
+    const mx2 = n => "$" + Number(n).toLocaleString("es-MX",{minimumFractionDigits:2,maximumFractionDigits:2});
+    const srcIco = {Gmail:"✉️",Outlook:"📮",Drive:"📁",Calendar:"📆",WhatsApp:"💬","tu lista":"📝"};
+    const srcChip = s => s ? `<span class="chip src">${srcIco[s]||"🔗"} ${s}</span>` : "";
+    const openA = (l, txt) => l ? `<a class="open" href="${l}" target="_blank" rel="noopener">${txt||"abrir ↗"}</a>` : "";
+    const links = x => openA(x.link) + (x.link2 ? " " + openA(x.link2, (x.link2txt||"ver")+" ↗") : "") + (!x.link && !x.link2 ? `<span class="chip src" title="Sin link directo">sin link</span>` : "");
+    const FIN = D.FINANZAS || {vencimientos:[],items:[],cobros:[]};
+    const SUS = D.SUSCRIPCIONES || [], PAQ = D.PAQUETES || [], TRAB = D.TRABAJO || [], EV = D.EVENTOS || [], DOC = D.DOCUMENTOS || [], SEG = D.SEGURIDAD || [], URG = D.URGENTES || [];
+    const semana = FIN.vencimientos.filter(v=>v.semana);
+    const porPagar = semana.filter(v=>v.pendiente && v.monto>0);
+    const totalSemana = porPagar.reduce((a,v)=>a+v.monto,0);
+    const subsMes = SUS.filter(s=>s.mensual && s.moneda==="MXN" && s.monto!=null);
+    const totalSubs = subsMes.reduce((a,s)=>a+s.monto,0);
+    const paqAct = PAQ.filter(p=>p.activo);
+
+    // Resumen rápido
+    const vencidos = semana.filter(v=>v.urg==="rojo").length;
+    $("#rstrip").innerHTML = `
+      <a class="rs r0" href="#resumen"><span class="l">🔥 Urgentes</span><span class="n">${URG.length}</span><span class="s">ver lista abajo</span></a>
+      <a class="rs r1" href="#finanzas"><span class="l">📅 Vencen esta semana</span><span class="n">${semana.length}</span><span class="s">${vencidos} ya vencidos o rechazados · ${esc(FIN.semanaTxt)}</span></a>
+      <a class="rs r2" href="#finanzas"><span class="l">💰 Por pagar esta semana</span><span class="n">${mx2(totalSemana)}</span><span class="s">solo montos conocidos · ${FIN.vencimientos.filter(v=>v.semana&&v.monto==null).length} sin monto (s/d)</span></a>
+      <a class="rs r3" href="#paquetes"><span class="l">📦 Paquetes</span><span class="n">${paqAct.length}</span><span class="s">${paqAct.map(p=>p.estado.replace(/^\S+\s/,"")).join(" · ")}</span></a>
+      <a class="rs r4" href="#suscripciones"><span class="l">🔁 Suscripciones / mes</span><span class="n">${money(totalSubs,"MXN")}</span><span class="s">${subsMes.length} mensuales confirmadas</span></a>`;
+    $("#urg").innerHTML = URG.map(u => item(u.id,
+      `<div class="t">${u.txt}</div><div class="meta">${openA(u.link)}${u.sec?`<a class="go" href="#${u.sec==="salud"?"salud-sec":u.sec}">ir a sección</a>`:""}</div>`, "rojo")).join("");
+
+    // 💳 Finanzas
+    const isPast = f => /^(Jue 1 oct|Dom 4 oct)$/.test(f);
+    const amtHTML = v => v.monto==null ? `<span class="tl-amt na">s/d</span>` : v.monto===0 ? `<span class="tl-amt zero">$0 pend.</span>` : `<span class="tl-amt">${mx2(v.monto)}</span>`;
+    const vRow = v => item(v.id, `<div class="trow"><div class="t">${v.txt}</div>${amtHTML(v)}</div>
+        <div class="meta"><span class="chip date${isPast(v.fecha)?" past":""}">📅 ${v.fecha}</span>${chip(v.urg)}<span class="chip ${v.monto===0?"ok":"when"}">${v.estado}</span>${srcChip(v.src)}${links(v)}</div>`, v.urg);
+    let fn = 0;
+    const grp = (title, arr, rowFn) => { if(!arr.length) return ""; const h = `<div class="day">${title}</div><ol class="items" style="counter-reset:n ${fn}">${arr.map(rowFn).join("")}</ol>`; fn += arr.length; return h; };
+    const proximas = FIN.vencimientos.filter(v=>!v.semana);
+    let finHTML = `<div class="fin-top">
+        <div class="money"><div class="l">💰 Por pagar esta semana · ${esc(FIN.semanaTxt)}</div><div class="n">${mx2(totalSemana)}</div>
+          <ul>${porPagar.map(v=>`<li><span>${v.txt.replace(/ — .*$/,"")}${v.urg==="rojo"?" ⚠️":""}</span><b>${mx2(v.monto)}</b></li>`).join("")}</ul>
+          <div class="x">No incluye lo que no tiene monto: ${semana.filter(v=>v.monto==null).map(v=>v.txt.split(" — ")[0].split(":")[0]).join(", ")}.</div>${FIN.pagadas?`<details class="paid" style="margin-top:8px"><summary style="cursor:pointer;font-weight:800">✅ Ya pagadas / sin saldo (hoja TC en $0) — ocultas</summary><div class="x" style="margin-top:4px">${FIN.pagadas}</div></details>`:""}</div>
+        <div class="cobro"><h4>🧾 Cómo leer esto</h4>${esc(FIN.nota)}
+          ${(FIN.cobros||[]).map(c=>`<h4 style="margin-top:8px">💵 Por cobrar</h4><div>${c.txt} · monto ${c.monto==null?"s/d":mx2(c.monto)} ${openA(c.link)}</div>`).join("")}</div>
+      </div>`;
+    finHTML += grp("🗓️ Línea de tiempo · esta semana", semana, vRow);
+    finHTML += grp("🗓️ Próximas semanas", proximas, vRow);
+    const fgroups = [...new Set(FIN.items.map(x=>x.grupo))];
+    fgroups.forEach(g => { finHTML += grp(g, FIN.items.filter(x=>x.grupo===g), x => item(x.id,
+      `<div class="t">${x.txt}</div>${x.det?`<div class="d">${x.det}</div>`:""}<div class="meta">${chip(x.urg)}${srcChip(x.src)}${links(x)}</div>`, x.urg)); });
+
+
+    // 💳 Pago de tarjetas (hoja TC)
+    const TC = D.TARJETAS_TC;
+    if(TC){
+      const dfmt = iso => { const d=new Date(iso+"T12:00:00Z"); return new Intl.DateTimeFormat("es-MX",{weekday:"short",day:"numeric",month:"short",timeZone:"UTC"}).format(d).replace(".","").replace(/^./,c=>c.toUpperCase()); };
+      const filas = TC.filas.slice().sort((a,b)=>a.limite.localeCompare(b.limite) || a.banco.localeCompare(b.banco));
+      const pend = filas.filter(f=>f.saldo>0), sumPend = pend.reduce((a,f)=>a+f.saldo,0);
+      const favor = filas.filter(f=>f.saldo<0).reduce((a,f)=>a+f.saldo,0);
+      const semana = filas.filter(f=>f.saldo!==0 && f.limite>=TC.hoy && f.limite<=TC.finSemana);
+      const vencidas = filas.filter(f=>f.limite<TC.hoy && (f.saldo==null || f.saldo>0));
+      const st = f => f.saldo==null ? `<span class="chip st-na">saldo s/d</span>` : f.saldo>0 ? `<span class="chip st-due">⏳ por pagar</span>` : f.saldo<0 ? `<span class="chip st-fav">💙 saldo a favor</span>` : `<span class="chip st-paid">✅ saldo $0 (pagado)</span>`;
+      const plan = f => [f.digital!=null?`digital ${mx2(f.digital)}`:"", f.efectivo!=null?`efectivo ${mx2(f.efectivo)}`:""].filter(Boolean).join(" · ");
+      const row = f => {
+        const over = f.limite<TC.hoy && (f.saldo==null||f.saldo>0), week = f.limite>=TC.hoy && f.limite<=TC.finSemana;
+        const u = over ? "rojo" : (week || f.saldo>0) ? "amarillo" : "verde";
+        return item(f.id, `<div class="trow"><div class="t">${f.banco} ${f.ult4?`<span class="chip l4">•••• ${f.ult4}</span>`:""}</div><span class="tl-amt${f.saldo==null?" na":f.saldo<=0?" zero":""}">${f.saldo==null?"s/d":f.saldo<0?"−"+mx2(-f.saldo)+" a favor":f.saldo===0?"$0 pend.":mx2(f.saldo)}</span></div>
+          <div class="d">Corte día ${f.corteDia} · monto del corte ${f.corte!=null?mx2(f.corte):"s/d"} · mínimo: no está en la hoja${plan(f)?` · plan: ${plan(f)}`:""}${f.nota?` · ${f.nota}`:""}</div>
+          <div class="meta"><span class="chip date${over?" past":""}">📅 límite ${dfmt(f.limite)}</span>${week?`<span class="chip amarillo">⏰ esta semana</span>`:""}${over?`<span class="chip rojo">⚠️ vencida</span>`:""}${st(f)}${srcChip("Drive")}${openA(TC.link)}</div>`, u)
+          .replace('<li class="', `<li class="${over?"tc-over ":week?"tc-week ":""}`);
+      };
+      finHTML += `<div class="tcb"><h3>💳 Pago de tarjetas (hoja TC) <small>leída ${TC.leida}${TC.colFecha?` · fecha: ${TC.colFecha}`:""} · ${filas.filter(f=>f.saldo!==0).length} con saldo o s/d visibles · ${filas.filter(f=>f.saldo===0).length} pagadas ocultas</small> <a class="open" href="${TC.link}" target="_blank" rel="noopener">abrir ↗</a></h3>
+        <div class="kpis">
+          <div class="kpi warn"><div class="k">⏳ Saldo por pagar (${pend.length} tarjetas)</div><div class="v">${mx2(sumPend)}</div></div>
+          <div class="kpi ok"><div class="k">💙 Saldo a favor</div><div class="v">${favor<0?"−":""}${mx2(Math.abs(favor))}</div></div>
+          <div class="kpi"><div class="k">📅 Vencen esta semana</div><div class="v">${semana.length}</div></div>
+          <div class="kpi"><div class="k">🧾 Suma de las filas de la hoja</div><div class="v" style="font-size:13px;line-height:1.35">cortes ${mx2(TC.totalesHoja.cortes)}<br>saldo neto ${mx2(TC.totalesHoja.saldo)} · digital ${mx2(TC.totalesHoja.digital)} · efectivo ${mx2(TC.totalesHoja.efectivo)}</div></div>
+        </div>
+        ${vencidas.length?`<div class="pnote" style="margin:10px 0 0;border-color:#ffb3c1;color:#b0123b">⚠️ Vencidas con saldo: ${vencidas.map(f=>f.banco).join(", ")}</div>`:`<div class="pnote" style="margin:10px 0 0">✅ Ninguna tarjeta de la hoja está vencida con saldo pendiente.</div>`}
+        <ol class="items" style="padding:8px 0 0">${filas.filter(f=>f.saldo!==0).map(row).join("")}</ol>
+        ${(()=>{const pg=filas.filter(f=>f.saldo===0);return pg.length?`<details class="paid" style="margin:6px 0 0;background:#f2fbf5;border:2px dashed #9fe0a8;border-radius:14px;padding:8px 12px"><summary style="cursor:pointer;font-weight:800;color:#0e8a51">✅ Pagadas (${pg.length}) · saldo $0 en la hoja</summary><ol style="margin:6px 0 0 18px;font-size:13px">${pg.map(f=>`<li>${f.banco}${f.ult4?` •••• ${f.ult4}`:""} · corte ${f.corte!=null?mx2(f.corte):"s/d"} · siguiente límite ${dfmt(f.limite)}</li>`).join("")}</ol>${(TC.conflictosPagadas||[]).length?`<div style="font-size:12px;margin-top:6px;color:var(--muted)">Cruce con Control sep: ${TC.conflictosPagadas.join(" · ")}</div>`:""}</details>`:""})()}
+        <div class="two">
+          <div class="box"><h4>🧾 Otros pagos en la hoja</h4><ol>${TC.otros.map(o=>`<li><b>${o.txt}</b> · límite ${dfmt(o.limite)}${o.monto!=null?` · ${mx2(o.monto)}`:""}${o.nota?` · ${o.nota}`:""}</li>`).join("")}</ol></div>
+          <div class="box"><h4>🔎 Cruce con Control de gastos sep · conflictos</h4><ol class="conf">${TC.conflictos.map(c=>`<li>${c}</li>`).join("")}</ol></div>
+        </div>
+        <div class="pnote" style="margin:10px 0 8px">🔒 La hoja también guarda usuarios y claves: aquí solo se muestran banco, últimos 4 dígitos (cuando la celda es un número de tarjeta), fechas y montos. La hoja no tiene columna de pago mínimo; “pagado” = saldo $0 en la hoja.</div>
+      </div>`;
+    }
+    // 📒 Control de gastos septiembre 2026 (archivo de Drive)
+    const CG = D.CONTROL_SEP;
+    if(CG){
+      const cmax = Math.max(...CG.categorias.map(c=>c[1]));
+      const cgVis = CG.pendientes.filter(p=>!p.probPagada), cgPag = CG.pendientes.filter(p=>p.probPagada);
+      const pendTot = cgVis.reduce((a,p)=>a+p.monto,0);
+      finHTML += `<div class="cg"><h3>📒 Control de gastos septiembre 2026 <small>${CG.archivo} · editado ${CG.editado}</small> <a class="open" href="${CG.link}" target="_blank" rel="noopener">abrir ↗</a></h3>
+        <div class="kpis">${CG.kpis.map(k=>`<div class="kpi${k[1]<0?" neg":""}"><div class="k">${k[0]}</div><div class="v">${k[1]<0?"−":""}${mx2(Math.abs(k[1]))}</div></div>`).join("")}</div>
+        <div class="day" style="margin:12px 2px 4px">📊 Gasto por categoría</div>
+        <div class="cats">${CG.categorias.map(c=>`<div class="cat"><span>${c[0]} <small style="color:var(--muted)">(${c[2]})</small></span><div class="bar2"><i style="width:${(c[1]/cmax*100).toFixed(1)}%"></i></div><b>${mx2(c[1])}</b></div>`).join("")}</div>
+        <div class="day" style="margin:12px 2px 0">⏳ Pagos pendientes según el archivo · ${mx2(pendTot)} (sin intereses)</div>
+        <ol class="items" style="padding:8px 0 0">${cgVis.map(p=>item(p.id, `<div class="trow"><div class="t">${p.tarjeta}</div><span class="tl-amt">${mx2(p.monto)}</span></div>
+          <div class="d">${p.nota}</div><div class="meta"><span class="chip date${/^(Sáb 3|Dom 4) oct$/.test(p.fecha)?" past":""}">📅 ${p.fecha}</span>${chip(p.urg)}<span class="chip amt">mínimo ${mx2(p.minimo)}</span>${srcChip("Drive")}${openA(CG.link)}</div>`, p.urg)).join("")}</ol>
+        ${cgPag.length?`<details class="paid" style="margin:6px 0 0;background:#f2fbf5;border:2px dashed #9fe0a8;border-radius:14px;padding:8px 12px"><summary style="cursor:pointer;font-weight:800;color:#0e8a51">✅ Probablemente pagadas (${cgPag.length}) · hoja TC en $0</summary><ol style="margin:6px 0 0 18px;font-size:13px">${cgPag.map(p=>`<li>${p.tarjeta} · ${mx2(p.monto)} · límite ${p.fecha} — probablemente pagada (hoja TC en $0)</li>`).join("")}</ol></details>`:""}
+        <div class="two">
+          <div class="box"><h4>💼 Ingresos fijos del mes</h4><ol>${CG.ingresos.map(x=>`<li>${x[0]}: <b>${mx2(x[1])}</b></li>`).join("")}</ol></div>
+          <div class="box"><h4>🃏 Tarjetas por agregar al ciclo</h4><ol>${CG.porAgregar.map(x=>`<li>${x[0]} (${x[1]}) · corte ${x[2]} — ${x[3]}</li>`).join("")}</ol></div>
+        </div>
+        <div class="pnote" style="margin:10px 0 8px">ℹ️ El archivo no tiene columna de “pagado”: la lista son las fechas límite de hoy en adelante más las vencidas el 3–4 oct. Los cortes de septiembre (23–30 sep) no se listan. ${CG.octubre}</div>
+      </div>`;
+    }
+    $("#fin").innerHTML = finHTML;
+
+    // 🔁 Suscripciones
+    const otrosMXN = SUS.filter(s=>!s.mensual && s.cadencia!=="anual" && s.moneda==="MXN" && s.monto!=null).reduce((a,s)=>a+s.monto,0);
+    const otrosUSD = SUS.filter(s=>!s.mensual && s.cadencia!=="anual" && s.moneda==="USD" && s.monto!=null).reduce((a,s)=>a+s.monto,0);
+    const otrosGBP = SUS.filter(s=>!s.mensual && s.cadencia!=="anual" && s.moneda==="GBP" && s.monto!=null).reduce((a,s)=>a+s.monto,0);
+    const anuales = SUS.filter(s=>s.cadencia==="anual");
+    const soon = s => /^(7|8|9|10|11) oct$/.test(s.proxima);
+    const sRow = s => item(s.id, `<div class="trow"><div class="t">${s.servicio}</div><span class="tl-amt${s.monto==null?" na":""}">${money(s.monto,s.moneda)}${s.cadencia==="mensual"&&s.monto!=null?"<small>/mes</small>":s.cadencia==="anual"&&s.monto!=null?"<small>/año</small>":""}</span></div>
+        <div class="d">${s.nota||""}</div>
+        <div class="meta">${soon(s)?`<span class="chip amarillo">⏰ renueva ${s.proxima}</span>`:`<span class="chip when">🔄 próx. ${s.proxima}</span>`}<span class="chip src">${s.cadencia}</span>${openA(s.link)}</div>`, soon(s)?"amarillo":"verde");
+    fn = 0;
+    let susHTML = `<div class="sub-total"><div class="x" style="margin:0 0 2px;font-weight:800;text-transform:uppercase;letter-spacing:.5px">Total mensual confirmado</div>
+        <div class="n">${money(totalSubs,"MXN")} <small style="font-size:14px">MXN/mes</small></div>
+        <div class="x">${subsMes.length} suscripciones con cobro mensual confirmado. Aparte, cobros recientes sin cadencia confirmada: ${money(otrosMXN,"MXN")} MXN + ${money(otrosUSD,"USD")} + ${money(otrosGBP,"GBP")}. Anuales: ${anuales.map(a=>`${a.servicio.split(" (")[0]} ${money(a.monto,a.moneda)}`).join(" · ")}.</div></div>`;
+    susHTML += grp("💜 Mensuales confirmadas", subsMes, sRow);
+    susHTML += grp("❔ Otros cobros recurrentes (cadencia/monto s/d)", SUS.filter(s=>!s.mensual && s.cadencia!=="anual"), sRow);
+    susHTML += grp("📆 Anuales", anuales, sRow);
+    $("#sus").innerHTML = susHTML;
+
+    // 📦 Paquetes
+    fn = 0;
+    const pRow = p => item(p.id, `<div class="t">${p.txt}</div>${p.det?`<div class="d">${p.det}</div>`:""}<div class="meta"><span class="chip when">${p.estado}</span>${chip(p.urg)}${srcChip(p.src)}${links(p)}</div>`, p.urg);
+    $("#paq").innerHTML = grp("🚚 Activos", paqAct, pRow) + grp("🧾 Recientes", PAQ.filter(p=>!p.activo), pRow) + (D.PAQUETES_NOTA?`<div class="pnote">ℹ️ ${D.PAQUETES_NOTA}</div>`:"");
+
+    // 💼 Trabajo
+    $("#trab").innerHTML = `<ol class="items">${TRAB.map(t => item(t.id,
+      `<div class="t">${t.txt}</div>${t.det?`<div class="d">${t.det}</div>`:""}<div class="meta">${chip(t.urg)}${srcChip(t.src)}${links(t)}</div>`, t.urg)).join("")}</ol>`;
+
+    // ✈️ Eventos
+    $("#ev").innerHTML = `<ol class="items">${EV.map(e => item(e.id,
+      `<div class="t">${e.txt}</div>${e.det?`<div class="d">${e.det}</div>`:""}<div class="meta"><span class="chip when">🗓️ ${e.cuando}</span>${chip(e.urg)}${srcChip(e.src)}${links(e)}</div>`, e.urg)).join("")}</ol>` + (D.EVENTOS_NOTA?`<div class="pnote">ℹ️ ${D.EVENTOS_NOTA}</div>`:"");
+
+    // 📄 Documentos
+    $("#doc").innerHTML = `<ol class="items">${DOC.map(d => item(d.id,
+      `<div class="t">${d.tipo} ${d.txt}</div><div class="d">${d.det||""}</div><div class="meta">${srcChip("Drive")}${openA(d.link)}</div>`, "verde")).join("")}</ol>`;
+
+    // 🔐 Seguridad
+    $("#seg").innerHTML = `<ol class="items">${SEG.map(x => item(x.id,
+      `<div class="t">${x.txt}</div>${x.det?`<div class="d">${x.det}</div>`:""}<div class="meta">${chip(x.urg)}${srcChip(x.src)}${links(x)}</div>`, x.urg)).join("")}</ol>
+      <div class="pnote">🛡️ Se ignoró phishing/spam: casinos, préstamos (Creditilia, Prestamon), MyChart falso, MyCloudStorage, Mercadona.</div>`;
+    const sb = document.querySelector('[data-badge="sus"]'); if(sb) sb.dataset.fixed = money(totalSubs,"MXN") + "/mes";
+
+    // Navegación
+    const NAV = [["resumen","🔥","Urgente","--c0a",URG.length],["recordatorios","📅","Recordatorios","--c1a",RECORDATORIOS.length],["correos","📬","Correos","--c2a",CORREOS.length],
+      ["whatsapp","💬","WhatsApp","--c3a",WHATSAPP.length],["sugerencias","💡","Sugerencias","--c4a",SUGERENCIAS.length],["salud-sec","❤️","Salud","--c5a",""],
+      ["finanzas","💳","Finanzas","--c6a",FIN.vencimientos.length+FIN.items.length],["suscripciones","🔁","Suscripciones","--c7a",SUS.length],["paquetes","📦","Paquetes","--c8a",PAQ.length],
+      ["trabajo","💼","Trabajo","--c9a",TRAB.length],["eventos","✈️","Eventos","--c10a",EV.length],["documentos","📄","Docs","--c11a",DOC.length],["seguridad","🔐","Seguridad","--c12b",SEG.length]];
+    $("#snav").innerHTML = NAV.map(([id,e,t,c,k])=>`<a href="#${id}" data-sec="${id}" style="--cc:var(${c})">${e} ${t}${k!==""?` <span class="k">${k}</span>`:""}</a>`).join("");
+    document.querySelector('[data-badge="sal"]').textContent = S.badge || "82% recup.";
+    drawTrend();
+    badges();
+    requestAnimationFrame(()=>setTimeout(()=>{
+      document.querySelectorAll(".bar > i").forEach(i=>i.style.width=i.dataset.w+"%");
+      document.querySelectorAll(".bars .b i").forEach(i=>i.style.height=(i.dataset.h*0.62)+"%");
+      document.querySelectorAll(".smini i").forEach(i=>i.style.height=i.dataset.hh+"%");
+    },60));
+  }
+
+  /* ---------- Eventos (una sola vez) ---------- */
+  document.addEventListener("click", e=>{
+    const b = e.target.closest(".hk");
+    if(b){ const li = b.closest("li[data-id]"); if(li && !li.classList.contains("bye")) markHecho(li.dataset.id, li); return; }
+    const r = e.target.closest("[data-restore]");
+    if(r){ unHecho(r.dataset.restore); }
+  });
+  $("#undoB").addEventListener("click", ()=>{ if(lastId){ const id = lastId; lastId = null; clearTimeout(undoT); $("#undo").classList.remove("show"); unHecho(id); } });
+  window.addEventListener("online", flush);
+  document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="visible") flush(); });
+  // Chip activo en la navegación según la sección visible
+  (function navSpy(){
+    if(!("IntersectionObserver" in window)) return;
+    const vis = new Map();
+    const setOn = id => {
+      const nav = $("#snav"); if(!nav) return;
+      nav.querySelectorAll("a").forEach(a=>a.classList.toggle("on", a.dataset.sec===id));
+      const a = nav.querySelector(`a[data-sec="${id}"]`);
+      if(a){ const l = a.offsetLeft - 18, r = a.offsetLeft + a.offsetWidth - nav.clientWidth + 18;
+        if(nav.scrollLeft > l) nav.scrollTo({left:l,behavior:"smooth"}); else if(nav.scrollLeft < r) nav.scrollTo({left:r,behavior:"smooth"}); }
+    };
+    const io = new IntersectionObserver(es=>{
+      es.forEach(e=>vis.set(e.target.id, e.isIntersecting ? e.boundingClientRect.top : null));
+      let best=null, bt=Infinity; vis.forEach((t,id)=>{ if(t!=null && Math.abs(t-70)<bt){ bt=Math.abs(t-70); best=id; } });
+      if(best) setOn(best);
+    }, {rootMargin:"-70px 0px -55% 0px"});
+    document.querySelectorAll("#resumen, section.panel[id]").forEach(el=>io.observe(el));
+  })();
+  let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt=setTimeout(drawTrend,150); });
+  setInterval(tick, 30000);
+
+  let toastT;
+  function toast(msg){
+    const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+    clearTimeout(toastT); toastT = setTimeout(()=>t.classList.remove("show"), 2600);
+  }
+
+  // Carga data.js (con cache-busting). cb(true) si trajo datos válidos.
+  function loadData(cb){
+    const prev = window.DASH_DATA;
+    window.DASH_DATA = null;
+    const s = document.createElement("script");
+    s.src = "data.js?v=" + Date.now();
+    s.onload = () => { s.remove(); if(window.DASH_DATA && window.DASH_DATA.META){ if(!window.DASH_DATA.SALUD_HOY && prev && prev.SALUD_HOY) window.DASH_DATA.SALUD_HOY = prev.SALUD_HOY; D = window.DASH_DATA; cb(true); } else { window.DASH_DATA = prev; cb(false); } };
+    s.onerror = () => { s.remove(); window.DASH_DATA = prev; cb(false); };
+    document.head.appendChild(s);
+  }
+
+  // Trae la versión más nueva publicada en el gist (sin caché) y vuelve a pintar.
+  const GIST_ID = "96f1ccc9e2c63e82cf657c067e8cf5f5";
+  async function loadGist(){
+    const r = await fetch("https://api.github.com/gists/" + GIST_ID + "?t=" + Date.now(), {cache:"no-store", headers:{Accept:"application/vnd.github+json"}});
+    if(!r.ok) throw new Error("api " + r.status);
+    const j = await r.json(); const f = j.files && j.files["index.html"];
+    if(!f) throw new Error("sin index.html");
+    let html = f.content;
+    if(f.truncated || !html){ const r2 = await fetch(f.raw_url, {cache:"no-store"}); if(!r2.ok) throw new Error("raw " + r2.status); html = await r2.text(); }
+    const A = "/*__DASH_DATA_" + "START__*/", B = "/*__DASH_DATA_" + "END__*/";
+    const i = html.indexOf(A), e = html.indexOf(B, i + A.length);
+    if(i < 0 || e < 0) throw new Error("sin bloque de datos");
+    const prev = window.DASH_DATA; window.DASH_DATA = null;
+    try { (new Function(html.slice(i + A.length, e)))(); } catch(err){ window.DASH_DATA = prev; throw err; }
+    if(!(window.DASH_DATA && window.DASH_DATA.META)){ window.DASH_DATA = prev; throw new Error("datos inválidos"); }
+    D = window.DASH_DATA;
+    return true;
+  }
+
+  let busy = false;
+  $("#refresh").addEventListener("click", ()=>{
+    if(busy) return; busy = true;
+    const btn = $("#refresh"); btn.classList.add("loading"); btn.setAttribute("aria-busy","true");
+    const t0 = Date.now();
+    flush();
+    const viaLocal = () => loadData(ok=>{
+      setTimeout(()=>{
+        if(ok){
+          render();
+          toast("Actualizado ✓ " + hhmm());
+          btn.classList.remove("loading"); btn.removeAttribute("aria-busy"); busy = false;
+        } else {
+          toast("Recargando… 🔄");
+          setTimeout(()=>location.reload(), 500);
+        }
+      }, Math.max(0, 700-(Date.now()-t0)));
+    });
+    // En línea (gistpreview, etc.): primero el gist vía API sin caché; en archivo local: data.js
+    if(location.protocol === "file:") viaLocal();
+    else loadGist().then(()=>{ setTimeout(()=>{ render(); toast("Actualizado ✓ " + hhmm() + " · datos de " + (D.META.updated||"")); btn.classList.remove("loading"); btn.removeAttribute("aria-busy"); busy = false; }, Math.max(0, 700-(Date.now()-t0))); })
+      .catch(err=>{ console.warn("gist:", err); viaLocal(); });
+  });
+
+  render();
+  flush();
+  // Si hay un data.js junto al archivo, úsalo (más nuevo que el respaldo incrustado)
+  if(!/gistpreview\.github\.io$/.test(location.hostname)) loadData(ok=>{ if(ok) render(); });
+})();
+</script>
+</body>
+</html>
