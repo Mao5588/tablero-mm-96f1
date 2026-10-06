@@ -500,7 +500,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Martes 6 de octubre de 2026",
-  updated: "mar 6 oct 2026, 11:42 AM",
+  updated: "mar 6 oct 2026, 12:00 PM",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -528,6 +528,8 @@ const SOLAR = {
 const G   = id => "https://mail.google.com/mail/u/0/#inbox/" + id;
 /* ids de correo para el botón "Hecho": cuenta + conector + threadId + messageId (último mensaje del hilo) */
 const GM   = (t,m) => ({ cuenta:"mau5588@gmail.com", conector:"user-Gmail", threadId:t, messageId:m });
+const GMCASA = (t,m) => ({ cuenta:"casamendicutiensenat@gmail.com", conector:"user-Gmail--casamendicutiensenat", threadId:t, messageId:m });
+const GCASA = id => "https://mail.google.com/mail/?authuser=casamendicutiensenat@gmail.com#all/" + id;
 const OUTM = m => ({ cuenta:"mau5588@hotmail.com", conector:"user-Outlook-xai", messageId:m });
 const CAL = e  => "https://www.google.com/calendar/event?eid=" + e + "&ctz=America/Merida";
 const TC_SHEET = "https://docs.google.com/spreadsheets/d/1Dro8qc3SM1SRV93KK0NRl4APLwNyNUEYJHVjCZuSRwM/edit";
@@ -904,7 +906,17 @@ const SUSCRIPCIONES = [
   { id:"u-audible", servicio:"Audible",                      monto:null, moneda:"MXN", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"aviso de renovación automática 4 oct", gmail:GM("1a1078ad6b716a07","1a1078ad6b716a07"), link:G("1a1078ad6b716a07") },
   { id:"u-oura",    servicio:"Oura (PayPal)",                monto:135,  moneda:"MXN", cadencia:"s/d", mensual:false, proxima:"s/d", nota:"cobro hoy 6 oct, 4:05 AM", gmail:GM("1a110acd44cb9e4f","1a110acd44cb9e4f"), link:G("1a110acd44cb9e4f") },
   { id:"u-windy",   servicio:"Windy Premium (Apple)",        monto:299,  moneda:"MXN", cadencia:"anual", mensual:false, proxima:"24 sep 2027", nota:"renovó 24 sep", gmail:GM("1a0d575d3f9bd4e5","1a0d575d3f9bd4e5"), link:G("1a0d575d3f9bd4e5") },
-  { id:"u-nso",     servicio:"Nintendo Switch Online + Expansion (familiar)", monto:79.99, moneda:"USD", cadencia:"anual", mensual:false, proxima:"fin de periodo s/d", nota:"para apagar la renovación: antes del 28 oct, 10:50 PM Mérida", gmail:GM("1a0eb83b72491e35","1a0eb83b72491e35"), link:G("1a0eb83b72491e35") }
+  { id:"u-nso",     servicio:"Nintendo Switch Online + Expansion (familiar)", monto:79.99, moneda:"USD", cadencia:"anual", mensual:false, proxima:"fin de periodo s/d", nota:"para apagar la renovación: antes del 28 oct, 10:50 PM Mérida", gmail:GM("1a0eb83b72491e35","1a0eb83b72491e35"), link:G("1a0eb83b72491e35") },
+  /* —— NUEVAS desde casamendicutiensenat@gmail.com (mar 6 oct 2026) —— */
+  { id:"u-casa-chatgpt", servicio:"ChatGPT Plus (Apple · casamendicutiensenat)", monto:19.99, moneda:"USD", cadencia:"mensual", mensual:true, proxima:"28 oct", nota:"NUEVA · casamendicutiensenat@gmail.com · recibo Apple 30 sep · se renovará 28 oct", gmail:GMCASA("1a0f2af49e27a0de","1a0f2af49e27a0de"), link:GCASA("1a0f2af49e27a0de") },
+  { id:"u-casa-one", servicio:"Apple One Premium (casamendicutiensenat)", monto:39.95, moneda:"USD", cadencia:"mensual", mensual:true, proxima:"13 oct", nota:"NUEVA · casamendicutiensenat@gmail.com · recibo 13 sep $39.95 + impuestos ≈$43.03 PayPal · distinta de Apple One Premier MXN", gmail:GMCASA("1a09ecbc2d889260","1a09ecbc2d889260"), link:GCASA("1a09ecbc2d889260") },
+  { id:"u-casa-peacock", servicio:"Peacock Premium Plus (Google Play · casamendicutiensenat)", monto:16.99, moneda:"USD", cadencia:"mensual", mensual:true, proxima:"28 oct", nota:"NUEVA · casamendicutiensenat@gmail.com · renovó 28 sep; sube a $19.99/mes desde 28 oct (aviso Google Play)", gmail:GMCASA("1a0e5c67025ff59d","1a0e5c67025ff59d"), link:GCASA("1a0e5c67025ff59d") },
+  { id:"u-casa-paramount", servicio:"Paramount+ Premium (Google Play · casamendicutiensenat)", monto:13.99, moneda:"USD", cadencia:"mensual", mensual:true, proxima:"26 oct", nota:"NUEVA · casamendicutiensenat@gmail.com · renovó 26 sep (CBS Interactive)", gmail:GMCASA("1a0dc0d2bda7fc54","1a0dc0d2bda7fc54"), link:GCASA("1a0dc0d2bda7fc54") },
+  { id:"u-casa-max", servicio:"HBO Max Standard (Google Play · casamendicutiensenat)", monto:18.49, moneda:"USD", cadencia:"mensual", mensual:true, proxima:"17 oct", nota:"NUEVA · casamendicutiensenat@gmail.com · renovó 17 sep · paga con PayPal mau5588@gmail.com", gmail:GMCASA("1a0b161b2a8c5a26","1a0b161b2a8c5a26"), link:GCASA("1a0b161b2a8c5a26") },
+  { id:"u-casa-hulu", servicio:"Hulu + Disney+ + Starz (PayPal · casamendicutiensenat)", monto:18.22, moneda:"USD", cadencia:"mensual", mensual:true, proxima:"21 oct", nota:"NUEVA · casamendicutiensenat@gmail.com · cobro 21 sep $18.22 (Hulu/Disney+/Starz line items); mes anterior $15.87", gmail:GMCASA("1a0c44c604a8b54c","1a0c44c604a8b54c"), link:GCASA("1a0c44c604a8b54c") },
+  { id:"u-casa-yttv", servicio:"YouTube TV Base Plan (casamendicutiensenat)", monto:82.99, moneda:"USD", cadencia:"mensual", mensual:true, proxima:"s/d", nota:"NUEVA · casamendicutiensenat@gmail.com · precio desde ene 2025 (aviso 12 dic 2024); sigue recibiendo mails de miembro (sep–oct 2026); sin recibo reciente con monto", gmail:GMCASA("193bb62805507d28","193bb62805507d28"), link:GCASA("193bb62805507d28") },
+  { id:"u-casa-weather", servicio:"Weather Live / Tiempo En Vivo Pronóstico (Apple · casamendicutiensenat)", monto:29.99, moneda:"USD", cadencia:"anual", mensual:false, proxima:"3 sep 2027", nota:"NUEVA · casamendicutiensenat@gmail.com · renovó 5 sep 2026 (recibo Apple)", gmail:GMCASA("1a072f1039a5a508","1a072f1039a5a508"), link:GCASA("1a072f1039a5a508") },
+  { id:"u-casa-uv", servicio:"UV Index Widget Worldwide Pro (Apple · casamendicutiensenat)", monto:24.99, moneda:"USD", cadencia:"anual", mensual:false, proxima:"21 ago 2027", nota:"NUEVA · casamendicutiensenat@gmail.com · renovó 23 ago 2026 (recibo Apple)", gmail:GMCASA("1a02fc8abcb83e04","1a02fc8abcb83e04"), link:GCASA("1a02fc8abcb83e04") }
 ];
 
 /* 📦 PAQUETES Y COMPRAS — activo:true = en camino o pendiente de acción */
