@@ -500,7 +500,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Martes 6 de octubre de 2026",
-  updated: "mar 6 oct 2026, 2:39 PM",
+  updated: "mar 6 oct 2026, 3:42 PM",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -535,7 +535,6 @@ const CAL = e  => "https://www.google.com/calendar/event?eid=" + e + "&ctz=Ameri
 const TC_SHEET = "https://docs.google.com/spreadsheets/d/1Dro8qc3SM1SRV93KK0NRl4APLwNyNUEYJHVjCZuSRwM/edit";
 const RECORDATORIOS = [
   { id:"r-telmex",  dia:"Mar 6 oct",  hora:"Hoy",          txt:"Pagar Telmex (vence jue 8)", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") },
-  { id:"r-isai", hasta:"2026-10-06T15:00:00-06:00",    dia:"Mar 6 oct",  hora:"2:00 PM",      txt:"Cita con internista Isaí (Doctoralia) — llevar labs del 13 jul en PDF y registro de presión; preguntar lípidos y vitamina D", urg:"rojo", fuente:"cal+nota", link:CAL("MGFibTlqN2gzbjVodGFoNWFpdDJ2cmgwcjQgbWF1NTU4OEBt") },
   { id:"r-amexp",   dia:"Mié 7 oct",  hora:"Vence",        txt:"Pagar Platinum AMEX $36,700 — el 7 oct o antes", urg:"rojo", fuente:"nota", link:TC_SHEET },
   { id:"r-rhom",    dia:"Mié 7 oct",  hora:"Por confirmar",txt:"RHOM en Casa Capital", urg:"amarillo", fuente:"nota" },
   { id:"r-plinio7", dia:"Mié 7 oct",  hora:"Sin hora",     txt:"Plinio Lavin: “te veo miércoles de esposas” (WhatsApp, lun 5 oct)", urg:"amarillo", fuente:"cal", link:CAL("bWVsOTZidjd2OXBwbTJ2NDE3Zjlvb2FlZmMgbWF1NTU4OEBt") },
@@ -625,8 +624,6 @@ const WHATSAPP = [
 const SUGERENCIAS = [
   { id:"s-inbursa", emo:"💳", urg:"rojo", txt:"Paga Inbursa *9142 hoy (mínimo $1,454.06, vencía 4 oct) para cortar intereses y moratorios." },
   { id:"s-nrf",     emo:"🚗", urg:"rojo", txt:"NR Finance: 4 cargos rechazados en Santander *302. Paga directo o deposita antes de que caigan recargos." },
-  { id:"s-pdf", hasta:"2026-10-06T15:00:00-06:00",     emo:"🩺", urg:"rojo", txt:"Arma hoy el PDF con labs del 13 jul + registro de presión para Isaí, y pregúntale por suplemento de vitamina D (16.9, deficiente)." },
-  { id:"s-pastilla", hasta:"2026-10-06T15:00:00-06:00",emo:"💊", urg:"rojo", txt:"Tómate la pastilla de la presión hoy temprano: ayer (5 oct) marcó 147/87, y hoy a las 2 PM es la cita con Isaí." },
   { id:"s-areli",   emo:"💬", urg:"amarillo", txt:"Contéstale a Areli lo del adelanto de $500 antes de que se le haga tarde." },
   { id:"s-herrajes",emo:"⏰", urg:"amarillo", txt:"Aparta 15 min hoy para explicarle a Don Fernando lo del tornillo DMT para Monarca." },
   { id:"s-solar",   emo:"☀️", urg:"verde", txt:"Ayer los paneles cubrieron ~97% de lo que gastaste (54.3 de 56.2 kWh): hoy usa lavadora, secadora y aire en horas de sol." }
@@ -932,7 +929,6 @@ const PAQUETES_NOTA = "Mercado Libre: no hay envíos en los correos de los últi
 /* 💼 TRABAJO / NEGOCIO (correos corah.com.mx sí; grupos de WhatsApp excluidos no se incluyen) */
 const TRABAJO = [
   { id:"t-lizeth", urg:"rojo", txt:"Lizeth (RH): incidencias Herramax tienda, semana 41 (28 sep – 4 oct)", det:"Cruce RH: descuentos por faltas/permisos $2,367.82 · retardos $0.00. Correo sin leer del lun 5 oct, 10:58 AM.", gmail:GM("1a10ccdd83480a4c","1a10d00def49cb7d"), link:G("1a10ccdd83480a4c"), link2:SEM41_SHEET, link2txt:"hoja Sem41", src:"Gmail" },
-  { id:"t-guille", hasta:"2026-10-06T13:00:00-06:00", urg:"rojo", txt:"Visita del Sr. Guillermo", det:"HOY mar 6 oct, 10:00 AM", link:null, src:"tu lista" },
   { id:"t-connor", urg:"amarillo", txt:"Michael Connor (vidriero canadiense): sin respuesta en WhatsApp", det:"Por correo (vie 2 oct) te pasó su WhatsApp +1 (672) 200-9523", gmail:GM("1a0f4876b25d73ca","1a0fdedc6ebe539c"), link:G("1a0f4876b25d73ca"), src:"Gmail" },
   { id:"t-freddy", urg:"amarillo", txt:"Freddy Castillo: “NÓMINA”", det:"vie 2 oct (antes: “NÓMINA CORRECTA” 25 sep)", gmail:GM("1a0fd613e0fc650b","1a0fd613e0fc650b"), link:G("1a0fd613e0fc650b"), src:"Gmail" },
   { id:"t-horas",  urg:"amarillo", txt:"Lizeth: “RE: HORAS EXTRAS”", det:"vie 2 oct", gmail:GM("1a0fd67786dc380d","1a0fd937a0b53d58"), link:G("1a0fd67786dc380d"), src:"Gmail" },
@@ -994,8 +990,6 @@ const URGENTES = [
   { id:"u11", txt:"Platinum AMEX: pagar $36,700 el mié 7 oct o antes (aún no pagada; la hoja dice $0)", link:TC_SHEET, sec:"finanzas" },
   { id:"u5", txt:"NR Finance: 4 cargos rechazados en Santander *302 → deposita o paga directo", gmail:GM("1a0fe725c33494d2","1a0fe725c33494d2"), link:G("1a0fe725c33494d2"), sec:"finanzas" },
   { id:"u6", txt:"Apple Trade In: envía la Mac mini M4 o cancela (pedido W1586694951)", gmail:GM("1a106c973123f7ef","1a106c973123f7ef"), link:G("1a106c973123f7ef"), sec:"paquetes" },
-  { id:"u7", hasta:"2026-10-06T15:00:00-06:00", txt:"HOY: Cita Isaí 2 PM (lleva labs y registro de presión)", link:CAL("MGFibTlqN2gzbjVodGFoNWFpdDJ2cmgwcjQgbWF1NTU4OEBt"), sec:"recordatorios" },
-  { id:"u8", hasta:"2026-10-06T15:00:00-06:00", txt:"Presión 147/87 ayer → tómate la pastilla hoy temprano, antes de la cita", link:null, sec:"salud" },
   { id:"u9", txt:"Lizeth (RH): revisar cruce sem 41 — descuentos $2,367.82", gmail:GM("1a10ccdd83480a4c","1a10d00def49cb7d"), link:G("1a10ccdd83480a4c"), sec:"trabajo" }
 ];
 
