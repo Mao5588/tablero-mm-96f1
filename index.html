@@ -20,7 +20,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Martes 6 de octubre de 2026",
-  updated: "mar 6 oct 2026, 9:48 AM",
+  updated: "mar 6 oct 2026, 10:50 AM",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -52,7 +52,7 @@ const OUTM = m => ({ cuenta:"mau5588@hotmail.com", conector:"user-Outlook-xai", 
 const CAL = e  => "https://www.google.com/calendar/event?eid=" + e + "&ctz=America/Merida";
 const TC_SHEET = "https://docs.google.com/spreadsheets/d/1Dro8qc3SM1SRV93KK0NRl4APLwNyNUEYJHVjCZuSRwM/edit";
 const RECORDATORIOS = [
-  { id:"r-telmex",  dia:"Mar 6 oct",  hora:"9:00 AM",      txt:"Pagar Telmex (vence día 8)", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-telmex",  dia:"Mar 6 oct",  hora:"Hoy",          txt:"Pagar Telmex (vence jue 8)", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-guille", hasta:"2026-10-06T13:00:00-06:00",  dia:"Mar 6 oct",  hora:"10:00 AM",     txt:"Visita del Sr. Guillermo", urg:"rojo", fuente:"nota" },
   { id:"r-isai", hasta:"2026-10-06T15:00:00-06:00",    dia:"Mar 6 oct",  hora:"2:00 PM",      txt:"Cita con internista Isaí (Doctoralia) — llevar labs del 13 jul en PDF y registro de presión; preguntar lípidos y vitamina D", urg:"rojo", fuente:"cal+nota", link:CAL("MGFibTlqN2gzbjVodGFoNWFpdDJ2cmgwcjQgbWF1NTU4OEBt") },
   { id:"r-amexp",   dia:"Mié 7 oct",  hora:"Vence",        txt:"Pagar Platinum AMEX $36,700 — el 7 oct o antes", urg:"rojo", fuente:"nota", link:TC_SHEET },
@@ -130,6 +130,12 @@ const WHATSAPP = [
   { id:"w-ruben",   urg:"amarillo", whatsapp:{ chat:"REDES VA PRIVADO", verificado:true, nota:"grupo donde Rubén ofreció $7,500" }, txt:"Rubén: paquete de redes Buen Fin $7,500 (REDES)", det:"Pendiente de cerrar con él" },
   { id:"w-dany",    urg:"amarillo", whatsapp:{ chat:"Dany Dany Pot", verificado:false, nota:"probable: nombre del contacto en búsquedas de WhatsApp" }, txt:"Dany: ventas sin IVA", det:"Seguimiento pendiente" },
   { id:"w-connor",  urg:"verde",    whatsapp:{ chat:"Michael", verificado:true, nota:"chat “Michael” (vidriero canadiense)" }, txt:"Michael Connor (Canadá): sin respuesta en WhatsApp", det:"Ojo: te escribió por correo el vie 2 oct con su WhatsApp +1 (672) 200-9523" },
+  { id:"w-vac",     urg:"rojo",     whatsapp:{ chat:"Manufactura VAC", verificado:true, nota:"grupo" }, txt:"Manufactura VAC: Armando no pudo abrir la reja (no hay llave)", det:"Taller sin confirmar · hoy 9:37 AM (ronda WhatsApp 9:38 AM)" },
+  { id:"w-angeles", urg:"rojo",     whatsapp:{ chat:"Ángeles", verificado:false, nota:"nombre probable del chat" }, txt:"Ángeles (enferma): definir si es vacaciones o falta", det:"Te escribió 7:09 AM; contestaste 8:40 sin definir · tú le respondes" },
+  { id:"w-giovanni",urg:"amarillo", whatsapp:{ chat:"Giovanni Herramax", verificado:false, nota:"nombre probable del chat" }, txt:"Mandarle a Giovanni el stock de la semana", det:"Lo pidió 9:03 AM; le dijiste “ok”, falta enviarlo" },
+  { id:"w-pelicula",urg:"verde",    whatsapp:{ chat:"Herramax Mejora continua", verificado:false, nota:"grupo" }, txt:"Dany confirmará la garantía de la película solar", det:"“Te confirmo mau” 9:24 AM · esperando respuesta" },
+  { id:"w-klar",    urg:"verde",    whatsapp:{ chat:null, verificado:false, nota:"chat s/d — vino de la ronda de WhatsApp" }, txt:"Klar: activar el crédito", det:"Sigue abierto (ronda WhatsApp 9:38 AM)" },
+  { id:"w-yatziri", urg:"amarillo", whatsapp:{ chat:"Yatziri Citlaly", verificado:true, nota:"chat 1:1" }, txt:"Yatziri: deudores de hoy", det:"Sigue abierto (ronda WhatsApp 9:38 AM)" },
   { id:"w-inbursa", urg:"rojo",     whatsapp:{ chat:null, verificado:false, nota:"chat s/d — el pendiente vino de la revisión de WhatsApp" }, txt:"Pagar Inbursa *9142: mínimo $1,454.06 no reflejado", det:"Vencía 4 oct · saldo ~$3,941.72" }
 ];
 
@@ -140,7 +146,7 @@ const SUGERENCIAS = [
   { id:"s-pdf", hasta:"2026-10-06T15:00:00-06:00",     emo:"🩺", urg:"rojo", txt:"Arma hoy el PDF con labs del 13 jul + registro de presión para Isaí, y pregúntale por suplemento de vitamina D (16.9, deficiente)." },
   { id:"s-pastilla", hasta:"2026-10-06T15:00:00-06:00",emo:"💊", urg:"rojo", txt:"Tómate la pastilla de la presión hoy temprano: ayer (5 oct) marcó 147/87, y hoy a las 2 PM es la cita con Isaí." },
   { id:"s-areli",   emo:"💬", urg:"amarillo", txt:"Contéstale a Areli lo del adelanto de $500 antes de que se le haga tarde." },
-  { id:"s-herrajes",emo:"⏰", urg:"amarillo", txt:"Bloquea 15 min hoy temprano (antes del Sr. Guillermo, 10 AM) para explicarle a Don Fernando lo del tornillo DMT para Monarca." },
+  { id:"s-herrajes",emo:"⏰", urg:"amarillo", txt:"Antes de tu cita de las 2 PM, aparta 15 min para explicarle a Don Fernando lo del tornillo DMT para Monarca." },
   { id:"s-solar",   emo:"☀️", urg:"verde", txt:"Ayer los paneles cubrieron ~97% de lo que gastaste (54.3 de 56.2 kWh): hoy usa lavadora, secadora y aire en horas de sol." }
 ];
 
@@ -306,7 +312,7 @@ const FINANZAS = {
 const TARJETAS_TC = {
   link: TC_SHEET,
   hoy: "2026-10-06", finSemana: "2026-10-11",
-  leida: "mar 6 oct, 9:46 AM (sin cambios)",
+  leida: "mar 6 oct, 10:49 AM (sin cambios)",
   colFecha: "columna C “Due day” = fecha límite de pago",
   totalesHoja: { cortes:300750, saldo:35350, digital:210200, efectivo:55200 },
   filas: [
@@ -490,7 +496,7 @@ const URGENTES = [
   { id:"u11", txt:"Platinum AMEX: pagar $36,700 el mié 7 oct o antes (aún no pagada; la hoja dice $0)", link:TC_SHEET, sec:"finanzas" },
   { id:"u5", txt:"NR Finance: 4 cargos rechazados en Santander *302 → deposita o paga directo", gmail:GM("1a0fe725c33494d2","1a0fe725c33494d2"), link:G("1a0fe725c33494d2"), sec:"finanzas" },
   { id:"u6", txt:"Apple Trade In: envía la Mac mini M4 o cancela (pedido W1586694951)", gmail:GM("1a106c973123f7ef","1a106c973123f7ef"), link:G("1a106c973123f7ef"), sec:"paquetes" },
-  { id:"u7", hasta:"2026-10-06T15:00:00-06:00", txt:"HOY: Sr. Guillermo 10 AM · Cita Isaí 2 PM (lleva labs y registro de presión)", link:CAL("MGFibTlqN2gzbjVodGFoNWFpdDJ2cmgwcjQgbWF1NTU4OEBt"), sec:"recordatorios" },
+  { id:"u7", hasta:"2026-10-06T15:00:00-06:00", txt:"HOY: Cita Isaí 2 PM (lleva labs y registro de presión)", link:CAL("MGFibTlqN2gzbjVodGFoNWFpdDJ2cmgwcjQgbWF1NTU4OEBt"), sec:"recordatorios" },
   { id:"u8", hasta:"2026-10-06T15:00:00-06:00", txt:"Presión 147/87 ayer → tómate la pastilla hoy temprano, antes de la cita", link:null, sec:"salud" },
   { id:"u9", txt:"Lizeth (RH): revisar cruce sem 41 — descuentos $2,367.82", gmail:GM("1a10ccdd83480a4c","1a10d00def49cb7d"), link:G("1a10ccdd83480a4c"), sec:"trabajo" }
 ];
