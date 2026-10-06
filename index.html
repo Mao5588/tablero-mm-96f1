@@ -500,7 +500,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Martes 6 de octubre de 2026",
-  updated: "mar 6 oct 2026, 1:50 PM",
+  updated: "mar 6 oct 2026, 2:39 PM",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -607,7 +607,8 @@ const CORREOS = [
 const WHATSAPP = [
   { id:"w-areli",   urg:"rojo",     whatsapp:{ chat:"Ahorro Areli", verificado:true, nota:"nombre del chat según la revisión de WhatsApp" }, txt:"Contestarle a Areli el adelanto de $500", det:"Ahorro Areli · 2:16 PM" },
   { id:"w-gabriel", urg:"rojo",     whatsapp:{ chat:"Gabriel Canto Trabajo", verificado:false, nota:"probable: así aparece el contacto en “Carteras credimotors”" }, txt:"Avisarle a Gabriel Canto cuando llegues por su factura", det:"Y recoger tu carta factura" },
-  { id:"w-fernando",urg:"amarillo", whatsapp:{ chat:"Herrajes Administración", verificado:true, nota:"grupo" }, txt:"Explicarle a Don Fernando Rivadeneira lo del tornillo aglomerado 12x2½ para Monarca", det:"Pedir cabeza DMT · Herrajes Administración" },
+  { id:"w-fernando",urg:"amarillo", whatsapp:{ chat:"Herrajes Administración", verificado:true, nota:"grupo" }, txt:"Explicarle a Don Fernando Rivadeneira lo del tornillo aglomerado 12x2½ para Monarca", det:"Pedir cabeza DMT · Luis Herrera ya tiene 8,400 tornillos para cambio (11:38–11:45, ronda 12:30 PM)" },
+  { id:"w-dany-llamada", urg:"amarillo", whatsapp:{ chat:"Dany Dany Pot", verificado:false, nota:"nombre según la ronda de WhatsApp de las 12:30 PM" }, txt:"Dany preguntó si estás en tu oficina o si te puede marcar", det:"11:36 AM · sin respuesta (ronda WhatsApp 12:30 PM)" },
   { id:"w-ruben",   urg:"amarillo", whatsapp:{ chat:"REDES VA PRIVADO", verificado:true, nota:"grupo donde Rubén ofreció $7,500" }, txt:"Rubén: paquete de redes Buen Fin $7,500 (REDES)", det:"Pendiente de cerrar con él" },
   { id:"w-dany",    urg:"amarillo", whatsapp:{ chat:"Dany Dany Pot", verificado:false, nota:"probable: nombre del contacto en búsquedas de WhatsApp" }, txt:"Dany: ventas sin IVA", det:"Seguimiento pendiente" },
   { id:"w-connor",  urg:"verde",    whatsapp:{ chat:"Michael", verificado:true, nota:"chat “Michael” (vidriero canadiense)" }, txt:"Michael Connor (Canadá): sin respuesta en WhatsApp", det:"Ojo: te escribió por correo el vie 2 oct con su WhatsApp +1 (672) 200-9523" },
@@ -743,7 +744,7 @@ const SEM41_SHEET = "https://docs.google.com/spreadsheets/d/1KQ6xPrrVTK2FmnDnIMl
    vencimientos: semana:true = cae del lun 5 al dom 11 oct · pendiente:true = suma al total "por pagar esta semana" */
 const FINANZAS = {
   semanaTxt: "lun 5 – dom 11 oct",
-  pagadas: "TC Juan Citibanamex (corte $5,350, vence 8 oct) · Tesla Santander (15 oct) · Mifel (16 oct) · Plata (corte $26,350, 20 oct) · Scotiabank (21 oct, saldo −$5,800 a favor) · HSBC TDC *5670 ($8,345.62 venció 4 oct): probablemente pagada (hoja TC en $0, siguiente límite 1 nov) — confírmalo en la app.",
+  pagadas: "TC Juan Citibanamex (corte $5,350, vence 8 oct) · Tesla Santander (15 oct) · Mifel (16 oct) · Plata (corte $26,350, 20 oct) · HSBC TDC *5670 ($8,345.62 venció 4 oct): probablemente pagada (hoja TC en $0, siguiente límite 1 nov) — confírmalo en la app.",
   nota: "Saldos “hoja TC” = lo que tú anotaste en tu Google Sheet TC (corte / saldo pendiente). Telmex y Telcel: monto s/d.",
   vencimientos: [
     { id:"v-inbursa",fecha:"Dom 4 oct",  txt:"Inbursa *9142 — pago mínimo (saldo ~$3,941.72)", monto:1454.06, estado:"VENCIDO · no reflejado", urg:"rojo", semana:true, pendiente:true, link:null, src:"WhatsApp" },
@@ -759,7 +760,8 @@ const FINANZAS = {
     { id:"v-totalplay",fecha:"Vie 16 oct",txt:"Totalplay (sept: $1,469.82 por PayPal)", monto:null, estado:"monto de oct s/d", urg:"verde", link:CAL("YWF0b2xwcmFsZ3ZjZGhrZmhxZjRrZTZvcDRfMjAyNjEwMTRUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
     { id:"v-open",   fecha:"Sáb 17 oct", txt:"TC Open — corte $350.00", monto:350, estado:"hoja TC: saldo pendiente", urg:"verde", link:CAL("NGc0ODdobzE5bTZhbWMwcDA5cDJpdWxrb2NfMjAyNjEwMTVUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
     { id:"v-gema",   fecha:"Lun 19 oct", txt:"Depósito prometido a Gema Celeste", monto:null, estado:"monto s/d", urg:"verde", link:CAL("MTRuMmhmcnFuYnR0bTByYmhpbjIxb2ltNGcgbWF1NTU4OEBt"), src:"Calendar" },
-    { id:"v-amex",   fecha:"Mié 28 oct", txt:"AMEX ••••6007 — saldo $30,500.00 (corte $80,500.00)", monto:30500, estado:"hoja TC: saldo pendiente · son tarjetas distintas de PLATINUM AMEX", urg:"verde", link:TC_SHEET, src:"Drive" }
+    { id:"v-scotia", fecha:"Mié 21 oct", txt:"Scotiabank (Scotia Singular **8664) — corte 3 oct $2,536", monto:2536, estado:"hoja TC: saldo por pagar (editada hoy 2:21 PM) · Control oct: $2,535.68 = pago mínimo, vence vie 23 oct", urg:"verde", link:TC_SHEET, src:"Drive" },
+  { id:"v-amex",   fecha:"Mié 28 oct", txt:"AMEX ••••6007 — saldo $30,500.00 (corte $80,500.00)", monto:30500, estado:"hoja TC: saldo pendiente · son tarjetas distintas de PLATINUM AMEX", urg:"verde", link:TC_SHEET, src:"Drive" }
   ],
   cobros: [
     { id:"f-salv", txt:"Cobrar a Salvador Jacobo: “cobrar mes (regresa)” mar 13 oct y renta jue 15 oct", monto:null, link:CAL("ZXA4ZGZoMGdjZzRrNnF0djk1b3Z0ZWFtM2cgbWF1NTU4OEBt") }
@@ -793,11 +795,11 @@ const FINANZAS = {
 const TARJETAS_TC = {
   link: TC_SHEET,
   hoy: "2026-10-06", finSemana: "2026-10-11",
-  leida: "mar 6 oct, 1:47 PM (sin cambios; última edición de la hoja lun 5 oct, 11:09 PM)",
+  leida: "mar 6 oct, 2:39 PM (la editaste hoy 2:21 PM: Scotiabank pasó de −$5,800 a favor a $2,536 por pagar)",
   colFecha: "columna C “Due day” = fecha límite de pago",
-  totalesHoja: { cortes:300750, saldo:35350, digital:210200, efectivo:55200 },
+  totalesHoja: { cortes:258536, saldo:43686, digital:176250, efectivo:38600 },
   filas: [
-    { id:"tc-scotia",  banco:"Scotiabank",        ult4:"",     corteDia:3,  limite:"2026-10-21", corte:2700,  saldo:-5800, digital:null,  efectivo:8500 },
+    { id:"tc-scotia",  banco:"Scotiabank",        ult4:"",     corteDia:3,  limite:"2026-10-21", corte:2536,  saldo:2536,  digital:null,  efectivo:null, nota:"Control oct: Scotia Singular **8664, $2,535.68, vence vie 23 oct" },
     { id:"tc-hd",      banco:"Home Depot",        ult4:"",     corteDia:9,  limite:"2026-10-28", corte:5100,  saldo:0,     digital:5100,  efectivo:null },
     { id:"tc-rappi",   banco:"Rappi",             ult4:"",     corteDia:10, limite:"2026-10-28", corte:15800, saldo:0,     digital:15800, efectivo:null },
     { id:"tc-santj",   banco:"Santander (Juan)",  ult4:"8728", corteDia:11, limite:"2026-10-22", corte:37000, saldo:0,     digital:null,  efectivo:37000 },
@@ -829,6 +831,7 @@ const TARJETAS_TC = {
     { txt:"Renta", limite:"2026-11-01", monto:13600, nota:"" }
   ],
   conflictos: [
+    "Scotiabank: la hoja TC dice límite 21 oct; el Control de octubre (estado de cuenta Scotia Singular **8664, corte 3 oct) dice vie 23 oct. Págala el 21 para ir a la segura.",
     "Inbursa: la hoja TC (terminación 0713) está en $0, pero en WhatsApp quedó pendiente el mínimo de Inbursa *9142 ($1,454.06, vencido 4 oct) — parecen tarjetas distintas.",
     "Platinum (corte 26, límite 13 oct, $10,300) vs Control sep “Banamex Platinum **3494” ($57,277.34, límite ~15 oct): si es la misma tarjeta, los montos no cuadran.",
     "AMEX Platinum (corte 27, límite 7 oct, $36,700; la hoja dice saldo $0 pero Mauricio dice que aún no está pagada) vs Control sep “AmEx **42005 (Juan)” ($27,088.54, límite 12 oct, “paga 30-sep”).",
@@ -865,6 +868,7 @@ const CONTROL_SEP = {
   ],
   ingresos: [["Rentas herencia",70000],["Comisión",35000],["Salario",19285.71],["Casa Santa Fe",10000],["Comisión",7500],["Herencia mamá",4000]],
   pendientes: [
+    { id:"cgo-scotia", fecha:"Vie 23 oct", tarjeta:"Scotiabank Singular WE **8664 (Control de OCTUBRE)", monto:2535.68, minimo:2535.68, nota:"corte 3 oct · del nuevo Control_Gastos_Octubre_2026.xlsx · la hoja TC dice límite 21 oct", urg:"verde" },
     { id:"cg-aerom", fecha:"Sáb 3 oct",  tarjeta:"Aeroméxico Horizon **6603 (Juan)", monto:53517.42, minimo:4013.81, nota:"fecha límite ya pasó · el archivo no marca si se pagó", urg:"rojo" },
     { id:"cg-hsbc", probPagada:true,  fecha:"Dom 4 oct",  tarjeta:"HSBC Viva Plus **5670", monto:1475.93, minimo:1475.93, nota:"ya pasó · ojo: el correo de HSBC dice $8,345.62 con límite 4 oct", urg:"rojo" },
     { id:"cg-walm", probPagada:true,  fecha:"Lun 5 oct",  tarjeta:"Walmart INVEX Clásica **5072 (Juan)", monto:2356.49, minimo:495.00, nota:"venció ayer · tu hoja TC lo marca con saldo $0", urg:"rojo" },
@@ -878,7 +882,7 @@ const CONTROL_SEP = {
     ["Scotia Travel **9387","Juan","~11 sep","ya debió salir"],
     ["Openbank Santander **9516","Mauricio","~28 sep","sale por estos días"]
   ],
-  octubre: "Revisado mar 6 oct, 1:47 PM: todavía no existe un Control_Gastos_Octubre_2026 en Drive (el de septiembre no ha cambiado desde el 4 oct)."
+  octubre: "📒 Ya está Control_Gastos_Octubre_2026.xlsx en Drive (TC › Octubre 2026, subido hoy 2:08 PM). Por ahora solo trae Scotia Singular WE **8664 (corte 3 oct): $2,535.68, vence vie 23 oct. Faltan por agregar 15 tarjetas (Santander LikeU **8728, RappiCard, Home Depot, AmEx **46007, Scotia Travel, Aeroméxico, Mercado Pago, Walmart, Volaris **4110 y **3189, HSBC, Costco, Plata, Banamex Platinum **3494, AmEx **42005, Openbank). MSI a pagar en octubre: $180,676.44; sobrante final proyectado del mes: $65,482.59. <a href=\"https://drive.google.com/file/d/1HrxPwYc1u6PqGWiWJ2MTnhYHNAssPeT5/view\" target=\"_blank\" rel=\"noopener\">abrir Control oct ↗</a>"
 };
 
 /* 🔁 SUSCRIPCIONES — mensual:true = cobro mensual confirmado (entra al total/mes) */
@@ -953,6 +957,8 @@ const EVENTOS_NOTA = "Sin vuelos, hoteles ni reservas próximas en correo o cale
 
 /* 📄 DOCUMENTOS RECIENTES (Google Drive) */
 const DOCUMENTOS = [
+  { id:"d-cgoct", tipo:"📗", txt:"Control_Gastos_Octubre_2026.xlsx", det:"Excel · subido hoy 2:08 PM · por ahora solo Scotia **8664", link:"https://drive.google.com/file/d/1HrxPwYc1u6PqGWiWJ2MTnhYHNAssPeT5/view" },
+  { id:"d-scotia", tipo:"📄", txt:"Scotia_Singular_8664_corte_03-oct-2026.pdf", det:"PDF · subido hoy 2:03 PM", link:"https://drive.google.com/file/d/1CkQEzl6aCmiKmdftqAuCkwQXdiyaGazH/view" },
   { id:"d-sem41", tipo:"📊", txt:"Asistencias_Tienda_Sem41_Cruce_RH", det:"Hoja · mod. lun 5 oct · acumulado oct: $2,367.82 faltas/permisos", link:SEM41_SHEET },
   { id:"d-tc",    tipo:"📊", txt:"TC (tarjetas: cortes, vencimientos y saldos)", det:"Hoja · mod. lun 5 oct", link:TC_SHEET },
   { id:"d-bitu",  tipo:"📝", txt:"Bitácora Academia Unani", det:"Doc · mod. lun 5 oct", link:"https://docs.google.com/document/d/1v8VI65r-YJ_CPXTddMt3o2PX9bk3VrdwEMs1PWJ-Owo/edit" },
