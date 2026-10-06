@@ -500,7 +500,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Martes 6 de octubre de 2026",
-  updated: "mar 6 oct 2026, 12:44 PM",
+  updated: "mar 6 oct 2026, 1:50 PM",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -627,7 +627,7 @@ const SUGERENCIAS = [
   { id:"s-pdf", hasta:"2026-10-06T15:00:00-06:00",     emo:"🩺", urg:"rojo", txt:"Arma hoy el PDF con labs del 13 jul + registro de presión para Isaí, y pregúntale por suplemento de vitamina D (16.9, deficiente)." },
   { id:"s-pastilla", hasta:"2026-10-06T15:00:00-06:00",emo:"💊", urg:"rojo", txt:"Tómate la pastilla de la presión hoy temprano: ayer (5 oct) marcó 147/87, y hoy a las 2 PM es la cita con Isaí." },
   { id:"s-areli",   emo:"💬", urg:"amarillo", txt:"Contéstale a Areli lo del adelanto de $500 antes de que se le haga tarde." },
-  { id:"s-herrajes",emo:"⏰", urg:"amarillo", txt:"Antes de tu cita de las 2 PM, aparta 15 min para explicarle a Don Fernando lo del tornillo DMT para Monarca." },
+  { id:"s-herrajes",emo:"⏰", urg:"amarillo", txt:"Aparta 15 min hoy para explicarle a Don Fernando lo del tornillo DMT para Monarca." },
   { id:"s-solar",   emo:"☀️", urg:"verde", txt:"Ayer los paneles cubrieron ~97% de lo que gastaste (54.3 de 56.2 kWh): hoy usa lavadora, secadora y aire en horas de sol." }
 ];
 
@@ -726,8 +726,8 @@ const SALUD = {
   ],
   sugerencias: [
     "Esta noche cena ligera baja en sal, sin refresco ni alcohol, y a la cama ~11 PM.",
-    "Hoy antes de la cita: mide la presión sentado tras 5 min de reposo, 2 lecturas, y llévalas.",
-    "Cita Isaí mar 6 oct 2 PM: pide orden de labs (últimos 13 jul: TG 482, col 279, HDL 35, LDL 152, ALT 56, HbA1c 5.50, vit D 16.9), comenta presión 147/87, jadeo, cansancio, ECG inconcluso de Withings, y pregunta por Foundayz (orforglipron).",
+    "Hoy en la tarde mide la presión sentado tras 5 min de reposo, 2 lecturas, y anótalas.",
+    "Después de la cita con Isaí (hoy 2 PM): anota lo que te indicó sobre labs (últimos 13 jul: TG 482, col 279, HDL 35, LDL 152, ALT 56, HbA1c 5.50, vit D 16.9), presión y vitamina D.",
     "Hoy camina 30 min a ritmo cómodo y busca 7,000+ pasos."
   ]
 };
@@ -793,7 +793,7 @@ const FINANZAS = {
 const TARJETAS_TC = {
   link: TC_SHEET,
   hoy: "2026-10-06", finSemana: "2026-10-11",
-  leida: "mar 6 oct, 11:42 AM (sin cambios; última edición de la hoja lun 5 oct, 11:09 PM)",
+  leida: "mar 6 oct, 1:47 PM (sin cambios; última edición de la hoja lun 5 oct, 11:09 PM)",
   colFecha: "columna C “Due day” = fecha límite de pago",
   totalesHoja: { cortes:300750, saldo:35350, digital:210200, efectivo:55200 },
   filas: [
@@ -878,7 +878,7 @@ const CONTROL_SEP = {
     ["Scotia Travel **9387","Juan","~11 sep","ya debió salir"],
     ["Openbank Santander **9516","Mauricio","~28 sep","sale por estos días"]
   ],
-  octubre: "Revisado mar 6 oct, 11:42 AM: todavía no existe un Control_Gastos_Octubre_2026 en Drive (el de septiembre no ha cambiado desde el 4 oct)."
+  octubre: "Revisado mar 6 oct, 1:47 PM: todavía no existe un Control_Gastos_Octubre_2026 en Drive (el de septiembre no ha cambiado desde el 4 oct)."
 };
 
 /* 🔁 SUSCRIPCIONES — mensual:true = cobro mensual confirmado (entra al total/mes) */
@@ -969,6 +969,7 @@ const SEGURIDAD = [
   { id:"x-google", urg:"rojo", txt:"Google: alerta crítica — bloquearon un inicio de sesión con TU contraseña", det:"mié 30 sep · cambia la contraseña de Google y revisa la actividad de la cuenta", gmail:GM("1a0f424223c2aa13","1a0f424223c2aa13"), link:G("1a0f424223c2aa13"), src:"Gmail" },
   { id:"x-tcsheet",urg:"amarillo", txt:"Tu hoja “TC” en Drive guarda usuarios y claves en texto", det:"Muévelas a un gestor de contraseñas (llavero de iCloud / 1Password) y bórralas de la hoja", link:TC_SHEET, src:"Drive" },
   { id:"x-bancos", urg:"amarillo", txt:"Altas bancarias: tarjetas de terceros en Santander SuperMóvil (29 sep) y destinatario STP en BBVA (30 sep)", det:"Confirma que fuiste tú", gmail:GM("1a0ef31df4c3df3d","1a0ef31df4c3df3d"), link:G("1a0ef31df4c3df3d"), gmail2:GM("1a0f497e5688f62e","1a0f497e5688f62e"), link2:G("1a0f497e5688f62e"), link2txt:"BBVA", src:"Gmail" },
+  { id:"x-casa-grok", urg:"verde", txt:"Google: “Grok was granted access” a casamendicutiensenat@gmail.com (copia a tu Hotmail de recuperación)", det:"hoy mar 6 oct, 11:52 AM · si fue al conectar esa cuenta hoy, todo bien; si no, revisa la actividad", gmail:GM("1a112588fb2dfc77","1a112588fb2dfc77"), link:G("1a112588fb2dfc77"), src:"Gmail" },
   { id:"x-ultra",  urg:"verde", txt:"Ultrahuman: link para iniciar sesión", det:"lun 5 oct, 7:20 PM · válido 7 días; si no lo pediste, ignóralo", gmail:GM("1a10ecc00a05cbd8","1a10ecc00a05cbd8"), link:G("1a10ecc00a05cbd8"), src:"Gmail" },
   { id:"x-xai",    urg:"verde", txt:"x.ai: inicio de sesión nuevo", det:"lun 5 oct, 9:30 AM", gmail:GM("1a10cafc5d272131","1a10cafc5d272131"), link:G("1a10cafc5d272131"), src:"Gmail" },
   { id:"x-openai", urg:"verde", txt:"OpenAI: inicio de sesión nuevo", det:"dom 4 oct, 12:17 AM", gmail:GM("1a1058f505fe281d","1a1058f505fe281d"), link:G("1a1058f505fe281d"), src:"Gmail" },
@@ -993,7 +994,7 @@ const URGENTES = [
 ];
 
 /* ✅ HECHOS — ids ya procesados (por la rutina horaria o porque Mau tocó “Hecho”). No se pintan. */
-const HECHOS = ["r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8", "s-pdf"];
+const HECHOS = ["r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8", "s-pdf", "u7", "r-plinio8", "w-dany", "w-vac", "w-angeles", "w-giovanni", "w-klar", "u9", "c-lizeth", "t-lizeth"];
 
 window.DASH_DATA = { HECHOS, META, SOLAR, RECORDATORIOS, CORREOS, WHATSAPP, SUGERENCIAS, SALUD, FINANZAS, SUSCRIPCIONES, PAQUETES, PAQUETES_NOTA, TRABAJO, EVENTOS, EVENTOS_NOTA, DOCUMENTOS, SEGURIDAD, URGENTES, CONTROL_SEP, TARJETAS_TC };
 })();
