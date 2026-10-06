@@ -500,18 +500,18 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Martes 6 de octubre de 2026",
-  updated: "mar 6 oct 2026, 12:05 PM",
+  updated: "mar 6 oct 2026, 12:44 PM",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
 };
 
 const SOLAR = {
-  fuente: "Luxpowertek · leído mar 6 oct, 11:11 AM",
-  leido: "11:11 AM",
-  hoy:  { generado: 24.2, consumido: 18.9, exportada: 17.6, descargada: 0, nota: "" },
+  fuente: "Luxpowertek · leído mar 6 oct, 12:15 PM",
+  leido: "12:15 PM",
+  hoy:  { generado: 34.3, consumido: 19.6, exportada: 26.6, descargada: 0, nota: "" },
   ayer: { generado: 54.3, consumido: 56.2 },
-  mesActual:   { nombre: "Octubre", dias: "1–6", gen: 295.2, cons: 291.1, exportada: 213.9, bateriaDescargada: 2.9 },
+  mesActual:   { nombre: "Octubre", dias: "1–6", gen: 305.3, cons: 291.8, exportada: 222.9, bateriaDescargada: 2.9 },
   mesAnterior: { nombre: "Septiembre", gen: 2161.4, cons: 1158.1, exportada: 1791.6 },
   porDia: [
     { dia: 1, gen: 72,   cons: 55.5 },
@@ -519,7 +519,7 @@ const SOLAR = {
     { dia: 3, gen: 44.8, cons: 60.9 },
     { dia: 4, gen: 38.3, cons: 57.1 },
     { dia: 5, gen: 54.3, cons: 56.2 },
-    { dia: 6, gen: 24.2, cons: 18.9, enCurso: true }
+    { dia: 6, gen: 34.3, cons: 19.6, enCurso: true }
   ],
   bateria: 100
 };
@@ -535,7 +535,6 @@ const CAL = e  => "https://www.google.com/calendar/event?eid=" + e + "&ctz=Ameri
 const TC_SHEET = "https://docs.google.com/spreadsheets/d/1Dro8qc3SM1SRV93KK0NRl4APLwNyNUEYJHVjCZuSRwM/edit";
 const RECORDATORIOS = [
   { id:"r-telmex",  dia:"Mar 6 oct",  hora:"Hoy",          txt:"Pagar Telmex (vence jue 8)", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") },
-  { id:"r-guille", hasta:"2026-10-06T13:00:00-06:00",  dia:"Mar 6 oct",  hora:"10:00 AM",     txt:"Visita del Sr. Guillermo", urg:"rojo", fuente:"nota" },
   { id:"r-isai", hasta:"2026-10-06T15:00:00-06:00",    dia:"Mar 6 oct",  hora:"2:00 PM",      txt:"Cita con internista Isaí (Doctoralia) — llevar labs del 13 jul en PDF y registro de presión; preguntar lípidos y vitamina D", urg:"rojo", fuente:"cal+nota", link:CAL("MGFibTlqN2gzbjVodGFoNWFpdDJ2cmgwcjQgbWF1NTU4OEBt") },
   { id:"r-amexp",   dia:"Mié 7 oct",  hora:"Vence",        txt:"Pagar Platinum AMEX $36,700 — el 7 oct o antes", urg:"rojo", fuente:"nota", link:TC_SHEET },
   { id:"r-rhom",    dia:"Mié 7 oct",  hora:"Por confirmar",txt:"RHOM en Casa Capital", urg:"amarillo", fuente:"nota" },
@@ -994,7 +993,7 @@ const URGENTES = [
 ];
 
 /* ✅ HECHOS — ids ya procesados (por la rutina horaria o porque Mau tocó “Hecho”). No se pintan. */
-const HECHOS = ["r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8"];
+const HECHOS = ["r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8", "s-pdf"];
 
 window.DASH_DATA = { HECHOS, META, SOLAR, RECORDATORIOS, CORREOS, WHATSAPP, SUGERENCIAS, SALUD, FINANZAS, SUSCRIPCIONES, PAQUETES, PAQUETES_NOTA, TRABAJO, EVENTOS, EVENTOS_NOTA, DOCUMENTOS, SEGURIDAD, URGENTES, CONTROL_SEP, TARJETAS_TC };
 })();
