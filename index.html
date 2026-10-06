@@ -1762,8 +1762,11 @@ window.DASH_DATA = { HECHOS, META, SOLAR, RECORDATORIOS, CORREOS, WHATSAPP, SUGE
   }
 
   // Pages / mismo origen: recarga el HTML publicado con bypass de caché y re-render in-place.
+  // Netlify (link del iPhone): los datos vivos se leen de GitHub Pages, que se publica cada hora.
+  const PAGES_URL = "https://mao5588.github.io/tablero-mm-96f1/index.html";
+  const IS_NETLIFY = /netlify\.app$/.test(location.hostname);
   async function loadFromPage(){
-    const url = location.pathname + (location.pathname.endsWith("/") ? "index.html" : "") + "?t=" + Date.now();
+    const url = (IS_NETLIFY ? PAGES_URL : location.pathname + (location.pathname.endsWith("/") ? "index.html" : "")) + "?t=" + Date.now();
     const r = await fetch(url, {cache:"no-store"});
     if(!r.ok) throw new Error("page " + r.status);
     return applyEmbeddedData(await r.text());
@@ -1821,7 +1824,8 @@ window.DASH_DATA = { HECHOS, META, SOLAR, RECORDATORIOS, CORREOS, WHATSAPP, SUGE
     render();
     flush();
     // Si hay un data.js junto al archivo, úsalo (más nuevo que el respaldo incrustado)
-    if(!/gistpreview\.github\.io$/.test(location.hostname)) loadData(ok=>{ if(ok) render(); });
+    if(IS_NETLIFY) loadFromPage().then(()=>{ render(); flush(); }).catch(err=>{ console.warn("pages:", err); loadData(ok=>{ if(ok) render(); }); });
+    else if(!/gistpreview\.github\.io$/.test(location.hostname)) loadData(ok=>{ if(ok) render(); });
   } catch (bootErr) {
     console.error("boot:", bootErr);
     var msg = (bootErr && bootErr.message) ? bootErr.message : String(bootErr);
