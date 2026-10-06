@@ -500,7 +500,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Martes 6 de octubre de 2026",
-  updated: "mar 6 oct 2026, 4:38 PM",
+  updated: "mar 6 oct 2026, 5:45 PM",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -535,7 +535,9 @@ const CAL = e  => "https://www.google.com/calendar/event?eid=" + e + "&ctz=Ameri
 const TC_SHEET = "https://docs.google.com/spreadsheets/d/1Dro8qc3SM1SRV93KK0NRl4APLwNyNUEYJHVjCZuSRwM/edit";
 const RECORDATORIOS = [
   { id:"r-telmex",  dia:"Mar 6 oct",  hora:"Hoy",          txt:"Pagar Telmex (vence jue 8)", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-herra6",  dia:"Mar 6 oct",  hora:"6:00 PM",      txt:"Reunión Herramax Mejora continua (Giovanni y Dany confirmaron “Enterado”)", urg:"amarillo", fuente:"nota", hasta:"2026-10-06T19:00:00-06:00" },
   { id:"r-amexp",   dia:"Mié 7 oct",  hora:"Vence",        txt:"Pagar Platinum AMEX $36,700 — el 7 oct o antes", urg:"rojo", fuente:"nota", link:TC_SHEET },
+  { id:"r-mjbday",  dia:"Mié 7 oct",  hora:"Todo el día",  txt:"Cumpleaños de María José Angel Mex 🎂 (aviso de tu calendario de Hotmail)", urg:"verde", fuente:"cal" },
   { id:"r-rhom",    dia:"Mié 7 oct",  hora:"Por confirmar",txt:"RHOM en Casa Capital", urg:"amarillo", fuente:"nota" },
   { id:"r-plinio7", dia:"Mié 7 oct",  hora:"Sin hora",     txt:"Plinio Lavin: “te veo miércoles de esposas” (WhatsApp, lun 5 oct)", urg:"amarillo", fuente:"cal", link:CAL("bWVsOTZidjd2OXBwbTJ2NDE3Zjlvb2FlZmMgbWF1NTU4OEBt") },
   { id:"r-plinio8", dia:"Jue 8 oct",  hora:"Sin hora",     txt:"Plinio Lavin: “te veo el jueves” — en RHOM aún se decide martes o jueves", urg:"amarillo", fuente:"cal", link:CAL("OXRwMmg0NGg2a2NpcWpwbGM5NmVubm9zcXMgbWF1NTU4OEBt") },
@@ -551,6 +553,7 @@ const RECORDATORIOS = [
   { id:"r-open",    dia:"Jue 15 oct", hora:"9:00 AM",      txt:"Pagar TC Open (vence día 17) — saldo en hoja TC: $350.00", urg:"verde", fuente:"cal", link:CAL("NGc0ODdobzE5bTZhbWMwcDA5cDJpdWxrb2NfMjAyNjEwMTVUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-salv15",  dia:"Jue 15 oct", hora:"9:00 AM",      txt:"Cobrar renta a Salvador Jacobo", urg:"verde", fuente:"cal", link:CAL("ZXA4ZGZoMGdjZzRrNnF0djk1b3Z0ZWFtM2cgbWF1NTU4OEBt") },
   { id:"r-gema",    dia:"Lun 19 oct", hora:"Todo el día",  txt:"Depósito a Gema Celeste (prometido)", urg:"verde", fuente:"cal", link:CAL("MTRuMmhmcnFuYnR0bTByYmhpbjIxb2ltNGcgbWF1NTU4OEBt") },
+  { id:"r-tiagaby", dia:"Lun 19 oct", hora:"1:40 PM",      txt:"Cita del lun 19 oct, 1:40 PM que te pasó Tía Gaby por WhatsApp — anótala", urg:"verde", fuente:"nota" },
   { id:"r-unani19", dia:"Lun 19 oct", hora:"11:00 AM",     txt:"Unani — clase dinámica", urg:"verde", fuente:"cal", link:CAL("ZzBxcGw5YTRmZzNxbGh2bGFrajc3ZmUwM3MgbWF1NTU4OEBt") }
 ];
 
@@ -607,16 +610,22 @@ const WHATSAPP = [
   { id:"w-areli",   urg:"rojo",     whatsapp:{ chat:"Ahorro Areli", verificado:true, nota:"nombre del chat según la revisión de WhatsApp" }, txt:"Contestarle a Areli el adelanto de $500", det:"Ahorro Areli · 2:16 PM" },
   { id:"w-gabriel", urg:"rojo",     whatsapp:{ chat:"Gabriel Canto Trabajo", verificado:false, nota:"probable: así aparece el contacto en “Carteras credimotors”" }, txt:"Avisarle a Gabriel Canto cuando llegues por su factura", det:"Y recoger tu carta factura" },
   { id:"w-fernando",urg:"amarillo", whatsapp:{ chat:"Herrajes Administración", verificado:true, nota:"grupo" }, txt:"Explicarle a Don Fernando Rivadeneira lo del tornillo aglomerado 12x2½ para Monarca", det:"Pedir cabeza DMT · Luis Herrera ya tiene 8,400 tornillos para cambio (11:38–11:45, ronda 12:30 PM)" },
-  { id:"w-dany-llamada", urg:"amarillo", whatsapp:{ chat:"Dany Dany Pot", verificado:false, nota:"nombre según la ronda de WhatsApp de las 12:30 PM" }, txt:"Dany preguntó si estás en tu oficina o si te puede marcar", det:"11:36 AM · sin respuesta (ronda WhatsApp 12:30 PM)" },
+  { id:"w-dany-llamada", urg:"amarillo", whatsapp:{ chat:"Dany Dany Pot", verificado:false, nota:"nombre según la ronda de WhatsApp de las 12:30 PM" }, txt:"Dany preguntó si estás en tu oficina o si te puede marcar", det:"11:36 AM · sigue sin respuesta (ronda WhatsApp 5:30 PM)" },
   { id:"w-ruben",   urg:"amarillo", whatsapp:{ chat:"REDES VA PRIVADO", verificado:true, nota:"grupo donde Rubén ofreció $7,500" }, txt:"Rubén: paquete de redes Buen Fin $7,500 (REDES)", det:"Pendiente de cerrar con él" },
   { id:"w-dany",    urg:"amarillo", whatsapp:{ chat:"Dany Dany Pot", verificado:false, nota:"probable: nombre del contacto en búsquedas de WhatsApp" }, txt:"Dany: ventas sin IVA", det:"Seguimiento pendiente" },
   { id:"w-connor",  urg:"verde",    whatsapp:{ chat:"Michael", verificado:true, nota:"chat “Michael” (vidriero canadiense)" }, txt:"Michael Connor (Canadá): sin respuesta en WhatsApp", det:"Ojo: te escribió por correo el vie 2 oct con su WhatsApp +1 (672) 200-9523" },
   { id:"w-vac",     urg:"rojo",     whatsapp:{ chat:"Manufactura VAC", verificado:true, nota:"grupo" }, txt:"Manufactura VAC: Armando no pudo abrir la reja (no hay llave)", det:"Taller sin confirmar · hoy 9:37 AM (ronda WhatsApp 9:38 AM)" },
   { id:"w-angeles", urg:"rojo",     whatsapp:{ chat:"Ángeles", verificado:false, nota:"nombre probable del chat" }, txt:"Ángeles (enferma): definir si es vacaciones o falta", det:"Te escribió 7:09 AM; contestaste 8:40 sin definir · tú le respondes" },
   { id:"w-giovanni",urg:"amarillo", whatsapp:{ chat:"Giovanni Herramax", verificado:false, nota:"nombre probable del chat" }, txt:"Mandarle a Giovanni el stock de la semana", det:"Lo pidió 9:03 AM; le dijiste “ok”, falta enviarlo" },
-  { id:"w-pelicula",urg:"verde",    whatsapp:{ chat:"Herramax Mejora continua", verificado:false, nota:"grupo" }, txt:"Dany confirmará la garantía de la película solar", det:"“Te confirmo mau” 9:24 AM · esperando respuesta" },
+  { id:"w-pelicula",urg:"verde",    whatsapp:{ chat:"Herramax Mejora continua", verificado:false, nota:"grupo" }, txt:"Dany confirmará la garantía de la película solar", det:"“Te confirmo mau” 9:24 AM · sigue sin confirmar; reunión hoy 6 PM (ronda WhatsApp 5:30 PM)" },
   { id:"w-klar",    urg:"verde",    whatsapp:{ chat:null, verificado:false, nota:"chat s/d — vino de la ronda de WhatsApp" }, txt:"Klar: activar el crédito", det:"Sigue abierto (ronda WhatsApp 9:38 AM)" },
   { id:"w-yatziri", urg:"amarillo", whatsapp:{ chat:"Yatziri Citlaly", verificado:true, nota:"chat 1:1" }, txt:"Yatziri: deudores de hoy", det:"Sigue abierto (ronda WhatsApp 9:38 AM)" },
+  { id:"w-vac-manana", urg:"amarillo", whatsapp:{ chat:"Manufactura VAC", verificado:true, nota:"grupo" }, txt:"Manufactura VAC: Yatziri pregunta si se les programa algo para mañana", det:"3:21 PM · sin respuesta; la llave de la reja del taller sigue sin resolverse (ronda WhatsApp 5:30 PM)" },
+  { id:"w-miriam",  urg:"amarillo", whatsapp:{ chat:"Miriam Gestión Cobranza", verificado:true, nota:"chat 1:1" }, txt:"Miriam (Gestión Cobranza): confirmar el anticipo de comisión de $7,000 a vendedor", det:"1:22 PM · la ronda de 5:10 PM vio un “sip” que podría ser tu respuesta; confírmalo" },
+  { id:"w-rodrigo", urg:"amarillo", whatsapp:{ chat:"Rodrigo Martínez", verificado:true, nota:"chat 1:1" }, txt:"Mandarle a Rodrigo Martínez sus cierres de mes", det:"Te los pidió 3:41 PM; le dijiste que al regresar a la oficina" },
+  { id:"w-memorae", urg:"verde",    whatsapp:{ chat:"Memorae", verificado:true, nota:"recordatorio" }, txt:"Memorae: sacar cita con Isaí en Doctoralia", det:"Recordatorio de 2:01 PM" },
+  { id:"w-inbtarj", urg:"verde",    whatsapp:{ chat:"Inbursa", verificado:true, nota:"cuenta oficial" }, txt:"Inbursa: recoger tu tarjeta Súper Crédito en la sucursal Yucatán Mérida", det:"5:04 PM · trae reembolso de hasta $500 en restaurante antes del 15 nov" },
+  { id:"w-paca",    urg:"verde",    whatsapp:{ chat:"Paca del Bienestar", verificado:true, nota:"grupo" }, txt:"Paca del Bienestar: encuesta viernes/sábado (opcional)", det:"1:43 PM · sin votos" },
   { id:"w-inbursa", urg:"rojo",     whatsapp:{ chat:null, verificado:false, nota:"chat s/d — el pendiente vino de la revisión de WhatsApp" }, txt:"Pagar Inbursa *9142: mínimo $1,454.06 no reflejado", det:"Vencía 4 oct · saldo ~$3,941.72" }
 ];
 
@@ -741,7 +750,7 @@ const SEM41_SHEET = "https://docs.google.com/spreadsheets/d/1KQ6xPrrVTK2FmnDnIMl
    vencimientos: semana:true = cae del lun 5 al dom 11 oct · pendiente:true = suma al total "por pagar esta semana" */
 const FINANZAS = {
   semanaTxt: "lun 5 – dom 11 oct",
-  pagadas: "TC Juan Citibanamex (corte $5,350, vence 8 oct) · Tesla Santander (15 oct) · Mifel (16 oct) · Plata (corte $26,350, 20 oct) · HSBC TDC *5670 ($8,345.62 venció 4 oct): probablemente pagada (hoja TC en $0, siguiente límite 1 nov) — confírmalo en la app.",
+  pagadas: "TC Juan Citibanamex (corte $5,350, vence 8 oct) · Tesla Santander (15 oct) · Mifel (16 oct) · Plata (corte $26,350, 20 oct) · HSBC TDC *5670 ($8,345.62 venció 4 oct): probablemente pagada (hoja TC en $0, siguiente límite 1 nov) — confírmalo en la app. · PLATINUM AMEX $36,700 (vencía 7 oct): la marcaste Hecho hoy 4:49 PM.",
   nota: "Saldos “hoja TC” = lo que tú anotaste en tu Google Sheet TC (corte / saldo pendiente). Telmex y Telcel: monto s/d.",
   vencimientos: [
     { id:"v-inbursa",fecha:"Dom 4 oct",  txt:"Inbursa *9142 — pago mínimo (saldo ~$3,941.72)", monto:1454.06, estado:"VENCIDO · no reflejado", urg:"rojo", semana:true, pendiente:true, link:null, src:"WhatsApp" },
@@ -818,7 +827,7 @@ const TARJETAS_TC = {
     { id:"tc-mifel",   banco:"Mifel (mía)",       ult4:"",     corteDia:25, limite:"2026-10-16", corte:null,  saldo:0,     digital:null,  efectivo:null },
     { id:"tc-plat",    banco:"Platinum",          ult4:"",     corteDia:26, limite:"2026-10-13", corte:10300, saldo:10300, digital:null,  efectivo:null, nota:"recordatorio: pagar dom 11 oct" },
     { id:"tc-open",    banco:"Open",              ult4:"",     corteDia:26, limite:"2026-10-17", corte:350,   saldo:350,   digital:null,  efectivo:null },
-    { id:"tc-amexp",   banco:"AMEX Platinum",     ult4:"",     corteDia:27, limite:"2026-10-07", corte:36700, saldo:36700, digital:28600, efectivo:8100, nota:"Mauricio: aún no pagada (la hoja dice $0) · pagar el 7 o antes" }
+    { id:"tc-amexp",   banco:"AMEX Platinum",     ult4:"",     corteDia:27, limite:"2026-10-07", corte:36700, saldo:0, digital:28600, efectivo:8100, nota:"la marcaste Hecho hoy mar 6 oct, 4:49 PM (corte $36,700, límite 7 oct)" }
   ],
   otros: [
     { txt:"Telmex", limite:"2026-10-08", nota:"monto s/d" },
@@ -831,11 +840,11 @@ const TARJETAS_TC = {
     "Scotiabank: la hoja TC dice límite 21 oct; el Control de octubre (estado de cuenta Scotia Singular **8664, corte 3 oct) dice vie 23 oct. Págala el 21 para ir a la segura.",
     "Inbursa: la hoja TC (terminación 0713) está en $0, pero en WhatsApp quedó pendiente el mínimo de Inbursa *9142 ($1,454.06, vencido 4 oct) — parecen tarjetas distintas.",
     "Platinum (corte 26, límite 13 oct, $10,300) vs Control sep “Banamex Platinum **3494” ($57,277.34, límite ~15 oct): si es la misma tarjeta, los montos no cuadran.",
-    "AMEX Platinum (corte 27, límite 7 oct, $36,700; la hoja dice saldo $0 pero Mauricio dice que aún no está pagada) vs Control sep “AmEx **42005 (Juan)” ($27,088.54, límite 12 oct, “paga 30-sep”).",
     "Volaris: la hoja TC termina en 2962 y 4533 (Juan); el Control sep usa **3189 y **4110 — revisa si cambiaron las tarjetas.",
     "Aeroméxico **6603 (Juan) $53,517.42 con límite 3 oct (Control sep) no aparece en la hoja TC."
   ],
   conflictosPagadas: [
+    "AMEX Platinum (corte 27, límite 7 oct, $36,700): la marcaste Hecho hoy 4:49 PM; el Control sep tiene aparte “AmEx **42005 (Juan)” ($27,088.54, límite 12 oct, “paga 30-sep”).",
     "Walmart: Control de gastos sep dice **5072 (Juan) $2,356.49 (mín. $495) con límite 5 oct; la hoja TC ya tiene el siguiente límite (29 oct, corte $5,200) y saldo $0 → parece pagado, confírmalo.",
     "Costco: Control sep dice **4862 $44,957.13 con límite 6 oct; la hoja TC: siguiente límite 3 nov, corte $6,800, saldo $0 → montos muy distintos; confirma que el de $44,957.13 ya se pagó.",
     "HSBC: Control sep dice **5670 $1,475.93 con límite 4 oct; el correo de HSBC dice $8,345.62 con límite 4 oct; la hoja TC: siguiente límite 1 nov, corte $1,500, saldo $0."
@@ -921,7 +930,7 @@ const SUSCRIPCIONES = [
 
 /* 📦 PAQUETES Y COMPRAS — activo:true = en camino o pendiente de acción */
 const PAQUETES = [
-  { id:"p-bento",  urg:"amarillo", activo:true, estado:"🚚 En camino", txt:"Amazon: 5 “Caja Bento de 3 capas”", det:"Llega HOY mar 6 oct · total $1,752.75 · pedido 701-6949454-1033851", outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDasAAAA="), link:OUT_AMAZON, src:"Outlook" },
+  { id:"p-bento2", urg:"verde", activo:true, estado:"⏳ Retrasado", txt:"Amazon: 5 “Caja Bento de 3 capas”", det:"Amazon avisó hoy 5:02 PM que se demoró: ahora llega el sáb 10 oct o antes · total $1,752.75 · pedido 701-6949454-1033851", outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDgoAAAA="), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACYecDgoAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem", src:"Outlook" },
   { id:"p-trade",  urg:"rojo", activo:true, estado:"📮 Por enviar", txt:"Apple Trade In: no han recibido tu Mac mini M4", det:"Pedido W1586694951 — envíalo o cancela; el valor de canje vence 14 días después de recibir el nuevo", gmail:GM("1a106c973123f7ef","1a106c973123f7ef"), link:G("1a106c973123f7ef"), src:"Gmail" }
 ];
 const PAQUETES_NOTA = "Mercado Libre: no hay envíos en los correos de los últimos 30 días. Sin devoluciones ni reembolsos pendientes.";
@@ -994,11 +1003,11 @@ const URGENTES = [
 ];
 
 /* ✅ HECHOS — ids ya procesados (por la rutina horaria o porque Mau tocó “Hecho”). No se pintan. */
-const HECHOS = ["r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8", "s-pdf", "u7", "r-plinio8", "w-dany", "w-vac", "w-angeles", "w-giovanni", "w-klar", "u9", "c-lizeth", "t-lizeth"];
+const HECHOS = ["r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8", "s-pdf", "u7", "r-plinio8", "w-dany", "w-vac", "w-angeles", "w-giovanni", "w-klar", "u9", "c-lizeth", "t-lizeth", "u11", "r-amexp", "v-amexp", "w-fernando", "s-herrajes", "w-yatziri"];
 
 window.DASH_DATA = { HECHOS, META, SOLAR, RECORDATORIOS, CORREOS, WHATSAPP, SUGERENCIAS, SALUD, FINANZAS, SUSCRIPCIONES, PAQUETES, PAQUETES_NOTA, TRABAJO, EVENTOS, EVENTOS_NOTA, DOCUMENTOS, SEGURIDAD, URGENTES, CONTROL_SEP, TARJETAS_TC };
 })();
-;(function(){ if (window.DASH_DATA) window.DASH_DATA.SALUD_HOY = {"fecha":"2026-10-06","leido_a":"2026-10-06 16:52 America/Merida","whoop":{"fecha":"2026-10-06","rendimiento_sueno_pct":81,"horas_dormidas":"7:35","horas_necesarias":"7:42","tiempo_en_cama":"8:04","recuperacion_pct":74,"hrv_ms":45,"fc_reposo_bpm":62,"strain":8.9,"previo":{"fecha":"2026-10-05","recuperacion_pct":82,"hrv_ms":49,"fc_reposo_bpm":66,"rendimiento_sueno_pct":76,"tiempo_en_cama":"10:12","eficiencia_sueno_pct":96},"leido":"2026-10-06 16:52","eficiencia_sueno_pct":94,"despierto":"0:29","ligero":"5:12","rem":"0:44","profundo":"1:39","perturbaciones":13,"consistencia_pct":53,"frecuencia_respiratoria":17.5,"latencia_sueno":"0:01"},"ultrahuman":{"hoy":{"fecha":"2026-10-06","sleep_index":83,"sueno_total":"7h 52m","tiempo_en_cama":"8h 15m","ventana_sueno":"23:50-08:00","profundo":"1h 34m","rem":"1h 59m","recovery":80,"fc_reposo_bpm":55,"hrv_ms":62,"hrv_7d_ms":67,"temp_piel_desviacion_c":0.44,"sincronizado":"2026-10-06 08:51"},"ayer":{"fecha":"2026-10-05","sleep_index":80,"sueno_total":"9h 11m","tiempo_en_cama":"9h 40m","eficiencia_sueno":92,"profundo":"1h 21m","rem":"2h 13m","recovery":79,"movement_index":66,"pasos":7780,"fc_reposo_bpm":58,"hrv_ms":71,"hrv_7d_ms":68,"temp_piel_desviacion_c":-0.36}},"withings":{"peso":{"fecha":"2026-10-06","hora":"08:18","peso_kg":136.2,"masa_grasa_kg":47.1},"peso_previo":{"fecha":"2026-10-05","hora":"08:04","peso_kg":138.4,"masa_grasa_kg":48.6},"presion":{"fecha":"2026-10-05","hora":"15:38-15:40","sistolica":147,"diastolica":87,"fc_bpm":[100,96]},"sueno":{"fecha":"2026-10-06","hora":"08:07","duracion":"7:40","puntuacion":85,"spo2_pct":94},"actividad_ayer":{"fecha":"2026-10-05","pasos":12854,"fc_media_bpm":88,"fc_noche_bpm":65},"spo2":{"fecha":"2026-10-06","hora":"08:07","spo2_pct":94,"nota":"durante el sueño"}},"notas":["Oura: la web fue retirada ('Oura on the Web has been retired', cloud.ouraring.com/retired). Sus datos solo estan en la app Oura. Sin datos de Oura.","Ultrahuman: el sitio sigue dando ERR_CONNECTION_CLOSED en la lectura de 16:52 (5 intentos; tambien fallo a las 09:59, 10:58, 11:56, 12:59, 13:53, 14:53 y 15:57); se conservan los ultimos datos validos leidos a las 08:51-08:56. Movement y pasos de hoy sin dato.","Withings: en la lectura de 16:52 la sesion sigue abierta pero la linea de tiempo se quedo cargando sin mostrar registros; se conservan los ultimos datos validos (peso 08:18 del 6 oct, presion del 5 oct)."]}; })();
+;(function(){ if (window.DASH_DATA) window.DASH_DATA.SALUD_HOY = {"fecha":"2026-10-06","leido_a":"2026-10-06 16:52 America/Merida","whoop":{"fecha":"2026-10-06","rendimiento_sueno_pct":81,"horas_dormidas":"7:35","horas_necesarias":"7:42","tiempo_en_cama":"8:04","recuperacion_pct":74,"hrv_ms":45,"fc_reposo_bpm":62,"strain":8.9,"previo":{"fecha":"2026-10-05","recuperacion_pct":82,"hrv_ms":49,"fc_reposo_bpm":66,"rendimiento_sueno_pct":76,"tiempo_en_cama":"10:12","eficiencia_sueno_pct":96},"leido":"2026-10-06 16:52","eficiencia_sueno_pct":94,"despierto":"0:29","ligero":"5:12","rem":"0:44","profundo":"1:39","perturbaciones":13,"consistencia_pct":53,"frecuencia_respiratoria":17.5,"latencia_sueno":"0:01"},"ultrahuman":{"hoy":{"fecha":"2026-10-06","sleep_index":83,"sueno_total":"7h 52m","tiempo_en_cama":"8h 15m","ventana_sueno":"23:50-08:00","profundo":"1h 34m","rem":"1h 59m","recovery":80,"fc_reposo_bpm":55,"hrv_ms":62,"hrv_7d_ms":67,"temp_piel_desviacion_c":0.44,"sincronizado":"2026-10-06 08:51"},"ayer":{"fecha":"2026-10-05","sleep_index":80,"sueno_total":"9h 11m","tiempo_en_cama":"9h 40m","eficiencia_sueno":92,"profundo":"1h 21m","rem":"2h 13m","recovery":79,"movement_index":66,"pasos":7780,"fc_reposo_bpm":58,"hrv_ms":71,"hrv_7d_ms":68,"temp_piel_desviacion_c":-0.36}},"withings":{"peso":{"fecha":"2026-10-06","hora":"08:18","peso_kg":136.2,"masa_grasa_kg":47.1},"peso_previo":{"fecha":"2026-10-05","hora":"08:04","peso_kg":138.4,"masa_grasa_kg":48.6},"presion":{"fecha":"2026-10-05","hora":"15:38-15:40","sistolica":147,"diastolica":87,"fc_bpm":[100,96]},"sueno":{"fecha":"2026-10-06","hora":"08:07","duracion":"7:40","puntuacion":85,"spo2_pct":94},"actividad_ayer":{"fecha":"2026-10-05","pasos":12854,"fc_media_bpm":88,"fc_noche_bpm":65},"spo2":{"fecha":"2026-10-06","hora":"08:07","spo2_pct":94,"nota":"durante el sueño"}},"notas":["Oura: la web fue retirada ('Oura on the Web has been retired', cloud.ouraring.com/retired). Sus datos solo estan en la app Oura. Sin datos de Oura.","Ultrahuman: el sitio sigue dando ERR_CONNECTION_CLOSED en la lectura de 16:52 (5 intentos; tambien fallo a las 09:59, 10:58, 11:56, 12:59, 13:53, 14:53 y 15:57); se conservan los ultimos datos validos leidos a las 08:51-08:56. Movement y pasos de hoy sin dato.","Withings: en la lectura de 16:52 la sesion sigue abierta pero la linea de tiempo se quedo cargando sin mostrar registros; se conservan los ultimos datos validos (peso 08:18 del 6 oct, presion del 5 oct).","Ronda de 17:31: el aviso llego tarde (17:31) y no alcanzo a releer los sitios antes de las 17:32; se conservan los datos leidos a las 16:52, cada uno con su fecha y hora real."]}; })();
 /*__DASH_DATA_END__*/
 </script>
 <script>
