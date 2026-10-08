@@ -507,11 +507,11 @@ const META = {
 };
 
 const SOLAR = {
-  fuente: "Luxpowertek · leído jue 8 oct, 10:27 AM",
-  leido: "10:27 AM",
-  hoy:  { generado: 13, consumido: 12.3, exportada: 10.7, descargada: 0, nota: "" },
+  fuente: "Luxpowertek · leído jue 8 oct, 1:07 PM",
+  leido: "1:07 PM",
+  hoy:  { generado: 23.8, consumido: 13.9, exportada: 19.9, descargada: 0, nota: "" },
   ayer: { generado: 56.6, consumido: 45.5 },
-  mesActual:   { nombre: "Octubre", dias: "1–8", gen: 396.8, cons: 369.2, exportada: 297.7, bateriaDescargada: 2.9 },
+  mesActual:   { nombre: "Octubre", dias: "1–8", gen: 407.6, cons: 370.8, exportada: 306.9, bateriaDescargada: 2.9 },
   mesAnterior: { nombre: "Septiembre", gen: 2161.4, cons: 1158.1, exportada: 1791.6 },
   porDia: [
     { dia: 1, gen: 72,   cons: 55.5 },
@@ -521,7 +521,7 @@ const SOLAR = {
     { dia: 5, gen: 54.3, cons: 56.2 },
     { dia: 6, gen: 56.2, cons: 39.2 },
     { dia: 7, gen: 56.6, cons: 45.5 },
-    { dia: 8, gen: 13,   cons: 12.3, enCurso: true }
+    { dia: 8, gen: 23.8, cons: 13.9, enCurso: true }
   ],
   bateria: 100
 };
@@ -684,7 +684,7 @@ const SUGERENCIAS = [
   { id:"s-1008-1300-areli", emo:"🏠", urg:"amarillo", txt:"A las 2:00 PM toca lo de los jueves con Arely: que suba en “Ahorro Areli” cuánto ahorra y cuánto se le paga, más la foto cada hora. Aprovecha para contestarle en Sweet home (“M abre” / “Hola” de las 10:46 AM y lo de las 3 owalas)." },
   { id:"s-1008-1300-trabajo", emo:"🧰", urg:"amarillo", txt:"Pendientes rápidos de trabajo: avisarle a Santiago su suspensión de 2 semanas (Fredy te lo pidió 10:35 AM), confirmar en VA CIRCUITO si la instalación de la Sra. Margarita Navarro es mañana, y recuerda que la nómina de Manufactura VAC es hoy hasta las 2:30 PM." },
   { id:"s-1008-1300-redes", emo:"🛒", urg:"amarillo", txt:"Saul espera las promos de Buen Fin (13–17 nov) y Black Friday (27 nov) para el jue 15 oct, y Rubén Aldana sigue esperando si VA toma el paquete de redes de $7,500. Aparta 30 min mañana para contestarles en REDES VA PRIVADO." },
-  { id:"s-1008-1300-dinero", emo:"💰", urg:"verde", txt:"Dinero chico por mover: transferirle $500 a Sara Julieta (rifa del Mayab), cobrarle a Marisol los $908 que le adelantaste y el anticipo de NOL (~$700, cena del jue 15). Ojo: hoy Anthropic te cobró $200 USD (≈ $3,627) del plan Max de Claude; si no lo usas, cancélalo antes del 8 nov." },
+  { id:"s-1008-1300-dinero", emo:"💰", urg:"verde", txt:"Dinero chico por mover: cobrarle a Marisol los $908 que le adelantaste y el anticipo de NOL (~$700, cena del jue 15). Ojo: hoy Anthropic te cobró $200 USD (≈ $3,627) del plan Max de Claude; si no lo usas, cancélalo antes del 8 nov." },
   { id:"s-1008-1300-salud", emo:"🩺", urg:"verde", txt:"Whoop (leído 1:02 PM): dormiste 8:18 h, recuperación 62% y HRV 41 ms, mejor que ayer (57%). Tu última presión fue alta (149/89 el 7 oct): tómate la pastilla, mídete hoy en la tarde y en la cena ve ligero de sal y alcohol. Withings ya se reconectó a la 1:06 PM pero hoy no hay pesaje, así que tu último peso sigue siendo 135.0 kg (7 oct): súbete a la báscula mañana en ayunas." }
 ];
 
@@ -1071,7 +1071,7 @@ const URGENTES = [
 ];
 
 /* ✅ HECHOS — ids ya procesados (por la rutina horaria o porque Mau tocó “Hecho”). No se pintan. */
-const HECHOS = ["r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8", "s-pdf", "u7", "r-plinio8", "w-dany", "w-vac", "w-angeles", "w-giovanni", "w-klar", "u9", "c-lizeth", "t-lizeth", "u11", "r-amexp", "v-amexp", "w-fernando", "s-herrajes", "w-yatziri", "r-mjbday", "t-freddy", "w-technsports-1007", "r-rhom", "r-plinio7", "w-ginna-1007", "r-leticia-1008", "r-chatarra-1008", "r-tortas", "w-leticia-1008", "u-1008-chatarra"];
+const HECHOS = ["w-sara-rifa", "r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8", "s-pdf", "u7", "r-plinio8", "w-dany", "w-vac", "w-angeles", "w-giovanni", "w-klar", "u9", "c-lizeth", "t-lizeth", "u11", "r-amexp", "v-amexp", "w-fernando", "s-herrajes", "w-yatziri", "r-mjbday", "t-freddy", "w-technsports-1007", "r-rhom", "r-plinio7", "w-ginna-1007", "r-leticia-1008", "r-chatarra-1008", "r-tortas", "w-leticia-1008", "u-1008-chatarra"];
 
 window.DASH_DATA = { HECHOS, META, SOLAR, RECORDATORIOS, CORREOS, WHATSAPP, SUGERENCIAS, SALUD, FINANZAS, SUSCRIPCIONES, PAQUETES, PAQUETES_NOTA, TRABAJO, EVENTOS, EVENTOS_NOTA, DOCUMENTOS, SEGURIDAD, URGENTES, CONTROL_SEP, TARJETAS_TC };
 })();
