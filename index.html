@@ -500,18 +500,18 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Jueves 8 de octubre de 2026",
-  updated: "jue 8 oct 2026, 2:43 PM",
+  updated: "jue 8 oct 2026, 4:46 PM",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
 };
 
 const SOLAR = {
-  fuente: "Luxpowertek · leído jue 8 oct, 2:26 PM",
-  leido: "2:26 PM",
-  hoy:  { generado: 32, consumido: 14.9, exportada: 26.8, descargada: 0, nota: "" },
-  ayer: { generado: 56.6, consumido: 45.5 },
-  mesActual:   { nombre: "Octubre", dias: "1–8", gen: 415.8, cons: 371.8, exportada: 313.8, bateriaDescargada: 2.9 },
+  fuente: "Luxpowertek · leído jue 8 oct, 4:44 PM",
+  leido: "4:44 PM",
+  hoy:  { generado: 40.6, consumido: 16.6, exportada: 33.9, descargada: 0, nota: "" },
+  ayer: { generado: 56.6, consumido: 48.4 },
+  mesActual:   { nombre: "Octubre", dias: "1–8", gen: 424.4, cons: 379.1, exportada: 320.9, bateriaDescargada: 2.9 },
   mesAnterior: { nombre: "Septiembre", gen: 2161.4, cons: 1158.1, exportada: 1791.6 },
   porDia: [
     { dia: 1, gen: 72,   cons: 55.5 },
@@ -519,9 +519,9 @@ const SOLAR = {
     { dia: 3, gen: 44.8, cons: 60.9 },
     { dia: 4, gen: 38.3, cons: 57.1 },
     { dia: 5, gen: 54.3, cons: 56.2 },
-    { dia: 6, gen: 56.2, cons: 39.2 },
-    { dia: 7, gen: 56.6, cons: 45.5 },
-    { dia: 8, gen: 32,   cons: 14.9, enCurso: true }
+    { dia: 6, gen: 56.2, cons: 41.9 },
+    { dia: 7, gen: 56.6, cons: 48.4 },
+    { dia: 8, gen: 40.6, cons: 16.6, enCurso: true }
   ],
   bateria: 100
 };
@@ -542,7 +542,7 @@ const RECORDATORIOS = [
   { id:"r-telcel",  dia:"Jue 8 oct",  hora:"9:00 AM",      txt:"Pagar Telcel — vence el sáb 10 oct (tu recordatorio de hoy 9:00 AM; monto s/d)", urg:"amarillo", fuente:"cal", link:CAL("dmhzNmxjNm51NWkzYWZ0ODBuaDcwb2RhdmNfMjAyNjEwMDhUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-eddie",   dia:"Jue 8 oct",  hora:"Todo el día",  txt:"Cumpleaños 65 del Dr. Eddie Manuel Mendicuti Loría 🎂 (aviso de MyHeritage, mié 7 oct)", urg:"amarillo", fuente:"MyHeritage" },
   { id:"r-tortas",  dia:"Jue 8 oct",  hora:"Todo el día",  txt:"Tortas René 🥖 (René: “Es el jueves lo de las tortas”, evento de su papá) — hoy", urg:"amarillo", fuente:"cal+nota", link:CAL("NTRzYnRqNTR0bnE2OWJpaGZlMWVhb3R1ODQgbWF1NTU4OEBt"), hasta:"2026-10-08T23:59:00-06:00" },
-  { id:"r-areli",   dia:"Jue 8 oct",  hora:"pendiente HOY", txt:"Arely (jueves): pedirle cuánto ahorra y cuánto se le paga + foto cada hora en “Ahorro Areli” — el recordatorio era a las 2:00 PM y aún no se ve hecho", urg:"amarillo", fuente:"cal+nota", link:CAL("ZDRuaW1rdDBtajFocjA3YjZpZjFmYW03ZGdfMjAyNjEwMDhUMjAwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-areli",   dia:"Jue 8 oct",  hora:"esperando", txt:"Arely: ya le pediste en “Ahorro Areli” (hoy 4:19 PM) cuánto ahorra y cuánto se le paga. Solo falta su respuesta y la foto cada hora", urg:"verde", fuente:"cal+nota", link:CAL("ZDRuaW1rdDBtajFocjA3YjZpZjFmYW03ZGdfMjAyNjEwMDhUMjAwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-diana",   dia:"Jue 8 oct",  hora:"8:00 PM",      txt:"Cena de cumpleaños de papá hoy 🍷 — hora aún sin fijar (Eddie propone 8:30 / 8 / 8:15 PM en el privado de la rueda; Manuel dijo “a la hora que digan”). Veronica preguntó si Galerías te queda de camino (sin respuesta). A Alex Santiago le dijiste 8:30 PM", urg:"amarillo", fuente:"cal+nota", link:CAL("dmxzdXJlZWF1cnYzdHVnZzJwZzhvYzQ3Nm8gbWF1NTU4OEBt"), hasta:"2026-10-08T23:59:00-06:00" },
     { id:"r-tiagaby-vie9", dia:"Vie 9 oct", hora:"Sin hora", txt:"Plan del viernes con Tía Gaby (quedaron el mié 7 oct, 12:10–12:13 PM: “Va” / “Perfecto”). Aprovecha para explicarle cómo quitar los avisos de WhatsApp en su reloj", urg:"verde", fuente:"nota" },
   { id:"r-yale-1010", dia:"Sáb 10 oct", hora:"2:00–9:00 AM", txt:"Yale Connect: mantenimiento programado con interrupciones temporales (correo del jue 8 oct; no dice si es hora de México). Ten a la mano la llave física", urg:"verde", fuente:"nota", link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY2w0oIAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem" },
@@ -556,7 +556,7 @@ const RECORDATORIOS = [
   { id:"r-unani",   dia:"Mié 14 oct", hora:"11:00 AM–1:00 PM", txt:"Curso Unani 🌿 — “Unani Paso a Paso: inicio del programa” (19:00 Madrid)", urg:"verde", fuente:"cal+nota", link:CAL("M3U4NmUwbW5vMjc1djVzNXZrc29ucGk5NTggbWF1NTU4OEBt") },
   { id:"r-open",    dia:"Jue 15 oct", hora:"9:00 AM",      txt:"Pagar TC Open (vence día 17) — saldo en hoja TC: $350.00", urg:"verde", fuente:"cal", link:CAL("NGc0ODdobzE5bTZhbWMwcDA5cDJpdWxrb2NfMjAyNjEwMTVUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-salv15",  dia:"Jue 15 oct", hora:"9:00 AM",      txt:"Cobrar renta a Salvador Jacobo", urg:"verde", fuente:"cal", link:CAL("ZXA4ZGZoMGdjZzRrNnF0djk1b3Z0ZWFtM2cgbWF1NTU4OEBt") },
-  { id:"r-nol-1015", dia:"Jue 15 oct", hora:"8:30 PM", txt:"Cena en NOL restaurante (C. 60 473, 55 y 53), mesa para 7, confirmación 832 (OpenTable, mié 7 oct, 5:03 PM). El restaurante pide un anticipo de $100 por persona (aprox. $700) para asegurar la mesa (WhatsApp mié 7 oct, 5:14 PM; sigue sin pagarse según la ronda de hoy 9:41 AM)", urg:"amarillo", fuente:"cal", link:CAL("bWNsYm5oNmNhY2oxbm5nZGg5Mmkza2hsZWsgbWF1NTU4OEBt") },
+  { id:"r-nol-1015", dia:"Jue 15 oct", hora:"8:30 PM", txt:"Cena en NOL restaurante (C. 60 473, 55 y 53), confirmación 832. El restaurante ya recibió el anticipo y la reserva está confirmada (menú degustación de 6 tiempos, $100 p/p). Falta confirmar cuántos van: OpenTable dice 7", urg:"verde", fuente:"cal", link:CAL("bWNsYm5oNmNhY2oxbm5nZGg5Mmkza2hsZWsgbWF1NTU4OEBt") },
   { id:"r-scotia19", dia:"Lun 19 oct", hora:"9:00 AM",      txt:"Pagar TC Scotiabank (vence día 21) — saldo en hoja TC: $2,536.00", urg:"verde", fuente:"cal", link:CAL("MHQxMmpkam04Zjl2bTV1cTFmN2ZoazFsNDRfMjAyNjEwMTlUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-gema",    dia:"Lun 19 oct", hora:"Todo el día",  txt:"Depósito a Gema Celeste (prometido)", urg:"verde", fuente:"cal", link:CAL("MTRuMmhmcnFuYnR0bTByYmhpbjIxb2ltNGcgbWF1NTU4OEBt") },
   { id:"r-tiagaby", dia:"Lun 19 oct", hora:"1:40 PM",      txt:"Cita del lun 19 oct, 1:40 PM que te pasó Tía Gaby por WhatsApp (ya está en tu calendario; el mensaje no dice de qué es la cita)", urg:"verde", fuente:"cal", link:CAL("cHZpN3R2M29pYmcxdHJ1b2FzZzNiN2RrdjAgbWF1NTU4OEBt") },
@@ -645,12 +645,15 @@ const WHATSAPP = [
   { id:"w-giovanni-diego-1008", urg:"rojo", whatsapp:{ chat:"Giovanni Herramax", verificado:true, nota:"chat 1:1" }, txt:"Giovanni Herramax: decirle a Diego dónde verse (tu oficina o la de René)", det:"Tras “Dile a Diego pf” (2:13 PM), Giovanni pregunta si se ven en tu oficina o en la de René (2:19 PM). Sin respuesta · ronda WhatsApp jue 8 oct, 2:14 PM" },
   { id:"w-arely-jueves-1008", urg:"rojo", whatsapp:{ chat:"Ahorro Areli", verificado:true, nota:"chat Ahorro Areli" }, txt:"Arely (jueves): pedirle cuánto ahorra y cuánto se le paga + foto cada hora", det:"Recordatorio del calendario a las 2:00 PM. También sigue el adelanto de sueldo $500 (lun) sin respuesta clara en el chat · ronda WhatsApp jue 8 oct, 2:14 PM" },
   { id:"w-nabile-penn-1008", urg:"verde", whatsapp:{ chat:"Ventas y promos HERRAMAX", verificado:true, nota:"grupo" }, txt:"Nabile: compartir la promo Pennsylvania con clientes", det:"Lo pidió en Ventas y promos HERRAMAX (ronda 2:14 PM). Sticker de Nabile ~2:09 PM · ronda WhatsApp jue 8 oct, 2:14 PM" },
+  { id:"w-rueda-1008", urg:"rojo", whatsapp:{ chat:"Viaje a San Francisco", verificado:true, nota:"grupo familiar" }, txt:"Cena de papá a las 8 PM: checar con el privado de la rueda que los admiten a esa hora", det:"Eddie te lo pidió a las 3:09 PM; Diana puede a las 8 y el grupo quedó “Nos vemos a las 8”. Aún no confirmas con el lugar · ronda WhatsApp jue 8 oct, 4:08 PM" },
+  { id:"w-vac-material-1008", urg:"amarillo", whatsapp:{ chat:"Manufactura VAC", verificado:true, nota:"grupo" }, txt:"Manufactura VAC: disputa de material entre Angeles y Jesús (Cumbres/brazos). Jesús debe pedirte autorización", det:"VAC (3:35 PM) puso la regla: no pasar material sin excepción y que Jesús te pida autorización a ti. Revisa también la foto “Pendientes de mañana” (4:08 PM) · ronda WhatsApp jue 8 oct, 4:08 PM" },
+  { id:"w-nol-comensales-1008", urg:"verde", whatsapp:{ chat:"Restaurante Nol", verificado:true, nota:"chat 1:1" }, txt:"Restaurante Nol: confirmar cuántos van el jue 15 oct, 8:30 PM (OpenTable dice 7) y a nombre de quién está la reserva", det:"Ya recibieron el anticipo y la reserva está OK (3:47–4:05 PM). Menú degustación: 6 tiempos, 5 platos y un postre (4:32 PM) · ronda WhatsApp jue 8 oct, 4:08 PM" },
 
   { id:"w-ginna-1008b", urg:"rojo", whatsapp:{ chat:"Ginna Can", verificado:true, nota:"chat 1:1" }, txt:"Ginna Can: decirle si alguien va a ir a montecristo o avisarle que no", det:"Le mandaste la foto del portón (10:20 AM); ella dijo “No ha ido nadie” y a las 12:03 PM preguntó si irán a Montecristo. Solo le contestaste “Gracias” (12:13) y luego “A ti” (12:20). Sigue sin respuesta clara · ronda WhatsApp jue 8 oct, 2:14 PM" },
   { id:"w-vero-1008", urg:"amarillo", whatsapp:{ chat:"Match Veronica Mendicuti", verificado:true, nota:"chat 1:1" }, txt:"Veronica: contestarle si Galerías te queda de camino o si llegas antes a la cena de papá", det:"Cumpleaños de papá: Eddie propone 8:30 / 8 / 8:15 PM en el privado de la rueda; Manuel (2:00 PM) “a la hora que digan”. Veronica preguntó a las 11:43 AM si Galerías te queda de camino — sin respuesta · ronda WhatsApp jue 8 oct, 2:14 PM" },
   { id:"w-eddie-1008", urg:"amarillo", whatsapp:{ chat:"Eddie Manuel Mendicuti", verificado:true, nota:"chat 1:1 (no se abrió)" }, txt:"Eddie Manuel Mendicuti: mensajes de hoy (cumple 65 🎂) + sticker ~1:06 PM", det:"Llegaron 3 mensajes a las 12:37 PM (no se abrieron en la ronda de 12:29); a la 1:06 PM solo sticker visible · ronda WhatsApp jue 8 oct, 2:14 PM" },
   { id:"w-fredy-1008", urg:"amarillo", whatsapp:{ chat:"Fredy Castillo", verificado:true, nota:"chat 1:1" }, txt:"Fredy Castillo: avisarle a Santiago que está suspendido 2 semanas", det:"Te lo pidió hoy 10:35 AM y le dijiste “enseguida”; sin novedad en la ronda de las 2:14 PM · ronda WhatsApp jue 8 oct, 2:14 PM" },
-  { id:"w-margarita-1008", urg:"amarillo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"grupo" }, txt:"VA CIRCUITO: confirmar instalación Sra. Margarita Navarro mañana + responder a Yatziri si el evo cotizado es como el de Jesús Gómez (Xcanatún)", det:"Yatziri (11:48 AM) quiere la instalación mañana (espejo 1.80 m); a la 1:31 PM pregunta por el evo vs Jesús Gómez Xcanatún; Angeles pidió agenda de mañana (ya respondieron “Claro”). Tú no has escrito · ronda WhatsApp jue 8 oct, 2:14 PM" },
+  { id:"w-margarita-1008", urg:"amarillo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"grupo" }, txt:"VA CIRCUITO: confirmar si sigue mañana la instalación de la Sra. Margarita Navarro y contestarle a Yatziri lo del evo (vs Jesús Gómez, Xcanatún)", det:"Para mañana Angeles tiene a don Jesús Gómez (inquilina) a las 10 AM. Lo de Margarita Navarro y el evo no reapareció en la ronda de las 4:08 PM; tú no has escrito · ronda WhatsApp jue 8 oct, 4:08 PM" },
       { id:"w-plata-1008", urg:"verde", whatsapp:{ chat:"Plata", verificado:true, nota:"cuenta oficial" }, txt:"Plata: confirmar que los 2 códigos de acceso de hoy (9:37 y 9:38 AM) los pediste tú", det:"Y confirmar que quedó pagado el mínimo de $1,350 de la Plata Card que venció el 22 sep (tu hoja TC marca Plata en $0) · ronda WhatsApp jue 8 oct, 12:29 PM" },
   { id:"w-rappi-1008", urg:"verde", whatsapp:{ chat:"RappiCard", verificado:true, nota:"cuenta oficial" }, txt:"RappiCard: confirmar los pagos de $963 y $1,158", det:"Avisos del 10 y 29 sep (tu hoja TC marca Rappi en $0) · ronda WhatsApp jue 8 oct, 12:29 PM" },
   { id:"w-impresion-1008", urg:"verde", whatsapp:{ chat:"+52 1 999 172 9282", verificado:true, nota:"número sin nombre" }, txt:"+52 1 999 172 9282: lo de la impresión quedó sin cierre", det:"Te escribió “Fui, pero no salió cuando pasé” · ronda WhatsApp jue 8 oct, 12:29 PM" },
@@ -688,14 +691,13 @@ const WHATSAPP = [
 
 /* 4) SUGERENCIAS */
 const SUGERENCIAS = [
-  { id:"s-1008-1448-citij", emo:"💳", urg:"rojo", txt:"Paga hoy la Citibanamex de Juan: $5,350 vencen HOY (hoja TC ~2:42 PM sigue en $5,350). Aprovecha y deja listo Telcel (vence sáb 10, monto s/d)." },
-  { id:"s-1008-1448-giovanni", emo:"🧰", urg:"rojo", txt:"Contéstale a Giovanni (desde las 2:19 PM): dile a Diego si se ven en tu oficina o en la de René." },
-  { id:"s-1008-1448-ginna", emo:"🏚️", urg:"rojo", txt:"Ginna Can sigue esperando desde las 12:03 PM si alguien va a Montecristo. Si nadie va, avísale ya para que organice." },
-  { id:"s-1008-1448-cena", emo:"🎂", urg:"amarillo", txt:"Antes de la cena de papá: fija la hora con el grupo Viaje a San Francisco (8 / 8:15 / 8:30 PM, privado de la rueda), contéstale a Veronica lo de Galerías, corrígele a Alex Santiago y felicita a Eddie (65) / tío Wily si aún no." },
-  { id:"s-1008-1448-arely", emo:"🏠", urg:"rojo", txt:"Hoy es jueves: en “Ahorro Areli” pídele a Arely cuánto ahorra, cuánto se le paga y la foto cada hora (el recordatorio era a las 2:00 PM). Contéstale también en Sweet home (“M abre” / owalas)." },
-  { id:"s-1008-1448-trabajo", emo:"📋", urg:"amarillo", txt:"Trabajo rápido: confirma en VA CIRCUITO la instalación de Margarita Navarro mañana y el evo vs Jesús Gómez; avisa a Santiago su suspensión (Fredy, 10:35 AM); Saul/Rubén siguen esperando Buen Fin." },
-  { id:"s-1008-1448-dinero", emo:"💰", urg:"verde", txt:"Dinero chico: cobra a Marisol los $908, paga el anticipo de NOL (~$700, jue 15) y revisa el cargo de Anthropic $200 USD (≈ $3,627) de hoy si no vas a usar Claude Max." },
-  { id:"s-1008-1448-salud", emo:"🩺", urg:"verde", txt:"Whoop hoy: sueño 8:18 h / recuperación 62% / HRV 41 ms. Presión reciente 149/89 (7 oct): tómate la pastilla, mídete esta tarde y en la cena ve ligero de sal/alcohol. Pésate mañana en ayunas (último peso 135.0 kg el 7 oct). Withings mandó código de login a la 1:04 PM — reconecta sin publicar el código." }
+  { id:"s-1008-1645-citij", emo:"💳", urg:"rojo", txt:"Si aún no lo hiciste, paga hoy la Citibanamex de Juan: $5,350 vencen HOY (hoja TC ~2:42 PM). Telcel vence el sáb 10 (monto s/d)." },
+  { id:"s-1008-1645-rueda", emo:"🎂", urg:"rojo", txt:"Antes de las 8 PM llama al privado de la rueda y confirma que los reciben a las 8: Eddie te lo pidió a las 3:09 PM y el grupo ya quedó “nos vemos a las 8”." },
+  { id:"s-1008-1645-vac", emo:"🏭", urg:"amarillo", txt:"Manufactura VAC: Jesús debe pedirte autorización para el material que disputa con Angeles (regla de VAC, 3:35 PM: no pasar material sin excepción). Decide y revisa la foto “Pendientes de mañana” (4:08 PM)." },
+  { id:"s-1008-1645-manana", emo:"📋", urg:"amarillo", txt:"Mañana vie 9: don Jesús Gómez ~10 AM (VA CIRCUITO, Angeles); confirma si sigue la instalación de Margarita Navarro; plan con Tía Gaby (explícale cómo quitar los avisos de WhatsApp del reloj). Saul quiere arrancar Buen Fin ~15 oct y Rubén espera respuesta por los $7,500." },
+  { id:"s-1008-1645-nol", emo:"🍽️", urg:"verde", txt:"NOL ya recibió el anticipo y la reserva del jue 15, 8:30 PM está OK (6 tiempos). Solo confirma cuántos van (OpenTable dice 7) y a nombre de quién." },
+  { id:"s-1008-1645-dinero", emo:"💰", urg:"verde", txt:"Dinero chico: cobra a Marisol los $908 que le adelantaste y revisa el cargo de Anthropic $200 USD (≈ $3,627) de hoy si no vas a usar Claude Max." },
+  { id:"s-1008-1645-salud", emo:"🩺", urg:"verde", txt:"Whoop hoy: sueño 8:18 h, recuperación 62%, HRV 41 ms, esfuerzo 5.8 (2:31 PM). Última presión 149/89 (7 oct): mídela esta tarde y en la cena ve ligero de sal y alcohol. Pésate mañana en ayunas (último: 135.0 kg, 7 oct 9:25 AM)." }
 ];
 
 /* 5) SALUD — base histórica. Los datos del día vienen de salud_hoy.json (lo escribe el agente Personal cada hora a los :48);
@@ -1025,14 +1027,14 @@ const TRABAJO = [
 
 /* ✈️ VIAJES Y EVENTOS */
 const EVENTOS = [
-  { id:"e-diana",  urg:"amarillo", cuando:"HOY jue 8 oct · 8:00 PM", txt:"Cumpleaños de papá 🍷 — 8:00 PM, salón de la rueda, ~14 personas (Diana confirmó 8:00 PM; a Alex Santiago le dijiste 8:30)", hasta:"2026-10-08T23:59:00-06:00", link:null, src:"tu lista" },
+  { id:"e-diana",  urg:"amarillo", cuando:"HOY jue 8 oct · 8:00 PM", txt:"Cumpleaños de papá 🍷 — quedó a las 8:00 PM en el privado de la rueda (~14 personas). Eddie te pidió (3:09 PM) checar que el lugar los admita a esa hora", hasta:"2026-10-08T23:59:00-06:00", link:null, src:"tu lista" },
   { id:"e-technsports-1010", urg:"amarillo", cuando:"Sáb 10 oct · 12:00–12:30 PM", txt:"Technsports: escaneo de seguimiento del Reto Hábitos (Plaza 333 Local #5) — invitación aceptada en tu calendario de Hotmail (jue 8 oct, 9:26 AM)", link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY0kz0UAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem", src:"Outlook" },
   { id:"e-unani",  urg:"amarillo", cuando:"Mié 14 oct · 11:00 AM–1:00 PM", txt:"Curso Unani: “Unani Paso a Paso — inicio del programa” (19:00 Madrid)", link:CAL("M3U4NmUwbW5vMjc1djVzNXZrc29ucGk5NTggbWF1NTU4OEBt"), link2:"https://docs.google.com/document/d/1v8VI65r-YJ_CPXTddMt3o2PX9bk3VrdwEMs1PWJ-Owo/edit", link2txt:"bitácora", src:"Calendar" },
-  { id:"e-nol-1015", urg:"amarillo", cuando:"Jue 15 oct · 8:30 PM", txt:"Cena en NOL restaurante, mesa para 7 (confirmación 832) — falta el anticipo de $100 por persona", link:CAL("bWNsYm5oNmNhY2oxbm5nZGg5Mmkza2hsZWsgbWF1NTU4OEBt"), src:"Calendar" },
+  { id:"e-nol-1015", urg:"verde", cuando:"Jue 15 oct · 8:30 PM", txt:"Cena en NOL restaurante (confirmación 832): anticipo ya recibido y reserva confirmada; falta confirmar comensales (OpenTable dice 7)", link:CAL("bWNsYm5oNmNhY2oxbm5nZGg5Mmkza2hsZWsgbWF1NTU4OEBt"), src:"Calendar" },
   { id:"e-unani19",urg:"verde", cuando:"Lun 19 oct · 11:00 AM", txt:"Unani — clase dinámica", link:CAL("ZzBxcGw5YTRmZzNxbGh2bGFrajc3ZmUwM3MgbWF1NTU4OEBt"), src:"Calendar" },
   { id:"e-mteresa",urg:"verde", cuando:"Mié 11 nov", txt:"Taller con María Teresa", link:null, src:"tu lista" }
 ];
-const EVENTOS_NOTA = "Sin vuelos ni hoteles próximos en correo o calendario; la única reserva es NOL el jue 15 oct (arriba). Cumpleaños hoy: Dr. Eddie Manuel Mendicuti Loría (65, MyHeritage) y tío Wily (FAMILIA/Club privee; Andrea ya lo felicitó). Cena de papá hoy: hora aún por fijar (8–8:30 PM, privado de la rueda). Amazon entregó iBesky banda de nailón ~1:15 PM.";
+const EVENTOS_NOTA = "Sin vuelos ni hoteles próximos en correo o calendario; la única reserva es NOL el jue 15 oct (arriba, anticipo ya recibido). Cumpleaños hoy: Dr. Eddie Manuel Mendicuti Loría (65, MyHeritage) y tío Wily (FAMILIA/Club privee). Cena de papá hoy a las 8:00 PM en el privado de la rueda. Amazon entregó iBesky banda de nailón ~1:15 PM.";
 
 /* 📄 DOCUMENTOS RECIENTES (Google Drive) */
 const DOCUMENTOS = [
@@ -1073,7 +1075,7 @@ const URGENTES = [
   { id:"u-1008-ginna", txt:"Ginna Can espera desde las 12:03 PM: dile si alguien va a Montecristo o avísale que no", link:null, sec:"whatsapp" },
   { id:"u-1008-citij", txt:"Citibanamex (Juan): pagar $5,350 HOY (vence jue 8 oct, sigue pendiente)", link:TC_SHEET, sec:"finanzas" },
   { id:"u-1008-arely", txt:"Arely (jueves): pedirle ahorro + pago + foto en “Ahorro Areli” (recordatorio 2:00 PM)", link:null, sec:"whatsapp" },
-  { id:"u-1008-cena", txt:"Fijar hora de la cena de papá (8 / 8:15 / 8:30) y contestar a Veronica lo de Galerías", link:null, sec:"recordatorios" },
+  { id:"u-1008-cena", txt:"Cena de papá 8 PM: confirma con el privado de la rueda que los admiten a las 8 (Eddie te lo pidió 3:09 PM)", link:null, sec:"whatsapp" },
   { id:"u1", txt:"Google: alguien usó tu contraseña (intento bloqueado 30 sep) → cámbiala", gmail:GM("1a0f424223c2aa13","1a0f424223c2aa13"), link:G("1a0f424223c2aa13"), sec:"seguridad" },
   { id:"u11", txt:"Platinum AMEX: pagar $36,700 el mié 7 oct o antes (aún no pagada; la hoja dice $0)", link:TC_SHEET, sec:"finanzas" },
   { id:"u5", txt:"NR Finance: 4 cargos rechazados en Santander *302 → deposita o paga directo", gmail:GM("1a0fe725c33494d2","1a0fe725c33494d2"), link:G("1a0fe725c33494d2"), sec:"finanzas" },
@@ -1082,7 +1084,7 @@ const URGENTES = [
 ];
 
 /* ✅ HECHOS — ids ya procesados (por la rutina horaria o porque Mau tocó “Hecho”). No se pintan. */
-const HECHOS = ["w-sara-rifa", "r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8", "s-pdf", "u7", "r-plinio8", "w-dany", "w-vac", "w-angeles", "w-giovanni", "w-klar", "u9", "c-lizeth", "t-lizeth", "u11", "r-amexp", "v-amexp", "w-fernando", "s-herrajes", "w-yatziri", "r-mjbday", "t-freddy", "w-technsports-1007", "r-rhom", "r-plinio7", "w-ginna-1007", "r-leticia-1008", "r-chatarra-1008", "r-tortas", "w-leticia-1008", "u-1008-chatarra"];
+const HECHOS = ["w-sara-rifa", "r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8", "s-pdf", "u7", "r-plinio8", "w-dany", "w-vac", "w-angeles", "w-giovanni", "w-klar", "u9", "c-lizeth", "t-lizeth", "u11", "r-amexp", "v-amexp", "w-fernando", "s-herrajes", "w-yatziri", "r-mjbday", "t-freddy", "w-technsports-1007", "r-rhom", "r-plinio7", "w-ginna-1007", "r-leticia-1008", "r-chatarra-1008", "r-tortas", "w-leticia-1008", "u-1008-chatarra", "c-withings-1008", "w-giovanni-diego-1008", "w-musa", "w-memorae", "w-jenny-predial-1007", "w-sweet-owalas-1007", "w-arely-jueves-1008", "w-ginna-1008b", "w-vero-1008", "w-eddie-1008", "w-fredy-1008", "w-plata-1008", "w-rappi-1008", "w-impresion-1008", "w-josue-1007", "w-miriam", "w-alex-1007b", "w-yatziri-josue-1007", "w-vac-espejo-1007", "w-nol-1007", "c-amex6007", "u-1008-giovanni", "u-1008-ginna", "r-eddie", "r-diana", "c-amz-ibesky-1008", "c-amzreemb-1007", "c-apple-1007", "u-1008-arely"];
 
 window.DASH_DATA = { HECHOS, META, SOLAR, RECORDATORIOS, CORREOS, WHATSAPP, SUGERENCIAS, SALUD, FINANZAS, SUSCRIPCIONES, PAQUETES, PAQUETES_NOTA, TRABAJO, EVENTOS, EVENTOS_NOTA, DOCUMENTOS, SEGURIDAD, URGENTES, CONTROL_SEP, TARJETAS_TC };
 })();
