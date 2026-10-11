@@ -500,7 +500,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Domingo 11 de octubre de 2026",
-  updated: "dom 11 oct 2026, 8:42 AM (paneles; tablero completo 7:52 AM; correos y calendario revisados 7:50 AM; WhatsApp con la ronda del sáb 10 oct, 9:22 PM (la primera de hoy es a las 8:22 AM); hoja TC sin cambios desde sáb 10 oct, 10:22 AM; Control de Gastos de octubre sin cambios desde mar 6 oct; salud: archivo de Personal 7:42 AM con Whoop del sáb 10, 10:36 PM y Ultrahuman 9:37 PM (los datos de hoy aún no sincronizan); Withings con sesión cerrada, último peso vie 9 oct)",
+  updated: "dom 11 oct 2026, 8:57 AM (tablero completo: correos revisados 8:55 AM, WhatsApp con la ronda de 8:27 AM; paneles 8:42 AM; calendario revisado 7:50 AM; hoja TC sin cambios desde sáb 10 oct, 10:22 AM; Control de Gastos de octubre sin cambios desde mar 6 oct; salud: archivo de Personal 8:38 AM con Whoop del sáb 10, 10:36 PM y Ultrahuman 9:37 PM (los datos de hoy aún no sincronizan); Withings con sesión cerrada, último peso vie 9 oct)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -540,7 +540,7 @@ const CAL = e  => "https://www.google.com/calendar/event?eid=" + e + "&ctz=Ameri
 const TC_SHEET = "https://docs.google.com/spreadsheets/d/1Dro8qc3SM1SRV93KK0NRl4APLwNyNUEYJHVjCZuSRwM/edit";
 const RECORDATORIOS = [
   { id:"r-citij-1008", dia:"Jue 8 oct", hora:"vencido jue 8", txt:"Citibanamex (Juan) $5,350 — marcada Hecho (pagada) vie 9 oct, 12:45 PM", urg:"rojo", fuente:"nota", link:TC_SHEET },
-  { id:"r-areli-1010",   dia:"Sáb 10 oct",  hora:"HOY", txt:"Hablar con Arely (quedaron en hablar hoy): ayer vie 9 se fue antes porque no se sentía bien. En “Ahorro Areli” solo mandó una foto (vie 9, 3:21 PM) sin montos de ahorro y pago; se los pediste el jue 8, 4:19 PM", urg:"amarillo", fuente:"cal+nota", link:CAL("ZDRuaW1rdDBtajFocjA3YjZpZjFmYW03ZGdfMjAyNjEwMDhUMjAwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-areli-1010",   dia:"Sáb 10 oct",  hora:"ayer, sigue pendiente", txt:"Hablar con Arely (quedaron en hablar hoy): ayer vie 9 se fue antes porque no se sentía bien. En “Ahorro Areli” solo mandó una foto (vie 9, 3:21 PM) sin montos de ahorro y pago; se los pediste el jue 8, 4:19 PM", urg:"amarillo", fuente:"cal+nota", link:CAL("ZDRuaW1rdDBtajFocjA3YjZpZjFmYW03ZGdfMjAyNjEwMDhUMjAwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-ricardo-1011", dia:"Dom 11 oct", hora:"HOY · todo el día", txt:"Cumpleaños de Ricardo Alanis (aviso de tu calendario de Hotmail)", urg:"verde", fuente:"cal" },
   { id:"r-plat",    dia:"Dom 11 oct", hora:"HOY 9:00 AM",      txt:"Pagar TC Platinum (vence mar 13) — saldo en tu hoja TC: $10,300.00", urg:"amarillo", fuente:"cal", link:CAL("cGU3YnE5MW52dTFrOW40ajZrZmwzdHM0cDBfMjAyNjEwMTFUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-telmex",  dia:"Lun 26 oct", hora:"Fecha límite",          txt:"Pagar Telmex — ya llegó el recibo de octubre (mar 6 oct, 6:44 PM): saldo anterior $1,402.94 sin pago registrado; límite según el recibo: lun 26 oct", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") },
@@ -682,9 +682,11 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-hades-talla-1011", urg:"amarillo", whatsapp:{ chat:"Hades y Mauricio", verificado:true, nota:"chat 1:1" }, txt:"Hades te pregunta qué talla de la bolsa necesitas: 38 cm o 32 cm (espera desde las 12:15 AM)", det:"A las 12:14 AM contestó “no” a una de tus fotos (las fotos solo se ven en tu teléfono) · ronda WA dom 11 oct 8:27 AM" },
+  { id:"w-tesla-app-1011", urg:"verde", whatsapp:{ chat:"Tesla", verificado:true, nota:"cuenta oficial" }, txt:"Tesla: 3 avisos de mensaje nuevo en la app (4:20, 6:20 y 6:21 AM); revisa la app de Tesla (el mensaje no se ve en WhatsApp)", det:"Puede ser lo de la renovación de FSD que también llegó a tu Hotmail · ronda WA dom 11 oct 8:27 AM" },
   { id:"w-sweet-despensa-1010", urg:"verde", whatsapp:{ chat:"Sweet home", verificado:true, nota:"grupo" }, txt:"Sweet home: Arely avisó (3:39 PM) que de despensa solo faltan tortillas y bolsas grandes de basura", det:"Arely salió a las 3:42 PM · ronda WA sáb 10 oct 5:24 PM" },
   { id:"w-michael-llamada-1010", urg:"rojo", whatsapp:{ chat:"Michael Aluminiero Canadiense", verificado:true, nota:"chat 1:1" }, txt:"Michael (aluminiero canadiense): ya quedaron en hablar el lunes 12 oct; falta fijar la HORA de la llamada y agendarla", det:"A las 7:30 PM le contestaste “Monday is perfect”; falta la hora · ronda WA sáb 10 oct 8:23 PM" },
-  { id:"w-kanan-sensor-1010", urg:"amarillo", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"Mau y Juan: Juan pregunta (8:21 PM) si desactiva el sensor de la entrada principal de la alarma; no le has contestado", det:"Kanan avisó a las 8:21 PM que se activó el sensor de la entrada; le dijiste que era el viento y ya quedó desarmado. El sáb 10 hubo 3 activaciones de ese sensor (8:15 AM, 9:53 AM y 8:21 PM) · ronda WA sáb 10 oct 8:23 PM" },
+  { id:"w-kanan-sensor-1010", urg:"amarillo", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"Mau y Juan: Juan pregunta (8:21 PM) si desactiva el sensor de la entrada principal de la alarma; no le has contestado", det:"Kanan avisó a las 8:21 PM que se activó el sensor de la entrada; le dijiste que era el viento y ya quedó desarmado. El sáb 10 hubo 3 activaciones de ese sensor (8:15 AM, 9:53 AM y 8:21 PM). Juan escribió a las 11:27 PM y le mandaste un mensaje a las 6:38 AM, pero lo del sensor sigue sin respuesta · ronda WA dom 11 oct 8:27 AM" },
   { id:"w-erika-arely-1010", urg:"amarillo", whatsapp:{ chat:"Erika Lopez Gener", verificado:true, nota:"chat 1:1" }, txt:"Erika Lopez Gener: platicaron de Arely (algo personal que supo el sáb 10); Erika le dijo que te buscara y aún no lo ha hecho. Quedaron en esperar; mantente pendiente por si te busca", det:"Mensajes 3:00–3:19 PM; Arely tiene terapia el lunes 4:30 PM. Un sticker (3:17) y un archivo (3:18) solo se ven en tu teléfono · ronda WA sáb 10 oct 3:31 PM" },
   { id:"w-mauyjuan-papi-1010", urg:"verde", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"Mau y Juan: le preguntaste a Juan a las 3:16 PM “¿Ya llegó tu papi?” y no ha contestado", det:"La foto de las 2:28 PM era comida, ya no queda nada de eso · ronda WA sáb 10 oct 3:31 PM" },
   { id:"w-ortopedia-lun-1010", urg:"amarillo", whatsapp:{ chat:"Soluciones En Ortopedia", verificado:true, nota:"chat 1:1" }, txt:"Soluciones En Ortopedia: confirmar si aceptas mover el seguimiento al mar 20 oct, 9:30 AM (en vez del lun 12, 10:00 AM)", det:"Te lo ofrecieron a las 10:59 AM, sin respuesta tuya · ronda WA sáb 10 oct 11:30 AM" },
@@ -734,14 +736,14 @@ const WHATSAPP = [
 
 /* 4) SUGERENCIAS */
 const SUGERENCIAS = [
-  { id:"s-1011-0752-plat", emo:"💳", urg:"rojo", txt:"Hoy a las 9:00 AM toca pagar la TC Platinum: $10,300 según tu hoja TC (vence el mar 13 oct)." },
-  { id:"s-1011-0752-sueno", emo:"😴", urg:"amarillo", txt:"El sáb 10 Whoop marcó recuperación de 4% (HRV 32, FC en reposo 72) tras dormir 6:01 h de 7:35; hoy domingo tómalo con calma y acuéstate temprano." },
-  { id:"s-1011-0752-michael", emo:"🤝", urg:"amarillo", txt:"Mañana lun 12 es la llamada con Michael y aún no le mandas la hora; mándasela hoy y agéndala en tu calendario." },
-  { id:"s-1011-0752-ortopedia", emo:"🩺", urg:"amarillo", txt:"Tu seguimiento en Star Médica sigue para mañana lun 12, 10:00 AM: contéstale hoy a Soluciones En Ortopedia si aceptas moverlo al mar 20 oct, 9:30 AM." },
-  { id:"s-1011-0752-meta", emo:"🔐", urg:"amarillo", txt:"Anoche (sáb 10, 9:25–9:31 PM) hubo un inicio de sesión nuevo y un restablecimiento de fábrica de un dispositivo Meta en la cuenta Casa; si no fuiste tú, cambia la contraseña de Meta." },
-  { id:"s-1011-0752-xreal", emo:"🕶️", urg:"verde", txt:"XREAL te contestó: restablece la contraseña con mau5588@hotmail.com y aplica tu Founder Pass en el checkout de AURA; si no aparece, compra y mándales el número de pedido." },
-  { id:"s-1011-0752-sensor", emo:"🚨", urg:"verde", txt:"Juan te preguntó el sáb 10, 8:21 PM si desactiva el sensor de la entrada principal (se activó 3 veces por el viento); contéstale." },
-  { id:"s-1011-0752-fsd", emo:"🚗", urg:"verde", txt:"La suscripción de Full Self-Driving de Tesla se renueva sola en 5 días; decide si la cancelas antes." }
+  { id:"s-1011-0857-plat", emo:"💳", urg:"rojo", txt:"Hoy a las 9:00 AM toca pagar la TC Platinum: $10,300 según tu hoja TC (vence el mar 13 oct). Memorae también te lo recordó a las 8:38 AM." },
+  { id:"s-1011-0857-michael", emo:"🤝", urg:"amarillo", txt:"Mañana lun 12 es la llamada con Michael y aún no le mandas la hora; mándasela hoy y agéndala en tu calendario." },
+  { id:"s-1011-0857-ortopedia", emo:"🩺", urg:"amarillo", txt:"Tu seguimiento en Star Médica sigue para mañana lun 12, 10:00 AM: contéstale hoy a Soluciones En Ortopedia si aceptas moverlo al mar 20 oct, 9:30 AM." },
+  { id:"s-1011-0857-hades", emo:"👜", urg:"amarillo", txt:"Hades espera desde las 12:15 AM que le digas la talla de la bolsa: 38 cm o 32 cm." },
+  { id:"s-1011-0857-sueno", emo:"😴", urg:"amarillo", txt:"El sáb 10 Whoop marcó recuperación de 4% (HRV 32, FC en reposo 72) tras dormir 6:01 h de 7:35; hoy domingo tómalo con calma y acuéstate temprano." },
+  { id:"s-1011-0857-sensor", emo:"🚨", urg:"verde", txt:"Juan te preguntó el sáb 10, 8:21 PM si desactiva el sensor de la entrada principal (se activó 3 veces por el viento); sigue sin respuesta." },
+  { id:"s-1011-0857-meta", emo:"🔐", urg:"verde", txt:"Anoche (sáb 10, 9:25–9:31 PM) hubo un inicio de sesión nuevo y un restablecimiento de fábrica de un dispositivo Meta en la cuenta Casa; si no fuiste tú, cambia la contraseña de Meta." },
+  { id:"s-1011-0857-tesla", emo:"🚗", urg:"verde", txt:"Tesla te dejó 3 avisos en la app esta madrugada y tu suscripción de FSD se renueva sola en 5 días; revisa la app y decide si la cancelas." }
 ];
 
 /* 5) SALUD — base histórica. Los datos del día vienen de salud_hoy.json (lo escribe el agente Personal cada hora a los :48);
@@ -1103,6 +1105,7 @@ const DOCUMENTOS = [
 
 /* 🔐 SEGURIDAD Y CUENTAS (se ignoró phishing: casinos, préstamos, MyChart falso, MyCloudStorage, Mercadona) */
 const SEGURIDAD = [
+  { id:"x-fb-proteccion-1011", urg:"verde", txt:"Facebook te pide activar la “protección avanzada” con una llave de acceso (a tu Hotmail)", det:"dom 11 oct, 8:39 AM · viene de security@facebookmail.com; actívala desde la app de Facebook, no desde enlaces", gmail:GM("1a12b67e335e788d","1a12b67e335e788d"), link:G("1a12b67e335e788d"), src:"Gmail" },
   { id:"x-casa-meta-1010", urg:"amarillo", txt:"Meta: inicio de sesión en un dispositivo nuevo y solicitud de restablecer de fábrica un dispositivo Meta (cuenta casamendicutiensenat@gmail.com)", det:"sáb 10 oct, 9:25–9:31 PM: código de acceso, aviso de inicio de sesión nuevo y “Factory Reset Notification”. Si fuiste tú (lentes/visor Meta), todo bien; si no, cambia la contraseña de Meta y revisa los dispositivos", gmail:GMCASA("1a129046f3415d51","1a129046f3415d51"), link:GCASA("1a129046f3415d51"), src:"Gmail Casa" },
   { id:"x-casa-macos-1010", urg:"verde", txt:"Google: alerta de seguridad de casamendicutiensenat@gmail.com — inicio de sesión desde macOS (copia a tu Hotmail de recuperación)", det:"sáb 10 oct, 10:02 AM · si fuiste tú en la Mac, todo bien; si no, revisa la actividad de esa cuenta", gmail:GM("1a1268d079cb32e3","1a1268d079cb32e3"), link:G("1a1268d079cb32e3"), src:"Gmail" },
   { id:"x-google", urg:"rojo", txt:"Google: alerta crítica — bloquearon un inicio de sesión con TU contraseña", det:"mié 30 sep · cambia la contraseña de Google y revisa la actividad de la cuenta", gmail:GM("1a0f424223c2aa13","1a0f424223c2aa13"), link:G("1a0f424223c2aa13"), src:"Gmail" },
