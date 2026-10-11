@@ -500,7 +500,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Sábado 10 de octubre de 2026",
-  updated: "sáb 10 oct 2026, 10:39 PM (paneles 10:39 PM; tablero completo 9:52 PM: correos y calendario revisados 9:50 PM, nuevo aviso de Meta en la cuenta Casa; WhatsApp con la ronda de las 9:22 PM; hoja TC sin cambios desde 10:22 AM; Control de Gastos de octubre sin cambios desde mar 6 oct; salud: archivo de Personal 9:37 PM con Whoop y Ultrahuman 9:37 PM; Withings con sesión cerrada, último peso vie 9 oct)",
+  updated: "sáb 10 oct 2026, 10:58 PM (paneles 10:39 PM; tablero completo 10:58 PM: correos y calendario revisados 10:57 PM, sin correos importantes nuevos desde las 9:50 PM; WhatsApp con la ronda de las 9:22 PM; hoja TC sin cambios desde 10:22 AM; Control de Gastos de octubre sin cambios desde mar 6 oct; salud: archivo de Personal 10:36 PM con Whoop 10:36 PM y Ultrahuman 9:37 PM; Withings con sesión cerrada, último peso vie 9 oct)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -721,14 +721,14 @@ const WHATSAPP = [
 
 /* 4) SUGERENCIAS */
 const SUGERENCIAS = [
-  { id:"s-1010-2148-sueno", emo:"😴", urg:"rojo", txt:"Whoop marca hoy recuperación de 4% (HRV 32, FC en reposo 72) tras dormir 6:01 h de 7:35; vete a dormir ya y mañana toma el día con calma." },
-  { id:"s-1010-2148-meta", emo:"🔐", urg:"amarillo", txt:"Entre 9:25 y 9:31 PM hubo un inicio de sesión nuevo y un restablecimiento de fábrica de un dispositivo Meta en la cuenta Casa; si no fuiste tú, cambia la contraseña de Meta." },
-  { id:"s-1010-2148-sensor", emo:"🚨", urg:"amarillo", txt:"El sensor de la entrada principal se activó 3 veces hoy por el viento; contéstale a Juan si lo desactivan esta noche (pregunta de las 8:21 PM sin respuesta)." },
-  { id:"s-1010-2148-michael", emo:"🤝", urg:"amarillo", txt:"Con Michael ya quedó el lunes 12; mándale la hora de la llamada y agéndala en tu calendario." },
-  { id:"s-1010-2148-ortopedia", emo:"🩺", urg:"amarillo", txt:"Contéstale a Soluciones En Ortopedia si aceptas mover el seguimiento al mar 20 oct a las 9:30 AM (esperan desde las 10:59 AM)." },
-  { id:"s-1010-2148-veronica", emo:"💳", urg:"amarillo", txt:"Veronica Mendicuti te mandó a las 7:21 PM los datos de una tarjeta sin explicar para qué; pregúntale y sugiérele borrar el mensaje." },
-  { id:"s-1010-2148-arely", emo:"🏠", urg:"amarillo", txt:"Si Arely no te buscó hoy (Erika te avisó), búscala mañana; siguen faltando sus montos de ahorro y pago en “Ahorro Areli”." },
-  { id:"s-1010-2148-manana", emo:"💳", urg:"amarillo", txt:"Mañana dom 11: a las 9:00 AM toca pagar la TC Platinum $10,300 (vence mar 13), se renueva Withings+ ($199) y es el cumpleaños de Ricardo Alanis." }
+  { id:"s-1010-2258-sueno", emo:"😴", urg:"rojo", txt:"Whoop marca hoy recuperación de 4% (HRV 32, FC en reposo 72) tras dormir 6:01 h de 7:35; vete a dormir ya y mañana toma el día con calma." },
+  { id:"s-1010-2258-meta", emo:"🔐", urg:"amarillo", txt:"Entre 9:25 y 9:31 PM hubo un inicio de sesión nuevo y un restablecimiento de fábrica de un dispositivo Meta en la cuenta Casa; si no fuiste tú, cambia la contraseña de Meta." },
+  { id:"s-1010-2258-sensor", emo:"🚨", urg:"amarillo", txt:"El sensor de la entrada principal se activó 3 veces hoy por el viento; contéstale a Juan si lo desactivan esta noche (pregunta de las 8:21 PM sin respuesta)." },
+  { id:"s-1010-2258-michael", emo:"🤝", urg:"amarillo", txt:"Con Michael ya quedó el lunes 12; mándale la hora de la llamada y agéndala en tu calendario." },
+  { id:"s-1010-2258-ortopedia", emo:"🩺", urg:"amarillo", txt:"Contéstale a Soluciones En Ortopedia si aceptas mover el seguimiento al mar 20 oct a las 9:30 AM (esperan desde las 10:59 AM)." },
+  { id:"s-1010-2258-veronica", emo:"💳", urg:"amarillo", txt:"Veronica Mendicuti te mandó a las 7:21 PM los datos de una tarjeta sin explicar para qué; pregúntale y sugiérele borrar el mensaje." },
+  { id:"s-1010-2258-arely", emo:"🏠", urg:"amarillo", txt:"Si Arely no te buscó hoy (Erika te avisó), búscala mañana; siguen faltando sus montos de ahorro y pago en “Ahorro Areli”." },
+  { id:"s-1010-2258-manana", emo:"💳", urg:"amarillo", txt:"Mañana dom 11: a las 9:00 AM toca pagar la TC Platinum $10,300 (vence mar 13), se renueva Withings+ ($199) y es el cumpleaños de Ricardo Alanis." }
 ];
 
 /* 5) SALUD — base histórica. Los datos del día vienen de salud_hoy.json (lo escribe el agente Personal cada hora a los :48);
