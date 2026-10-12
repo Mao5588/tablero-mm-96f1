@@ -500,7 +500,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Domingo 11 de octubre de 2026",
-  updated: "dom 11 oct 2026, 9:40 PM (paneles 9:40 PM; tablero completo 8:55 PM: correos Gmail/Hotmail/Casa revisados 8:52 PM, nuevo: aviso de renovación de Paramount+ por Prime Video; WhatsApp con la ronda de 8:29 PM; calendario revisado 8:52 PM, sin cambios; hoja TC sin cambios desde sáb 10 oct, 10:22 AM; Control de Gastos de octubre sin cambios desde mar 6 oct; salud: archivo de Personal 8:38 PM (Whoop de ~12:37 PM); Withings con sesión cerrada, último peso vie 9 oct)",
+  updated: "dom 11 oct 2026, 9:55 PM (tablero completo 9:55 PM: correos Gmail/Hotmail/Casa revisados 9:52 PM, nuevo: prueba gratis de Meta Horizon y reenvío de Viva del vuelo de Juan; WhatsApp con la ronda de 9:24 PM; calendario revisado 9:52 PM, sin cambios; hoja TC sin cambios desde sáb 10 oct, 10:22 AM; Control de Gastos de octubre sin cambios desde mar 6 oct; paneles 9:40 PM; salud: archivo de Personal 9:40 PM (Whoop de ~12:37 PM); Withings con sesión cerrada, último peso vie 9 oct)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -564,6 +564,14 @@ const RECORDATORIOS = [
 
 /* 2) CORREOS IMPORTANTES — solo lectura; links directos al mensaje */
 const CORREOS = [
+  { id:"c-meta-trial-1011", urg:"verde", de:"Meta Horizon", cuenta:"Hotmail (llega a Gmail)", cuando:"dom 11 oct, 9:09 PM",
+    asunto:"Your free trial is activated",
+    porque:"Se activó una prueba gratis de Meta Horizon; al terminar te inscriben solo en una suscripción de 7 días (el aviso no dice el precio). Si no la quieres, cancélala antes de que acabe la prueba. Sin leer.",
+    gmail:GM("1a12e1641d8145f2","1a12e1641d8145f2"), link:G("1a12e1641d8145f2") },
+  { id:"c-viva-juan-1011", urg:"verde", de:"boac.concorde@gmail.com (reenvío de Viva)", cuenta:"Gmail", cuando:"dom 11 oct, 8:44 PM",
+    asunto:"Fwd: Tu viaje a Ciudad de México (AICM) merece más espacio",
+    porque:"Te reenviaron “FYI” el correo de Viva (del 29 sep) del viaje de Juan a CDMX, reserva JILK6X: tarifa Zero, solo permite un artículo de 45×35×20 cm. Es informativo. Sin leer.",
+    gmail:GM("1a12dff2831a996e","1a12dff2831a996e"), link:G("1a12dff2831a996e") },
   { id:"c-paramount-pv-1011", urg:"verde", de:"Prime Video", cuenta:"Hotmail (llega a Gmail)", cuando:"dom 11 oct, 8:15 PM",
     asunto:"Tu suscripción a Paramount+ se renovará pronto",
     porque:"Paramount+ por Prime Video se renueva el dom 18 oct por $149.00 MXN al mes. Ojo: en la cuenta Casa ya tienes otro Paramount+ por Google Play (~$254 MXN, renueva 26 oct); si no necesitas los dos, cancela uno antes del 18. Sin leer.",
@@ -688,7 +696,8 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
-  { id:"w-juan-terminal-1011", urg:"verde", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"Mau y Juan: Juan va de camino a la terminal (4:50 PM) y quedó en llamarte cuando esté en el camión", det:"Ya le contestaste (4:50–4:57 PM: “Yo ya voy pa la casa”, “Si quieres llámame cuando ya estés en el camión”; él: “Obvio”). Nada pendiente de tu lado. A las 5:24 PM mandó dos cosas sin texto (solo se ven en tu teléfono) y a las 6:21 PM le mandaste el reporte solar · ronda WA dom 11 oct 7:32 PM" },
+  { id:"w-plinio-vpn-1011", urg:"amarillo", whatsapp:{ chat:"Plinio Lavin", verificado:true, nota:"chat 1:1" }, txt:"Plinio Lavin te pregunta (9:24 PM) si puede usar tu VPN; no le has contestado", det:"Antes (8:31 PM) te agradeció el aviso y dijo que lo ve mañana; a las 8:45 PM mandó algo que solo se ve en tu teléfono · ronda WA dom 11 oct 9:24 PM" },
+  { id:"w-juan-terminal-1011", urg:"verde", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"Mau y Juan: Juan ya está formado para el avión (9:11 PM) y te escribió “te fallé, llegué tarde a la fila del avión”", det:"Mandó 2 cosas sin texto (solo se ven en tu teléfono) y tú le mandaste un sticker a las 9:24 PM. Nada pendiente de tu lado · ronda WA dom 11 oct 9:24 PM" },
   { id:"w-nacho-1011", urg:"amarillo", whatsapp:{ chat:"Nacho", verificado:true, nota:"chat 1:1" }, txt:"Nacho te escribió “Hijito ¿dónde estás?” y “Buenas” (2:20 y 2:26 PM); no le has contestado", det:"Sin respuesta tuya; espera desde las 2:20 PM (sin mensajes nuevos de Nacho después de las 2:26 PM) · ronda WA dom 11 oct 7:32 PM" },
   { id:"w-hades-colores-1011", urg:"verde", whatsapp:{ chat:"Hades y Mauricio", verificado:true, nota:"chat 1:1" }, txt:"Hades: ya le dijiste la talla (medium) y le preguntaste qué colores tiene; ahora esperas su respuesta (desde las 2:21 PM)", det:"Le contestaste 2:20–2:21 PM “Yes”, “In medium” y “WhatsApp colors you have?”. Las fotos citadas solo se ven en tu teléfono · ronda WA dom 11 oct 7:32 PM" },
   { id:"w-tesla-app-1011", urg:"verde", whatsapp:{ chat:"Tesla", verificado:true, nota:"cuenta oficial" }, txt:"Tesla: 3 avisos de mensaje nuevo en la app (4:20, 6:20 y 6:21 AM); revisa la app de Tesla (el mensaje no se ve en WhatsApp)", det:"Puede ser lo de la renovación de FSD que también llegó a tu Hotmail · sigue igual en ronda WA dom 11 oct 7:32 PM" },
@@ -744,14 +753,14 @@ const WHATSAPP = [
 
 /* 4) SUGERENCIAS */
 const SUGERENCIAS = [
-  { id:"s-1011-2055-plat", emo:"💳", urg:"rojo", txt:"La TC Platinum sigue pendiente: $10,300 según tu hoja TC y vence el mar 13 oct (el aviso era hoy 9:00 AM). Si puedes, págala mañana temprano." },
-  { id:"s-1011-2055-michael", emo:"🤝", urg:"amarillo", txt:"La llamada con Michael es mañana lun 12 y todavía no tiene hora (en tu calendario está a las 9:00 AM solo como recordatorio). Mándale la hora real y ajusta el evento." },
-  { id:"s-1011-2055-ortopedia", emo:"🩺", urg:"amarillo", txt:"Contéstale a Soluciones En Ortopedia si aceptas mover el seguimiento de mañana lun 12, 10:00 AM al mar 20 oct, 9:30 AM, antes de que abran mañana." },
-  { id:"s-1011-2055-sensor", emo:"🚨", urg:"amarillo", txt:"Juan te preguntó a las 8:21 PM si desactiva el sensor de la entrada principal; hoy se activó 3 veces por el viento (8:15 AM, 9:53 AM y 8:21 PM). Contéstale antes de dormir." },
-  { id:"s-1011-2055-arely", emo:"💵", urg:"amarillo", txt:"Mañana lun 12, 9:00 AM toca pagarle a Arely; antes revisa si ya puso en “Ahorro Areli” los montos de ahorro y pago que faltan." },
-  { id:"s-1011-2055-nacho", emo:"📱", urg:"amarillo", txt:"Nacho sigue esperando respuesta desde las 2:20 PM (“Hijito ¿dónde estás?”)." },
-  { id:"s-1011-2055-paramount", emo:"📺", urg:"verde", txt:"Tienes dos Paramount+: uno por Prime Video ($149, renueva dom 18 oct) y otro por Google Play en la cuenta Casa (~$254, renueva 26 oct). Si solo usas uno, cancela el otro esta semana." },
-  { id:"s-1011-2055-presion", emo:"🩸", urg:"amarillo", txt:"No hay lectura de presión desde el mié 7 oct (149/89). Tómate la pastilla y mídete mañana temprano; Whoop marcó recuperación de 4% hoy, así que acuéstate temprano." }
+  { id:"s-1011-2155-plat", emo:"💳", urg:"rojo", txt:"La TC Platinum sigue pendiente: $10,300 según tu hoja TC y vence el mar 13 oct (el aviso era hoy 9:00 AM). Si puedes, págala mañana temprano." },
+  { id:"s-1011-2155-michael", emo:"🤝", urg:"amarillo", txt:"La llamada con Michael es mañana lun 12 y todavía no tiene hora (en tu calendario está a las 9:00 AM solo como recordatorio). Mándale la hora real y ajusta el evento." },
+  { id:"s-1011-2155-ortopedia", emo:"🩺", urg:"amarillo", txt:"Contéstale a Soluciones En Ortopedia si aceptas mover el seguimiento de mañana lun 12, 10:00 AM al mar 20 oct, 9:30 AM, antes de que abran mañana." },
+  { id:"s-1011-2155-sensor", emo:"🚨", urg:"amarillo", txt:"Juan te preguntó a las 8:21 PM si desactiva el sensor de la entrada principal; hoy se activó 3 veces por el viento (8:15 AM, 9:53 AM y 8:21 PM). Contéstale antes de que despegue." },
+  { id:"s-1011-2155-plinio", emo:"🔐", urg:"amarillo", txt:"Plinio Lavin te preguntó a las 9:24 PM si puede usar tu VPN; contéstale sí o no." },
+  { id:"s-1011-2155-arely", emo:"💵", urg:"amarillo", txt:"Mañana lun 12, 9:00 AM toca pagarle a Arely; antes revisa si ya puso en “Ahorro Areli” los montos de ahorro y pago que faltan." },
+  { id:"s-1011-2155-subs", emo:"📺", urg:"verde", txt:"Revisa suscripciones nuevas: hoy se activó una prueba de Meta Horizon que se vuelve suscripción de 7 días, y tienes dos Paramount+ (Prime Video $149, renueva dom 18; Google Play en Casa ~$254, renueva 26 oct). Cancela lo que no uses." },
+  { id:"s-1011-2155-presion", emo:"🩸", urg:"amarillo", txt:"No hay lectura de presión desde el mié 7 oct (149/89). Tómate la pastilla y mídete mañana temprano; Whoop marcó recuperación de 4% hoy, así que acuéstate temprano." }
 ];
 
 /* 5) SALUD — base histórica. Los datos del día vienen de salud_hoy.json (lo escribe el agente Personal cada hora a los :48);
