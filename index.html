@@ -500,7 +500,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Domingo 11 de octubre de 2026",
-  updated: "dom 11 oct 2026, 10:44 PM (paneles 10:44 PM; tablero completo 9:55 PM: correos Gmail/Hotmail/Casa revisados 9:52 PM, nuevo: prueba gratis de Meta Horizon y reenvío de Viva del vuelo de Juan; WhatsApp con la ronda de 9:24 PM; calendario revisado 9:52 PM, sin cambios; hoja TC sin cambios desde sáb 10 oct, 10:22 AM; Control de Gastos de octubre sin cambios desde mar 6 oct; salud: archivo de Personal 9:40 PM (Whoop de ~12:37 PM); Withings con sesión cerrada, último peso vie 9 oct)",
+  updated: "dom 11 oct 2026, 11:00 PM (tablero completo 11:00 PM: correos Gmail/Hotmail/Casa revisados 11:00 PM — nuevos: cancelaste la suscripción de Meta Horizon tras la prueba y pedido Amazon SENECESLI difusor; WhatsApp ronda 9:24 PM; calendario revisado 11:00 PM, sin cambios de agenda; hoja TC sin cambios desde sáb 10 oct, 10:22 AM; Control de Gastos de octubre sin cambios desde mar 6 oct; salud: archivo Personal 10:40 PM (Whoop ~12:37 PM, recuperación 4%; Withings sesión cerrada, último peso vie 9 oct); paneles 10:44 PM)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -541,14 +541,15 @@ const TC_SHEET = "https://docs.google.com/spreadsheets/d/1Dro8qc3SM1SRV93KK0NRl4
 const RECORDATORIOS = [
   { id:"r-citij-1008", dia:"Jue 8 oct", hora:"vencido jue 8", txt:"Citibanamex (Juan) $5,350 — marcada Hecho (pagada) vie 9 oct, 12:45 PM", urg:"rojo", fuente:"nota", link:TC_SHEET },
   { id:"r-areli-1010",   dia:"Sáb 10 oct",  hora:"ayer, sigue pendiente", txt:"Hablar con Arely (quedaron en hablar hoy): ayer vie 9 se fue antes porque no se sentía bien. En “Ahorro Areli” solo mandó una foto (vie 9, 3:21 PM) sin montos de ahorro y pago; se los pediste el jue 8, 4:19 PM", urg:"amarillo", fuente:"cal+nota", link:CAL("ZDRuaW1rdDBtajFocjA3YjZpZjFmYW03ZGdfMjAyNjEwMDhUMjAwMDAwWiBtYXU1NTg4QG0") },
-  { id:"r-ricardo-1011", dia:"Dom 11 oct", hora:"HOY · todo el día", txt:"Cumpleaños de Ricardo Alanis (aviso de tu calendario de Hotmail)", urg:"verde", fuente:"cal" },
-  { id:"r-plat",    dia:"Dom 11 oct", hora:"HOY (aviso 9:00 AM, ya pasó)", txt:"Pagar TC Platinum (vence mar 13) — saldo en tu hoja TC: $10,300.00; sigue pendiente", urg:"amarillo", fuente:"cal", link:CAL("cGU3YnE5MW52dTFrOW40ajZrZmwzdHM0cDBfMjAyNjEwMTFUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-ricardo-1011", dia:"Dom 11 oct", hora:"HOY (termina a medianoche)", txt:"Cumpleaños de Ricardo Alanis (aviso de tu calendario de Hotmail)", urg:"verde", fuente:"cal" },
+  { id:"r-plat",    dia:"Dom 11 oct", hora:"HOY (aviso 9:00 AM, ya pasó) · vence mar 13", txt:"Pagar TC Platinum — saldo en tu hoja TC: $10,300.00; sigue pendiente (vence mar 13)", urg:"rojo", fuente:"cal", link:CAL("cGU3YnE5MW52dTFrOW40ajZrZmwzdHM0cDBfMjAyNjEwMTFUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-telmex",  dia:"Lun 26 oct", hora:"Fecha límite",          txt:"Pagar Telmex — ya llegó el recibo de octubre (mar 6 oct, 6:44 PM): saldo anterior $1,402.94 sin pago registrado; límite según el recibo: lun 26 oct", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-ortopedia-1012", dia:"Mar 20 oct", hora:"9:30 AM (propuesta)", txt:"Seguimiento con la Dra. Silvia Pérez en Star Médica: como no estás en la ciudad, Soluciones En Ortopedia te ofreció (sáb 10, 10:59 AM) moverlo del lun 12, 10:00 AM al mar 20 oct, 9:30 AM. Falta que confirmes; ya quedó apartado en tu Google Calendar como “(Por confirmar)” (Star Médica, piso 9, consultorio 905)", urg:"amarillo", fuente:"cal+nota", link:CAL("Z3A2NWptNm5naWw5anVpdXRtN3A0b29qNmsgbWF1NTU4OEBt") },
-  { id:"r-michael-1012", dia:"Lun 12 oct", hora:"9:00 AM (hora provisional)", txt:"Llamada con Michael (aluminio Canadá): está en tu calendario a las 9:00 AM solo como recordatorio; falta acordar con él la hora real", urg:"amarillo", fuente:"cal", link:CAL("ZTkzY3EzZm85MjZtazE4N3M0aW9oM2JlbG8gbWF1NTU4OEBt") },
-  { id:"r-arelypago-1012", dia:"Lun 12 oct", hora:"9:00 AM", txt:"Pagarle a Arely (Ahorro Areli): revisar antes si ya puso su ahorro y monto (el vie 9 le dijiste que si no, se le pagaba hasta el lunes)", urg:"amarillo", fuente:"cal", link:CAL("bm82MzJnc21rc2RvaXE1MXBkMTFpNTQydXMgbWF1NTU4OEBt") },
+  { id:"r-michael-1012", dia:"Lun 12 oct", hora:"MAÑANA · 9:00 AM (hora provisional)", txt:"Llamada con Michael (aluminio Canadá): está en tu calendario a las 9:00 AM solo como recordatorio; falta acordar con él la hora real", urg:"rojo", fuente:"cal", link:CAL("ZTkzY3EzZm85MjZtazE4N3M0aW9oM2JlbG8gbWF1NTU4OEBt") },
+  { id:"r-arelypago-1012", dia:"Lun 12 oct", hora:"MAÑANA · 9:00 AM", txt:"Pagarle a Arely (Ahorro Areli): revisar antes si ya puso su ahorro y monto (el vie 9 le dijiste que si no, se le pagaba hasta el lunes)", urg:"amarillo", fuente:"cal", link:CAL("bm82MzJnc21rc2RvaXE1MXBkMTFpNTQydXMgbWF1NTU4OEBt") },
   { id:"r-mesesjuan13", dia:"Mar 13 oct", hora:"12:00 PM", txt:"Aviso “Mañana meses con Juan” (aviso de tu calendario de Hotmail)", urg:"verde", fuente:"cal" },
   { id:"r-salv13",  dia:"Mar 13 oct", hora:"9:00 AM",      txt:"Cobrar mes — Salvador Jacobo (regresa)", urg:"verde", fuente:"cal", link:CAL("NWlkbTJoZzhwZGFwaXNpNDZpdGIwam1tZWsgbWF1NTU4OEBt") },
+  { id:"r-tesla-1013", dia:"Mar 13 oct", hora:"9:00 AM", txt:"Pagar TC Tesla Santander (vence día 15) — saldo en hoja TC: $0 (solo aviso de calendario)", urg:"verde", fuente:"cal", link:CAL("bGhyN3AzanBhZjVuaWltdDlpbGE0OWtzZmdfMjAyNjEwMTNUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-mesesjuan14", dia:"Mié 14 oct", hora:"Todo el día", txt:"Meses con Juan (tu calendario de Hotmail)", urg:"verde", fuente:"cal" },
   { id:"r-inbursa", dia:"Mié 14 oct", hora:"Todo el día",  txt:"Corte de Inbursa", urg:"verde", fuente:"nota" },
   { id:"r-totalplay",dia:"Mié 14 oct",hora:"9:00 AM",      txt:"Pagar Totalplay (vence día 16) — ya llegó el estado de cuenta (dom 11 oct): pronto pago $1,389 si pagas antes del 16 oct", urg:"verde", fuente:"cal", link:CAL("YWF0b2xwcmFsZ3ZjZGhrZmhxZjRrZTZvcDRfMjAyNjEwMTRUMTUwMDAwWiBtYXU1NTg4QG0") },
@@ -564,9 +565,17 @@ const RECORDATORIOS = [
 
 /* 2) CORREOS IMPORTANTES — solo lectura; links directos al mensaje */
 const CORREOS = [
+  { id:"c-meta-cancel-1011", urg:"verde", de:"Meta Horizon", cuenta:"Hotmail (llega a Gmail)", cuando:"dom 11 oct, 9:56 PM",
+    asunto:"You've canceled your subscription",
+    porque:"Cancelaste la suscripción de Meta Horizon (después de la prueba gratis de las 9:09 PM). Confirmación: “We're sorry to see you go.” Solo informativo; sin leer.",
+    gmail:GM("1a12e4149c69eac4","1a12e4149c69eac4"), link:G("1a12e4149c69eac4") },
+  { id:"c-amz-senecesli-1011", urg:"verde", de:"Amazon.com.mx", cuenta:"Hotmail", cuando:"dom 11 oct, 10:54 PM",
+    asunto:"Pedido: “SENECESLI Difusor de Coche...”",
+    porque:"Nuevo pedido de Amazon (difusor de coche SENECESLI). Solo seguimiento de compra; el correo de confirmación no trae fecha de entrega en la vista previa. Sin leer.",
+    outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY-xWTkAAAA="), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY%2FxWTkAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem" },
   { id:"c-meta-trial-1011", urg:"verde", de:"Meta Horizon", cuenta:"Hotmail (llega a Gmail)", cuando:"dom 11 oct, 9:09 PM",
     asunto:"Your free trial is activated",
-    porque:"Se activó una prueba gratis de Meta Horizon; al terminar te inscriben solo en una suscripción de 7 días (el aviso no dice el precio). Si no la quieres, cancélala antes de que acabe la prueba. Sin leer.",
+    porque:"Se activó una prueba gratis de Meta Horizon (9:09 PM); a las 9:56 PM llegó la confirmación de que ya cancelaste la suscripción. Queda resuelto; sin leer.",
     gmail:GM("1a12e1641d8145f2","1a12e1641d8145f2"), link:G("1a12e1641d8145f2") },
   { id:"c-viva-juan-1011", urg:"verde", de:"boac.concorde@gmail.com (reenvío de Viva)", cuenta:"Gmail", cuando:"dom 11 oct, 8:44 PM",
     asunto:"Fwd: Tu viaje a Ciudad de México (AICM) merece más espacio",
@@ -690,14 +699,13 @@ const CORREOS = [
     gmail:GM("1a0fe725c33494d2","1a0fe725c33494d2"), link:G("1a0fe725c33494d2") },
   { id:"c-withings-1008", urg:"amarillo", de:"Withings", cuenta:"Hotmail + Gmail", cuando:"jue 8 oct, 1:04 PM · ~8:03–8:07 PM · ~9:03–9:07 PM",
     asunto:"Este es su código de identificación temporal",
-    porque:"Withings sigue mandando códigos de inicio de sesión temporal (jue 8 oct en la noche y hoy dom 11 a las 9:48–9:52 AM, 1:50 PM 2:06 PM y 8:18–8:21 PM, 5 códigos). Úsalos solo si estás reconectando la báscula; si no lo pediste, ignóralos. No se publica el código aquí. Sesión Withings sigue cerrada → peso del tablero = 135.2 kg (vie 9 oct, 5:51 PM).",
+    porque:"Withings sigue mandando códigos de inicio de sesión temporal (hoy dom 11 también a las 8:11–8:21 PM, varios códigos). Úsalos solo si estás reconectando la báscula; si no lo pediste, ignóralos. No se publica el código aquí. Sesión Withings sigue cerrada → peso del tablero = 135.2 kg (vie 9 oct, 5:51 PM).",
     outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY2w0pQAAAA="), gmail:GM("1a11ce6a487de5c6","1a11e6a9c898d950"), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY2w0pQAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem" }
 ];
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
-  { id:"w-plinio-vpn-1011", urg:"amarillo", whatsapp:{ chat:"Plinio Lavin", verificado:true, nota:"chat 1:1" }, txt:"Plinio Lavin te pregunta (9:24 PM) si puede usar tu VPN; no le has contestado", det:"Antes (8:31 PM) te agradeció el aviso y dijo que lo ve mañana; a las 8:45 PM mandó algo que solo se ve en tu teléfono · ronda WA dom 11 oct 9:24 PM" },
-  { id:"w-juan-terminal-1011", urg:"verde", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"Mau y Juan: Juan ya está formado para el avión (9:11 PM) y te escribió “te fallé, llegué tarde a la fila del avión”", det:"Mandó 2 cosas sin texto (solo se ven en tu teléfono) y tú le mandaste un sticker a las 9:24 PM. Nada pendiente de tu lado · ronda WA dom 11 oct 9:24 PM" },
+  { id:"w-plinio-vpn-1011", urg:"amarillo", whatsapp:{ chat:"Plinio Lavin", verificado:true, nota:"chat 1:1" }, txt:"Plinio Lavin te pregunta (9:24 PM) si puede usar tu VPN; no le has contestado", det:"Antes (8:31 PM) te agradeció el aviso y dijo que lo ve mañana; a las 8:45 PM mandó algo que solo se ve en tu teléfono · última ronda WA dom 11 oct 9:24 PM" },
   { id:"w-nacho-1011", urg:"amarillo", whatsapp:{ chat:"Nacho", verificado:true, nota:"chat 1:1" }, txt:"Nacho te escribió “Hijito ¿dónde estás?” y “Buenas” (2:20 y 2:26 PM); no le has contestado", det:"Sin respuesta tuya; espera desde las 2:20 PM (sin mensajes nuevos de Nacho después de las 2:26 PM) · ronda WA dom 11 oct 7:32 PM" },
   { id:"w-hades-colores-1011", urg:"verde", whatsapp:{ chat:"Hades y Mauricio", verificado:true, nota:"chat 1:1" }, txt:"Hades: ya le dijiste la talla (medium) y le preguntaste qué colores tiene; ahora esperas su respuesta (desde las 2:21 PM)", det:"Le contestaste 2:20–2:21 PM “Yes”, “In medium” y “WhatsApp colors you have?”. Las fotos citadas solo se ven en tu teléfono · ronda WA dom 11 oct 7:32 PM" },
   { id:"w-tesla-app-1011", urg:"verde", whatsapp:{ chat:"Tesla", verificado:true, nota:"cuenta oficial" }, txt:"Tesla: 3 avisos de mensaje nuevo en la app (4:20, 6:20 y 6:21 AM); revisa la app de Tesla (el mensaje no se ve en WhatsApp)", det:"Puede ser lo de la renovación de FSD que también llegó a tu Hotmail · sigue igual en ronda WA dom 11 oct 7:32 PM" },
@@ -753,14 +761,14 @@ const WHATSAPP = [
 
 /* 4) SUGERENCIAS */
 const SUGERENCIAS = [
-  { id:"s-1011-2155-plat", emo:"💳", urg:"rojo", txt:"La TC Platinum sigue pendiente: $10,300 según tu hoja TC y vence el mar 13 oct (el aviso era hoy 9:00 AM). Si puedes, págala mañana temprano." },
-  { id:"s-1011-2155-michael", emo:"🤝", urg:"amarillo", txt:"La llamada con Michael es mañana lun 12 y todavía no tiene hora (en tu calendario está a las 9:00 AM solo como recordatorio). Mándale la hora real y ajusta el evento." },
-  { id:"s-1011-2155-ortopedia", emo:"🩺", urg:"amarillo", txt:"Contéstale a Soluciones En Ortopedia si aceptas mover el seguimiento de mañana lun 12, 10:00 AM al mar 20 oct, 9:30 AM, antes de que abran mañana." },
-  { id:"s-1011-2155-sensor", emo:"🚨", urg:"amarillo", txt:"Juan te preguntó a las 8:21 PM si desactiva el sensor de la entrada principal; hoy se activó 3 veces por el viento (8:15 AM, 9:53 AM y 8:21 PM). Contéstale antes de que despegue." },
-  { id:"s-1011-2155-plinio", emo:"🔐", urg:"amarillo", txt:"Plinio Lavin te preguntó a las 9:24 PM si puede usar tu VPN; contéstale sí o no." },
-  { id:"s-1011-2155-arely", emo:"💵", urg:"amarillo", txt:"Mañana lun 12, 9:00 AM toca pagarle a Arely; antes revisa si ya puso en “Ahorro Areli” los montos de ahorro y pago que faltan." },
-  { id:"s-1011-2155-subs", emo:"📺", urg:"verde", txt:"Revisa suscripciones nuevas: hoy se activó una prueba de Meta Horizon que se vuelve suscripción de 7 días, y tienes dos Paramount+ (Prime Video $149, renueva dom 18; Google Play en Casa ~$254, renueva 26 oct). Cancela lo que no uses." },
-  { id:"s-1011-2155-presion", emo:"🩸", urg:"amarillo", txt:"No hay lectura de presión desde el mié 7 oct (149/89). Tómate la pastilla y mídete mañana temprano; Whoop marcó recuperación de 4% hoy, así que acuéstate temprano." }
+  { id:"s-1011-2300-plat", emo:"💳", urg:"rojo", txt:"La TC Platinum sigue pendiente: $10,300 (hoja TC) y vence el mar 13. Si puedes, págala mañana temprano antes de la llamada con Michael." },
+  { id:"s-1011-2300-michael", emo:"🤝", urg:"rojo", txt:"Mañana lun 12 es la llamada con Michael y aún no tiene hora (en tu calendario está a las 9:00 AM solo como recordatorio). Mándale ya la hora y ajusta el evento." },
+  { id:"s-1011-2300-ortopedia", emo:"🩺", urg:"amarillo", txt:"Antes de que abran mañana, contéstale a Soluciones En Ortopedia si aceptas mover el seguimiento del lun 12, 10:00 AM al mar 20 oct, 9:30 AM." },
+  { id:"s-1011-2300-arely", emo:"💵", urg:"amarillo", txt:"Mañana lun 12, 9:00 AM toca pagarle a Arely; revisa primero si ya puso en “Ahorro Areli” los montos de ahorro y pago (y el adelanto $500)." },
+  { id:"s-1011-2300-sensor", emo:"🚨", urg:"amarillo", txt:"Juan te preguntó a las 8:21 PM si desactiva el sensor de la entrada; hoy se activó 3 veces por el viento. Contéstale (él va de viaje)." },
+  { id:"s-1011-2300-plinio", emo:"🔐", urg:"amarillo", txt:"Plinio Lavin te preguntó a las 9:24 PM si puede usar tu VPN; contéstale sí o no esta noche o mañana temprano." },
+  { id:"s-1011-2300-presion", emo:"🩸", urg:"amarillo", txt:"Whoop marcó recuperación 4% hoy (dato ~12:37 PM) y no hay lectura de presión desde el mié 7 (149/89). Tómate la pastilla, mídete mañana temprano y acuéstate ya." },
+  { id:"s-1011-2300-zara", emo:"📦", urg:"verde", txt:"Zara (pedido 54487780251) llega el mar 13; el Amazon de edredones ya se entregó hoy. El nuevo pedido SENECESLI (difusor) del 10:54 PM solo es para seguimiento." }
 ];
 
 /* 5) SALUD — base histórica. Los datos del día vienen de salud_hoy.json (lo escribe el agente Personal cada hora a los :48);
@@ -894,8 +902,8 @@ const FINANZAS = {
     { id:"v-anthropic-1008", fecha:"Jue 8 oct", txt:"Cargo de Anthropic: Claude Max 20x ($200.00 USD ≈ $3,627 MXN)", monto:3627, estado:"ya cobrado · recibo del jue 8 oct 12:57 PM, tarjeta terminación 1015 · renueva 8 nov", urg:"verde", semana:true, pendiente:false, gmail:GM("1a11ce106de8acc5","1a11ce106de8acc5"), link:G("1a11ce106de8acc5"), src:"Gmail" },
     { id:"v-telcel", fecha:"Sáb 10 oct", txt:"Telcel", monto:null, estado:"PAGADA el sáb 10, 9:01 AM (correo Telcel “Resumen de compra”)", urg:"verde", semana:true, pendiente:false, link:CAL("dmhzNmxjNm51NWkzYWZ0ODBuaDcwb2RhdmNfMjAyNjEwMDhUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
     { id:"v-lumo",   fecha:"Sáb 10 oct", txt:"Cargo automático Apple: Lumosity Premium", monto:299, estado:"se renovaba solo el sáb 10 (ya pasó la fecha)", urg:"verde", semana:true, pendiente:false, gmail:GM("1a1064fef3400eae","1a1064fef3400eae"), link:G("1a1064fef3400eae"), src:"Gmail" },
-    { id:"v-with",   fecha:"Dom 11 oct", txt:"Cargo automático Apple: Withings+", monto:199, estado:"se renueva solo HOY", urg:"amarillo", semana:true, pendiente:true, gmail:GM("1a10b76be799b0c0","1a10b76be799b0c0"), link:G("1a10b76be799b0c0"), src:"Gmail" },
-    { id:"v-plat",   fecha:"Dom 11 oct", txt:"TC Platinum (vence mar 13 oct) — pagar HOY", monto:10300, estado:"hoja TC: saldo pendiente $10,300", urg:"amarillo", semana:true, pendiente:true, link:CAL("cGU3YnE5MW52dTFrOW40ajZrZmwzdHM0cDBfMjAyNjEwMTFUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
+    { id:"v-with",   fecha:"Dom 11 oct", txt:"Cargo automático Apple: Withings+", monto:199, estado:"se renovaba solo HOY (dom 11)", urg:"verde", semana:true, pendiente:false, gmail:GM("1a10b76be799b0c0","1a10b76be799b0c0"), link:G("1a10b76be799b0c0"), src:"Gmail" },
+    { id:"v-plat",   fecha:"Dom 11 oct", txt:"TC Platinum (vence mar 13 oct) — aviso de pago HOY; sigue pendiente", monto:10300, estado:"hoja TC: saldo pendiente $10,300 · vence mar 13", urg:"rojo", semana:true, pendiente:true, link:CAL("cGU3YnE5MW52dTFrOW40ajZrZmwzdHM0cDBfMjAyNjEwMTFUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
     { id:"v-inbcorte",fecha:"Mié 14 oct",txt:"Corte Inbursa *9142", monto:null, estado:"corte", urg:"verde", link:null, src:"WhatsApp" },
     { id:"v-totalplay",fecha:"Vie 16 oct",txt:"Totalplay — estado de cuenta de octubre (llegó dom 11 oct)", monto:1389, estado:"pronto pago $1,389 antes del 16 oct (sept: $1,469.82 por PayPal)", urg:"verde", link:CAL("YWF0b2xwcmFsZ3ZjZGhrZmhxZjRrZTZvcDRfMjAyNjEwMTRUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
     { id:"v-open",   fecha:"Sáb 17 oct", txt:"TC Open — corte $350.00", monto:350, estado:"hoja TC: saldo pendiente", urg:"verde", link:CAL("NGc0ODdobzE5bTZhbWMwcDA5cDJpdWxrb2NfMjAyNjEwMTVUMTUwMDAwWiBtYXU1NTg4QG0"), src:"Calendar" },
@@ -938,7 +946,7 @@ const FINANZAS = {
 const TARJETAS_TC = {
   link: TC_SHEET,
   hoy: "2026-10-11", finSemana: "2026-10-11",
-  leida: "dom 11 oct, 10:58 AM — hoja TC revisada de nuevo, sin cambios (Drive la marca modificada sáb 10 oct, 10:22 AM; Control_Gastos_Octubre sin cambios desde mar 6 oct). Lectura detallada de las 11:00 AM: hoja TC revisada (Drive la marca modificada sáb 10, 10:22 AM; Control_Gastos_Octubre sin cambios desde mar 6 oct): los saldos por tarjeta no cambiaron (total por pagar $49,036); Telcel ya pasó a su siguiente fecha (10 nov) porque la pagaste el sáb 10, 9:01 AM. Citibanamex (Juan) $5,350: la marcaste Hecho (pagada) vie 9 oct 12:45 PM aunque la hoja sigue en $5,350 · AMEX ••••6007 saldo $30,500 límite 28 oct · Platinum $10,300 límite 13 oct · PLATINUM AMEX $36,700 marcada Hecho (hoja $0 / próximo 7 nov)",
+  leida: "dom 11 oct, 11:00 PM — hoja TC releída, sin cambios (Drive la marca modificada sáb 10 oct, 10:22 AM; Control_Gastos_Octubre sin cambios desde mar 6 oct). Saldos: total por pagar $49,036; Platinum $10,300 límite 13 oct; AMEX ••••6007 $30,500 límite 28/30 oct; Open $350; Scotia $2,536; Telcel ya en siguiente fecha 10 nov; Citibanamex Juan y PLATINUM AMEX marcadas Hecho (hoja $0 / narrativa pagadas)",
   colFecha: "columna C “Due day” = fecha límite de pago",
   totalesHoja: { cortes:295236, saldo:49036, digital:204850, efectivo:46700 },
   filas: [
@@ -1071,11 +1079,12 @@ const SUSCRIPCIONES = [
 
 /* 📦 PAQUETES Y COMPRAS — activo:true = en camino o pendiente de acción */
 const PAQUETES = [
+  { id:"p-senecesli-1011", urg:"verde", activo:true, estado:"🛒 Pedido", txt:"Amazon: SENECESLI Difusor de Coche — pedido confirmado dom 11, 10:54 PM", det:"Confirmación en Hotmail; fecha de entrega aún no vista en el correo", outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY-xWTkAAAA="), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY%2FxWTkAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem", src:"Hotmail" },
   { id:"p-ibesky-1008", urg:"verde", activo:false, estado:"✅ Entregado", txt:"Amazon: iBesky banda de nailon (1 pieza) — entregado jue 8 oct ~1:15 PM", det:"Outlook: “Entregado: iBesky Banda de nailón…” jue 8 oct, 1:15 PM · pedido 701-3082197-9385839", outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY2w0pUAAAA="), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY2w0pUAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem", src:"Hotmail", hasta:"2026-10-08T23:59:00-06:00" },
   { id:"p-bento2", urg:"verde", activo:true, estado:"↩️ Devuelto · reembolso", txt:"Amazon: 5 “Caja Bento de 3 capas” — ya no llegan", det:"El transportista le devolvió el paquete a Amazon; reembolso emitido de $1,752.75 (mié 7 oct, 10:56 PM) · puede tardar hasta 15 días naturales en verse en tu Master Card · pedido 701-6949454-1033851", outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY1MdcIAAAA="), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY1MdcIAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem", src:"Outlook" },
   { id:"p-trade",  urg:"rojo", activo:true, estado:"📮 Por enviar", txt:"Apple Trade In: no han recibido tu Mac mini M4", det:"Pedido W1586694951 — envíalo o cancela; el valor de canje vence 14 días después de recibir el nuevo", gmail:GM("1a106c973123f7ef","1a106c973123f7ef"), link:G("1a106c973123f7ef"), src:"Gmail" }
 ];
-const PAQUETES_NOTA = "Amazon (pedido 701-9474696-7859419: edredones REAL TEXTIL + sábanas Dreamlab) ya se ENTREGÓ hoy dom 11 (WhatsApp 12:26 PM y correo 12:27 PM). Zara pedido 54487780251: salió la entrega 1 de 3 y llega el mar 13 oct (correo de hoy 11:53 AM). iPostal1 (EE. UU.) te cobró el sáb 10 US$2.20 de almacenaje (pieza M84756) y cierra mañana lun 12 oct. Hoy 5:20 AM PayPal autorizó US$9.99 a Access USA Shipping (MyUS). Reembolso en curso: Amazon $1,752.75 (cajas bento). Mercado Libre: sin envíos nuevos.";
+const PAQUETES_NOTA = "Amazon (pedido 701-9474696-7859419: edredones REAL TEXTIL + sábanas Dreamlab) ya se ENTREGÓ hoy dom 11 (WhatsApp 12:26 PM y correo 12:27 PM). Nuevo Amazon SENECESLI difusor de coche (confirmación Hotmail 10:54 PM). Zara pedido 54487780251: entrega 1 llega el mar 13 oct. iPostal1 (EE. UU.) cierra mañana lun 12 oct (Columbus Day). PayPal autorizó US$9.99 a Access USA Shipping (MyUS) hoy 5:20 AM. Reembolso en curso: Amazon $1,752.75 (cajas bento). Mercado Libre: sin envíos nuevos.";
 
 /* 💼 TRABAJO / NEGOCIO (correos corah.com.mx sí; grupos de WhatsApp excluidos no se incluyen) */
 const TRABAJO = [
@@ -1103,7 +1112,7 @@ const EVENTOS = [
   { id:"e-unani19",urg:"verde", cuando:"Lun 19 oct · 11:00 AM", txt:"Unani — clase dinámica", link:CAL("ZzBxcGw5YTRmZzNxbGh2bGFrajc3ZmUwM3MgbWF1NTU4OEBt"), src:"Calendar" },
   { id:"e-mteresa",urg:"verde", cuando:"Mié 11 nov", txt:"Taller con María Teresa", link:null, src:"tu lista" }
 ];
-const EVENTOS_NOTA = "Sin vuelos ni hoteles próximos en correo o calendario; la única reserva es NOL el jue 15 oct (anticipo ya recibido). El aviso de hoy dom 11, 9:00 AM para pagar la Platinum ya pasó y sigue pendiente. El seguimiento en Star Médica de mañana lun 12, 10:00 AM te lo ofrecieron mover al mar 20 oct, 9:30 AM (falta confirmar; ya está en tu calendario como “Por confirmar”). Mañana lun 12 también es la llamada con Michael (en tu calendario a las 9:00 AM como recordatorio; falta acordar la hora real). Pedido de Amazon (REAL TEXTIL + Dreamlab): ya se entregó hoy 12:26 PM.";
+const EVENTOS_NOTA = "Sin vuelos ni hoteles próximos en correo o calendario; la única reserva es NOL el jue 15 oct (anticipo ya recibido). El aviso de hoy dom 11 para pagar la Platinum ya pasó y sigue pendiente ($10,300, vence mar 13). El seguimiento en Star Médica del lun 12 te lo ofrecieron mover al mar 20 oct, 9:30 AM (falta confirmar). Mañana lun 12: llamada con Michael (hora por acordar) y pago a Arely (9:00 AM). Amazon REAL TEXTIL + Dreamlab: entregado hoy 12:26 PM.";
 
 /* 📄 DOCUMENTOS RECIENTES (Google Drive) */
 const DOCUMENTOS = [
@@ -1130,7 +1139,7 @@ const SEGURIDAD = [
   { id:"x-tcsheet",urg:"amarillo", txt:"Tu hoja “TC” en Drive guarda usuarios y claves en texto", det:"Muévelas a un gestor de contraseñas (llavero de iCloud / 1Password) y bórralas de la hoja", link:TC_SHEET, src:"Drive" },
   { id:"x-bancos", urg:"amarillo", txt:"Altas bancarias: tarjetas de terceros en Santander SuperMóvil (29 sep) y destinatario STP en BBVA (30 sep)", det:"Confirma que fuiste tú", gmail:GM("1a0ef31df4c3df3d","1a0ef31df4c3df3d"), link:G("1a0ef31df4c3df3d"), gmail2:GM("1a0f497e5688f62e","1a0f497e5688f62e"), link2:G("1a0f497e5688f62e"), link2txt:"BBVA", src:"Gmail" },
   { id:"x-casa-grok", urg:"verde", txt:"Google: “Grok was granted access” a casamendicutiensenat@gmail.com (copia a tu Hotmail de recuperación)", det:"mar 6 oct, 11:52 AM · si fue al conectar esa cuenta ese día, todo bien; si no, revisa la actividad", gmail:GM("1a112588fb2dfc77","1a112588fb2dfc77"), link:G("1a112588fb2dfc77"), src:"Gmail" },
-  { id:"x-withings", urg:"verde", txt:"Withings: códigos de inicio de sesión temporal (a tu Hotmail)", det:"Más recientes: hoy dom 11 oct 1:50 PM (1) y 9:48–9:52 AM (3), sáb 10 oct 8:39–8:44 AM (6) y vie 9 oct 5:56–6:18 PM (4). Si no los pediste tú, ignóralos. Los pidió la rutina de salud para reconectar; la sesión sigue sin quedarse abierta y ya se pausaron las solicitudes de códigos. Antes: 6 y 8 oct · los códigos no se publican en el tablero", gmail:GM("1a113c2e5daeaf01","1a113c2e5daeaf01"), link:G("1a113c2e5daeaf01"), src:"Gmail" },
+  { id:"x-withings", urg:"verde", txt:"Withings: códigos de inicio de sesión temporal (a tu Hotmail)", det:"Más recientes: hoy dom 11 oct 8:11–8:21 PM (varios), 1:50 PM y 9:48–9:52 AM; sáb 10 y vie 9 también. Si no los pediste tú, ignóralos. La sesión sigue sin quedarse abierta · los códigos no se publican en el tablero", gmail:GM("1a113c2e5daeaf01","1a113c2e5daeaf01"), link:G("1a113c2e5daeaf01"), src:"Gmail" },
   { id:"x-ultra",  urg:"verde", txt:"Ultrahuman: link para iniciar sesión", det:"lun 5 oct, 7:20 PM · válido 7 días; si no lo pediste, ignóralo", gmail:GM("1a10ecc00a05cbd8","1a10ecc00a05cbd8"), link:G("1a10ecc00a05cbd8"), src:"Gmail" },
   { id:"x-xai",    urg:"verde", txt:"x.ai: inicio de sesión nuevo", det:"lun 5 oct, 9:30 AM", gmail:GM("1a10cafc5d272131","1a10cafc5d272131"), link:G("1a10cafc5d272131"), src:"Gmail" },
   { id:"x-openai", urg:"verde", txt:"OpenAI: inicio de sesión nuevo", det:"dom 4 oct, 12:17 AM", gmail:GM("1a1058f505fe281d","1a1058f505fe281d"), link:G("1a1058f505fe281d"), src:"Gmail" },
@@ -1144,21 +1153,14 @@ const SEGURIDAD = [
 
 /* 🔥 URGENTES — lo más importante (tema único, sin repetir) */
 const URGENTES = [
-  { id:"u-1011-plat", txt:"HOY: pagar la TC Platinum $10,300 (el aviso era a las 9:00 AM; vence mar 13 oct, saldo de tu hoja TC)", link:TC_SHEET, sec:"finanzas" },
-  { id:"u-1010-2058-michael", txt:"Michael (aluminiero canadiense): la llamada es mañana lun 12 y aún falta mandarle la hora", link:null, sec:"whatsapp" },
-  { id:"u-1010-ortopedia", txt:"Soluciones En Ortopedia espera tu respuesta desde el sáb 10, 10:59 AM: ¿aceptas mover el seguimiento de mañana lun 12 al mar 20 oct, 9:30 AM?", link:null, sec:"whatsapp" },
-  { id:"u-1009-1015-giovanni", txt:"Giovanni Herramax: llámale (“márcame” 9:53 AM, sin respuesta) — ¿ayudante de bodega o se queda Óscar a prueba? Las 2 vendedoras ya las autorizaste a Dany", link:null, sec:"whatsapp" },
-  { id:"u-1009-0825-citij", txt:"Citibanamex (Juan): pagar $5,350 — venció ayer jue 8 oct y sigue pendiente", link:TC_SHEET, sec:"finanzas" },
-  { id:"u-1009-0825-amexp", txt:"PLATINUM AMEX: $36,700 vencía mié 7 oct — sigue pendiente hasta que confirmes pago (hoja en $0)", link:TC_SHEET, sec:"finanzas" },
-  { id:"u-1009-0825-angeles", txt:"Angeles Vidrios: decidir anticipo $2,500 a Santiago (saldo Jesús Gómez)", link:null, sec:"whatsapp" },
-  { id:"u-1010-arely", txt:"Arely: hablar con ella (quedaron en hablar el sáb 10; el vie 9 se fue antes porque no se sentía bien) y cerrar los montos de ahorro/pago que faltan en Ahorro Areli + adelanto $500", link:null, sec:"whatsapp" },
-  { id:"u-1009-1300-ruben", txt:"Rubén Aldana (REDES VA PRIVADO): aprobar portada y contraportada de la agenda 2027 ($850) — te espera desde el vie 9, 11:16 AM (ese día arrancaban las planeaciones)", link:null, sec:"whatsapp" },
-  { id:"u-1009-0825-saul", txt:"Saul (REDES VA PRIVADO): definir Buen Fin / Black Friday Herramax–VA", link:null, sec:"whatsapp" },
-  { id:"u-1009-0825-cfe", txt:"CFE: nueva factura RPU 771760300396 (folio WA 000070291272) — descarga el monto en la app", gmail:GM("1a11d52e6807de31","1a11d52e6807de31"), link:G("1a11d52e6807de31"), sec:"correos" },
-  { id:"u-1009-0825-ginna", txt:"Ginna Can: dile si alguien va a Montecristo o avísale que no", link:null, sec:"whatsapp" },
-  { id:"u-1009-0825-google", txt:"Google: alguien usó tu contraseña (intento bloqueado 30 sep) → cámbiala", gmail:GM("1a0f424223c2aa13","1a0f424223c2aa13"), link:G("1a0f424223c2aa13"), sec:"seguridad" },
-  { id:"u-1009-0825-nrf", txt:"NR Finance: 4 cargos rechazados en Santander *302 → deposita o paga directo", gmail:GM("1a0fe725c33494d2","1a0fe725c33494d2"), link:G("1a0fe725c33494d2"), sec:"finanzas" },
-  { id:"u-1009-0825-trade", txt:"Apple Trade In: envía la Mac mini M4 o cancela (pedido W1586694951)", gmail:GM("1a106c973123f7ef","1a106c973123f7ef"), link:G("1a106c973123f7ef"), sec:"paquetes" }
+  { id:"u-1011-2300-plat", txt:"HOY/mañana: pagar la TC Platinum $10,300 (aviso de hoy 9:00 AM; vence mar 13 oct, saldo hoja TC)", link:TC_SHEET, sec:"finanzas" },
+  { id:"u-1011-2300-michael", txt:"Michael (aluminiero canadiense): la llamada es mañana lun 12 y aún falta mandarle la hora", link:null, sec:"whatsapp" },
+  { id:"u-1011-2300-ortopedia", txt:"Soluciones En Ortopedia espera tu OK desde el sáb 10, 10:59 AM: ¿mueves el seguimiento del lun 12 al mar 20 oct, 9:30 AM?", link:null, sec:"whatsapp" },
+  { id:"u-1011-2300-arely", txt:"Mañana lun 12, 9:00 AM: pagarle a Arely — antes cierra montos de ahorro/pago en Ahorro Areli (+ adelanto $500)", link:null, sec:"whatsapp" },
+  { id:"u-1011-2300-sensor", txt:"Mau y Juan: contéstale a Juan si desactiva el sensor de la entrada (pregunta 8:21 PM; 3 activaciones hoy por el viento)", link:null, sec:"whatsapp" },
+  { id:"u-1011-2300-plinio", txt:"Plinio Lavin (9:24 PM): ¿puede usar tu VPN? — sin respuesta", link:null, sec:"whatsapp" },
+  { id:"u-1011-2300-ruben", txt:"Rubén Aldana (REDES VA PRIVADO): aprobar portada/contraportada agenda 2027 ($850) y si VA arranca en noviembre", link:null, sec:"whatsapp" },
+  { id:"u-1011-2300-saul", txt:"Saul (REDES VA PRIVADO): definir Buen Fin / Black Friday Herramax–VA", link:null, sec:"whatsapp" }
 ];
 
 /* ✅ HECHOS — ids ya procesados (por la rutina horaria o porque Mau tocó “Hecho”). No se pintan. */
