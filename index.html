@@ -501,7 +501,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Lunes 12 de octubre de 2026",
-  updated: "lun 12 oct 2026, 3:51 PM (paneles 3:51 PM; tablero completo 3:05 PM: sin “Hecho” nuevos; WhatsApp ronda 2:40 PM; correos Gmail/Casa/Hotmail 3:01 PM; calendario Google 12–14 oct; hoja TC editada 12:36 PM (sin cambios); Control_Gastos_Octubre editado 11:36 AM (sin cambios); salud Personal 2:52 PM (UH ~1:44 PM; Whoop y Withings sin sesión, valores de ~10:05 AM))",
+  updated: "lun 12 oct 2026, 4:10 PM (tablero completo 4:10 PM: sin Hecho nuevos; WhatsApp ronda 3:32 PM; correos Gmail/Casa/Hotmail 4:05 PM; calendario Google+Outlook 12–26 oct; hoja TC editada 12:36 PM (sin cambios); Control_Gastos_Octubre editado 11:36 AM (sin cambios); salud Personal 3:44 PM (UH ~1:44 PM; Whoop y Withings sin sesión, valores de ~10:05 AM); paneles 3:51 PM)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -551,7 +551,7 @@ const RECORDATORIOS = [
   { id:"r-inbursa", dia:"Mié 14 oct", hora:"Todo el día",  txt:"Corte de Inbursa", urg:"verde", fuente:"nota" },
   { id:"r-mifel-1014", dia:"Mié 14 oct", hora:"9:00 AM", txt:"Pagar TC Mifel mía (vence día 16) — aviso de calendario; la hoja TC ya la pasó al 16 nov con saldo $0 (parece pagada)", urg:"verde", fuente:"cal", link:CAL("MTZuc2FwcXFuN3Bmb3MzN2hza2Vlc21rcG9fMjAyNjEwMTRUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-totalplay",dia:"Mié 14 oct",hora:"9:00 AM",      txt:"Pagar Totalplay (vence día 16) — estado de cuenta dom 11: pronto pago $1,389 si pagas antes del 16 oct", urg:"verde", fuente:"cal", link:CAL("YWF0b2xwcmFsZ3ZjZGhrZmhxZjRrZTZvcDRfMjAyNjEwMTRUMTUwMDAwWiBtYXU1NTg4QG0") },
-  { id:"r-unani",   dia:"Mié 14 oct", hora:"11:00 AM–1:00 PM", txt:"Curso Unani 🌿 — OJO: Unani avisó (correo en Spam, lun 12) que el inicio del Grupo A se aplaza al MIÉ 21 OCT, 11:00 AM; tu calendario aún lo tiene el 14. Falta que autorices corregir el calendario", urg:"verde", fuente:"cal+nota", link:CAL("M3U4NmUwbW5vMjc1djVzNXZrc29ucGk5NTggbWF1NTU4OEBt") },
+  { id:"r-unani",   dia:"Mié 14 oct → Mié 21 oct", hora:"11:00 AM–1:00 PM", txt:"Curso Unani 🌿 — APLAZADO: Unani avisó que el inicio del Grupo A pasa al MIÉ 21 OCT, 11:00 AM; tu calendario aún lo tiene el 14. Falta que autorices corregir el calendario", urg:"amarillo", fuente:"cal+nota", link:CAL("M3U4NmUwbW5vMjc1djVzNXZrc29ucGk5NTggbWF1NTU4OEBt") },
   { id:"r-open",    dia:"Jue 15 oct", hora:"9:00 AM",      txt:"Pagar TC Open (vence día 17) — saldo en hoja TC: $350.00", urg:"verde", fuente:"cal", link:CAL("NGc0ODdobzE5bTZhbWMwcDA5cDJpdWxrb2NfMjAyNjEwMTVUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-salv15",  dia:"Jue 15 oct", hora:"9:00 AM",      txt:"Cobrar renta a Salvador Jacobo", urg:"verde", fuente:"cal", link:CAL("ZXA4ZGZoMGdjZzRrNnF0djk1b3Z0ZWFtM2cgbWF1NTU4OEBt") },
   { id:"r-arely-jueves", dia:"Jue 15 oct", hora:"2:00 PM", txt:"Arely: pedir cuánto ahorra y cuánto se le paga + foto (recordatorio semanal en Ahorro Areli)", urg:"verde", fuente:"cal", link:CAL("ZDRuaW1rdDBtajFocjA3YjZpZjFmYW03ZGdfMjAyNjEwMTVUMjAwMDAwWiBtYXU1NTg4QG0") },
@@ -560,18 +560,22 @@ const RECORDATORIOS = [
   { id:"r-scotia19", dia:"Lun 19 oct", hora:"9:00 AM",      txt:"Pagar TC Scotiabank (vence día 21) — saldo en hoja TC: $2,536.00", urg:"verde", fuente:"cal", link:CAL("MHQxMmpkam04Zjl2bTV1cTFmN2ZoazFsNDRfMjAyNjEwMTlUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-gema",    dia:"Lun 19 oct", hora:"Todo el día",  txt:"Depósito a Gema Celeste (prometido)", urg:"verde", fuente:"cal", link:CAL("MTRuMmhmcnFuYnR0bTByYmhpbjIxb2ltNGcgbWF1NTU4OEBt") },
   { id:"r-tiagaby", dia:"Lun 19 oct", hora:"1:40 PM",      txt:"Cita del lun 19 oct, 1:40 PM que te pasó Tía Gaby por WhatsApp (ya en calendario; el mensaje no dice de qué es)", urg:"verde", fuente:"cal", link:CAL("cHZpN3R2M29pYmcxdHJ1b2FzZzNiN2RrdjAgbWF1NTU4OEBt") },
-  { id:"r-unani19", dia:"Lun 19 oct", hora:"11:00 AM",     txt:"Unani — clase dinámica (Unani la movió al lun 26 oct, horario aún sin confirmar; el calendario sigue con la del 19)", urg:"verde", fuente:"cal", link:CAL("ZzBxcGw5YTRmZzNxbGh2bGFrajc3ZmUwM3MgbWF1NTU4OEBt") },
+  { id:"r-unani19", dia:"Lun 19 oct → Lun 26 oct", hora:"11:00 AM / 12:00 PM",     txt:"Unani — clase dinámica: Unani la movió al lun 26 oct (calendario ya tiene una el 26 a las 12:00 PM; la del 19 sigue y hay que borrarla/moverla)", urg:"verde", fuente:"cal", link:CAL("ZzBxcGw5YTRmZzNxbGh2bGFrajc3ZmUwM3MgbWF1NTU4OEBt") },
   { id:"r-ortopedia-1012", dia:"Mar 20 oct", hora:"9:30 AM (propuesta · por confirmar)", txt:"Seguimiento Dra. Silvia Pérez en Star Médica: Soluciones En Ortopedia ofreció (sáb 10) moverlo al mar 20 oct, 9:30 AM. En calendario como “(Por confirmar)” — piso 9, consultorio 905", urg:"amarillo", fuente:"cal+nota", link:CAL("Z3A2NWptNm5naWw5anVpdXRtN3A0b29qNmsgbWF1NTU4OEBt") },
   { id:"r-plat-nov", dia:"Jue 13 nov", hora:"fecha límite hoja TC", txt:"TC Platinum — saldo pendiente $10,300.00 (Due day hoja TC: 13 nov; corte día 26). Distinta de PLATINUM AMEX", urg:"amarillo", fuente:"nota", link:TC_SHEET },
   { id:"r-santj-1020", dia:"Mar 20 oct", hora:"9:00 AM", txt:"Pagar TC Santander J (vence día 22) — hoja TC: corte $37,000 (efectivo), saldo $0", urg:"verde", fuente:"cal", link:CAL("OWQ3cnRjNDNvanJpa2R1YzhlcG1jNTNlMTBfMjAyNjEwMjBUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-telmex",  dia:"Lun 26 oct", hora:"Fecha límite",          txt:"Pagar Telmex — recibo octubre (mar 6): saldo anterior $1,402.94; límite según recibo lun 26 oct", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") }
-];
+]
 
 /* 2) CORREOS IMPORTANTES — solo lectura; links directos al mensaje */
 const CORREOS = [
-  { id:"c-ascolour-1012", urg:"verde", de:"AS Colour (support@ascolour.com) + PayPal", cuenta:"Gmail Casa", cuando:"lun 12 oct, 12:36 y 1:02 PM",
-    asunto:"Invoice: INV844341-01 / Your AS Colour Inc order is on its way",
-    porque:"Tu pedido AS Colour #300727240 ya salió (PayPal: paquetería “Other”, guía 844341) y llegó la factura INV844341-01. Va a Laredo, TX. Sin fecha de entrega.",
+  { id:"c-msft-spacexai-1012", urg:"amarillo", de:"Microsoft (account-security-noreply)", cuenta:"Hotmail (llega a Gmail)", cuando:"lun 12 oct, ~4:00 PM",
+    asunto:"Nuevas aplicaciones conectadas a la cuenta de Microsoft",
+    porque:"Avisan que SpaceXAI se conectó a mau5588@hotmail.com. Si fuiste tú (p. ej. un conector), ok; si no, quita el acceso en la cuenta Microsoft.",
+    gmail:GM("1a13221fcf8396d0","1a13221fcf8396d0"), link:G("1a13221fcf8396d0") },
+  { id:"c-ascolour-1012", urg:"verde", de:"AS Colour + PayPal + FedEx", cuenta:"Gmail Casa", cuando:"lun 12 oct, 12:36–2:16 PM",
+    asunto:"Invoice INV844341-01 / on its way / FedEx 490126211314",
+    porque:"Pedido AS Colour #300727240: factura + PayPal (guía 844341) + FedEx Ground Tracking 490126211314 a Laredo TX (7615 Laguna Del Mar Ct). Preparando envío; sin fecha de entrega.",
     gmail:GMCASA("1a1317ecb9beebee","1a1317ecb9beebee"), link:GCASA("1a1317ecb9beebee") },
   { id:"c-vacaciones-1012", urg:"verde", de:"wnovelo@corah.com.mx", cuenta:"Gmail", cuando:"lun 12 oct, 11:37 AM",
     asunto:"VACACIONES",
@@ -583,12 +587,8 @@ const CORREOS = [
     gmail:GM("1a1311c849e69a8f","1a1311c849e69a8f"), link:G("1a1311c849e69a8f") },
   { id:"c-baja-material-1012", urg:"verde", de:"Tatiana López (bodega.circuito2@herramax)", cuenta:"Gmail", cuando:"lun 12 oct, 11:02 AM y 2:07 PM",
     asunto:"material para dar de baja / RE:",
-    porque:"Tatiana pidió dar de baja materiales descontinuados y en mal estado del Almacén 1. A las 2:07 PM costos8@corah contestó con el comprobante de la salida ya concluida y pide a bodega validar y confirmar de recibido. Vas en copia; solo seguimiento (2:07 PM sin leer).",
+    porque:"Tatiana pidió dar de baja materiales descontinuados/mal estado del Almacén 1. A las 2:07 PM costos8@corah contestó con el comprobante de la salida ya concluida y pide a bodega validar y confirmar de recibido. Vas en copia; respuesta 2:07 PM sigue UNREAD.",
     gmail:GM("1a1311102c93bc10","1a131ba400777dc7"), link:G("1a1311102c93bc10") },
-  { id:"c-purevpn-1012", urg:"verde", de:"PureVPN (help@purevpn.com)", cuenta:"Hotmail (llega a Gmail)", cuando:"lun 12 oct, 10:12 AM",
-    asunto:"[Customer Support] Re: Rating - ios",
-    porque:"PureVPN contestó tu ticket 2315400 sobre tu calificación de la app iOS. Informativo; sin acción salvo que quieras responder.",
-    gmail:GM("1a130e3052462924","1a130e3052462924"), link:G("1a130e3052462924") },
   { id:"c-comisiones-1012", urg:"rojo", de:"Lizeth González (lgonzalez@corah)", cuenta:"Gmail", cuando:"lun 12 oct, 9:57 AM",
     asunto:"Comisiones extras - herramax tienda",
     porque:"Lizeth pide confirmar comisiones extras: Nabile Mangas $5,000 · Denver Ake $2,500 · Marrufo (y más en el correo). IMPORTANT; acción de hoy.",
@@ -601,9 +601,9 @@ const CORREOS = [
     asunto:"RV: solicitud vendedora",
     porque:"Corrección: serían 2 vendedoras para el piso de venta Herramax (cc mendicuti.m@corah). Sigue UNREAD.",
     gmail:GM("1a1217e6b4d8471c","1a1217e6b4d8471c"), link:G("1a1217e6b4d8471c") },
-  { id:"c-zara-1010", urg:"amarillo", de:"Zara", cuenta:"Hotmail (llega a Gmail)", cuando:"sáb 10–dom 11 oct",
-    asunto:"Pedido 54487780251 — entrega 1 de 2 en camino (mar 13 oct)",
-    porque:"Zara: el dom 11 avisó “on its way — Delivery 1 of 2” con entrega MAÑANA mar 13. Hoy 3:00 PM (Hotmail) avisó que salió OTRA parte del pedido: 1 artículo talla MX 32 (US XL), $2,799, entrega estimada jue 15 – mar 20 oct. Sigue UNREAD en Gmail.",
+  { id:"c-zara-1010", urg:"amarillo", de:"Zara", cuenta:"Hotmail (llega a Gmail)", cuando:"sáb 10–lun 12 oct",
+    asunto:"Pedido 54487780251 — entrega 1 en camino (mar 13) + otra parte enviada",
+    porque:"Zara: entrega 1 llega MAÑANA mar 13. Hoy ~3:00 PM (Hotmail) avisó otra parte enviada: 1 artículo talla MX 32 (US XL), $2,799, entrega estimada jue 15 – mar 20 oct.",
     gmail:GM("1a12c4f5d2e93249","1a12c4f5d2e93249"), link:G("1a12c4f5d2e93249") },
   { id:"c-viva-1010", urg:"verde", de:"Viva Aerobus", cuenta:"Gmail", cuando:"sáb 10 oct, 12:17 PM",
     asunto:"Información importante sobre el vuelo PC27FC con destino Mérida",
@@ -621,65 +621,59 @@ const CORREOS = [
     asunto:"Gracias por tu compra",
     porque:"Confirmación de compra Zara (pedido ligado a 54487780251). UNREAD; informativo junto al aviso de envío.",
     gmail:GM("1a1288d9806ac647","1a1288d9806ac647"), link:G("1a1288d9806ac647") }
-];
+]
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
-  { id:"w-1012-erika-llamada", urg:"amarillo", whatsapp:{ chat:"Erika Lopez Gener", verificado:true, nota:"chat 1:1" }, txt:"Erika Lopez Gener: le preguntaste “¿Te puedo llamar amiga?” (2:16 PM) y te dijo “Si” — falta llamarla", det:"No se ve que la llamada ya se haya hecho; contexto: lo que le pasa a Arely · ronda WA 2:40 PM", hasta:"2026-10-12T22:00:00-06:00" },
-  { id:"w-1012-vac-puerta", urg:"rojo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"grupo" }, txt:"VA CIRCUITO: la puerta de la cafetería Doña Diana (donde trabajó Jesús) no abre; piden a alguien HOY antes de 3:30 PM o mañana temprano y confirmación", det:"Fredy reenvió video 0:31 (11:17–11:21 AM); Angeles (11:29): probar girar con llave, si no, Jesús va a checar — sin novedad de la puerta en la ronda WA 2:40 PM" },
-  { id:"w-1012-vac-calderon", urg:"rojo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"grupo" }, txt:"VA CIRCUITO: la cotización del Arq. Miguel Calderón (visita del 2 oct) nunca se pasó y el señor ya la está pidiendo", det:"2:14–2:41 PM: VAC dice que no le pasaron la información; Angeles: se le pasó a don Freddy y Armando fue al día siguiente al taller; VAC: “Ahora lo checamos entonces”. Asegura que salga · ronda WA 2:40 PM" },
-  { id:"w-1012-redes-escaleras", urg:"amarillo", whatsapp:{ chat:"Herramax REDES", verificado:true, nota:"grupo" }, txt:"Herramax REDES: Arianne sigue esperando la información de escaleras (desde 1:09 PM)", det:"Lo del silicón ya se lo contestó Nabile (1:28 PM); el mensaje de 1:48 con códigos no cargó · ronda WA 2:40 PM" },
-  { id:"w-1012-surtido-stock", urg:"verde", whatsapp:{ chat:"Surtido tienda Herramax", verificado:true, nota:"grupo" }, txt:"Surtido tienda Herramax: hoy queda el stock de piso de venta; solo falta una hoja que revise Alfredo", det:"Giovanni, Luis Herrera y Luis Ojeda ya lo están moviendo (2:27–2:36 PM); solo seguimiento · ronda WA 2:40 PM" },
-  { id:"w-1012-giovanni-material", urg:"amarillo", whatsapp:{ chat:"Giovanni Herramax", verificado:true, nota:"chat 1:1" }, txt:"Giovanni Herramax: decidir qué hacer con materiales descontinuados y guantes manchados (sugiere regalarlos con compra, como dijo Nabil)", det:"Desde 11:08 AM; espera respuesta (foto no legible) · posiblemente ligado al correo “material para dar de baja” (costos ya mandó el comprobante de salida a las 2:07 PM) · sigue en ronda WA 2:40 PM" },
-  { id:"w-1012-sweet-abre", urg:"amarillo", whatsapp:{ chat:"Sweet home", verificado:true, nota:"grupo" }, txt:"Sweet home: Arely pidió que le abran (“Buen dia m abre”, 11:20 AM); sin respuesta", det:"El recordatorio de las owalas (2:07 PM) tampoco tiene respuesta de Arely · ronda WA 2:40 PM" },
-  { id:"w-1012-juan-vuelo", urg:"verde", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"Mau y Juan: Juan dijo que su vuelo a Montréal también cambió; le mandaste “PC27FC” — verifica el cambio", det:"11:14–11:19 AM · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-michael", urg:"rojo", whatsapp:{ chat:"Michael Aluminiero Canadiense", verificado:true, nota:"chat 1:1" }, txt:"Michael (aluminiero canadiense): la llamada es HOY lun 12; falta fijar la HORA y acomodar el calendario", det:"Sáb 10, 7:30 PM: “Monday is perfect”; sin mensajes nuevos · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-hades-bolsa", urg:"amarillo", whatsapp:{ chat:"Hades y Mauricio", verificado:true, nota:"chat 1:1" }, txt:"Hades: decide si compras la bolsa azul de 38 cm en $280 (piel genuina)", det:"Medida que dio: 35×27×14 cm · desde ~12:35 AM · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-sensor", urg:"amarillo", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"Mau y Juan: Juan preguntó (dom 8:21 PM) si desactiva el sensor de la entrada principal; sin respuesta", det:"Sin novedad del sensor · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-angeles-lista", urg:"rojo", whatsapp:{ chat:"Angeles Vidrios", verificado:true, nota:"chat 1:1" }, txt:"Angeles Vidrios: espera respuesta a la lista de 15 clientes + anticipo $2,500 a Santiago / cobro saldo Jesús Gómez", det:"Lista desde ~8:08 AM; sin respuesta a las 10:46 · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-ortopedia", urg:"amarillo", whatsapp:{ chat:"Soluciones En Ortopedia", verificado:true, nota:"chat 1:1" }, txt:"Soluciones En Ortopedia: confirmar si mueves el seguimiento al mar 20 oct, 9:30 AM", det:"Te lo ofrecieron sáb 10, 10:59 AM; siguen esperando · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-veronica", urg:"amarillo", whatsapp:{ chat:"Match Veronica Mendicuti", verificado:true, nota:"chat 1:1" }, txt:"Veronica: ver resultado de la otra prueba + mensaje con número de tarjeta (termina 8821): pregunta para qué es y sugiere borrarlo", det:"Tarjeta sensible en el chat · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-nacho", urg:"amarillo", whatsapp:{ chat:"Nacho", verificado:true, nota:"chat 1:1" }, txt:"Nacho: “Hijito ¿dónde estás?” / “Buenas” sin respuesta (desde dom 2:20 PM)", det:"Sin mensajes nuevos · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-arely-hablar", urg:"amarillo", whatsapp:{ chat:"Arely", verificado:true, nota:"chat Help / Erika Lopez Gener" }, txt:"Arely: hablar sobre lo que le pasa; Erika quedó en que Arely te busque — mantente pendiente", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-amazon", urg:"verde", whatsapp:{ chat:"Amazon México", verificado:true, nota:"cuenta oficial" }, txt:"Amazon México: pedido 701-4854963-5896261 llega MAÑANA mar 13 oct", det:"Aviso WhatsApp dom 10:54 PM · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-ruben", urg:"amarillo", whatsapp:{ chat:"REDES VA PRIVADO", verificado:true, nota:"grupo" }, txt:"Rubén Aldana: aprobar portada/contraportada agenda 2027 ($850). Lo de VA en noviembre ya le contestaste “todavía no” (12:26 PM) y que pase lo de Herramax a Angel Zupo", det:"Rubén: “va va enterados”; imágenes de la agenda no visibles · ronda WA 1:32 PM" },
-  { id:"w-1012-saul", urg:"rojo", whatsapp:{ chat:"REDES VA PRIVADO", verificado:true, nota:"también Herramax REDES" }, txt:"Saul Cervera: Buen Fin Herramax — le dijiste a Rubén que lo definen MAÑANA mar 13; falta también Black Friday", det:"Tu mensaje 12:26 PM en REDES VA PRIVADO: “el buen fin lo definimos mañana” · ronda WA 1:32 PM" },
-  { id:"w-1012-tesla-app", urg:"verde", whatsapp:{ chat:"Tesla", verificado:true, nota:"cuenta oficial" }, txt:"Tesla: 3 avisos de mensaje nuevo en la app (dom 4:20–6:21 AM); revisa la app", det:"Puede ligarse a renovación FSD (~16 oct) · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-rc", urg:"amarillo", whatsapp:{ chat:"RC", verificado:true, nota:"Roddolfo Carrillo" }, txt:"RC (Roddolfo): lo de comer juntos sigue sin cierre", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-viva-pablo", urg:"verde", whatsapp:{ chat:"Viva", verificado:true, nota:"cuenta oficial" }, txt:"Viva: cambio de itinerario Pablo Ivan Zamorano Felix (PNR PC27FC); avísale si aplica", det:"También en Gmail · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-yatziri", urg:"amarillo", whatsapp:{ chat:"Yatziri Citlaly", verificado:true, nota:"chat 1:1" }, txt:"Yatziri: actualizarle el archivo (desde dom 11:26 AM) y pasarle los pendientes de mañana (los pidió en VA CIRCUITO a las 2:14 PM)", det:"ronda WA 2:40 PM" },
-  { id:"w-1012-liz-deuda", urg:"amarillo", whatsapp:{ chat:"Liz Caja Chica", verificado:true, nota:"chat 1:1" }, txt:"Liz Caja Chica: revisar estado de deuda ($70 mil abonado / $200 mil; practicante 1 mes)", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-fredy", urg:"verde", whatsapp:{ chat:"Fredy Castillo", verificado:true, nota:"chat 1:1" }, txt:"Fredy: revisar propuesta del cliente + confirmar aviso a Santiago de la suspensión", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-giovanni", urg:"rojo", whatsapp:{ chat:"Giovanni Herramax", verificado:true, nota:"chat 1:1" }, txt:"Giovanni Herramax: llamada sobre Óscar / solicitud de personal", det:"Sin novedades · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-nol", urg:"verde", whatsapp:{ chat:"Restaurante Nol", verificado:true, nota:"chat 1:1" }, txt:"NOL: alinear comensales (6 vs 7 OpenTable) — jue 15 oct, 8:30 PM", det:"Anticipo OK · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-ginna", urg:"rojo", whatsapp:{ chat:"Ginna Can", verificado:true, nota:"chat 1:1" }, txt:"Ginna Can: Montecristo sin respuesta — di si alguien va o que no", det:"Sigue abierto · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-areli-manejo", urg:"amarillo", whatsapp:{ chat:"Areli de Jesús campos cruz Help", verificado:true, nota:"chat 1:1" }, txt:"Areli de Jesús: acordar inicio de clases de manejo", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-vac-enrique", urg:"verde", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"grupo" }, txt:"VA CIRCUITO: VAC avisó “Ya está listo Enrique” — confirma que Armando pase por él", det:"Camioneta Lizzeth: ya no la necesitan (9:07); Ángeles Ok (9:09) — cerrado · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-sweet-caja", urg:"verde", whatsapp:{ chat:"Sweet home", verificado:true, nota:"grupo" }, txt:"Sweet home: confirmar con Arely/Juan la caja larga de cartón en la bodega", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-inbtarj", urg:"amarillo", whatsapp:{ chat:"Inbursa", verificado:true, nota:"cuenta oficial" }, txt:"Inbursa: recoger tarjeta Súper Crédito (term. 46) en sucursal con INE", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-miriam", urg:"amarillo", whatsapp:{ chat:"Miriam Gestión Cobranza", verificado:true, nota:"chat 1:1" }, txt:"Miriam: anticipo comisión $7,000 al vendedor", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-musa", urg:"verde", whatsapp:{ chat:"Mauricio USA", verificado:true, nota:"chat" }, txt:"Mauricio USA: revisar PDF de 6 páginas (llegó 11:31 AM), CLABE y los mensajes “Waiting for this message” (revísalos en el teléfono)", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-plata", urg:"verde", whatsapp:{ chat:"Plata", verificado:true, nota:"cuenta oficial" }, txt:"Plata Card: confirmar mínimo $1,350 (hoja TC marca Plata en $0)", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-rappi", urg:"verde", whatsapp:{ chat:"RappiCard", verificado:true, nota:"cuenta oficial" }, txt:"RappiCard: confirmar pagos $963 y $1,158; EDC correo dom 11 (mín $962.50 / para no intereses $6,357.58, límite 30 oct)", det:"Promo diferir ya venció · sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-pennsylvania", urg:"verde", whatsapp:{ chat:"Ventas y promos HERRAMAX", verificado:true, nota:"grupo" }, txt:"Herramax: compartir promo Pennsylvania (Nabile)", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-mejora-lonas", urg:"verde", whatsapp:{ chat:"Herramax Mejora continua", verificado:true, nota:"grupo" }, txt:"Mejora continua: lonas choferes y garantía película solar (Dany)", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-jenny", urg:"verde", whatsapp:{ chat:"Jenny Cen Alpina", verificado:true, nota:"chat 1:1" }, txt:"Jenny: PDF predial Lote 32 Baca_Luminares", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-josue-audio", urg:"verde", whatsapp:{ chat:"Josue Aluminiero", verificado:true, nota:"también Jorge Alcocer" }, txt:"Josue / Jorge Alcocer: audio 0:38 sin escuchar", det:"sigue en ronda WA 1:32 PM" },
-  { id:"w-1012-999172", urg:"verde", whatsapp:{ chat:"+52 1 999 172 9282", verificado:true, nota:"chat" }, txt:"+52 1 999 172 9282: “Fui, pero no salió cuando pase” sin cierre", det:"sigue en ronda WA 1:32 PM" },
+  { id:"w-1012-1610-erika", urg:"amarillo", whatsapp:{ chat:"Erika Lopez Gener", verificado:true, nota:"chat 1:1" }, txt:"Erika Lopez Gener: le preguntaste “¿Te puedo llamar amiga?” (2:16 PM) y te dijo “Si” — falta llamarla", det:"A las 3:02–3:03 PM habló de Ana Paola; la llamada sigue sin rastro · ronda WA 3:32 PM", hasta:"2026-10-12T22:00:00-06:00" },
+  { id:"w-1012-1610-calderon", urg:"rojo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"grupo" }, txt:"VA CIRCUITO: cotización del Arq. Miguel Calderón (visita del 2 oct) nunca se pasó y el señor ya la está pidiendo", det:"VAC lo checa desde 2:38 PM; Angeles mandó agenda de mañana + foto (3:11–3:12 PM, foto no visible) · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-vacpuerta", urg:"rojo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"grupo" }, txt:"VA CIRCUITO: puerta cafetería Doña Diana — era para HOY antes de 3:30 PM; sin confirmación → mañana temprano", det:"Fredy reenvió video 0:31; Angeles: girar con llave / Jesús checa — sin update nuevo en ronda 3:32 PM" },
+  { id:"w-1012-1610-cumbres", urg:"rojo", whatsapp:{ chat:"Manufactura VAC", verificado:true, nota:"grupo" }, txt:"Manufactura VAC: pedido urgente Cumbres (Jesús: “le urge a cumbres”); revisar imágenes “Pendientes de mañana” y foto 3:17 PM", det:"Angeles respondió sobre garantía; imágenes no visibles · ronda WA 3:32 PM · re-marcado no leído" },
+  { id:"w-1012-1610-surtido", urg:"verde", whatsapp:{ chat:"Surtido tienda Herramax", verificado:true, nota:"grupo" }, txt:"Surtido tienda Herramax: hoy queda el stock de piso de venta; solo falta una hoja que revise Alfredo", det:"Sin actividad nueva desde 2:36 PM (Luis Ojeda) · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-giovanni-mat", urg:"amarillo", whatsapp:{ chat:"Giovanni Herramax", verificado:true, nota:"chat 1:1" }, txt:"Giovanni Herramax: decidir qué hacer con materiales descontinuados y guantes manchados (¿regalar con compra?)", det:"Desde 11:08 AM; ligado al correo “material para dar de baja” (costos ya mandó comprobante 2:07 PM) · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-sweet", urg:"amarillo", whatsapp:{ chat:"Sweet home", verificado:true, nota:"grupo" }, txt:"Sweet home: Arely pidió que le abran (“Buen dia m abre”, 11:20 AM); sin respuesta al recordatorio owalas 2:07 PM", det:"ronda WA 3:32 PM · arely_salida: llegada 11:20 AM / sale 6:20 PM" },
+  { id:"w-1012-1610-michael", urg:"rojo", whatsapp:{ chat:"Michael Aluminiero Canadiense", verificado:true, nota:"chat 1:1" }, txt:"Michael (aluminiero canadiense): la llamada es HOY lun 12; falta fijar la HORA y acomodar el calendario", det:"Sáb 10, 7:30 PM: “Monday is perfect”; sin mensajes nuevos · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-buenfin", urg:"rojo", whatsapp:{ chat:"REDES VA PRIVADO", verificado:true, nota:"también Herramax REDES" }, txt:"Saul / Rubén: Buen Fin Herramax — lo defines MAÑANA mar 13; falta también Black Friday + portada agenda 2027 ($850)", det:"Tu mensaje 12:26 PM: “el buen fin lo definimos mañana”; Rubén VA noviembre ya contestado · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-yatziri", urg:"amarillo", whatsapp:{ chat:"Yatziri Citlaly", verificado:true, nota:"chat 1:1 + VA CIRCUITO" }, txt:"Yatziri: actualizarle el archivo (desde dom 11:26 AM) y pasarle los pendientes de mañana (los pidió en VA CIRCUITO a las 2:14 PM)", det:"Cobro don Tito a tía Fati ya resuelto (2:52–2:58 PM) · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-juan-vuelo", urg:"verde", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"Mau y Juan: Juan dijo que su vuelo a Montréal también cambió; le mandaste “PC27FC” — verifica el cambio", det:"+ sensor entrada principal (ayer) sin respuesta · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-hades", urg:"amarillo", whatsapp:{ chat:"Hades y Mauricio", verificado:true, nota:"chat 1:1" }, txt:"Hades: decide si compras la bolsa azul de 38 cm en $280 (piel genuina)", det:"Medida 35×27×14 cm · desde ~12:35 AM · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-angeles", urg:"rojo", whatsapp:{ chat:"Angeles Vidrios", verificado:true, nota:"chat 1:1" }, txt:"Angeles Vidrios: espera respuesta a la lista de 15 clientes + anticipo $2,500 a Santiago / cobro saldo Jesús Gómez", det:"Lista desde ~8:08 AM · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-ortopedia", urg:"amarillo", whatsapp:{ chat:"Soluciones En Ortopedia", verificado:true, nota:"chat 1:1" }, txt:"Soluciones En Ortopedia: confirmar si mueves el seguimiento al mar 20 oct, 9:30 AM", det:"Te lo ofrecieron sáb 10, 10:59 AM; siguen esperando · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-veronica", urg:"amarillo", whatsapp:{ chat:"Match Veronica Mendicuti", verificado:true, nota:"chat 1:1" }, txt:"Veronica: ver resultado de la otra prueba + mensaje con número de tarjeta (termina 8821): pregunta para qué es y sugiere borrarlo", det:"Tarjeta sensible en el chat · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-nacho", urg:"amarillo", whatsapp:{ chat:"Nacho", verificado:true, nota:"chat 1:1" }, txt:"Nacho: “Hijito ¿dónde estás?” / “Buenas” sin respuesta (desde dom 2:20 PM)", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-arely", urg:"amarillo", whatsapp:{ chat:"Arely", verificado:true, nota:"chat Help / Erika" }, txt:"Arely: hablar sobre lo que le pasa + devolver edredón (Mauricio dijo que sí a las 2:48 PM)", det:"Areli Help audios 1:55 (0:10/0:02) sin escuchar; clases de manejo (“Si pf”) · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-musa", urg:"verde", whatsapp:{ chat:"Mauricio USA", verificado:true, nota:"chat" }, txt:"Mauricio USA: revisar PDF de 6 páginas (11:31 AM) y los “Waiting for this message”", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-nol", urg:"verde", whatsapp:{ chat:"Restaurante Nol", verificado:true, nota:"chat 1:1" }, txt:"NOL: alinear comensales (6 vs 7 OpenTable) — jue 15 oct, 8:30 PM", det:"Anticipo OK · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-liz", urg:"amarillo", whatsapp:{ chat:"Liz Caja Chica", verificado:true, nota:"chat 1:1" }, txt:"Liz Caja Chica: revisar estado de deuda ($70 mil abonado / $200 mil) + reembolso efectivo Jesús Pech", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-fredy", urg:"verde", whatsapp:{ chat:"Fredy Castillo", verificado:true, nota:"chat 1:1" }, txt:"Fredy: revisar propuesta del cliente + confirmar aviso a Santiago de la suspensión", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-ginna", urg:"rojo", whatsapp:{ chat:"Ginna Can", verificado:true, nota:"chat 1:1" }, txt:"Ginna Can: Montecristo sin respuesta — di si alguien va o que no", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-enrique", urg:"verde", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"grupo" }, txt:"VA CIRCUITO: VAC avisó “Ya está listo Enrique” — confirma que Armando pase por él", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-inbtarj", urg:"amarillo", whatsapp:{ chat:"Inbursa", verificado:true, nota:"cuenta oficial" }, txt:"Inbursa: recoger tarjeta Súper Crédito (term. 46) en sucursal con INE", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-plata", urg:"verde", whatsapp:{ chat:"Plata", verificado:true, nota:"cuenta oficial" }, txt:"Plata Card: confirmar mínimo $1,350 (hoja TC marca Plata en $0)", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-rappi", urg:"verde", whatsapp:{ chat:"RappiCard", verificado:true, nota:"cuenta oficial" }, txt:"RappiCard: confirmar pagos $963 y $1,158; EDC correo dom 11 (mín $962.50 / para no intereses $6,357.58, límite 30 oct)", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-tesla", urg:"verde", whatsapp:{ chat:"Tesla", verificado:true, nota:"cuenta oficial" }, txt:"Tesla: 3 avisos de mensaje nuevo en la app (dom 4:20–6:21 AM); revisa la app", det:"Puede ligarse a renovación FSD (~16 oct) · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-rc", urg:"amarillo", whatsapp:{ chat:"RC", verificado:true, nota:"Roddolfo Carrillo" }, txt:"RC (Roddolfo): lo de comer juntos sigue sin cierre", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-viva", urg:"verde", whatsapp:{ chat:"Viva", verificado:true, nota:"cuenta oficial" }, txt:"Viva: cambio de itinerario Pablo Ivan Zamorano Felix (PNR PC27FC); avísale si aplica", det:"También en Gmail · ronda WA 3:32 PM" },
+  { id:"w-1012-1610-pennsylvania", urg:"verde", whatsapp:{ chat:"Ventas y promos HERRAMAX", verificado:true, nota:"grupo" }, txt:"Herramax: compartir promo Pennsylvania (Nabile)", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-mejora", urg:"verde", whatsapp:{ chat:"Herramax Mejora continua", verificado:true, nota:"grupo" }, txt:"Mejora continua: lonas choferes y garantía película solar (Dany)", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-miriam", urg:"amarillo", whatsapp:{ chat:"Miriam Gestión Cobranza", verificado:true, nota:"chat 1:1" }, txt:"Miriam: anticipo comisión $7,000 al vendedor", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-jenny", urg:"verde", whatsapp:{ chat:"Jenny Cen Alpina", verificado:true, nota:"chat 1:1" }, txt:"Jenny: PDF predial Lote 32 Baca_Luminares", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-josue", urg:"verde", whatsapp:{ chat:"Josue Aluminiero", verificado:true, nota:"también Jorge Alcocer" }, txt:"Josue / Jorge Alcocer: audio 0:38 sin escuchar", det:"ronda WA 3:32 PM" },
+  { id:"w-1012-1610-999172", urg:"verde", whatsapp:{ chat:"+52 1 999 172 9282", verificado:true, nota:"chat" }, txt:"+52 1 999 172 9282: “Fui, pero no salió cuando pase” sin cierre", det:"ronda WA 3:32 PM" },
   { id:"w-inbursa", urg:"rojo", whatsapp:{ chat:null, verificado:false, nota:"chat s/d" }, txt:"Pagar Inbursa *9142: mínimo $1,454.06 no reflejado", det:"Vencía 4 oct · saldo ~$3,941.72" }
-];
+]
 
 /* 4) SUGERENCIAS */
 const SUGERENCIAS = [
-  { id:"s-1012-1505-michael", emo:"🤝", urg:"rojo", txt:"HOY lun 12: la llamada con Michael sigue sin hora y no hay mensajes suyos desde el sábado. Mándale WhatsApp para fijarla (y la zona horaria) y ajusta el evento del calendario." },
-  { id:"s-1012-1505-calderon", emo:"📐", urg:"rojo", txt:"VA CIRCUITO: el Arq. Miguel Calderón ya pide la cotización de la visita del 2 oct y nadie la ha pasado. Pide hoy que alguien la arme y de paso pásale a Yatziri los pendientes de mañana, que los pidió a las 2:14 PM." },
-  { id:"s-1012-1505-comisiones", emo:"💰", urg:"rojo", txt:"HOY: Lizeth sigue sin respuesta a las comisiones extras Herramax (Nabile $5,000, Denver $2,500, etc.; correo 9:57 AM)." },
-  { id:"s-1012-1505-erika", emo:"📞", urg:"amarillo", txt:"Erika ya te dijo que sí a la llamada (2:16 PM). Llámala y aprovecha para ver cómo apoyar a Arely." },
-  { id:"s-1012-1505-vacpuerta", emo:"🚪", urg:"amarillo", txt:"La puerta de la cafetería Doña Diana era para hoy antes de las 3:30 PM y no hay confirmación en VA CIRCUITO. Si nadie fue, déjalo amarrado para mañana temprano." },
-  { id:"s-1012-1505-buenfin", emo:"📣", urg:"amarillo", txt:"MAÑANA mar 13 defines el Buen Fin de Herramax (se lo dijiste a Rubén). Llévalo listo para Saul con Black Friday, y hoy pide que le manden a Arianne la info de escaleras que espera desde la 1:09 PM." },
-  { id:"s-1012-1505-paquetes", emo:"📦", urg:"verde", txt:"MAÑANA mar 13: llega el difusor SENECESLI de Amazon y la entrega 1 de Zara, y a las 9:00 AM toca cobrar el mes a Salvador Jacobo. Otra parte de Zara (1 artículo, $2,799) llega entre el jue 15 y el mar 20. Programa la recolección DHL de la devolución del edredón REAL TEXTIL." },
-  { id:"s-1012-1505-salud", emo:"🩸", urg:"amarillo", txt:"Salud: Ultrahuman (1:44 PM) marca sueño 77 y recuperación 85 (7h 2m); Whoop y Withings siguen sin sesión. Último peso 134.6 kg (dom 11). Mídete la presión hoy (la última fue 149/89 del 7 oct) y no te saltes la pastilla." }
-];
+  { id:"s-1012-1610-michael", emo:"🤝", urg:"rojo", txt:"HOY lun 12 (ya van ~4 PM): la llamada con Michael sigue sin hora. Mándale WhatsApp ahora para fijarla (y la zona horaria) y ajusta el evento del calendario." },
+  { id:"s-1012-1610-calderon", emo:"📐", urg:"rojo", txt:"VA CIRCUITO: el Arq. Miguel Calderón sigue pidiendo la cotización de la visita del 2 oct. Asegura que alguien la arme hoy y pásale a Yatziri los pendientes de mañana (foto agenda de Angeles a las 3:12 PM)." },
+  { id:"s-1012-1610-cumbres", emo:"🔧", urg:"rojo", txt:"Manufactura VAC: a Cumbres le urge el pedido (Jesús ~3:17 PM). Abre el chat, revisa las fotos de “Pendientes de mañana” y confirma quién lo atiende." },
+  { id:"s-1012-1610-comisiones", emo:"💰", urg:"rojo", txt:"HOY: Lizeth sigue sin respuesta a las comisiones extras Herramax (Nabile $5,000, Denver $2,500…; correo 9:57 AM)." },
+  { id:"s-1012-1610-buenfin", emo:"📣", urg:"amarillo", txt:"MAÑANA mar 13 defines el Buen Fin de Herramax (se lo dijiste a Rubén). Llévalo listo para Saul con Black Friday; la puerta de Doña Diana ya pasó de las 3:30 PM sin confirmación — amárrala para mañana temprano." },
+  { id:"s-1012-1610-erika", emo:"📞", urg:"amarillo", txt:"Erika ya te dijo que sí a la llamada (2:16 PM). Llámala hoy y aprovecha para ver cómo apoyar a Arely (edredón / lo que le pasa)." },
+  { id:"s-1012-1610-paquetes", emo:"📦", urg:"verde", txt:"MAÑANA mar 13: llega el difusor SENECESLI de Amazon y la entrega 1 de Zara; a las 9:00 AM cobra el mes a Salvador Jacobo. Programa la recolección DHL del edredón REAL TEXTIL (devolución confirmada 2:50 PM)." },
+  { id:"s-1012-1610-salud", emo:"🩸", urg:"amarillo", txt:"Salud (Personal 3:44 PM): Ultrahuman sueño 77 / recuperación 85 (7h 2m); Whoop y Withings sin sesión. Último peso 134.6 kg (dom 11). Mídete la presión hoy (última 149/89 del 7 oct) y no te saltes la pastilla." }
+]
 
 /* 5) SALUD — base histórica. Los datos del día vienen de salud_hoy.json (lo escribe el agente Personal cada hora a los :48);
    build.js lo incrusta como SALUD_HOY y el tablero lo usa encima de esto. */
@@ -858,7 +852,7 @@ const FINANZAS = {
 const TARJETAS_TC = {
   link: TC_SHEET,
   hoy: "2026-10-12", finSemana: "2026-10-18",
-  leida: "lun 12 oct, 3:05 PM — Drive sin cambios (hoja TC modifiedTime 12:36 PM; Control_Gastos_Octubre 11:36 AM), se conservan los datos de la lectura de ~1:10 PM: hoja TC releída (Drive modifiedTime lun 12 oct, 12:36 PM; filas sin cambios contra la lectura de 12:10, solo cambiaron los totales de la hoja). Control_Gastos_Octubre sin cambios desde lun 12 oct, 11:36 AM. Saldos: total por pagar $55,536; AMEX ••••6007 $30,500 límite 28/30 oct; Platinum $10,300 Due day 13 nov; Rappi $6,500 (28 oct); Scotia $2,536 (21 oct); Open $350 (17 oct); PLATINUM AMEX sigue pendiente aparte (ver regla).",
+  leida: "lun 12 oct, 4:10 PM — Drive sin cambios (hoja TC modifiedTime 12:36 PM; Control_Gastos_Octubre 11:36 AM), se conservan los datos de la lectura de ~1:10 PM: hoja TC releída (Drive modifiedTime lun 12 oct, 12:36 PM; filas sin cambios contra la lectura de 12:10, solo cambiaron los totales de la hoja). Control_Gastos_Octubre sin cambios desde lun 12 oct, 11:36 AM. Saldos: total por pagar $55,536; AMEX ••••6007 $30,500 límite 28/30 oct; Platinum $10,300 Due day 13 nov; Rappi $6,500 (28 oct); Scotia $2,536 (21 oct); Open $350 (17 oct); PLATINUM AMEX sigue aparte (Hecho vie 9 oct / hoja $0).",
   colFecha: "columna C “Due day” = fecha límite de pago",
   totalesHoja: { cortes:286186, saldo:55536, digital:157600, efectivo:46700 },
   filas: [
@@ -1025,14 +1019,14 @@ const EVENTOS = [
   { id:"e-unani19",urg:"verde", cuando:"Lun 19 oct → movida al lun 26 oct", txt:"Unani — clase dinámica (horario del 26 aún sin confirmar)", link:CAL("ZzBxcGw5YTRmZzNxbGh2bGFrajc3ZmUwM3MgbWF1NTU4OEBt"), src:"Calendar" },
   { id:"e-mteresa",urg:"verde", cuando:"Mié 11 nov", txt:"Taller con María Teresa", link:null, src:"tu lista" }
 ];
-const EVENTOS_NOTA = "Vuelo PC27FC (Pablo Zamorano) Puebla→Mérida jue 12 nov 9:13 PM; viajes fijos en viajes.json. NOL jue 15 oct 8:30 PM (anticipo OK; alinear 6 vs 7). HOY lun 12: Michael (hora por acordar) + correo comisiones Lizeth. Ortopedia mar 20 9:30 (en calendario “Por confirmar”). Unani: inicio aplazado al mié 21 oct 11:00 AM y dinámica al lun 26 (calendario aún con 14 y 19). Amazon SENECESLI + Zara entrega 1 llegan mañana 13; otra parte de Zara jue 15 – mar 20. Meses con Juan: aviso mar 13 12:00 / todo el día mié 14. Profuturo sin servicio en línea 16–18 oct.";
+const EVENTOS_NOTA = "Vuelo PC27FC (Pablo Zamorano) Puebla→Mérida jue 12 nov 9:13 PM; viajes fijos en viajes.json. NOL jue 15 oct 8:30 PM (anticipo OK; alinear 6 vs 7). HOY lun 12: Michael (hora por acordar) + correo comisiones Lizeth + Manufactura VAC Cumbres urgente. Ortopedia mar 20 9:30 (en calendario “Por confirmar”). Unani: inicio aplazado al mié 21 oct 11:00 AM y dinámica al lun 26 (calendario aún con 14 y 19). Amazon SENECESLI + Zara entrega 1 llegan mañana 13; otra parte de Zara jue 15 – mar 20. Meses con Juan: aviso mar 13 12:00 / todo el día mié 14. Profuturo sin servicio en línea 16–18 oct.";
 
 /* 📄 DOCUMENTOS RECIENTES (Google Drive) */
 const DOCUMENTOS = [
   { id:"d-cgoct", tipo:"📗", txt:"Control_Gastos_Octubre_2026.xlsx", det:"Excel · editado lun 12 oct, 11:36 AM · Scotia **8664 y RappiCard **7806", link:"https://drive.google.com/file/d/1HrxPwYc1u6PqGWiWJ2MTnhYHNAssPeT5/view" },
   { id:"d-scotia", tipo:"📄", txt:"Scotia_Singular_8664_corte_03-oct-2026.pdf", det:"PDF · subido mar 6 oct, 2:03 PM", link:"https://drive.google.com/file/d/1CkQEzl6aCmiKmdftqAuCkwQXdiyaGazH/view" },
   { id:"d-sem41", tipo:"📊", txt:"Asistencias_Tienda_Sem41_Cruce_RH", det:"Hoja · mod. lun 5 oct · acumulado oct: $2,367.82 faltas/permisos", link:SEM41_SHEET },
-  { id:"d-tc",    tipo:"📊", txt:"TC (tarjetas: cortes, vencimientos y saldos)", det:"Hoja · mod. lun 12 oct, 12:36 PM (releída lun 12 ~1:10 PM)", link:TC_SHEET },
+  { id:"d-tc",    tipo:"📊", txt:"TC (tarjetas: cortes, vencimientos y saldos)", det:"Hoja · mod. lun 12 oct, 12:36 PM (releída lun 12, 4:10 PM; sin cambios)", link:TC_SHEET },
   { id:"d-bitu",  tipo:"📝", txt:"Bitácora Academia Unani", det:"Doc · mod. lun 5 oct", link:"https://docs.google.com/document/d/1v8VI65r-YJ_CPXTddMt3o2PX9bk3VrdwEMs1PWJ-Owo/edit" },
   { id:"d-bitu2", tipo:"📝", txt:"Bitácora Unani", det:"Doc · mod. lun 5 oct", link:"https://docs.google.com/document/d/1rR8Ix-rK_knoBMWsI1RtfOaT0gPSDF4x55ycSYh8Ln0/edit" },
   { id:"d-erika", tipo:"📊", txt:"Erika Lopez Gener", det:"Hoja · mod. lun 5 oct", link:"https://docs.google.com/spreadsheets/d/1M7PgVMhEt-1fnynjz_foAKTW0Y4Okf4qk7PWj9892a8/edit" },
@@ -1044,6 +1038,7 @@ const DOCUMENTOS = [
 
 /* 🔐 SEGURIDAD Y CUENTAS (se ignoró phishing: casinos, préstamos, MyChart falso, MyCloudStorage, Mercadona) */
 const SEGURIDAD = [
+  { id:"x-msft-spacexai-1012", urg:"amarillo", txt:"Microsoft: SpaceXAI se conectó a tu cuenta mau5588@hotmail.com", det:"lun 12 oct, ~4:00 PM · si no fuiste tú, quita el acceso en account.microsoft.com › Apps; llegó a Gmail y Hotmail", gmail:GM("1a13221fcf8396d0","1a13221fcf8396d0"), link:G("1a13221fcf8396d0"), src:"Hotmail→Gmail" },
   { id:"x-amex-falso-1012", urg:"verde", txt:"Correo de “American Express” en tu Hotmail desde un dominio ajeno (info@frane.aledobre.com): “$5,000 M.N. de cashback hoy” (Gold Elite)", det:"lun 12 oct, 2:31 PM · no viene de un dominio de American Express; no des datos ni tarjeta desde ese correo", outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY-xWVsAAAA="), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY%2FxWVsAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem", src:"Hotmail" },
   { id:"x-netflix-phish-1012", urg:"amarillo", txt:"Correo FALSO de “Netflix” en tu Hotmail (“Your account is on hold… update payment”)", det:"lun 12 oct, 12:39 PM · remitente pawprintgya.com.ar (no es Netflix) y asunto escrito al revés: es phishing. No abras el enlace ni pongas tu tarjeta; Netflix se paga normal por PayPal", outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY-xWVcAAAA="), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBDAAAAKH974JJ6D9FgQRVi7GvGYoACY%2FxWVcAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem", src:"Hotmail" },
   { id:"x-fb-proteccion-1011", urg:"verde", txt:"Facebook te pide activar la “protección avanzada” con una llave de acceso (a tu Hotmail)", det:"dom 11 oct, 8:39 AM · viene de security@facebookmail.com; actívala desde la app de Facebook, no desde enlaces", gmail:GM("1a12b67e335e788d","1a12b67e335e788d"), link:G("1a12b67e335e788d"), src:"Gmail" },
@@ -1068,14 +1063,15 @@ const SEGURIDAD = [
 
 /* 🔥 URGENTES — lo más importante (tema único, sin repetir) */
 const URGENTES = [
-  { id:"u-1012-1312-michael", txt:"HOY lun 12: acordar HORA de la llamada con Michael (el 9:00 AM del calendario ya pasó)", link:null, sec:"whatsapp" },
-  { id:"u-1012-1505-calderon", txt:"VA CIRCUITO: el Arq. Miguel Calderón ya pide su cotización (visita 2 oct) y nadie se la ha pasado", link:null, sec:"whatsapp" },
-  { id:"u-1012-1312-vacpuerta", txt:"VA CIRCUITO: la puerta de la cafetería Doña Diana (era para hoy antes de 3:30 PM o mañana temprano) — sigue sin confirmación", link:null, sec:"whatsapp" },
-  { id:"u-1012-1312-comisiones", txt:"Lizeth (correo 9:57 AM): confirmar comisiones extras Herramax tienda (Nabile $5,000, Denver $2,500…)", link:G("1a130d4b08e1bd7f"), sec:"correos" },
-  { id:"u-1012-1312-buenfin", txt:"Buen Fin Herramax: lo defines MAÑANA mar 13 (Saul / REDES VA PRIVADO); falta Black Friday", link:null, sec:"whatsapp" },
-  { id:"u-1012-1312-unani", txt:"Unani: el curso pasó del mié 14 al mié 21 oct, 11:00 AM; corrige el calendario", link:null, sec:"eventos" },
-  { id:"u-1012-1205-inbursa", txt:"Inbursa *9142: mínimo $1,454.06 vencido 4 oct (aún no reflejado)", link:null, sec:"whatsapp" }
-];
+  { id:"u-1012-1610-michael", txt:"HOY lun 12 (~4 PM): acordar HORA de la llamada con Michael (el 9:00 AM del calendario ya pasó)", link:null, sec:"whatsapp" },
+  { id:"u-1012-1610-calderon", txt:"VA CIRCUITO: cotización Arq. Miguel Calderón (visita 2 oct) — VAC lo checa; asegúrate de que salga", link:null, sec:"whatsapp" },
+  { id:"u-1012-1610-cumbres", txt:"Manufactura VAC: pedido urgente Cumbres (Jesús ~3:17 PM) + fotos pendientes de mañana", link:null, sec:"whatsapp" },
+  { id:"u-1012-1610-comisiones", txt:"Lizeth (correo 9:57 AM): confirmar comisiones extras Herramax tienda (Nabile $5,000, Denver $2,500…)", link:G("1a130d4b08e1bd7f"), sec:"correos" },
+  { id:"u-1012-1610-vacpuerta", txt:"VA CIRCUITO: puerta Doña Diana — pasó de las 3:30 PM sin confirmación → mañana temprano", link:null, sec:"whatsapp" },
+  { id:"u-1012-1610-buenfin", txt:"Buen Fin Herramax: lo defines MAÑANA mar 13 (Saul / REDES VA PRIVADO); falta Black Friday", link:null, sec:"whatsapp" },
+  { id:"u-1012-1610-unani", txt:"Unani: el curso pasó del mié 14 al mié 21 oct, 11:00 AM; corrige el calendario", link:null, sec:"eventos" },
+  { id:"u-1012-1610-inbursa", txt:"Inbursa *9142: mínimo $1,454.06 vencido 4 oct (aún no reflejado)", link:null, sec:"whatsapp" }
+]
 
 /* ✅ HECHOS — ids ya procesados (por la rutina horaria o porque Mau tocó “Hecho”). No se pintan. */
 const HECHOS = ["w-zamen-1008", "w-sara-rifa", "r-isai", "c-nrf", "c-trade", "c-amazon", "c-unani", "c-subs", "c-audible", "c-edocta", "c-login", "c-plata", "w-areli", "w-gabriel", "w-vero", "w-esperando", "s-inbursa", "s-nrf", "s-pastilla", "s-areli", "s-angeles", "s-solar", "u2", "u3", "u5", "u6", "f-nrf", "f-nrf2", "f-hsbc", "w-inbursa", "v-hsbc", "v-inbursa", "v-nrf", "c-google", "u1", "u8", "s-pdf", "u7", "r-plinio8", "w-dany", "w-vac", "w-angeles", "w-giovanni", "w-klar", "u9", "c-lizeth", "t-lizeth", "u11", "r-amexp", "v-amexp", "w-fernando", "s-herrajes", "w-yatziri", "r-mjbday", "t-freddy", "w-technsports-1007", "r-rhom", "r-plinio7", "w-ginna-1007", "r-leticia-1008", "r-chatarra-1008", "r-tortas", "w-leticia-1008", "u-1008-chatarra", "c-withings-1008", "w-giovanni-diego-1008", "w-musa", "w-memorae", "w-jenny-predial-1007", "w-sweet-owalas-1007", "w-arely-jueves-1008", "w-ginna-1008b", "w-vero-1008", "w-eddie-1008", "w-fredy-1008", "w-plata-1008", "w-rappi-1008", "w-impresion-1008", "w-josue-1007", "w-miriam", "w-alex-1007b", "w-yatziri-josue-1007", "w-vac-espejo-1007", "w-nol-1007", "c-amex6007", "u-1008-giovanni", "u-1008-ginna", "r-eddie", "r-diana", "c-amz-ibesky-1008", "c-amzreemb-1007", "c-apple-1007", "u-1008-arely", "s-1008-1448-giovanni", "s-1008-1448-ginna", "u-1009-0825-ginna", "u-1009-0825-google", "u-1009-0825-amexp", "u-1009-0825-nrf", "w-ginna-monte-1008", "s-1009-0925-amexp", "w-marisol-1008", "u-1009-1015-giovanni", "u-1009-0825-citij", "u-1009-0825-cfe", "u-1009-0825-trade", "u-1009-0825-angeles", "c-openbank-1009", "c-cfe-1008", "c-amz-problema-1008", "w-giovanni-oscar-1009", "w-veronica-inv-1009", "w-angeles-vidrios-1008", "w-vac-material-1008", "w-nol-comensales-1008", "s-1009-1155-giovanni", "s-1009-1155-citij", "s-1009-1155-angeles", "s-1009-1155-veronica", "v-citij-1008", "v-apple7", "r-citij-1008", "p-trade", "u-1010-arely", "u-1010-telcel", "r-telcel", "w-josue-spark-1009", "w-vac-roce-1009", "p-bento2", "c-freelancemid-1010", "r-areli-1010", "w-arely-resp-1008", "w-arely-salud-1009", "v-telcel", "w-mauyjuan-papi-1010", "u-1010-ortopedia", "w-amazon-pedido-1008", "s-1011-1152-paquete", "u-1012-0911-plat", "u-1012-0911-arely", "u-1012-0911-ortopedia", "u-1012-0911-angeles", "u-1012-0911-sensor", "r-arelypago-1012", "c-netflix-paypal-1012", "c-apple-recibo-1012", "c-nomina-angeles-1009", "c-meta-cancel-1011", "c-amz-senecesli-1011", "c-paramount-pv-1011", "c-paypal-apple-1011", "c-rappi-edc-1011", "c-tesla-fsd-1011", "s-1012-0911-plat", "s-1012-0911-arely", "s-1012-0911-ortopedia", "s-1012-0911-sensor", "w-1012-sensor", "w-1012-angeles-lista", "w-1012-ortopedia", "w-1012-veronica", "w-1012-nacho", "w-1012-arely-hablar", "w-1012-amazon", "w-1012-tesla-app", "w-1012-rc", "w-1012-viva-pablo", "w-1012-liz-deuda", "w-1012-giovanni", "w-1012-ginna", "w-1012-areli-manejo", "w-1012-miriam", "w-1012-jenny", "w-1012-josue-audio"];
