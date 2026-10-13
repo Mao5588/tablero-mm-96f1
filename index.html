@@ -501,7 +501,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Martes 13 de octubre de 2026",
-  updated: "mar 13 oct 2026, 11:15 AM (tablero completo: WhatsApp ronda 10:46 AM — Arely «abre» + $500 hoy; Buen Fin Herramax sigue sin definir; correos 11:12 AM: Berel ARM Santander sept + solicitud personal Giovanni; Lizeth comisiones sin respuesta; Amazon KIROGILY tetera llega jueves; calendario Google 11:12 AM; hoja TC/Control_Gastos sin releer Drive esta corrida (última leída lun 12); salud Personal 10:41 AM; paneles aparte)",
+  updated: "mar 13 oct 2026, 11:15 AM (tablero completo: WhatsApp 10:46; correos 11:12 Berel+Giovanni+KIROGILY; calendario + Hotmail extras Plata 22 / suegra 24–25 / Alexander·Gaby 27; TC Drive timeout — saldos lun 12; salud 10:41)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -553,7 +553,7 @@ const RECORDATORIOS = [
   { id:"r-inbursa", dia:"Mié 14 oct", hora:"Todo el día",  txt:"Corte de Inbursa", urg:"verde", fuente:"nota" },
   { id:"r-mifel-1014", dia:"Mié 14 oct", hora:"9:00 AM", txt:"Pagar TC Mifel mía (vence día 16) — aviso de calendario; la hoja TC ya la pasó al 16 nov con saldo $0 (parece pagada)", urg:"verde", fuente:"cal", link:CAL("MTZuc2FwcXFuN3Bmb3MzN2hza2Vlc21rcG9fMjAyNjEwMTRUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-totalplay",dia:"Mié 14 oct",hora:"9:00 AM",      txt:"Pagar Totalplay (vence día 16) — estado de cuenta dom 11: pronto pago $1,389 si pagas antes del 16 oct", urg:"verde", fuente:"cal", link:CAL("YWF0b2xwcmFsZ3ZjZGhrZmhxZjRrZTZvcDRfMjAyNjEwMTRUMTUwMDAwWiBtYXU1NTg4QG0") },
-  { id:"r-unani",   dia:"Mié 14 oct → Mié 21 oct", hora:"11:00 AM–1:00 PM", txt:"Curso Unani 🌿 — APLAZADO: Unani avisó que el inicio del Grupo A pasa al MIÉ 21 OCT, 11:00 AM; tu calendario aún lo tiene MAÑANA mié 14 (revisado 10:12 AM; hoy 10:01 AM además se creó un aviso “curso Academia Unani empieza en 1 día” que todavía dice mié 14). Falta que autorices corregir el calendario", urg:"amarillo", fuente:"cal+nota", link:CAL("M3U4NmUwbW5vMjc1djVzNXZrc29ucGk5NTggbWF1NTU4OEBt") },
+  { id:"r-unani",   dia:"Mié 14 oct → Mié 21 oct", hora:"11:00 AM–1:00 PM", txt:"Curso Unani 🌿 — APLAZADO: Unani avisó que el inicio del Grupo A pasa al MIÉ 21 OCT, 11:00 AM; ya aparecen mié 21 11:00 AM y lun 26 12:00 PM, pero siguen los eventos viejos del mié 14 y lun 19 y el aviso de hoy 10:01 AM “empieza en 1 día” que aún apunta al 14 — hay que limpiar el calendario", urg:"amarillo", fuente:"cal+nota", link:CAL("M3U4NmUwbW5vMjc1djVzNXZrc29ucGk5NTggbWF1NTU4OEBt") },
   { id:"r-open",    dia:"Jue 15 oct", hora:"9:00 AM",      txt:"Pagar TC Open (vence día 17) — saldo en hoja TC: $350.00", urg:"verde", fuente:"cal", link:CAL("NGc0ODdobzE5bTZhbWMwcDA5cDJpdWxrb2NfMjAyNjEwMTVUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-salv15",  dia:"Jue 15 oct", hora:"9:00 AM",      txt:"Cobrar renta a Salvador Jacobo", urg:"verde", fuente:"cal", link:CAL("ZXA4ZGZoMGdjZzRrNnF0djk1b3Z0ZWFtM2cgbWF1NTU4OEBt") },
   { id:"r-hurd-1015", dia:"Jue 15 oct", hora:"10:00 AM", txt:"Visita Hurd (tema dos puertas) con don Enrique en el centro — VAC confirmó hoy 9:01 AM en VA CIRCUITO “Quedó para el jueves a las 10 am”. No está en tu calendario", urg:"amarillo", fuente:"wa" },
@@ -570,7 +570,13 @@ const RECORDATORIOS = [
   { id:"r-gabri-1024", dia:"Sáb 24 oct", hora:"9:00 AM", txt:"Darle carteras a Gabri (recordatorio anual del calendario)", urg:"verde", fuente:"cal", link:CAL("XzY5MTQyY2EzNjhyMzBiOWs4NHAzMmI5azg5MTMyYjlwNnQxamdiOWs2bDBqYWhhMjYxMTRhZDFtNmNfMjAyNjEwMjRUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-tc28-1026", dia:"Lun 26 oct", hora:"9:00 AM", txt:"Avisos de calendario (vencen día 28): AMEX ••••6007 — hoja TC saldo $30,500 (distinta de PLATINUM AMEX) · Rappi $6,500 · Scotia Juan $0 · Home Depot $0 · Telcel (la de octubre ya la pagaste sáb 10)", urg:"amarillo", fuente:"cal", link:CAL("dDFxbnRtODRiZHJpNDFicXU3MTJiNWE0M3NfMjAyNjEwMjZUMTUwMDAwWiBtYXU1NTg4QG0") },
   { id:"r-telmex",  dia:"Lun 26 oct", hora:"Fecha límite",          txt:"Pagar Telmex — recibo octubre (mar 6): saldo anterior $1,402.94; límite según recibo lun 26 oct", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") },
-  { id:"r-plat-nov", dia:"Jue 13 nov", hora:"fecha límite hoja TC", txt:"TC Platinum — saldo pendiente $10,300.00 (Due day hoja TC: 13 nov; corte día 26). Distinta de PLATINUM AMEX", urg:"amarillo", fuente:"nota", link:TC_SHEET }
+  { id:"r-plat-nov", dia:"Jue 13 nov", hora:"fecha límite hoja TC", txt:"TC Platinum — saldo pendiente $10,300.00 (Due day hoja TC: 13 nov; corte día 26). Distinta de PLATINUM AMEX", urg:"amarillo", fuente:"nota", link:TC_SHEET },
+  { id:"r-tesla-1013", dia:"Mar 13 oct", hora:"9:00 AM", txt:"Aviso de calendario “Pagar TC — Tesla Santander” (vence día 15) — Memorae también lo recordó hoy; en la última lectura de la hoja TC (lun 12) Tesla Santander estaba en $0 (parece pagada)", urg:"verde", fuente:"cal", link:CAL("bGhyN3AzanBhZjVuaWltdDlpbGE0OWtzZmdfMjAyNjEwMTNUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-platacard-1022", dia:"Jue 22 oct", hora:"12:00 PM", txt:"“Fecha de pago Plata Card” (calendario Hotmail) — la hoja TC (lun 12) tenía Plata con saldo $0 / corte $26,350, límite 20 oct", urg:"verde", fuente:"cal" },
+  { id:"r-suegra-1024", dia:"Sáb 24 – Dom 25 oct", hora:"11:00 AM", txt:"Avisos del calendario Hotmail: “Mañana murió mi suegra” (sáb 24) y “Hoy murió mi suegra” (dom 25) — aniversario", urg:"verde", fuente:"cal" },
+  { id:"r-alexander-1027", dia:"Mar 27 oct", hora:"7:45 AM", txt:"Cumple Alexander (calendario Hotmail)", urg:"verde", fuente:"cal" },
+  { id:"r-gaby-1027", dia:"Mar 27 oct", hora:"Todo el día", txt:"Cumple de Gaby (calendario Google, anual)", urg:"verde", fuente:"cal", link:CAL("Y3BoajZjaHBja28zOGI5aGM0cW0yYjlrNjhyNjhiYjI3NWltY2JiM2NnczY0Y2hsNmRnajJvcHA2c18yMDI2MTAyNyBtYXU1NTg4QG0") },
+  { id:"r-walmart-kix-1027", dia:"Mar 27 oct", hora:"9:00 AM", txt:"Avisos de calendario (vencen día 29): Walmart — hoja TC (lun 12) saldo $0 / corte $5,200 · Coche Kix NR — monto s/d", urg:"verde", fuente:"cal", link:CAL("ODdpNnV2MWZmdHY0cWU0aWgybjNjOTI3cmNfMjAyNjEwMjdUMTUwMDAwWiBtYXU1NTg4QG0") }
 ]
 
 /* 2) CORREOS IMPORTANTES — solo lectura; links directos al mensaje */
@@ -1047,7 +1053,9 @@ const EVENTOS = [
   { id:"e-unani",  urg:"amarillo", cuando:"Mañana mié 14 oct → aplazado al mié 21 oct · 11:00 AM", txt:"Curso Unani: Unani avisó que el inicio del Grupo A pasa del 14 al 21 oct (11:00 AM Mérida) y la dinámica del 19 al 26 oct; tu calendario aún tiene las fechas viejas", link:CAL("M3U4NmUwbW5vMjc1djVzNXZrc29ucGk5NTggbWF1NTU4OEBt"), link2:"https://docs.google.com/document/d/1v8VI65r-YJ_CPXTddMt3o2PX9bk3VrdwEMs1PWJ-Owo/edit", link2txt:"bitácora", src:"Calendar" },
   { id:"e-nol-1015", urg:"verde", cuando:"Jue 15 oct · 8:30 PM", txt:"Cena en NOL restaurante (confirmación 832): anticipo ya recibido y reserva confirmada; falta confirmar comensales (OpenTable dice 7)", link:CAL("bWNsYm5oNmNhY2oxbm5nZGg5Mmkza2hsZWsgbWF1NTU4OEBt"), src:"Calendar" },
   { id:"e-unani19",urg:"verde", cuando:"Lun 19 oct → movida al lun 26 oct", txt:"Unani — clase dinámica (horario del 26 aún sin confirmar)", link:CAL("ZzBxcGw5YTRmZzNxbGh2bGFrajc3ZmUwM3MgbWF1NTU4OEBt"), src:"Calendar" },
-  { id:"e-mteresa",urg:"verde", cuando:"Mié 11 nov", txt:"Taller con María Teresa", link:null, src:"tu lista" }
+  { id:"e-mteresa",urg:"verde", cuando:"Mié 11 nov", txt:"Taller con María Teresa", link:null, src:"tu lista" },
+  { id:"e-hurd-1015", urg:"amarillo", cuando:"Jue 15 oct · 10:00 AM", txt:"Visita Hurd (dos puertas) con don Enrique — confirmada por VAC 9:01 AM; no está en el calendario", link:null, src:"WhatsApp" },
+  { id:"e-tiagaby-1019", urg:"verde", cuando:"Lun 19 oct · 1:40 PM", txt:"Cita del lun 19 oct, 1:40 PM que te pasó Tía Gaby por WhatsApp (ya en calendario; el mensaje no dice de qué es)", link:CAL("cHZpN3R2M29pYmcxdHJ1b2FzZzNiN2RrdjAgbWF1NTU4OEBt"), src:"Calendar" }
 ];
 const EVENTOS_NOTA = "NOL jue 15 oct 8:30 PM (anticipo OK; alinear 6 vs 7). Unani: inicio aplazado al mié 21 oct 11:00 AM y dinámica al lun 26 (calendario aún mié 14 y lun 19). Ortopedia mar 20 9:30 AM (Por confirmar). Cita Tía Gaby lun 19 1:40 PM. Visita Hurd don Enrique jue 15 10:00 AM (WA). Vuelo PC27FC Puebla→Mérida jue 12 nov; viajes en viajes.json. Taller María Teresa mié 11 nov.";
 
