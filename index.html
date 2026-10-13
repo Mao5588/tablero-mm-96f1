@@ -501,7 +501,7 @@ li.tc-week{border-color:#ffd57a !important;background:#fffbea !important}
 const META = {
   nombre: "Mau",
   fecha: "Lunes 12 de octubre de 2026",
-  updated: "lun 12 oct 2026, 7:18 PM (paneles; tablero completo: WhatsApp ronda 6:49 PM; correos Gmail/Casa/Hotmail ~7:15 PM; calendario Google releído ~7:15 PM; hoja TC editada 12:36 PM (sin cambios); Control_Gastos_Octubre editado 11:36 AM (sin cambios); salud Personal 6:56 PM / UH ~5:36 PM sleep 77/recovery 84/mov 73; Whoop y Withings sin sesión, peso 134.6 kg 11 oct)",
+  updated: "lun 12 oct 2026, 7:22 PM (paneles; tablero completo: correos Gmail/Casa/Hotmail 7:20 PM; calendario Google 7:20 PM; hoja TC editada 12:36 PM y Control_Gastos_Octubre 11:36 AM (sin cambios, revisado 7:20 PM); WhatsApp ronda 6:49 PM; salud Personal 6:56 PM / UH ~5:36 PM; Whoop y Withings sin sesión, peso 134.6 kg 11 oct)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -509,11 +509,11 @@ const META = {
 
 
 const SOLAR = {
-  fuente: "Luxpowertek · leído lun 12 oct, 7:18 PM",
-  leido: "7:18 PM",
-  hoy:  { generado: 55.1, consumido: 19.8, exportada: 46.3, descargada: 0, nota: "" },
+  fuente: "Luxpowertek · leído lun 12 oct, 7:22 PM",
+  leido: "7:22 PM",
+  hoy:  { generado: 55.1, consumido: 20, exportada: 46.3, descargada: 0, nota: "" },
   ayer: { generado: 63.3, consumido: 31.7 },
-  mesActual:   { nombre: "Octubre", dias: "1–12", gen: 666.6, cons: 498.4, exportada: 518.9, bateriaDescargada: 3.1 },
+  mesActual:   { nombre: "Octubre", dias: "1–12", gen: 666.6, cons: 498.6, exportada: 518.9, bateriaDescargada: 3.1 },
   mesAnterior: { nombre: "Septiembre", gen: 2161.4, cons: 1158.1, exportada: 1791.6 },
   porDia: [
     { dia: 1, gen: 72,   cons: 55.5 },
@@ -527,7 +527,7 @@ const SOLAR = {
     { dia: 9, gen: 66.1, cons: 31.7 },
     { dia: 10, gen: 57.3, cons: 23.9 },
     { dia: 11, gen: 63.3, cons: 31.7 },
-    { dia: 12, gen: 55.1, cons: 19.8, enCurso: true }
+    { dia: 12, gen: 55.1, cons: 20, enCurso: true }
   ],
   bateria: 100
 };
@@ -542,7 +542,7 @@ const OUTM = m => ({ cuenta:"mau5588@hotmail.com", conector:"user-Outlook-xai", 
 const CAL = e  => "https://www.google.com/calendar/event?eid=" + e + "&ctz=America/Merida";
 const TC_SHEET = "https://docs.google.com/spreadsheets/d/1Dro8qc3SM1SRV93KK0NRl4APLwNyNUEYJHVjCZuSRwM/edit";
 const RECORDATORIOS = [
-  { id:"r-michael-1012", dia:"Lun 12 oct", hora:"HOY · sin hora (día casi cerrado)", txt:"Llamada con Michael (aluminio Canadá): el bloque 9:00 AM pasó y a las ~7 PM aún no hay hora; reagendar mañana o mandarle WhatsApp esta noche", urg:"rojo", fuente:"cal+wa" },
+  { id:"r-michael-1012", dia:"Lun 12 oct", hora:"HOY · sin hora (día casi cerrado)", txt:"Llamada con Michael (aluminio Canadá): el bloque 9:00 AM pasó y a las 7:20 PM aún no hay hora; reagendar mañana o mandarle WhatsApp esta noche", urg:"rojo", fuente:"cal+wa" },
   { id:"r-arely500-1013", dia:"Mar 13 oct", hora:"Mañana · dejarle el dinero", txt:"Dejarle a Arely $500 (acordado Sweet home 6:32–6:33 PM: pago cada lunes; ella lo agarra mañana)", urg:"rojo", fuente:"wa" },
   { id:"r-yerman-1013", dia:"Mar 13 oct", hora:"Todo el día", txt:"Cumpleaños de yerman velasco aguiar (aviso del calendario Hotmail)", urg:"verde", fuente:"cal" },
   { id:"r-mesesjuan13", dia:"Mar 13 oct", hora:"12:00 PM", txt:"Aviso “Mañana meses con Juan” (calendario Hotmail)", urg:"verde", fuente:"cal" },
@@ -564,9 +564,12 @@ const RECORDATORIOS = [
   { id:"r-tiagaby", dia:"Lun 19 oct", hora:"1:40 PM",      txt:"Cita del lun 19 oct, 1:40 PM que te pasó Tía Gaby por WhatsApp (ya en calendario; el mensaje no dice de qué es)", urg:"verde", fuente:"cal", link:CAL("cHZpN3R2M29pYmcxdHJ1b2FzZzNiN2RrdjAgbWF1NTU4OEBt") },
   { id:"r-unani19", dia:"Lun 19 oct → Lun 26 oct", hora:"11:00 AM / 12:00 PM",     txt:"Unani — clase dinámica: Unani la movió al lun 26 oct (calendario ya tiene una el 26 a las 12:00 PM; la del 19 sigue y hay que borrarla/moverla)", urg:"verde", fuente:"cal", link:CAL("ZzBxcGw5YTRmZzNxbGh2bGFrajc3ZmUwM3MgbWF1NTU4OEBt") },
   { id:"r-ortopedia-1012", dia:"Mar 20 oct", hora:"9:30 AM (propuesta · por confirmar)", txt:"Seguimiento Dra. Silvia Pérez en Star Médica: Soluciones En Ortopedia ofreció (sáb 10) moverlo al mar 20 oct, 9:30 AM. En calendario como “(Por confirmar)” — piso 9, consultorio 905", urg:"amarillo", fuente:"cal+nota", link:CAL("Z3A2NWptNm5naWw5anVpdXRtN3A0b29qNmsgbWF1NTU4OEBt") },
-  { id:"r-plat-nov", dia:"Jue 13 nov", hora:"fecha límite hoja TC", txt:"TC Platinum — saldo pendiente $10,300.00 (Due day hoja TC: 13 nov; corte día 26). Distinta de PLATINUM AMEX", urg:"amarillo", fuente:"nota", link:TC_SHEET },
   { id:"r-santj-1020", dia:"Mar 20 oct", hora:"9:00 AM", txt:"Pagar TC Santander J (vence día 22) — hoja TC: corte $37,000 (efectivo), saldo $0", urg:"verde", fuente:"cal", link:CAL("OWQ3cnRjNDNvanJpa2R1YzhlcG1jNTNlMTBfMjAyNjEwMjBUMTUwMDAwWiBtYXU1NTg4QG0") },
-  { id:"r-telmex",  dia:"Lun 26 oct", hora:"Fecha límite",          txt:"Pagar Telmex — recibo octubre (mar 6): saldo anterior $1,402.94; límite según recibo lun 26 oct", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") }
+  { id:"r-mercado-1021", dia:"Mié 21 oct", hora:"9:00 AM", txt:"Pagar TC Mercado Pago (vence día 23) — aviso de calendario; hoja TC: corte $1,600 (efectivo), saldo $0", urg:"verde", fuente:"cal", link:CAL("ZTU2dmdxNXVhOTdwY2NwMTljbWkwOXFlMDRfMjAyNjEwMjFUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-gabri-1024", dia:"Sáb 24 oct", hora:"9:00 AM", txt:"Darle carteras a Gabri (recordatorio anual del calendario)", urg:"verde", fuente:"cal", link:CAL("XzY5MTQyY2EzNjhyMzBiOWs4NHAzMmI5azg5MTMyYjlwNnQxamdiOWs2bDBqYWhhMjYxMTRhZDFtNmNfMjAyNjEwMjRUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-tc28-1026", dia:"Lun 26 oct", hora:"9:00 AM", txt:"Avisos de calendario (vencen día 28): AMEX ••••6007 — hoja TC saldo $30,500 (distinta de PLATINUM AMEX) · Rappi $6,500 · Scotia Juan $0 · Home Depot $0 · Telcel (la de octubre ya la pagaste sáb 10)", urg:"amarillo", fuente:"cal", link:CAL("dDFxbnRtODRiZHJpNDFicXU3MTJiNWE0M3NfMjAyNjEwMjZUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-telmex",  dia:"Lun 26 oct", hora:"Fecha límite",          txt:"Pagar Telmex — recibo octubre (mar 6): saldo anterior $1,402.94; límite según recibo lun 26 oct", urg:"amarillo", fuente:"cal", link:CAL("aHY0YmFkYzgyYjBlcW5zODhyZWoyMmNzYnNfMjAyNjEwMDZUMTUwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-plat-nov", dia:"Jue 13 nov", hora:"fecha límite hoja TC", txt:"TC Platinum — saldo pendiente $10,300.00 (Due day hoja TC: 13 nov; corte día 26). Distinta de PLATINUM AMEX", urg:"amarillo", fuente:"nota", link:TC_SHEET }
 ]
 
 /* 2) CORREOS IMPORTANTES — solo lectura; links directos al mensaje */
@@ -660,14 +663,14 @@ const WHATSAPP = [
 
 /* 4) SUGERENCIAS */
 const SUGERENCIAS = [
-  { id:"s-1012-1915-arely500", emo:"💵", urg:"rojo", txt:"Mañana mar 13: deja listos $500 para Arely (Sweet home 6:32 PM; pago cada lunes). Ella los agarra al llegar." },
-  { id:"s-1012-1915-michael", emo:"🤝", urg:"rojo", txt:"La llamada de HOY con Michael se quedó sin hora (~7 PM). Mándale WhatsApp esta noche para fijarla o muévela a mañana y ajusta el calendario." },
-  { id:"s-1012-1915-comisiones", emo:"💰", urg:"rojo", txt:"Lizeth sigue esperando tu OK a las comisiones extras de Herramax (Nabile $5,000, Denver $2,500…; correo 9:57 AM). Contéstale hoy o primero mañana." },
-  { id:"s-1012-1915-manana-vac", emo:"📐", urg:"rojo", txt:"Mañana temprano: cotización Calderón + puerta Doña Diana (VA CIRCUITO), pedido urgente Cumbres (Manufactura VAC) y pásale a Yatziri los pendientes que pidió a las 2:14 PM." },
-  { id:"s-1012-1915-buenfin", emo:"📣", urg:"rojo", txt:"Mañana mar 13: define Buen Fin Herramax con Saul (también Black Friday y portada agenda 2027)." },
-  { id:"s-1012-1915-paquetes", emo:"📦", urg:"amarillo", txt:"Mañana llegan Zara entrega 1 y Amazon SENECESLI. Programa la recolección DHL del edredón REAL TEXTIL (devolución ya confirmada 2:50 PM)." },
-  { id:"s-1012-1915-salv", emo:"🏠", urg:"amarillo", txt:"Mañana ~9:00 AM: cobra el mes a Salvador Jacobo (regresa) y revisa el aviso TC Tesla Santander (vence 15; hoja en $0)." },
-  { id:"s-1012-1915-salud", emo:"🩸", urg:"amarillo", txt:"Salud (Personal ~6:56 PM): Ultrahuman sueño 77 / recuperación 84 / movimiento 73. Whoop y Withings sin sesión. Peso 134.6 kg (dom 11). Mídete la presión (última 149/89 del 7 oct) y no te saltes la pastilla." }
+  { id:"s-1012-1920-michael", emo:"🤝", urg:"rojo", txt:"Michael (aluminio Canadá): la llamada de HOY sigue sin hora a las 7:20 PM. Mándale WhatsApp esta noche para fijarla mañana y ajusta tu calendario." },
+  { id:"s-1012-1920-arely500", emo:"💵", urg:"rojo", txt:"Mañana mar 13: deja listos $500 para Arely (acordado en Sweet home 6:32 PM; pago cada lunes). Ella los agarra al llegar." },
+  { id:"s-1012-1920-comisiones", emo:"💰", urg:"rojo", txt:"Lizeth sigue esperando tu OK a las comisiones extras de Herramax (Nabile $5,000, Denver $2,500…; correo 9:57 AM, sin respuesta). Contéstale a primera hora." },
+  { id:"s-1012-1920-vac", emo:"📐", urg:"rojo", txt:"Mañana temprano en VAC: cotización del Arq. Calderón (ya la pide), puerta de Doña Diana, pedido urgente Cumbres y los pendientes que pidió Yatziri (2:14 PM)." },
+  { id:"s-1012-1920-buenfin", emo:"📣", urg:"rojo", txt:"Mañana mar 13: define Buen Fin Herramax con Saul (y Black Friday + portada agenda 2027 $850)." },
+  { id:"s-1012-1920-erika", emo:"📞", urg:"amarillo", txt:"Erika Lopez Gener te dijo “Si” a la llamada (2:16 PM) y no se ve que la hayas llamado: márcale hoy si aún es buena hora o mañana temprano." },
+  { id:"s-1012-1920-manana", emo:"📦", urg:"amarillo", txt:"Mañana: 9:00 AM cobra el mes a Salvador Jacobo; llegan Zara (entrega 1) y Amazon SENECESLI; programa la recolección DHL del edredón REAL TEXTIL." },
+  { id:"s-1012-1920-salud", emo:"🩸", urg:"amarillo", txt:"Salud: Ultrahuman hoy sueño 77 / recuperación 84 (Whoop y Withings sin sesión; peso 134.6 kg del dom 11). Mídete la presión antes de dormir (última 149/89 del 7 oct) y no te saltes la pastilla." }
 ]
 
 /* 5) SALUD — base histórica. Los datos del día vienen de salud_hoy.json (lo escribe el agente Personal cada hora a los :48);
@@ -828,6 +831,7 @@ const FINANZAS = {
     { id:"f-ec-617", grupo:"📄 Estados de cuenta que llegaron", urg:"verde", txt:"Banamex cuenta ****617 — estado de cuenta", det:"dom 20 sep", gmail:GM("1a0c1cc0c9726498","1a0c1cc0c9726498"), link:G("1a0c1cc0c9726498"), src:"Gmail" },
     { id:"f-ec-ph", grupo:"📄 Estados de cuenta que llegaron", urg:"verde", txt:"Palacio de Hierro — estado de cuenta", det:"vie 25 sep", gmail:GM("1a0dbdee9da2b67d","1a0dbdee9da2b67d"), link:G("1a0dbdee9da2b67d"), src:"Gmail" },
     { id:"f-amexinfo", grupo:"📄 Estados de cuenta que llegaron", urg:"verde", txt:"AMEX: “Información sobre el pago de su Tarjeta”", det:"mié 23 sep", gmail:GM("1a0cedaddc2acfe8","1a0cedaddc2acfe8"), link:G("1a0cedaddc2acfe8"), src:"Gmail" },
+    { id:"f-banamex-dep-1012", grupo:"💸 Movimientos grandes / transferencias", urg:"verde", txt:"Banamex: depósito de $9,999.00 MN a tu cuenta de Cheques ***720", det:"lun 12 oct, 3:20 PM · informativo; confirma que es el que esperabas", gmail:GM("1a131fcd037383d2","1a131fcd037383d2"), link:G("1a131fcd037383d2"), src:"Gmail" },
     { id:"f-santander-1010", grupo:"💸 Movimientos grandes / transferencias", urg:"verde", txt:"Santander: transferencia de $11,254.98 de tu cuenta ****4598 a la cuenta ****3706 (STP)", det:"sáb 10 oct, 10:23 AM · si no la reconoces: SuperLínea 55 5169 4303", gmail:GM("1a126a0ba4678613","1a126a0ba4678613"), link:G("1a126a0ba4678613"), src:"Gmail" },
     { id:"f-openbank-1009", grupo:"💸 Movimientos grandes / transferencias", urg:"verde", txt:"Openbank: transferencia de $10,000.00 de tu cuenta ****0006 a la cuenta ****3706", det:"vie 9 oct, 10:40 AM (ref. 091026) · antes abonaste y retiraste $10,000 de tus Apartados Open (10:38–10:39 AM) · si no la reconoces: Línea Open 55 7005 5755", outlook:OUTM("AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBIQAAAKH974JJ6D9FgQRVi7GvGYoACY32nTUAAAA="), link:"https://outlook.live.com/owa/?ItemID=AQMkADAwATYwMAItODBjNS1mMmNkLTAwAi0wMAoARgAAAzZ4Xx8jjnFNoJky3WjkmW0HAKH974JJ6D9FgQRVi7GvGYoAAAIBIQAAAKH974JJ6D9FgQRVi7GvGYoACY32nTUAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem", src:"Outlook" },
     { id:"f-dep26", grupo:"💸 Movimientos grandes / transferencias", urg:"verde", txt:"Depósito en efectivo en ventanilla: $26,000.00", det:"mar 29 sep", gmail:GM("1a0ef2e9b4b33b10","1a0ef2e9b4b33b10"), link:G("1a0ef2e9b4b33b10"), src:"Gmail" },
@@ -847,7 +851,7 @@ const FINANZAS = {
 const TARJETAS_TC = {
   link: TC_SHEET,
   hoy: "2026-10-12", finSemana: "2026-10-18",
-  leida: "lun 12 oct, 7:15 PM — Drive releído: hoja TC modifiedTime 12:36 PM (sin cambios vs 5:55 PM); Control_Gastos_Octubre modifiedTime 11:36 AM (sin cambios). Saldos: total por pagar $55,536; AMEX ••••6007 $30,500 límite 28/30 oct; Platinum $10,300 Due day 13 nov; Rappi $6,500 (28 oct); Scotia $2,536 (21 oct); Open $350 (17 oct); PLATINUM AMEX sigue aparte (Hecho vie 9 oct / hoja $0 — permanece pendiente hasta confirmación).",
+  leida: "lun 12 oct, 7:20 PM — Drive releído: hoja TC modifiedTime 12:36 PM (sin cambios); Control_Gastos_Octubre modifiedTime 11:36 AM (sin cambios). Saldos: total por pagar $55,536; AMEX ••••6007 $30,500 límite 28/30 oct; Platinum $10,300 Due day 13 nov; Rappi $6,500 (28 oct); Scotia $2,536 (21 oct); Open $350 (17 oct); PLATINUM AMEX sigue aparte (Hecho vie 9 oct / hoja $0 — permanece pendiente hasta confirmación).",
   colFecha: "columna C “Due day” = fecha límite de pago",
   totalesHoja: { cortes:286186, saldo:55536, digital:157600, efectivo:46700 },
   filas: [
@@ -1018,10 +1022,10 @@ const EVENTOS_NOTA = "Vuelo PC27FC (Pablo Zamorano) Puebla→Mérida jue 12 nov 
 
 /* 📄 DOCUMENTOS RECIENTES (Google Drive) */
 const DOCUMENTOS = [
-  { id:"d-cgoct", tipo:"📗", txt:"Control_Gastos_Octubre_2026.xlsx", det:"Excel · editado lun 12 oct, 11:36 AM (releído 5:55 PM; sin cambios) · Scotia **8664 y RappiCard **7806", link:"https://drive.google.com/file/d/1HrxPwYc1u6PqGWiWJ2MTnhYHNAssPeT5/view" },
+  { id:"d-cgoct", tipo:"📗", txt:"Control_Gastos_Octubre_2026.xlsx", det:"Excel · editado lun 12 oct, 11:36 AM (revisado 7:20 PM; sin cambios) · Scotia **8664 y RappiCard **7806", link:"https://drive.google.com/file/d/1HrxPwYc1u6PqGWiWJ2MTnhYHNAssPeT5/view" },
   { id:"d-scotia", tipo:"📄", txt:"Scotia_Singular_8664_corte_03-oct-2026.pdf", det:"PDF · subido mar 6 oct, 2:03 PM", link:"https://drive.google.com/file/d/1CkQEzl6aCmiKmdftqAuCkwQXdiyaGazH/view" },
   { id:"d-sem41", tipo:"📊", txt:"Asistencias_Tienda_Sem41_Cruce_RH", det:"Hoja · mod. lun 5 oct · acumulado oct: $2,367.82 faltas/permisos", link:SEM41_SHEET },
-  { id:"d-tc",    tipo:"📊", txt:"TC (tarjetas: cortes, vencimientos y saldos)", det:"Hoja · mod. lun 12 oct, 12:36 PM (releída 5:55 PM; sin cambios)", link:TC_SHEET },
+  { id:"d-tc",    tipo:"📊", txt:"TC (tarjetas: cortes, vencimientos y saldos)", det:"Hoja · mod. lun 12 oct, 12:36 PM (revisada 7:20 PM; sin cambios)", link:TC_SHEET },
   { id:"d-bitu",  tipo:"📝", txt:"Bitácora Academia Unani", det:"Doc · mod. lun 5 oct", link:"https://docs.google.com/document/d/1v8VI65r-YJ_CPXTddMt3o2PX9bk3VrdwEMs1PWJ-Owo/edit" },
   { id:"d-bitu2", tipo:"📝", txt:"Bitácora Unani", det:"Doc · mod. lun 5 oct", link:"https://docs.google.com/document/d/1rR8Ix-rK_knoBMWsI1RtfOaT0gPSDF4x55ycSYh8Ln0/edit" },
   { id:"d-erika", tipo:"📊", txt:"Erika Lopez Gener", det:"Hoja · mod. lun 5 oct", link:"https://docs.google.com/spreadsheets/d/1M7PgVMhEt-1fnynjz_foAKTW0Y4Okf4qk7PWj9892a8/edit" },
@@ -1044,7 +1048,7 @@ const SEGURIDAD = [
   { id:"x-tcsheet",urg:"amarillo", txt:"Tu hoja “TC” en Drive guarda usuarios y claves en texto", det:"Muévelas a un gestor de contraseñas (llavero de iCloud / 1Password) y bórralas de la hoja", link:TC_SHEET, src:"Drive" },
   { id:"x-bancos", urg:"amarillo", txt:"Altas bancarias: tarjetas de terceros en Santander SuperMóvil (29 sep) y destinatario STP en BBVA (30 sep)", det:"Confirma que fuiste tú", gmail:GM("1a0ef31df4c3df3d","1a0ef31df4c3df3d"), link:G("1a0ef31df4c3df3d"), gmail2:GM("1a0f497e5688f62e","1a0f497e5688f62e"), link2:G("1a0f497e5688f62e"), link2txt:"BBVA", src:"Gmail" },
   { id:"x-casa-grok", urg:"verde", txt:"Google: “Grok was granted access” a casamendicutiensenat@gmail.com (copia a tu Hotmail de recuperación)", det:"mar 6 oct, 11:52 AM · si fue al conectar esa cuenta ese día, todo bien; si no, revisa la actividad", gmail:GM("1a112588fb2dfc77","1a112588fb2dfc77"), link:G("1a112588fb2dfc77"), src:"Gmail" },
-  { id:"x-withings", urg:"verde", txt:"Withings: sesión reabierta (~9:30–10:05 AM); códigos de la mañana ya no aplican", det:"Sesión Withings volvió a caer (~10:58 AM; re-login ~5:45 PM falló). Peso 134.6 kg del 11 oct. Si ves códigos viejos, ignóralos. Códigos no se publican aquí", gmail:GM("1a1307e30a33a1d2","1a130a4f3dd122c8"), link:G("1a1307e30a33a1d2"), src:"Gmail" },
+  { id:"x-withings", urg:"verde", txt:"Withings: siguen llegando códigos de inicio de sesión (último lun 12, 6:27 PM) — la sesión sigue sin abrir", det:"Códigos 5:43 PM y 6:26–6:27 PM (intentos de re-login del agente Personal). Si no fuiste tú ni el agente, ignóralos. Peso 134.6 kg del 11 oct. Códigos no se publican aquí", gmail:GM("1a1307e30a33a1d2","1a132a80b2665502"), link:G("1a1307e30a33a1d2"), src:"Gmail" },
   { id:"x-ultra",  urg:"verde", txt:"Ultrahuman: link para iniciar sesión", det:"lun 5 oct, 7:20 PM · válido 7 días; si no lo pediste, ignóralo", gmail:GM("1a10ecc00a05cbd8","1a10ecc00a05cbd8"), link:G("1a10ecc00a05cbd8"), src:"Gmail" },
   { id:"x-xai",    urg:"verde", txt:"x.ai: inicio de sesión nuevo", det:"lun 5 oct, 9:30 AM", gmail:GM("1a10cafc5d272131","1a10cafc5d272131"), link:G("1a10cafc5d272131"), src:"Gmail" },
   { id:"x-openai", urg:"verde", txt:"OpenAI: inicio de sesión nuevo", det:"dom 4 oct, 12:17 AM", gmail:GM("1a1058f505fe281d","1a1058f505fe281d"), link:G("1a1058f505fe281d"), src:"Gmail" },
@@ -1059,7 +1063,7 @@ const SEGURIDAD = [
 /* 🔥 URGENTES — lo más importante (tema único, sin repetir) */
 const URGENTES = [
   { id:"u-1012-1915-arely500", txt:"Mañana mar 13: dejarle $500 a Arely (acordado Sweet home 6:32 PM)", link:null, sec:"whatsapp" },
-  { id:"u-1012-1915-michael", txt:"Llamada Michael: día casi cerrado sin hora — fijar esta noche o reagendar mañana", link:null, sec:"whatsapp" },
+  { id:"u-1012-1915-michael", txt:"Llamada Michael: a las 7:20 PM sigue sin hora — fijar esta noche o reagendar mañana", link:null, sec:"whatsapp" },
   { id:"u-1012-1915-comisiones", txt:"Lizeth (correo 9:57 AM): confirmar comisiones extras Herramax (Nabile $5,000, Denver $2,500…)", link:G("1a130d4b08e1bd7f"), sec:"correos" },
   { id:"u-1012-1915-calderon", txt:"VA CIRCUITO: cotización Arq. Miguel Calderón — que salga mañana", link:null, sec:"whatsapp" },
   { id:"u-1012-1915-cumbres", txt:"Manufactura VAC: pedido urgente Cumbres + fotos pendientes de mañana", link:null, sec:"whatsapp" },
