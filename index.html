@@ -1191,6 +1191,7 @@ function draw(){ if (typeof document==='undefined') return; var old=document.que
   '<div style="margin-top:6px"><b>'+p.toFixed(1)+'%</b> usado · meta a esta hora '+esp.toFixed(1)+'% · '+(dif>0?('<b style="color:#c0392b">adelantado '+dif.toFixed(1)+' pts</b> (bájale)'):('<b style="color:#2e7d32">atrasado '+(-dif).toFixed(1)+' pts</b> (vas bien)'))+' · reinicia '+rd+(U.aprox?' (aprox.)':'')+(U.leido?' · leído '+U.leido:'')+'</div></div>'; }
 if (typeof document!=='undefined'){ var n=0, t=setInterval(function(){ draw(); if(++n>20) clearInterval(t); }, 500); if(document.readyState!=='loading') draw(); else document.addEventListener('DOMContentLoaded', draw); }
 })();
+;(function(){ var D = window.DASH_DATA; if (!D) return; var R = {rojo:0, amarillo:1, verde:2}; function rk(x){ return x && R.hasOwnProperty(x.urg) ? R[x.urg] : 3; } function srt(a){ if (!Array.isArray(a)) return a; return a.map(function(x,i){return [x,i];}).sort(function(p,q){ return (rk(p[0])-rk(q[0])) || (p[1]-q[1]); }).map(function(p){return p[0];}); } ['RECORDATORIOS','CORREOS','WHATSAPP','SUGERENCIAS','SUSCRIPCIONES','PAQUETES','TRABAJO','EVENTOS','SEGURIDAD','URGENTES','DOCUMENTOS'].forEach(function(k){ if (Array.isArray(D[k])) D[k] = srt(D[k]); }); if (D.FINANZAS) { D.FINANZAS.vencimientos = srt(D.FINANZAS.vencimientos); D.FINANZAS.items = srt(D.FINANZAS.items); } if (D.CONTROL_SEP) D.CONTROL_SEP.pendientes = srt(D.CONTROL_SEP.pendientes); })();
 /*__DASH_DATA_END__*/
 </script>
 <script>
