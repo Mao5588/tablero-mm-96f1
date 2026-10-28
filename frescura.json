@@ -1,0 +1,152 @@
+{
+ "_doc": "Frescura por sección (panel superior del tablero). ts = hora REAL de la lectura más nueva de la fuente (ISO con -06:00, hora de Mérida), NUNCA la hora del build. Cada rutina que lea una fuente actualiza SOLO su sección (ts + fuente). Si la lectura falla, NO toques ts (así se ve 'SIN ACTUALIZAR desde ...'). Modo: horas (ambar_h/rojo_h), dia (hoy verde, ayer ámbar, antes rojo), habil (día hábil). build.js sobrescribe en automático salud (salud_hoy.json), fix (fix.json), uso (uso_grokbot.json) y hechos (hechos_state.json) cuando su JSON trae una lectura más nueva. 'publicacion' lo escribe verify_live.sh.",
+ "secciones": [
+  {
+   "key": "solar",
+   "nombre": "☀️ Solar",
+   "ts": "2026-10-28T12:33:41-06:00",
+   "fuente": "Luxpowertek (lectura en vivo 12:33 PM, MacBook Pro de Juan)",
+   "modo": "horas",
+   "ambar_h": 1.5,
+   "rojo_h": 3,
+   "sel": "#solar"
+  },
+  {
+   "key": "whatsapp",
+   "nombre": "💬 WhatsApp",
+   "ts": "2026-10-28T17:29:00-06:00",
+   "fuente": "ronda WA mié 28, 5:29 PM (MacBook Pro de Juan, chats abiertos)",
+   "modo": "horas",
+   "ambar_h": 1.25,
+   "rojo_h": 2,
+   "sel": "#whatsapp"
+  },
+  {
+   "key": "whoop",
+   "nombre": "❤️ Salud · Whoop",
+   "ts": null,
+   "fuente": "salud_hoy.json",
+   "modo": "dia",
+   "sel": null
+  },
+  {
+   "key": "ultrahuman",
+   "nombre": "💍 Salud · Ultrahuman",
+   "ts": null,
+   "fuente": "salud_hoy.json",
+   "modo": "dia",
+   "sel": null
+  },
+  {
+   "key": "withings",
+   "nombre": "⚖️ Salud · Withings",
+   "ts": "2026-10-28T12:25:00-06:00",
+   "fuente": "Health Mate panel en Chrome MacBook Pro de Juan 28 oct 12:25 (peso 27 oct 131.1 kg; sin presión nueva) · checked_at = última revisión EXITOSA",
+   "modo": "chequeo",
+   "sel": null,
+   "checked_at": "2026-10-28T12:25:00-06:00",
+   "last_weight_at": "2026-10-27T09:15:00-06:00",
+   "last_bp_at": "2026-10-19T09:38:00-06:00",
+   "ambar_h": 3,
+   "rojo_h": 6
+  },
+  {
+   "key": "uso",
+   "nombre": "🤖 Uso Grok Bot",
+   "ts": null,
+   "fuente": "uso_grokbot.json",
+   "modo": "horas",
+   "ambar_h": 3,
+   "rojo_h": 8,
+   "sel": "#uso-grokbot-slot"
+  },
+  {
+   "key": "correos",
+   "nombre": "📬 Correos",
+   "ts": "2026-10-28T17:55:00-06:00",
+   "fuente": "Gmail mau5588 + Gmail casa + Hotmail (revisión 5:55 PM)",
+   "modo": "horas",
+   "ambar_h": 2,
+   "rojo_h": 4,
+   "sel": "#correos"
+  },
+  {
+   "key": "calendario",
+   "nombre": "📅 Calendario",
+   "ts": "2026-10-28T17:55:00-06:00",
+   "fuente": "Google Calendar (revisión 5:55 PM)",
+   "modo": "horas",
+   "ambar_h": 3,
+   "rojo_h": 6,
+   "sel": "#recordatorios"
+  },
+  {
+   "key": "paquetes",
+   "nombre": "📦 Paquetes",
+   "ts": "2026-10-28T17:55:00-06:00",
+   "fuente": "correos Gmail ×2 + Hotmail (revisión 5:55 PM, sin envíos nuevos); paquetes.json",
+   "modo": "horas",
+   "ambar_h": 3,
+   "rojo_h": 6,
+   "sel": "#paquetes"
+  },
+  {
+   "key": "fix",
+   "nombre": "💵 FIX Banxico",
+   "ts": null,
+   "fuente": "fix.json",
+   "modo": "habil",
+   "sel": null
+  },
+  {
+   "key": "tarjetas",
+   "nombre": "💳 Tarjetas (hoja TC)",
+   "ts": "2026-10-28T17:55:00-06:00",
+   "fuente": "hoja TC (Drive), revisada mié 28, 5:55 PM (sin cambios desde 12:48 PM)",
+   "modo": "horas",
+   "ambar_h": 6,
+   "rojo_h": 24,
+   "sel": "#finanzas"
+  },
+  {
+   "key": "gastos",
+   "nombre": "📒 Gastos (Control oct)",
+   "ts": "2026-10-28T17:55:00-06:00",
+   "fuente": "Control_Gastos_Octubre_2026.xlsx (Drive), revisado mié 28, 5:55 PM (sin cambios en datos)",
+   "modo": "horas",
+   "ambar_h": 6,
+   "rojo_h": 24,
+   "sel": null
+  },
+  {
+   "key": "trabajo",
+   "nombre": "💼 Trabajo / Roms",
+   "ts": "2026-10-28T17:55:00-06:00",
+   "fuente": "Gmail mau5588 (correos de trabajo, revisión 5:55 PM)",
+   "modo": "horas",
+   "ambar_h": 4,
+   "rojo_h": 24,
+   "sel": "#trabajo"
+  },
+  {
+   "key": "hechos",
+   "nombre": "✅ Hechos (ntfy)",
+   "ts": "2026-10-28T15:55:00-06:00",
+   "fuente": "ntfy (3:51 PM, sin avisos nuevos)",
+   "modo": "horas",
+   "ambar_h": 2,
+   "rojo_h": 6,
+   "sel": null
+  }
+ ],
+ "publicacion": {
+  "ok": true,
+  "ts": "2026-10-28T17:00:06-06:00",
+  "build": "2026-10-28T22:57:40.754Z",
+  "msg": ""
+ },
+ "paquetes": {
+  "ts": "2026-10-27T12:45:00-06:00",
+  "fuente": "correos Gmail ×2 + Hotmail + WhatsApp (revisión 12:45 PM)"
+ }
+}
