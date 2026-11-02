@@ -14,8 +14,8 @@
     {
       "key": "whatsapp",
       "nombre": "💬 WhatsApp",
-      "ts": "2026-11-01T21:36:00-06:00",
-      "fuente": "ronda WA dom 1 nov, 9:27 PM (terminó ~9:36 PM) en la MacBook Pro de Juan; la Mac mini contestó como M6 y no se usó",
+      "ts": "2026-11-01T23:58:00-06:00",
+      "fuente": "lectura de la lista de chats (solo vistas previas, sin abrir chats) dom 1 nov ~11:59 PM en la MacBook Pro de Juan; desde la ronda de 9:27 PM solo hay salidas tuyas (sticker a Geraldine Gracia 11:22 PM, sticker a Etelvina 9:54 PM), nada nuevo entrante pendiente; la app de WhatsApp de la Mac mini está sin sesión",
       "modo": "horas",
       "ambar_h": 1.25,
       "rojo_h": 2,
@@ -141,8 +141,8 @@
   ],
   "publicacion": {
     "ok": true,
-    "ts": "2026-11-01T23:52:48-06:00",
-    "build": "2026-11-02T05:50:09.441Z",
+    "ts": "2026-11-01T23:55:13-06:00",
+    "build": "2026-11-02T05:53:04.501Z",
     "msg": ""
   },
   "paquetes": {
