@@ -4,8 +4,8 @@
   {
    "key": "solar",
    "nombre": "☀️ Solar",
-   "ts": "2026-10-28T12:33:41-06:00",
-   "fuente": "Luxpowertek (lectura en vivo 12:33 PM, MacBook Pro de Juan)",
+   "ts": "2026-11-01T15:30:06-06:00",
+   "fuente": "Luxpowertek (lectura en vivo dom 1 nov, 3:30 PM, MacBook Pro de Juan)",
    "modo": "horas",
    "ambar_h": 1.5,
    "rojo_h": 3,
@@ -14,8 +14,8 @@
   {
    "key": "whatsapp",
    "nombre": "💬 WhatsApp",
-   "ts": "2026-10-28T17:29:00-06:00",
-   "fuente": "ronda WA mié 28, 5:29 PM (MacBook Pro de Juan, chats abiertos)",
+   "ts": "2026-11-01T17:29:00-06:00",
+   "fuente": "ronda WA dom 1 nov, 5:23 PM (terminó ~5:29 PM) en la MacBook Pro de Juan; la Mac mini contestó como M6 y no se usó",
    "modo": "horas",
    "ambar_h": 1.25,
    "rojo_h": 2,
@@ -40,12 +40,12 @@
   {
    "key": "withings",
    "nombre": "⚖️ Salud · Withings",
-   "ts": "2026-10-28T12:25:00-06:00",
-   "fuente": "Health Mate panel en Chrome MacBook Pro de Juan 28 oct 12:25 (peso 27 oct 131.1 kg; sin presión nueva) · checked_at = última revisión EXITOSA",
+   "ts": "2026-11-01T13:29:00-06:00",
+   "fuente": "Health Mate (agente Personal, salud_hoy.json 1 nov 1:29 PM; último pesaje 27 oct 18:54, 131.1 kg; sin presión nueva desde 19 oct) · checked_at = última revisión EXITOSA",
    "modo": "chequeo",
    "sel": null,
-   "checked_at": "2026-10-28T12:25:00-06:00",
-   "last_weight_at": "2026-10-27T09:15:00-06:00",
+   "checked_at": "2026-11-01T13:29:00-06:00",
+   "last_weight_at": "2026-10-27T18:54:00-06:00",
    "last_bp_at": "2026-10-19T09:38:00-06:00",
    "ambar_h": 3,
    "rojo_h": 6
@@ -56,15 +56,15 @@
    "ts": null,
    "fuente": "uso_grokbot.json",
    "modo": "horas",
-   "ambar_h": 3,
-   "rojo_h": 8,
+   "ambar_h": 25,
+   "rojo_h": 30,
    "sel": "#uso-grokbot-slot"
   },
   {
    "key": "correos",
    "nombre": "📬 Correos",
-   "ts": "2026-10-28T17:55:00-06:00",
-   "fuente": "Gmail mau5588 + Gmail casa + Hotmail (revisión 5:55 PM)",
+   "ts": "2026-11-01T17:58:00-06:00",
+   "fuente": "Gmail mau5588 + Gmail casa + Hotmail (revisión dom 1 nov, 5:58 PM: nada nuevo importante, solo spam en Hotmail; sin Cloud Duet)",
    "modo": "horas",
    "ambar_h": 2,
    "rojo_h": 4,
@@ -73,8 +73,8 @@
   {
    "key": "calendario",
    "nombre": "📅 Calendario",
-   "ts": "2026-10-28T17:55:00-06:00",
-   "fuente": "Google Calendar (revisión 5:55 PM)",
+   "ts": "2026-11-01T17:58:00-06:00",
+   "fuente": "Google Calendar (revisión dom 1 nov, 5:58 PM: mañana Unani 12–2 PM; mar 3 cita con Erika 3 PM; mié 4 Unani; jue 5 vuelo Viva 6:15 AM, AppleCare, Arely 2 PM; sin citas nuevas)",
    "modo": "horas",
    "ambar_h": 3,
    "rojo_h": 6,
@@ -83,8 +83,8 @@
   {
    "key": "paquetes",
    "nombre": "📦 Paquetes",
-   "ts": "2026-10-28T17:55:00-06:00",
-   "fuente": "correos Gmail ×2 + Hotmail (revisión 5:55 PM, sin envíos nuevos); paquetes.json",
+   "ts": "2026-11-01T17:58:00-06:00",
+   "fuente": "Gmail ×2 + Hotmail (revisión dom 1 nov, 5:58 PM: sin avisos de envío nuevos; Beats llegan lun 2 nov)",
    "modo": "horas",
    "ambar_h": 3,
    "rojo_h": 6,
@@ -101,8 +101,8 @@
   {
    "key": "tarjetas",
    "nombre": "💳 Tarjetas (hoja TC)",
-   "ts": "2026-10-28T17:55:00-06:00",
-   "fuente": "hoja TC (Drive), revisada mié 28, 5:55 PM (sin cambios desde 12:48 PM)",
+   "ts": "2026-11-01T17:58:00-06:00",
+   "fuente": "Hoja TC de Drive (revisada dom 1 nov, 5:58 PM; última modificación 11:58 AM, ya integrada)",
    "modo": "horas",
    "ambar_h": 6,
    "rojo_h": 24,
@@ -111,8 +111,8 @@
   {
    "key": "gastos",
    "nombre": "📒 Gastos (Control oct)",
-   "ts": "2026-10-28T17:55:00-06:00",
-   "fuente": "Control_Gastos_Octubre_2026.xlsx (Drive), revisado mié 28, 5:55 PM (sin cambios en datos)",
+   "ts": "2026-11-01T17:58:00-06:00",
+   "fuente": "Control_Gastos_Octubre_2026 (revisado dom 1 nov, 5:58 PM; última edición mié 28 oct, 4:39 PM) · aún NO existe Control_Gastos_Noviembre_2026",
    "modo": "horas",
    "ambar_h": 6,
    "rojo_h": 24,
@@ -121,8 +121,8 @@
   {
    "key": "trabajo",
    "nombre": "💼 Trabajo / Roms",
-   "ts": "2026-10-28T17:55:00-06:00",
-   "fuente": "Gmail mau5588 (correos de trabajo, revisión 5:55 PM)",
+   "ts": "2026-11-01T17:58:00-06:00",
+   "fuente": "Gmail + Hotmail (revisión dom 1 nov, 5:58 PM: sin correos de trabajo nuevos)",
    "modo": "horas",
    "ambar_h": 4,
    "rojo_h": 24,
@@ -131,8 +131,8 @@
   {
    "key": "hechos",
    "nombre": "✅ Hechos (ntfy)",
-   "ts": "2026-10-28T15:55:00-06:00",
-   "fuente": "ntfy (3:51 PM, sin avisos nuevos)",
+   "ts": "2026-11-01T17:58:00-06:00",
+   "fuente": "ntfy (revisión dom 1 nov, 5:58 PM: sin Hechos nuevos)",
    "modo": "horas",
    "ambar_h": 2,
    "rojo_h": 6,
@@ -141,12 +141,12 @@
  ],
  "publicacion": {
   "ok": true,
-  "ts": "2026-10-28T17:00:06-06:00",
-  "build": "2026-10-28T22:57:40.754Z",
+  "ts": "2026-11-01T17:52:25-06:00",
+  "build": "2026-11-01T23:50:10.340Z",
   "msg": ""
  },
  "paquetes": {
-  "ts": "2026-10-27T12:45:00-06:00",
+  "ts": "2026-10-29T08:55:00-06:00",
   "fuente": "correos Gmail ×2 + Hotmail + WhatsApp (revisión 12:45 PM)"
  }
 }
