@@ -1,0 +1,293 @@
+{
+  "fecha": "2026-11-01",
+  "leido_a": "Corrida 22:25-22:28 (1 nov): la Mac mini 7115fd4e respondió desde la M4 en la primera consulta, pero como alterna con la M6 se leyó Chrome en la MacBook de Juan (N64WLHQ0DV). Whoop abierta: recuperación 71%, sueño 79% (13:25/8:37), strain 6.1, HRV 43, FC reposo 65. Withings abierta: sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline: tensión arterial más reciente sigue siendo 19 oct; Sleep ahora fechado 28 oct 14:00. Cambio 30 días -5.7 kg (30 sep 136.8 a 27 oct 131.1, 27 días). Ultrahuman abierta (sync 1 nov 20:55), solo vista Trends sin números nuevos.",
+  "whoop": {
+    "fecha": "2026-11-01",
+    "recuperacion_pct": 71,
+    "rendimiento_sueno_pct": 79,
+    "horas_dormidas": "13:25",
+    "horas_necesarias": "8:37",
+    "strain": 6.1,
+    "strain_nota": "1 nov en curso (strain 6.1 a las 22:25).",
+    "hrv_ms": 43,
+    "fc_reposo_bpm": 65,
+    "frecuencia_respiratoria": null,
+    "datos_nota": "1 nov (leído 18:28, Chrome MacBook de Juan, recovery/1d/2026-11-01): recuperación 71%, sueño 79% (Hours of Sleep 13:25 tal cual; necesarias 8:37), strain 5.7. HRV 43 (ayer 40), FC reposo 65 (ayer 75).",
+    "previo": {
+      "fecha": "2026-10-31",
+      "recuperacion_pct": 59,
+      "rendimiento_sueno_pct": 78,
+      "horas_dormidas": "7:32",
+      "horas_necesarias": "9:06",
+      "strain": 5.0,
+      "hrv_ms": 40,
+      "fc_reposo_bpm": 75,
+      "nota": "31 oct (último leído 31 oct 13:21)."
+    },
+    "leido": "2026-11-01 22:25 America/Merida (Chrome MacBook de Juan N64WLHQ0DV, recovery/1d/2026-11-01)",
+    "sesion": "abierta (1 nov 22:25, Chrome MacBook de Juan)",
+    "sesion_nota": "1 nov 22:25: recovery recargó con sesión abierta. No se metieron contraseñas ni códigos.",
+    "hoy": {
+      "fecha": "2026-11-01",
+      "leido": "1 nov 22:25 (Chrome MacBook de Juan)",
+      "recuperacion_pct": 71,
+      "strain": 6.1,
+      "sueno_rendimiento_pct": 79,
+      "horas_sueno": "13:25",
+      "sueno_necesario": "8:37",
+      "en_cama": null,
+      "barra_sueno": null,
+      "hrv_ms": 43,
+      "fc_reposo_bpm": 65
+    }
+  },
+  "ultrahuman": {
+    "hoy": {
+      "fecha": "2026-10-28",
+      "sleep_index": 84,
+      "sueno_total": "8h 15m",
+      "tiempo_en_cama": "8h 38m",
+      "ventana_sueno": "01:53-10:26",
+      "profundo": null,
+      "rem": null,
+      "ligero": null,
+      "despierto": null,
+      "recovery": 81,
+      "movement_index": 89,
+      "metabolic_score": null,
+      "fc_media_bpm": 70,
+      "fc_minima_bpm": null,
+      "fc_reposo_bpm": null,
+      "hrv_ms": 40,
+      "hrv_7d_ms": null,
+      "hrv_zona_ms": null,
+      "temp_media_c": null,
+      "temp_piel_desviacion_c": null,
+      "pasos": null,
+      "hr_drop_nota": null,
+      "sleep_efficiency": 92,
+      "temperature_score": 100,
+      "restfulness": 80,
+      "consistencia": 73,
+      "hr_drop": null,
+      "restoration_time": null,
+      "total_sleep_score": null,
+      "leido": "2026-10-28 12:23 America/Merida (Day View 28-10-2026, captura de Mauricio de vision.ultrahuman.com)",
+      "nota": "Captura de Mauricio 28 oct 12:23 PM Mérida: Sleep 84, Movement 89, Recovery 81. Ventana 01:53-10:26, en cama 8h38m, sueño 8h15m. FC media 70, HRV 40. Contributors: eficiencia 92, temperatura 100, restfulness 80, consistencia 73. Perfil 134 kg · 192 cm."
+    },
+    "ayer": {
+      "fecha": "2026-10-22",
+      "sleep_index": 60,
+      "sueno_total": "5h 23m",
+      "tiempo_en_cama": "6h 40m",
+      "ventana_sueno": "02:17-08:52",
+      "profundo": null,
+      "rem": null,
+      "ligero": null,
+      "despierto": null,
+      "recovery": 44,
+      "movement_index": 80,
+      "metabolic_score": null,
+      "fc_media_bpm": 75,
+      "fc_minima_bpm": null,
+      "fc_reposo_bpm": null,
+      "hrv_ms": 41,
+      "hrv_7d_ms": null,
+      "hrv_zona_ms": null,
+      "temp_media_c": null,
+      "temp_piel_desviacion_c": null,
+      "pasos": null,
+      "hr_drop_nota": null,
+      "sleep_efficiency": 55,
+      "temperature_score": 55,
+      "restfulness": 60,
+      "consistencia": 54,
+      "hr_drop": 66,
+      "restoration_time": 59,
+      "total_sleep_score": 67,
+      "leido": "2026-10-22 ~15:12 America/Merida (Day View 22-10-2026, Chrome Mac mini M4; Synced 22 Oct 2026 03:09 PM CST)",
+      "nota": "Sync NUEVO 3:09 PM 22 oct (sesión reabierta por Mauricio 15:10): Sleep 60 (roja), Movement 80 (verde), Recovery 44 (roja), metabolic '--'. Ventana 02:17-08:52, en cama 6h40m, sueño 5h23m. FC media 75, HRV 41. Contributors: eficiencia 55, temperatura 55, restfulness 60, consistencia 54; total sleep 67, HR drop 66, restoration 59."
+    },
+    "antier": {
+      "fecha": "2026-10-21",
+      "sleep_index": 82,
+      "sueno_total": "8h 45m",
+      "tiempo_en_cama": "9h 32m",
+      "ventana_sueno": "23:59-09:26",
+      "profundo": null,
+      "rem": null,
+      "ligero": null,
+      "despierto": null,
+      "recovery": 86,
+      "movement_index": 80,
+      "metabolic_score": null,
+      "fc_media_bpm": 64,
+      "fc_minima_bpm": null,
+      "fc_reposo_bpm": null,
+      "hrv_ms": 48,
+      "hrv_7d_ms": null,
+      "hrv_zona_ms": null,
+      "temp_media_c": null,
+      "temp_piel_desviacion_c": null,
+      "pasos": null,
+      "hr_drop_nota": null,
+      "sleep_efficiency": 84,
+      "temperature_score": 100,
+      "restfulness": 60,
+      "consistencia": 100,
+      "hr_drop": null,
+      "restoration_time": null,
+      "total_sleep_score": null,
+      "leido": "2026-10-21 ~10:45 America/Merida (Day View 21-10-2026, Chrome MacBook Pro de Juan; Synced 21 Oct 2026 10:41 AM CST)",
+      "nota": "Sync NUEVO 10:41 AM 21 oct: Sleep 82 (flecha verde), Movement 80 (verde), Recovery 86 (verde), metabolic '--'. Sueño 8h45m en cama 9h32m, ventana 23:59-09:26. FC media 64; HRV 48. Contributors: eficiencia 84, temperatura 100, restfulness 60 (amarillo), consistencia 100. Aviso: 'Dream consolidation: Check — Optimal REM detected'. Segunda fila de contributors bajo el pliegue no leída."
+    },
+    "sesion": "abierta (1 nov 22:26, Chrome MacBook de Juan; sync 1 nov 20:55)",
+    "sesion_nota": "1 nov 22:26: panel Ring cargado (Synced 01 Nov 2026 08:55 PM CST), solo vista Trends con anillos hasta 31 oct sin números; los valores numéricos siguen siendo los del 28 oct.",
+    "perfil": {
+      "peso_kg": 134,
+      "estatura_cm": 192,
+      "fuente": "captura de Mauricio 28 oct 12:23 PM Mérida"
+    },
+    "frescura": "28 oct 2026 12:23 PM Mérida (fuente: captura de Mauricio)"
+  },
+  "withings": {
+    "peso": {
+      "fecha": "2026-10-27",
+      "hora": "18:54",
+      "peso_kg": 131.1,
+      "masa_grasa_kg": 42.4,
+      "masa_magra_kg": 88.8,
+      "imc": 35.2,
+      "nota": "Panel 1 nov 23:25: último pesaje sigue siendo 27 oct 18:54 131.1 kg."
+    },
+    "peso_previo": {
+      "fecha": "2026-10-27",
+      "hora": "09:15",
+      "peso_kg": 131.7,
+      "masa_grasa_kg": 42.7,
+      "masa_magra_kg": 89.0,
+      "imc": 35.4
+    },
+    "presion": {
+      "fecha": "2026-10-19",
+      "hora": "09:38",
+      "sistolica": 127,
+      "diastolica": 81,
+      "fc_bpm": 72,
+      "previa": {
+        "fecha": "2026-10-19",
+        "hora": "09:38",
+        "sistolica": 127,
+        "diastolica": 81,
+        "fc_bpm": 72
+      },
+      "nota": "Panel 1 nov 23:25: tensión arterial más reciente sigue siendo 19 oct (127/81)."
+    },
+    "sueno": {
+      "fecha": "2026-10-20",
+      "hora": null,
+      "duracion": "04:36",
+      "puntuacion": null,
+      "nota": "Panel 21 oct ~18:31: Sleep 20 oct 04:36 Sleep Duration. Journal 'Ayer': tarjeta 'Horas de sueño diarias' 9:04. Puntuación no visible.",
+      "previo": {
+        "fecha": "2026-10-19",
+        "hora": null,
+        "duracion": "06:40",
+        "puntuacion": null,
+        "nota": "Panel Health Mate 20 oct ~07:30 (Mac mini): Sleep 19 oct 06:40 Sleep Duration (anoche el panel mostraba 07:16 para la misma fecha; Withings recalculó). Tarjeta Daily Sleep 09:02. Puntuación no visible.",
+        "previo": {
+          "fecha": "2026-10-18",
+          "hora": null,
+          "duracion": "11:58",
+          "puntuacion": null,
+          "previo": {
+            "fecha": "2026-10-15",
+            "hora": "08:51",
+            "duracion": "06:33",
+            "puntuacion": 78,
+            "previo": {
+              "fecha": "2026-10-14",
+              "duracion": "07:52",
+              "puntuacion": 87
+            }
+          }
+        }
+      }
+    },
+    "actividad_ayer": {
+      "fecha": "2026-10-14",
+      "pasos": 4610,
+      "caminar": "15:27, 20:59 min"
+    },
+    "spo2": {
+      "fecha": "2026-10-28",
+      "spo2_pct": 95,
+      "prom_noche_pct": null,
+      "despierto_pct": 95,
+      "nota": "Journal 28 oct (panel 30 oct 16:27): Saturación de oxígeno 95% (Normal) despierto. Aviso: desde el 24 oct el SpO2 nocturno ha estado más bajo de lo habitual. Panel 31 oct 10:26: el resumen marca una Saturación de oxígeno del 30 oct, pero el valor quedó fuera de la captura.",
+      "previo": {
+        "fecha": "2026-10-21",
+        "despierto_pct": 97
+      }
+    },
+    "leido": "2026-11-01 22:26 America/Merida (Chrome MacBook de Juan: weight/list y timeline)",
+    "actividad_hoy": {
+      "fecha": "2026-10-28",
+      "hora": null,
+      "pasos": 342,
+      "pasos_meta": 10000,
+      "nota": "Panel 30 oct 08:26: Activity 28 oct 342 pasos (3%, meta 10,000); sin dato del 29 ni 30 oct."
+    },
+    "ritmo_cardiaco": {
+      "fecha": "2026-10-28",
+      "media_bpm": 89,
+      "fc_diaria_bpm": 89,
+      "fc_noche_bpm": null,
+      "nota": "Panel 30 oct 07:30: Ritmo cardíaco 28 oct 89 BPM media (antes 100 BPM a las 12:25 del 28).",
+      "previo": {
+        "fecha": "2026-10-21",
+        "media_bpm": 77
+      }
+    },
+    "sesion": "abierta (1 nov 22:26, Chrome MacBook de Juan: weight/list y timeline cargaron)",
+    "sesion_nota": "1 nov 22:26: weight/list sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline: Weight 27 oct 131.1 kg (-5.7 kg desde 07/09/2026), Activity 28 oct 342 pasos, Sleep 28 oct 14:00, ritmo 28 oct 89 BPM, tensión 19 oct.",
+    "cambio_30d": {
+      "inicial": {
+        "fecha": "2026-09-30",
+        "hora": "08:27",
+        "peso_kg": 136.8
+      },
+      "actual": {
+        "fecha": "2026-10-27",
+        "hora": "18:54",
+        "peso_kg": 131.1
+      },
+      "diferencia_kg": -5.7,
+      "dias": 27,
+      "nota": "Hace 30 días = 2 oct; pesaje más cercano en la lista de Withings: 30 sep 08:27 136.8 kg (siguiente: 5 oct 08:04 138.4 kg). Actual 27 oct 18:54 131.1 kg (sin pesajes nuevos al 1 nov 22:26): -5.7 kg en 27 días. Leído 1 nov 22:26."
+    },
+    "peso_graf_nota": "Gráfica 1 mes (27 oct 11:29) muestra pico 5 oct 138.4 kg / grasa 48.6 kg.",
+    "sueno_panel": {
+      "fecha": "2026-10-28",
+      "duracion": "14:00",
+      "nota": "Panel Health Mate 1 nov 22:26 muestra Sleep fechado 28 oct, 14:00 Sleep Duration (antes lo fechaba 27 oct; valor atípico tal cual del panel)."
+    },
+    "pasos_semanales": {
+      "total": 17511,
+      "nota": "Journal del timeline 1 nov 11:30: tarjeta 'Pasos semanales' total 17,511, 0/7 días con meta; encabezado del Journal dice 2 nov 2026 (tal cual)."
+    }
+  },
+  "notas": [],
+  "notas_corrida": [
+    "Corrida 14:27-14:30 (1 nov): la Mac mini 7115fd4e respondió desde la M6 (JV9MDW0NR2), así que no se usó; se leyó Chrome en la MacBook de Juan (N64WLHQ0DV). Whoop SE VOLVIÓ A CERRAR (14:27 la pestaña recovery redirigió a id.whoop.com sign-in); se conservan los datos del 1 nov leídos a las 13:28 (recuperación 71%, sueño 79%, strain 3.3, HRV 43, FC reposo 65). Withings abierta: lista de pesos sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline no se pudo poner al frente en esta corrida (presión más reciente conocida 19 oct). Cambio 30 días -5.7 kg (30 sep 136.8 a 27 oct 131.1, 27 días). Ultrahuman abierta (sync 1 nov 12:29) solo vista Trends; sin números nuevos.",
+    "Corrida 14:31-14:33 (1 nov): Whoop reabierto por Mauricio; leído 14:32 en MacBook de Juan (N64WLHQ0DV): recuperación 71%, sueño 79%, 13:25/8:37, strain 4.3, HRV 43, FC reposo 65.",
+    "Corrida 15:28-15:31 (1 nov): la Mac mini 7115fd4e respondió desde la M6 (JV9MDW0NR2; allí Whoop, Withings y Ultrahuman están en login), así que no se usó; se leyó Chrome en la MacBook de Juan (N64WLHQ0DV). Whoop abierta: recuperación 71%, sueño 79% (13:25/8:37), strain 5.2, HRV 43, FC reposo 65. Withings abierta: sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline: tensión arterial más reciente sigue siendo 19 oct. Cambio 30 días -5.7 kg (30 sep 136.8 a 27 oct 131.1, 27 días). Ultrahuman abierta (sync 1 nov 12:29), solo vista Trends sin números nuevos.",
+    "Corrida 16:28-16:31 (1 nov): la Mac mini 7115fd4e respondió desde la M6 (JV9MDW0NR2), así que no se usó; se leyó Chrome en la MacBook de Juan (N64WLHQ0DV). Whoop abierta: recuperación 71%, sueño 79% (13:25/8:37), strain 5.6, HRV 43, FC reposo 65. Withings abierta: sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline: tensión arterial más reciente sigue siendo 19 oct. Cambio 30 días -5.7 kg (30 sep 136.8 a 27 oct 131.1, 27 días). Ultrahuman abierta (sync nuevo 1 nov 16:21), solo vista Trends sin números nuevos.",
+    "Corrida 17:21-17:23 (1 nov): la Mac mini 7115fd4e respondió desde la M6 (JV9MDW0NR2), así que no se usó; se leyó Chrome en la MacBook de Juan (N64WLHQ0DV). Whoop abierta: recuperación 71%, sueño 79% (13:25/8:37), strain 5.6, HRV 43, FC reposo 65. Withings abierta: sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline: tensión arterial más reciente sigue siendo 19 oct. Cambio 30 días -5.7 kg (30 sep 136.8 a 27 oct 131.1, 27 días). Ultrahuman abierta (sync nuevo 1 nov 17:21), solo vista Trends sin números nuevos.",
+    "Corrida 18:28-18:31 (1 nov): la Mac mini 7115fd4e respondió desde la M6 (JV9MDW0NR2; allí Whoop, Withings y Ultrahuman están en login), así que no se usó; se leyó Chrome en la MacBook de Juan (N64WLHQ0DV). Whoop abierta: recuperación 71%, sueño 79% (13:25/8:37), strain 5.7, HRV 43, FC reposo 65. Withings abierta: sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline: tensión arterial más reciente sigue siendo 19 oct. Cambio 30 días -5.7 kg (30 sep 136.8 a 27 oct 131.1, 27 días). Ultrahuman abierta (sync nuevo 1 nov 18:21), solo vista Trends sin números nuevos.",
+    "Corrida 19:28-19:31 (1 nov): la Mac mini 7115fd4e respondió primero desde la M4 y luego desde la M6 (JV9MDW0NR2), así que no se usó; se leyó Chrome en la MacBook de Juan (N64WLHQ0DV). Whoop abierta: recuperación 71%, sueño 79% (13:25/8:37), strain 5.7, HRV 43, FC reposo 65. Withings abierta: sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline: tensión arterial más reciente sigue siendo 19 oct. Cambio 30 días -5.7 kg (30 sep 136.8 a 27 oct 131.1, 27 días). Ultrahuman abierta (sync nuevo 1 nov 19:30), solo vista Trends sin números nuevos.",
+    "Corrida 20:25-20:28 (1 nov): la Mac mini 7115fd4e respondió con ambos seriales (M6 JV9MDW0NR2 y M4; en ambas Whoop/Withings/Ultrahuman en login), así que no se usó; se leyó Chrome en la MacBook de Juan (N64WLHQ0DV). Whoop abierta: recuperación 71%, sueño 79% (13:25/8:37), strain 5.8, HRV 43, FC reposo 65. Withings abierta: sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline: tensión arterial más reciente sigue siendo 19 oct. Cambio 30 días -5.7 kg (30 sep 136.8 a 27 oct 131.1, 27 días). Ultrahuman abierta (sync 1 nov 19:30), solo vista Trends sin números nuevos.",
+    "Corrida 21:27-21:29 (1 nov): la Mac mini no se usó (en corridas recientes respondió desde la M6 JV9MDW0NR2); se leyó Chrome en la MacBook de Juan (N64WLHQ0DV). Whoop abierta: recuperación 71%, sueño 79% (13:25/8:37), strain 5.8, HRV 43, FC reposo 65. Withings abierta: sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline: tensión arterial más reciente sigue siendo 19 oct. Cambio 30 días -5.7 kg (30 sep 136.8 a 27 oct 131.1, 27 días). Ultrahuman abierta (sync nuevo 1 nov 20:55), solo vista Trends sin números nuevos.",
+    "Corrida 22:25-22:28 (1 nov): la Mac mini 7115fd4e respondió desde la M4 en la primera consulta, pero como alterna con la M6 se leyó Chrome en la MacBook de Juan (N64WLHQ0DV). Whoop abierta: recuperación 71%, sueño 79% (13:25/8:37), strain 6.1, HRV 43, FC reposo 65. Withings abierta: sin pesajes nuevos (último 27 oct 18:54 131.1 kg); timeline: tensión arterial más reciente sigue siendo 19 oct; Sleep ahora fechado 28 oct 14:00. Cambio 30 días -5.7 kg (30 sep 136.8 a 27 oct 131.1, 27 días). Ultrahuman abierta (sync 1 nov 20:55), solo vista Trends sin números nuevos."
+  ]
+}
