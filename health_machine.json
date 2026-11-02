@@ -1,0 +1,10 @@
+{
+ "_doc": "Máquina fija para lecturas de SALUD (Whoop, Ultrahuman, Withings, uso). Antes de CADA comando: `ioreg -l | grep IOPlatformSerialNumber` y comparar. Si la serie no coincide, NO ejecutar nada ahí. Fijado 1 nov 2026 (voz Mauricio).",
+ "orden": [
+  {"rol": "principal", "nombre": "Mac mini M4", "serie": "J2271Q913R", "machineId": "7115fd4e-7c53-4e4c-a85d-88ba199c2592", "label": "mendis-mac-casa.lan", "nota": "Esta machineId a veces responde desde la M6: verificar la serie en cada comando"},
+  {"rol": "respaldo", "nombre": "MacBook Pro de Juan", "serie": "N64WLHQ0DV", "machineId": "4a5cc0cb-ad99-4c83-bf6c-0d2115b475d1", "label": "Juans-MacBook-Pro.local"}
+ ],
+ "prohibida": [{"nombre": "M6", "serie": "JV9MDW0NR2", "nota": "NUNCA usar para salud"}],
+ "verificado": "2026-11-01T22:33:00-06:00",
+ "verificacion": "dom 1 nov 10:33 PM: 7115fd4e respondió serie J2271Q913R (Mac mini M4) · 4a5cc0cb respondió N64WLHQ0DV (MacBook Juan)"
+}

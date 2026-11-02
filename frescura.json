@@ -14,8 +14,8 @@
   {
    "key": "whatsapp",
    "nombre": "💬 WhatsApp",
-   "ts": "2026-11-01T17:29:00-06:00",
-   "fuente": "ronda WA dom 1 nov, 5:23 PM (terminó ~5:29 PM) en la MacBook Pro de Juan; la Mac mini contestó como M6 y no se usó",
+   "ts": "2026-11-01T21:36:00-06:00",
+   "fuente": "ronda WA dom 1 nov, 9:27 PM (terminó ~9:36 PM) en la MacBook Pro de Juan; la Mac mini contestó como M6 y no se usó",
    "modo": "horas",
    "ambar_h": 1.25,
    "rojo_h": 2,
@@ -40,7 +40,7 @@
   {
    "key": "withings",
    "nombre": "⚖️ Salud · Withings",
-   "ts": "2026-11-01T13:29:00-06:00",
+   "ts": "2026-11-01T22:26:00-06:00",
    "fuente": "Health Mate (agente Personal, salud_hoy.json 1 nov 1:29 PM; último pesaje 27 oct 18:54, 131.1 kg; sin presión nueva desde 19 oct) · checked_at = última revisión EXITOSA",
    "modo": "chequeo",
    "sel": null,
@@ -63,8 +63,8 @@
   {
    "key": "correos",
    "nombre": "📬 Correos",
-   "ts": "2026-11-01T17:58:00-06:00",
-   "fuente": "Gmail mau5588 + Gmail casa + Hotmail (revisión dom 1 nov, 5:58 PM: nada nuevo importante, solo spam en Hotmail; sin Cloud Duet)",
+   "ts": "2026-11-01T21:50:00-06:00",
+   "fuente": "Gmail mau5588 + Gmail casa + Hotmail (revisión dom 1 nov, 9:50 PM: solo PayPal IPVanish $4.49 USD 9:28 PM; sin Cloud Duet)",
    "modo": "horas",
    "ambar_h": 2,
    "rojo_h": 4,
@@ -73,8 +73,8 @@
   {
    "key": "calendario",
    "nombre": "📅 Calendario",
-   "ts": "2026-11-01T17:58:00-06:00",
-   "fuente": "Google Calendar (revisión dom 1 nov, 5:58 PM: mañana Unani 12–2 PM; mar 3 cita con Erika 3 PM; mié 4 Unani; jue 5 vuelo Viva 6:15 AM, AppleCare, Arely 2 PM; sin citas nuevas)",
+   "ts": "2026-11-01T21:50:00-06:00",
+   "fuente": "Google Calendar (revisión dom 1 nov, 9:50 PM: mañana Unani 12–2 PM; mar 3 cita con Erika 3 PM; mié 4 Unani; jue 5 vuelo Viva MID→GDL 6:15 AM, AMEX Platinum y AppleCare)",
    "modo": "horas",
    "ambar_h": 3,
    "rojo_h": 6,
@@ -83,8 +83,8 @@
   {
    "key": "paquetes",
    "nombre": "📦 Paquetes",
-   "ts": "2026-11-01T17:58:00-06:00",
-   "fuente": "Gmail ×2 + Hotmail (revisión dom 1 nov, 5:58 PM: sin avisos de envío nuevos; Beats llegan lun 2 nov)",
+   "ts": "2026-11-01T21:50:00-06:00",
+   "fuente": "Gmail ×2 + Hotmail (revisión dom 1 nov, 9:50 PM: sin avisos de envío nuevos; Beats llegan lun 2 nov)",
    "modo": "horas",
    "ambar_h": 3,
    "rojo_h": 6,
@@ -101,8 +101,8 @@
   {
    "key": "tarjetas",
    "nombre": "💳 Tarjetas (hoja TC)",
-   "ts": "2026-11-01T17:58:00-06:00",
-   "fuente": "Hoja TC de Drive (revisada dom 1 nov, 5:58 PM; última modificación 11:58 AM, ya integrada)",
+   "ts": "2026-11-01T22:30:37-06:00",
+   "fuente": "Hoja TC releída dom 1 nov 10:30 PM (tc_refresh.py, col I Saldo) · se relee en CADA corrida",
    "modo": "horas",
    "ambar_h": 6,
    "rojo_h": 24,
@@ -110,9 +110,9 @@
   },
   {
    "key": "gastos",
-   "nombre": "📒 Gastos (Control oct)",
-   "ts": "2026-11-01T17:58:00-06:00",
-   "fuente": "Control_Gastos_Octubre_2026 (revisado dom 1 nov, 5:58 PM; última edición mié 28 oct, 4:39 PM) · aún NO existe Control_Gastos_Noviembre_2026",
+   "nombre": "📒 Gastos (Control nov)",
+   "ts": "2026-11-01T22:30:00-06:00",
+   "fuente": "Drive buscado dom 1 nov 10:30 PM: NO existe Control_Gastos_Noviembre_2026 · se muestra octubre (última edición 28 oct) como referencia",
    "modo": "horas",
    "ambar_h": 6,
    "rojo_h": 24,
@@ -121,8 +121,8 @@
   {
    "key": "trabajo",
    "nombre": "💼 Trabajo / Roms",
-   "ts": "2026-11-01T17:58:00-06:00",
-   "fuente": "Gmail + Hotmail (revisión dom 1 nov, 5:58 PM: sin correos de trabajo nuevos)",
+   "ts": "2026-11-01T21:50:00-06:00",
+   "fuente": "Gmail + Hotmail (revisión dom 1 nov, 9:50 PM: sin correos de trabajo nuevos)",
    "modo": "horas",
    "ambar_h": 4,
    "rojo_h": 24,
@@ -131,8 +131,8 @@
   {
    "key": "hechos",
    "nombre": "✅ Hechos (ntfy)",
-   "ts": "2026-11-01T17:58:00-06:00",
-   "fuente": "ntfy (revisión dom 1 nov, 5:58 PM: sin Hechos nuevos)",
+   "ts": "2026-11-01T21:50:00-06:00",
+   "fuente": "ntfy (revisión dom 1 nov, 9:49 PM: sin Hechos nuevos)",
    "modo": "horas",
    "ambar_h": 2,
    "rojo_h": 6,
@@ -141,12 +141,41 @@
  ],
  "publicacion": {
   "ok": true,
-  "ts": "2026-11-01T17:52:25-06:00",
-  "build": "2026-11-01T23:50:10.340Z",
+  "ts": "2026-11-01T21:52:47-06:00",
+  "build": "2026-11-02T03:50:00.800Z",
   "msg": ""
  },
  "paquetes": {
   "ts": "2026-10-29T08:55:00-06:00",
   "fuente": "correos Gmail ×2 + Hotmail + WhatsApp (revisión 12:45 PM)"
+ },
+ "salud_maquina": {
+  "_doc": "Máquina fija para lecturas de SALUD (Whoop, Ultrahuman, Withings, uso). Antes de CADA comando: `ioreg -l | grep IOPlatformSerialNumber` y comparar. Si la serie no coincide, NO ejecutar nada ahí. Fijado 1 nov 2026 (voz Mauricio).",
+  "orden": [
+   {
+    "rol": "principal",
+    "nombre": "Mac mini M4",
+    "serie": "J2271Q913R",
+    "machineId": "7115fd4e-7c53-4e4c-a85d-88ba199c2592",
+    "label": "mendis-mac-casa.lan",
+    "nota": "Esta machineId a veces responde desde la M6: verificar la serie en cada comando"
+   },
+   {
+    "rol": "respaldo",
+    "nombre": "MacBook Pro de Juan",
+    "serie": "N64WLHQ0DV",
+    "machineId": "4a5cc0cb-ad99-4c83-bf6c-0d2115b475d1",
+    "label": "Juans-MacBook-Pro.local"
+   }
+  ],
+  "prohibida": [
+   {
+    "nombre": "M6",
+    "serie": "JV9MDW0NR2",
+    "nota": "NUNCA usar para salud"
+   }
+  ],
+  "verificado": "2026-11-01T22:33:00-06:00",
+  "verificacion": "dom 1 nov 10:33 PM: 7115fd4e respondió serie J2271Q913R (Mac mini M4) · 4a5cc0cb respondió N64WLHQ0DV (MacBook Juan)"
  }
 }
