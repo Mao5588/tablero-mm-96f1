@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "lun 23 nov 2026, 3:33 PM (paneles; correos, calendario, tarjetas, gastos, uso, hechos 2:56 PM; WhatsApp/salud según su frescura)",
+  updated: "lun 23 nov 2026, 3:57 PM (correos, calendario, tarjetas, gastos, uso, hechos 3:57 PM; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -293,6 +293,8 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-1123-1622-crio", urg:"rojo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"chat" }, txt:"VA CIRCUITO 3:44 PM: con Crio (Ing. Felipe Cruz) los trabajadores deben presentarse en caseta con identificación (se queda retenida mientras trabajan). Mañana 12 PM con Jesús.", det:"wa-hourly-2026-11-23-1622.md", ts:"3:44 PM" },
+  { id:"w-1123-1622-ronda", urg:"amarillo", whatsapp:{ chat:"VA CIRCUITO / Manufactura VAC / Mau y Juan / Rappi / Banco Plata", verificado:true, nota:"ronda" }, txt:"Ronda lun 23 nov 4:22–4:31 PM (home's pro): Manufactura VAC: agenda mar 24 (Bastorrachea–Freddy–Ángeles 10 AM; Jesús Gómez 10 AM–Josué; Luis González 10 AM–Enrique; Carolina 10 AM–Jesús; Crío 12 PM–Jesús; Julián I 10 AM–Santiago); Carmina Campos con Santiago 9 AM. VA CIRCUITO: espejos de Jesús Gómez 3 m × 1.37. Sin acción: Juan «Voy», Rappi cierre de caso, códigos Banco Plata.", det:"wa-hourly-2026-11-23-1622.md", ts:"4:31 PM" },
   { id:"w-1123-1525-amanda-pago", urg:"rojo", whatsapp:{ chat:"Amanda Paqueteria Cruce Laredo", verificado:true, nota:"chat" }, txt:"Amanda Paquetería 3:03–3:09 PM: su servicio son $185 aparte del DHL de los lentes ($2,471.65). Mandó su cuenta BBVA (Amanda Mellissa Treviño Sánchez). Falta transferirle y avisarle si pediste algo para tu hermana.", det:"wa-hourly-2026-11-23-1525.md", ts:"3:09 PM" },
   { id:"w-1123-1525-ronda", urg:"amarillo", whatsapp:{ chat:"Amanda Paquetería / VA CIRCUITO / Areli Help / Mau y Juan / Rappi", verificado:true, nota:"ronda" }, txt:"Ronda lun 23 nov 3:25–3:32 PM (home's pro): NUEVO Amanda Paquetería mandó su cuenta (DHL $2,471.65 + $185). VA CIRCUITO: Ángeles mandó la agenda de mar 24/mié 25 (Bastorrachea; Julián Izaguirre 10 AM; Sra. Carolina 10 AM; Crio García 12 PM; Josué 10 AM). Areli Help mandó el link de la silla portabebé Prinsel ($596.98 ML). Juan 3:17 «¿Qué haces?». Sin acción: Rappi (pedido tardío ya llegó), flyer de constelaciones.", det:"wa-hourly-2026-11-23-1525.md", ts:"3:32 PM" },
   { id:"w-1123-1426-sanalu", urg:"rojo", whatsapp:{ chat:"San Aluminiero", verificado:true, nota:"chat" }, txt:"San Aluminiero 2:27 PM insiste con su préstamo (~3,000): «disculpa que te vuelva a molestar… me imagino quedará para mañana pero como te comenté sí me urge». El viernes le dijiste que sería la siguiente semana. Espera tu respuesta.", det:"wa-hourly-2026-11-23-1426.md", ts:"2:27 PM" },
