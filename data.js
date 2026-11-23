@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "lun 23 nov 2026, 3:57 PM (correos, calendario, tarjetas, gastos, uso, hechos 3:57 PM; paneles/WhatsApp/salud según su frescura)",
+  updated: "lun 23 nov 2026, 4:54 PM (correos, calendario, tarjetas, gastos, uso, hechos 4:54 PM; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -1084,6 +1084,17 @@ const HIGH_STANDARD = [];
    build.js las sincroniza aquí y las fusiona en URGENTES (urgManExtra + prune).
    Las rutinas horarias NO deben borrar este arreglo ni meter sus ids en HECHOS. */
 const URGENTES_MANUAL = [
+  {
+    "id": "u-1124-0900-junta",
+    "txt": "Mar 24 nov 9:00 AM, antes de la junta: checar el cloud · qué hacer con Nabil · qué hablar con Diego · qué hablar con Samuel.",
+    "det": "Recordatorio en Google Calendar mar 24 nov 9:00 AM (hora Mérida) · pedido por llamada lun 23 nov ~5:06 PM",
+    "urg": "rojo",
+    "sec": "urgente",
+    "fecha": "2026-11-24",
+    "src": "voz",
+    "pin": true,
+    "hasta": "2026-11-24T23:59:00-06:00"
+  },
   {
     "id": "u-1116-2030-arely-pago",
     "txt": "Ya le pagué mil pesos a Arely de esta semana.",
