@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "lun 23 nov 2026, 10:07 AM (paneles; correos, calendario, tarjetas, gastos, uso, hechos 9:56 AM; WhatsApp ronda 10:42 AM; salud 9:28 AM)",
+  updated: "lun 23 nov 2026, 10:55 AM (correos, calendario, tarjetas, gastos, uso, hechos 10:55 AM; paneles 10:07 AM; WhatsApp ronda 10:42 AM; salud 10:24 AM)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -545,14 +545,14 @@ const WHATSAPP = [
 
 /* 4) SUGERENCIAS */
 const SUGERENCIAS = [
-  { id:"s-1123-0628-jose", txt:"El papá de Jose Sabido iba a quirófano hoy lun 23, 5:00–6:00 AM. Se abrió el 1:1 a las 6:26 AM: el último mensaje sigue siendo el «Si» de Mauricio de ayer 9:38 PM; no hay ningún mensaje de hoy ni update de la cirugía.", urg:"rojo" },
-  { id:"s-1123-0628-unani", txt:"Hoy lun 23, 12:00–14:00, el calendario trae Unani «clase dinámica con asesores». March la marca dudosa porque las clases son los miércoles; conviene confirmarlo con la academia.", urg:"amarillo" },
-  { id:"s-1123-0628-gabri", txt:"Mañana mar 24 a las 9:00: darle las carteras a Gabri (está en el calendario).", urg:"amarillo" },
-  { id:"s-1123-0628-pavo", txt:"En Club privee armaron el menú del Thanksgiving del vie 27: a Mau y Juan les tocan los macarrones. Tía Gaby le confirmó a Roddolfo a las 4:49 AM que es el viernes. Sin mensajes nuevos después de esa hora (re-leído 6:25 AM).", urg:"amarillo" },
-  { id:"s-1123-0628-signature", txt:"En la hoja TC, Signature SC vence el sáb 28 con saldo $9,500. No está en el recuento de March de los 5 pagos del jue 26; conviene no pasarlo por alto.", urg:"amarillo" },
-  { id:"s-1123-0628-m365", txt:"Microsoft 365 Family se renueva el vie 27 por $169/mes. Si no lo quieres conservar, hay que cancelarlo a más tardar el jue 26 en el enlace de Apple.", urg:"amarillo" },
-  { id:"s-1123-0628-aquatru", txt:"Amazon ya aceptó la devolución del AquaTru (pedido 701-6722111-8125032): hay que enviarla a más tardar el dom 20 dic; el reembolso sale cuando la reciba GLOBAL TAN LLC.", urg:"amarillo" },
-  { id:"s-1123-0628-telmex", txt:"Llegó a spam (dom 22, 3:42 PM) el recibo Telmex Infinitum de noviembre: $899, número 9999446330, corte 18 nov, límite de pago 11 dic.", urg:"amarillo" },
+  { id:"s-1123-1055-jose", txt:"El papá de Jose Sabido iba a quirófano hoy lun 23, 5:00–6:00 AM. Se abrió el 1:1 a las 6:26 AM: el último mensaje sigue siendo el «Si» de Mauricio de ayer 9:38 PM; no hay ningún mensaje de hoy ni update de la cirugía.", urg:"rojo" },
+  { id:"s-1123-1055-unani", txt:"Hoy lun 23 a las 12:00 (en poco más de una hora), el calendario trae Unani «clase dinámica con asesores». March la marca dudosa porque las clases son los miércoles; conviene confirmarlo con la academia.", urg:"amarillo" },
+  { id:"s-1123-1055-gabri", txt:"Mañana mar 24 a las 9:00: darle las carteras a Gabri (está en el calendario).", urg:"amarillo" },
+  { id:"s-1123-1055-pavo", txt:"En Club privee armaron el menú del Thanksgiving del vie 27: a Mau y Juan les tocan los macarrones. Tía Gaby le confirmó a Roddolfo a las 4:49 AM que es el viernes. Sin mensajes nuevos después de esa hora (re-leído 6:25 AM).", urg:"amarillo" },
+  { id:"s-1123-1055-signature", txt:"En la hoja TC, Signature SC vence el sáb 28 con saldo $9,500. No está en el recuento de March de los 5 pagos del jue 26; conviene no pasarlo por alto.", urg:"amarillo" },
+  { id:"s-1123-1055-m365", txt:"Microsoft 365 Family se renueva el vie 27 por $169/mes. Si no lo quieres conservar, hay que cancelarlo a más tardar el jue 26 en el enlace de Apple.", urg:"amarillo" },
+  { id:"s-1123-1055-aquatru", txt:"Amazon ya aceptó la devolución del AquaTru (pedido 701-6722111-8125032): hay que enviarla a más tardar el dom 20 dic; el reembolso sale cuando la reciba GLOBAL TAN LLC.", urg:"amarillo" },
+  { id:"s-1123-1055-telmex", txt:"Llegó a spam (dom 22, 3:42 PM) el recibo Telmex Infinitum de noviembre: $899, número 9999446330, corte 18 nov, límite de pago 11 dic.", urg:"amarillo" },
 ];const SALUD = {
   avisos: [
     "Sin acceso a Apple Watch / Apple Health.",
