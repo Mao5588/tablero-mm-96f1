@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "lun 23 nov 2026, 1:56 PM (correos, calendario, tarjetas, gastos, uso, hechos 1:56 PM; paneles/WhatsApp/salud según su frescura)",
+  updated: "lun 23 nov 2026, 2:31 PM (paneles; correos, calendario, tarjetas, gastos, uso, hechos 1:56 PM; WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -17,12 +17,12 @@ const META = {
 /* REGLA (5 nov 2026, voz Mauricio): mesActual/mesAnterior totals MUST come from
    Luxpowertek AÑO (year) chart / official month totals — NEVER by summing incomplete porDia. */
 const SOLAR = {
-  fuente: "Luxpowertek web (home's pro LK2TXYMG7R, JS en segundo plano en pestaña monitor w1t2; Juan's 4a5cc0cb no respondió) lun 23 nov 10:07 AM: hoy gen 14.1 / cons 13.7 / exp 10.8 / desc 0 · bat 100% · live PV 8520 W · consumo 477 W · red 7809 W exportando (pToGrid 7809; pToUser 0) · 227.0 Vac / 59.97 Hz; Información del sistema / deviceTime 10:06:02; mes Nov y Oct oficiales AÑO yearColumn releyídos 10:07 AM",
-  leido: "lun 23 nov, 10:07 AM (hoy live energy/runtime deviceTime 10:06:02, leído 10:07:44; AÑO/mes oficiales yearColumn 10:07 AM: Nov 1133.2/972.7/875.8/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
-  hoy:  { generado: 14.1, consumido: 13.7, exportada: 10.8, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t2, JS en segundo plano, home's pro LK2TXYMG7R; Juan's no respondió) 10:07:44, deviceTime 10:06:02: gen 14.1 / cons 13.7 / exp 10.8 / desc 0 · bat 100% (53.5 Vdc) · PV 8520 W (PV1 3824+PV2 2254+PV3 2442) · consumo 477 W · red 7809 W exportando (pToGrid 7809; pToUser 0) · 227.0 Vac / 59.97 Hz; instalación 53423E0096; día en curso (parcial 10:07 AM)." },
+  fuente: "Luxpowertek web (home's pro LK2TXYMG7R, JS en segundo plano en pestaña monitor w1t2; sesión reabierta por Mauricio ~2:30 PM) lun 23 nov 2:31 PM: hoy gen 51.7 / cons 16.9 / exp 44.1 / desc 0 · bat 100% · live PV 6010 W · consumo 936 W · red 4955 W exportando (pToGrid 4955; pToUser 0) · 226.1 Vac / 60.04 Hz; Información del sistema / deviceTime 14:29:54; mes Nov y Oct oficiales AÑO yearColumn releyídos 2:31 PM",
+  leido: "lun 23 nov, 2:31 PM (hoy live energy/runtime deviceTime 14:29:54, leído 14:31:49; AÑO/mes oficiales yearColumn 2:31 PM: Nov 1171.2/975.9/909.3/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
+  hoy:  { generado: 51.7, consumido: 16.9, exportada: 44.1, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t2, JS en segundo plano, home's pro LK2TXYMG7R; sesión reabierta por Mauricio ~2:30 PM) 14:31:49, deviceTime 14:29:54: gen 51.7 / cons 16.9 / exp 44.1 / desc 0 · bat 100% (54.6 Vdc) · PV 6010 W (PV1 2796+PV2 1558+PV3 1656) · consumo 936 W · red 4955 W exportando (pToGrid 4955; pToUser 0) · 226.1 Vac / 60.04 Hz; instalación 53423E0096; día en curso (parcial 2:31 PM)." },
   ayer: { generado: 56.6, consumido: 30.5, exportada: 44.2, descargada: 0, nota: "dom 22 nov · cierre oficial Luxpowertek monthColumn día 22: gen 56.6 / cons 30.5 / exp 44.2 / desc 0. El sáb 21 cerró oficial en gen 51.2 / cons 45.9 / exp 41.8 / desc 0 (la lectura de las 9:03 PM era parcial cons 37.0)." },
-  mesActual:   { nombre: "Noviembre", dias: "1–23", gen: 1133.2, cons: 972.7, exportada: 875.8, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos lun 23 nov 10:07 AM Mérida: Producción solar 1133.2 / Consumo 972.7 / Exportada 875.8 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 23 nov parcial; no suma porDia" },
-  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos lun 23 nov 10:07 AM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
+  mesActual:   { nombre: "Noviembre", dias: "1–23", gen: 1171.2, cons: 975.9, exportada: 909.3, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos lun 23 nov 2:31 PM Mérida: Producción solar 1171.2 / Consumo 975.9 / Exportada 909.3 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 23 nov parcial; no suma porDia" },
+  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos lun 23 nov 2:31 PM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
   porDia: [
     { dia: 1, gen: 51.4, cons: 51.0 },
     { dia: 2, gen: 52.9, cons: 65.5 },
@@ -46,7 +46,7 @@ const SOLAR = {
     { dia: 20, gen: 56.6, cons: 42.2 },
     { dia: 21, gen: 51.2, cons: 45.9 },
     { dia: 22, gen: 56.6, cons: 30.5 },
-    { dia: 23, gen: 14.1, cons: 13.7, enCurso: true }
+    { dia: 23, gen: 51.7, cons: 16.9, enCurso: true }
   ],
   bateria: 100
 };
