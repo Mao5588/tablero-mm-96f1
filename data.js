@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "mar 24 nov 2026, 8:32 AM (hoja TC; correos, calendario, gastos, uso, hechos 7:57 AM; paneles/WhatsApp/salud según su frescura)",
+  updated: "mar 24 nov 2026, 8:52 AM (correos, calendario, tarjetas, gastos, uso, hechos 8:52 AM; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
