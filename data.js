@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "mar 24 nov 2026, 10:54 AM (correos, calendario, tarjetas, gastos, uso, hechos 10:54 AM; paneles/WhatsApp/salud según su frescura)",
+  updated: "mar 24 nov 2026, 11:52 AM (correos, calendario, tarjetas, gastos, uso, hechos 11:52 AM; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -293,7 +293,10 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
-  { id:"w-1124-1026-liz-sellos", urg:"rojo", whatsapp:{ chat:"Liz Caja Chica", verificado:true, nota:"chat" }, txt:"Liz Caja Chica 10:26 AM: los sellos (Credimotors / Recibí cobranza) salieron con factura a Herramax aunque le dijo a Héctor que sería sin factura; pregunta si hay algún problema. Espera tu respuesta.", det:"wa-hourly-2026-11-24-1025.md", ts:"10:26 AM" },
+  { id:"w-1124-1141-va-josue", urg:"rojo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"chat" }, txt:"PENDIENTE — VA CIRCUITO 11:27–11:41 AM: falta el pago del saldo del señor Josué; no paga porque dice que no terminaron el trabajo — solo cambiaron una bisagra. El Mostrador pregunta a Ángeles qué pasó y cuándo se va a cambiar la otra. Sin respuesta aún.", det:"wa-hourly-2026-11-24-1133.md", ts:"11:41 AM" },
+  { id:"w-1124-1130-sam-cepillos", urg:"amarillo", whatsapp:{ chat:"Sam Zamorano", verificado:true, nota:"chat" }, txt:"Sam Zamorano 11:30 AM: «mau aquí en el cuarto de mi papá no están» — los 2 cepillos no aparecen en su casa.", det:"wa-hourly-2026-11-24-1133.md", ts:"11:30 AM" },
+  { id:"w-1124-1133-ronda", urg:"rojo", whatsapp:{ chat:"VA CIRCUITO / Sam Zamorano / Sweet home / March / Liz Caja Chica", verificado:true, nota:"ronda" }, txt:"Ronda mar 24 nov 11:33–11:48 AM (home's pro): NUEVO VA CIRCUITO: Josué retiene su saldo hasta que cambien la otra bisagra. Sam: los cepillos no están. Arely llegó 11:32 (pidió que le abran). March: correa CASETiFY en tránsito (Laredo 27–28 nov). CERRADO Liz Caja Chica: sellos con factura OK ($115 de más), contestaste «Ya».", det:"wa-hourly-2026-11-24-1133.md", ts:"11:48 AM" },
+  { id:"w-1124-1026-liz-sellos", urg:"verde", whatsapp:{ chat:"Liz Caja Chica", verificado:true, nota:"chat" }, txt:"Liz Caja Chica 10:26 AM: sellos (Credimotors / Recibí cobranza) salieron con factura a Herramax. CERRADO 10:44–10:46: dijiste que no hay problema; $115 de más por la factura; contestaste «Ya».", det:"wa-hourly-2026-11-24-1133.md", ts:"10:46 AM" },
   { id:"w-1124-1002-march-iphone", urg:"amarillo", whatsapp:{ chat:"March", verificado:true, nota:"chat" }, txt:"March 10:02: iPhone 18 Pro Max 512GB (tsommers58, orden 14-15452-89613, $1,531.68) confirmado; llega a Laredo 25–30 nov; esperar guía de envío.", det:"wa-hourly-2026-11-24-1025.md", ts:"10:02 AM" },
   { id:"w-1124-0924-va-crio-cristal", urg:"amarillo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"chat" }, txt:"VA CIRCUITO 9:23: Lizzeth Tzel avisa que Crio autorizó el cambio de cristal (presupuesto en foto); Ángeles lo agenda a las 12 PM. También: espejos 3 m × 137 confirmados y Jesús Gómez puede verlos en obra.", det:"wa-hourly-2026-11-24-0930.md", ts:"9:24 AM" },
   { id:"w-1124-0924-casatextil", urg:"amarillo", whatsapp:{ chat:"Casa Textil Arte Zapoteco", verificado:true, nota:"chat" }, txt:"Casa Textil Arte Zapoteco (+52 951 360 5107) respondió con mensaje automático 9:24 a tu «Hola buenos días»: falta decirles qué necesitas.", det:"wa-hourly-2026-11-24-0930.md", ts:"9:24 AM" },
