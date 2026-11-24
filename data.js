@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "mar 24 nov 2026, 1:54 PM (correos, calendario, tarjetas, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
+  updated: "mar 24 nov 2026, 3:29 PM (paneles; correos, calendario, tarjetas, gastos, uso, hechos 2:51 PM)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -17,12 +17,12 @@ const META = {
 /* REGLA (5 nov 2026, voz Mauricio): mesActual/mesAnterior totals MUST come from
    Luxpowertek AÑO (year) chart / official month totals — NEVER by summing incomplete porDia. */
 const SOLAR = {
-  fuente: "Luxpowertek web (home's pro LK2TXYMG7R, JS en segundo plano en pestaña monitor w1t2) mar 24 nov 12:32 PM: hoy gen 21.6 / cons 11.7 / exp 17.8 / desc 0 · bat 100% · live PV 5104 W · consumo 820 W · red 4184 W exportando (pToGrid 4184; pToUser 0) · 223.4 Vac / 60.0 Hz; Información del sistema / deviceTime 12:31:33; mes Nov y Oct oficiales AÑO yearColumn releyídos 12:32 PM",
-  leido: "mar 24 nov, 12:32 PM (hoy live energy/runtime deviceTime 12:31:33, leído 12:32:30; AÑO/mes oficiales yearColumn 12:32 PM: Nov 1198.0/1002.0/930.9/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
-  hoy:  { generado: 21.6, consumido: 11.7, exportada: 17.8, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t2, JS en segundo plano, home's pro LK2TXYMG7R) 12:32:30, deviceTime 12:31:33: gen 21.6 / cons 11.7 / exp 17.8 / desc 0 · bat 100% (55.2 Vdc) · PV 5104 W (PV1 2414+PV2 1288+PV3 1402) · consumo 820 W · red 4184 W exportando (pToGrid 4184; pToUser 0) · 223.4 Vac / 60.0 Hz; instalación 53423E0096; día en curso (parcial 12:32 PM)." },
+  fuente: "Luxpowertek web (home's pro LK2TXYMG7R, JS en segundo plano en pestaña monitor w1t2) mar 24 nov 3:29 PM: hoy gen 25.8 / cons 13.9 / exp 20.4 / desc 0 · bat 100% · live PV 482 W · consumo 474 W · red 0 W (pToGrid 0; pToUser 0) · 218.7 Vac / 60.0 Hz; Información del sistema / deviceTime 15:28:52; mes Nov y Oct oficiales AÑO yearColumn releyídos 3:29 PM",
+  leido: "mar 24 nov, 3:29 PM (hoy live energy/runtime deviceTime 15:28:52, leído 15:29:14; AÑO/mes oficiales yearColumn 3:29 PM: Nov 1202.6/1004.3/933.8/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
+  hoy:  { generado: 25.8, consumido: 13.9, exportada: 20.4, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t2, JS en segundo plano, home's pro LK2TXYMG7R) 15:29:14, deviceTime 15:28:52: gen 25.8 / cons 13.9 / exp 20.4 / desc 0 · bat 100% (54.0 Vdc) · PV 482 W (PV1 362+PV2 58+PV3 62) · consumo 474 W · red 0 W (pToGrid 0; pToUser 0) · 218.7 Vac / 60.0 Hz; instalación 53423E0096; día en curso (parcial 3:29 PM)." },
   ayer: { generado: 57.3, consumido: 31.4, exportada: 48.2, descargada: 0, nota: "lun 23 nov · cierre oficial Luxpowertek monthColumn día 23: gen 57.3 / cons 31.4 / exp 48.2 / desc 0. El dom 22 cerró oficial en gen 56.6 / cons 30.5 / exp 44.2 / desc 0." },
-  mesActual:   { nombre: "Noviembre", dias: "1–24", gen: 1198.0, cons: 1002.0, exportada: 930.9, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos mar 24 nov 12:32 PM Mérida: Producción solar 1198.0 / Consumo 1002.0 / Exportada 930.9 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 24 nov parcial; no suma porDia" },
-  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos mar 24 nov 12:32 PM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
+  mesActual:   { nombre: "Noviembre", dias: "1–24", gen: 1202.6, cons: 1004.3, exportada: 933.8, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos mar 24 nov 3:29 PM Mérida: Producción solar 1202.6 / Consumo 1004.3 / Exportada 933.8 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 24 nov parcial; no suma porDia" },
+  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos mar 24 nov 3:29 PM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
   porDia: [
     { dia: 1, gen: 51.4, cons: 51.0 },
     { dia: 2, gen: 52.9, cons: 65.5 },
@@ -47,7 +47,7 @@ const SOLAR = {
     { dia: 21, gen: 51.2, cons: 45.9 },
     { dia: 22, gen: 56.6, cons: 30.5 },
     { dia: 23, gen: 57.3, cons: 31.4 },
-    { dia: 24, gen: 21.6, cons: 11.7, enCurso: true }
+    { dia: 24, gen: 25.8, cons: 13.9, enCurso: true }
   ],
   bateria: 100
 };
@@ -296,6 +296,11 @@ const CORREOS = [
 const WHATSAPP = [
   { id:"w-1124-1329-gaby-ines", urg:"amarillo", whatsapp:{ chat:"Tia Gaby Nuevo", verificado:true, nota:"chat" }, txt:"Tia Gaby 1:25–1:29 PM: te estuvo esperando y dejó «las 2» (INE) con Adier. Falta recogerlas.", det:"wa-hourly-2026-11-24-1331.md", ts:"1:29 PM" },
   { id:"w-1124-1331-ronda", urg:"amarillo", whatsapp:{ chat:"Tia Gaby / Sam Zamorano / Inbursa / Club privee / Mariana Hernandez", verificado:true, nota:"ronda" }, txt:"Ronda mar 24 nov 1:31–1:40 PM (home's pro): Tía Gaby dejó las 2 INE con Adier. CERRADO Sam: los cepillos quedaron en el hotel. Sin acción: promos de Inbursa y Mariana Hernandez, plática en Club privee. Sigue: cobro de Josué (VA CIRCUITO).", det:"wa-hourly-2026-11-24-1331.md", ts:"1:40 PM" },
+  { id:"w-1124-1404-izzi-atascon", urg:"amarillo", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"PENDIENTE — Mau y Juan 2:04 PM: Mauricio Izzi te pide su combo del Atascón + 1 taquito. Falta pedirlo o contestarle.", det:"wa-hourly-2026-11-24-1431.md", ts:"2:04 PM" },
+  { id:"w-1124-1401-emmanuel-ubic", urg:"amarillo", whatsapp:{ chat:"+52 999 388 5571", verificado:true, nota:"chat" }, txt:"PENDIENTE — +52 999 388 5571 (~Emmanuel Mosqueda, no es contacto) 2:01 PM: «Hola mau» y te mandó su ubicación sin decir para qué. Falta ver qué necesita.", det:"wa-hourly-2026-11-24-1431.md", ts:"2:01 PM" },
+  { id:"w-1124-1431-ronda", urg:"amarillo", whatsapp:{ chat:"VA CIRCUITO / Mau y Juan / +52 999 388 5571 / Match Veronica / Palacio de Hierro", verificado:true, nota:"ronda" }, txt:"Ronda mar 24 nov 2:31–2:36 PM (home's pro): Izzi pide combo del Atascón; Emmanuel Mosqueda mandó ubicación; VA: bisagra terminada, el Mostrador revisa las otras reparaciones. Sigue: cobro de Josué.", det:"wa-hourly-2026-11-24-1431.md", ts:"2:36 PM" },
+  { id:"w-1124-1500-angeles-nomina", urg:"rojo", whatsapp:{ chat:"Angeles (recordatorio Mac)", verificado:true, nota:"chat" }, txt:"PENDIENTE — Recordatorio URGENTE de hoy 3:00 PM: falta mandarle a Ángeles el promedio de la nómina.", det:"wa-hourly-2026-11-24-1522.md", ts:"3:00 PM" },
+  { id:"w-1124-1522-ronda", urg:"amarillo", whatsapp:{ chat:"René Herramax / Yani Ucan Nana / Memes and Sht / Total Play", verificado:true, nota:"ronda" }, txt:"Ronda mar 24 nov 3:22–3:26 PM (home's pro): René explicó que el AJUSTE A4532 es una entrada ficticia para facturar; Yani ya recogió lo de la oficina de Vero. Siguen: promedio de nómina a Ángeles, Atascón de Izzi, Emmanuel Mosqueda, cobro de Josué.", det:"wa-hourly-2026-11-24-1522.md", ts:"3:26 PM" },
   { id:"w-1124-1227-va-josue-seg", urg:"rojo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"chat" }, txt:"PENDIENTE — VA CIRCUITO 11:54–12:27 PM (saldo de Josué): Ángeles reenvió lo de Santiago: fueron dos puertas, una más en el baño de mujeres, «ya está listo»; las escuadras vencieron y se armó de nuevo. Ángeles está en obra y llamará al Mostrador; reenvió 2 audios (12:27). Falta cerrar el cobro.", det:"wa-hourly-2026-11-24-1226.md", ts:"12:27 PM" },
   { id:"w-1124-1226-ronda", urg:"amarillo", whatsapp:{ chat:"VA CIRCUITO / Mau y Juan / Mariana Hernandez Promotora", verificado:true, nota:"ronda" }, txt:"Ronda mar 24 nov 12:26–12:31 PM (home's pro): VA CIRCUITO aclara el caso de Josué (Santiago dice que ya quedó; falta el cobro). Sin acción: reel de Mauricio Izzi en Mau y Juan y la promo Buen Fin de Mariana Hernandez.", det:"wa-hourly-2026-11-24-1226.md", ts:"12:31 PM" },
   { id:"w-1124-1141-va-josue", urg:"rojo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"chat" }, txt:"PENDIENTE — VA CIRCUITO 11:27–11:41 AM: falta el pago del saldo del señor Josué; no paga porque dice que no terminaron el trabajo — solo cambiaron una bisagra. El Mostrador pregunta a Ángeles qué pasó y cuándo se va a cambiar la otra. Sin respuesta aún.", det:"wa-hourly-2026-11-24-1133.md", ts:"11:41 AM" },
