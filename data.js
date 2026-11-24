@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "lun 23 nov 2026, 10:53 PM (correos, calendario, tarjetas, gastos, uso, hechos 10:53 PM; paneles/WhatsApp/salud según su frescura)",
+  updated: "mar 24 nov 2026, 8:32 AM (hoja TC; correos, calendario, gastos, uso, hechos 7:57 AM; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -293,6 +293,8 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-1124-0814-lizzeth-checador", urg:"amarillo", whatsapp:{ chat:"Lizzeth RH", verificado:true, nota:"chat" }, txt:"Lizzeth RH 8:14 AM: confirma que la info del checador de Herramax tienda (últimos 3 meses) la tiene Sistemas — hay que pedírsela a Rodrigo de sistemas.", det:"wa-hourly-2026-11-24-0825.md", ts:"8:14 AM" },
+  { id:"w-1124-0825-ronda", urg:"amarillo", whatsapp:{ chat:"Lizzeth RH / Sushitos", verificado:true, nota:"ronda" }, txt:"Ronda mar 24 nov 8:25–8:31 AM (home's pro): Lizzeth RH 8:14 confirma que la info del checador de Herramax tienda la tiene Sistemas (pedírsela a Rodrigo). March: descuentos por faltante de tela ($7,800) siguen por decidir en la junta de 9:00. Sin acción: Sushitos (broma de Juan Zamorano).", det:"wa-hourly-2026-11-24-0825.md", ts:"8:31 AM" },
   { id:"w-1123-2129-march-descuentos", urg:"rojo", whatsapp:{ chat:"March", verificado:true, nota:"chat" }, txt:"March 9:07 PM: Daniel Poot propone descontar $1,300 por nómina a 6 personas por faltante de tela de auditoría (total $7,800): Prisma Sulub, Yazmin Cauich, «Graty Itza» (¿Grety Itza?), María José Oropeza, Nabil Mangas y Danny Poot; sin evidencia adjunta. Decide si apruebas o pides el detalle de la auditoría a Daniel/Fátima antes de la junta de mañana mar 24, 9:00 AM.", det:"wa-hourly-2026-11-23-2129.md", ts:"9:07 PM" },
   { id:"w-1123-1929-ronda", urg:"amarillo", whatsapp:{ chat:"Ahorro Areli / Roddolfo / Banco Plata", verificado:true, nota:"ronda" }, txt:"Ronda lun 23 nov 7:29–7:40 PM (home's pro; Juan's offline): CERRADO transferencia de $1,000 a Arely (recibo 7:23, «Gracias» 7:26). Regalo de Carol (sáb 28): Roddolfo sugiere cosas de Disney o una muñeca de Disney. Sigue: agregar el otro número de Mauricio Izzi a Mau y Juan.", det:"wa-hourly-2026-11-23-1929.md", ts:"7:26 PM" },
   { id:"w-1123-1830-arely-1000", urg:"verde", whatsapp:{ chat:"Areli de Jesús campos cruz Help / Ahorro Areli", verificado:true, nota:"chat" }, txt:"Arely 6:44–6:47 PM te pidió transferirle $1,000 (le dijiste múltiplos de 500; contestó «1000» + 2 audios). En Ahorro Areli 6:43 PM: «No ahorre esta semana». CERRADO 7:23 PM: transferiste $1,000 (recibo en Ahorro Areli) y Arely dio las gracias 7:26.", det:"wa-hourly-2026-11-23-1830.md", ts:"6:47 PM" },
