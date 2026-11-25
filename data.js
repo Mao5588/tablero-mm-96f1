@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "mar 24 nov 2026, 9:55 PM (correos, calendario, tarjetas, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
+  updated: "mar 24 nov 2026, 10:48 PM (correos, calendario, tarjetas, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -1138,17 +1138,6 @@ const URGENTES_MANUAL = [
     "src": "voz",
     "pin": true,
     "hasta": "2026-11-28T23:59:00-06:00"
-  },
-  {
-    "id": "u-1124-0900-junta",
-    "txt": "Mar 24 nov 9:00 AM, antes de la junta: checar el cloud · qué hacer con Nabil · qué hablar con Diego · qué hablar con Samuel.",
-    "det": "Recordatorio en Google Calendar mar 24 nov 9:00 AM (hora Mérida) · pedido por llamada lun 23 nov ~5:06 PM",
-    "urg": "rojo",
-    "sec": "urgente",
-    "fecha": "2026-11-24",
-    "src": "voz",
-    "pin": true,
-    "hasta": "2026-11-24T23:59:00-06:00"
   },
   {
     "id": "u-1116-2030-arely-pago",
