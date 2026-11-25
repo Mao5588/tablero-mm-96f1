@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "mar 24 nov 2026, 5:53 PM (correos, calendario, tarjetas, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
+  updated: "mar 24 nov 2026, 6:52 PM (correos, calendario, tarjetas, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -17,12 +17,12 @@ const META = {
 /* REGLA (5 nov 2026, voz Mauricio): mesActual/mesAnterior totals MUST come from
    Luxpowertek AÑO (year) chart / official month totals — NEVER by summing incomplete porDia. */
 const SOLAR = {
-  fuente: "Luxpowertek web (home's pro LK2TXYMG7R, JS en segundo plano en pestaña monitor w1t2) mar 24 nov 3:29 PM: hoy gen 25.8 / cons 13.9 / exp 20.4 / desc 0 · bat 100% · live PV 482 W · consumo 474 W · red 0 W (pToGrid 0; pToUser 0) · 218.7 Vac / 60.0 Hz; Información del sistema / deviceTime 15:28:52; mes Nov y Oct oficiales AÑO yearColumn releyídos 3:29 PM",
-  leido: "mar 24 nov, 3:29 PM (hoy live energy/runtime deviceTime 15:28:52, leído 15:29:14; AÑO/mes oficiales yearColumn 3:29 PM: Nov 1202.6/1004.3/933.8/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
-  hoy:  { generado: 25.8, consumido: 13.9, exportada: 20.4, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t2, JS en segundo plano, home's pro LK2TXYMG7R) 15:29:14, deviceTime 15:28:52: gen 25.8 / cons 13.9 / exp 20.4 / desc 0 · bat 100% (54.0 Vdc) · PV 482 W (PV1 362+PV2 58+PV3 62) · consumo 474 W · red 0 W (pToGrid 0; pToUser 0) · 218.7 Vac / 60.0 Hz; instalación 53423E0096; día en curso (parcial 3:29 PM)." },
+  fuente: "Luxpowertek web (home's pro LK2TXYMG7R, JS en segundo plano en pestaña monitor w1t2) mar 24 nov 6:36 PM: hoy gen 26.0 / cons 16.4 / exp 20.4 / desc 0 · bat 100% · live PV 0 W · consumo 2043 W · red 2043 W importando (pToUser 2043; pToGrid 0) · 219.6 Vac / 60.0 Hz; Información del sistema / deviceTime 18:36:08; mes Nov y Oct oficiales AÑO yearColumn releyídos 6:36 PM",
+  leido: "mar 24 nov, 6:36 PM (hoy live energy/runtime deviceTime 18:36:08, leído 18:36:35; AÑO/mes oficiales yearColumn 6:36 PM: Nov 1202.8/1006.8/933.8/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
+  hoy:  { generado: 26.0, consumido: 16.4, exportada: 20.4, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t2, JS en segundo plano, home's pro LK2TXYMG7R) 18:36:35, deviceTime 18:36:08: gen 26.0 / cons 16.4 / exp 20.4 / desc 0 · bat 100% (54.4 Vdc) · PV 0 W (PV1 0+PV2 0+PV3 0) · consumo 2043 W · red 2043 W importando (pToUser 2043; pToGrid 0) · 219.6 Vac / 60.0 Hz; instalación 53423E0096; día en curso (parcial 6:36 PM)." },
   ayer: { generado: 57.3, consumido: 31.4, exportada: 48.2, descargada: 0, nota: "lun 23 nov · cierre oficial Luxpowertek monthColumn día 23: gen 57.3 / cons 31.4 / exp 48.2 / desc 0. El dom 22 cerró oficial en gen 56.6 / cons 30.5 / exp 44.2 / desc 0." },
-  mesActual:   { nombre: "Noviembre", dias: "1–24", gen: 1202.6, cons: 1004.3, exportada: 933.8, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos mar 24 nov 3:29 PM Mérida: Producción solar 1202.6 / Consumo 1004.3 / Exportada 933.8 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 24 nov parcial; no suma porDia" },
-  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos mar 24 nov 3:29 PM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
+  mesActual:   { nombre: "Noviembre", dias: "1–24", gen: 1202.8, cons: 1006.8, exportada: 933.8, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos mar 24 nov 6:36 PM Mérida: Producción solar 1202.8 / Consumo 1006.8 / Exportada 933.8 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 24 nov parcial; no suma porDia" },
+  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos mar 24 nov 6:36 PM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
   porDia: [
     { dia: 1, gen: 51.4, cons: 51.0 },
     { dia: 2, gen: 52.9, cons: 65.5 },
@@ -47,7 +47,7 @@ const SOLAR = {
     { dia: 21, gen: 51.2, cons: 45.9 },
     { dia: 22, gen: 56.6, cons: 30.5 },
     { dia: 23, gen: 57.3, cons: 31.4 },
-    { dia: 24, gen: 25.8, cons: 13.9, enCurso: true }
+    { dia: 24, gen: 26.0, cons: 16.4, enCurso: true }
   ],
   bateria: 100
 };
@@ -294,6 +294,8 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-1124-1927-vero-cumple-alex", urg:"amarillo", whatsapp:{ chat:"Match Veronica Mendicuti", verificado:true, nota:"chat" }, txt:"PENDIENTE — Vero 7:27–7:28 PM, cumple de Alex: propone Poptime, Party club o Cielo mágico (Casa Wawa solo abre entre semana). Falta decidir el lugar.", det:"wa-hourly-2026-11-24-1925.md", ts:"7:28 PM" },
+  { id:"w-1124-1925-ronda", urg:"amarillo", whatsapp:{ chat:"Match Veronica Mendicuti / Memes and Sht / Sweet home", verificado:true, nota:"ronda" }, txt:"Ronda mar 24 nov 7:25–7:29 PM (home's pro; Juan's offline): Vero propone lugares para el cumple de Alex (Poptime, Party club, Cielo mágico). Sin acción: memes de Izzi, «Descansa» en Sweet home. Siguen: promedio de nómina a Ángeles, IMSS del Secre de Santiago, costo para doña Aida Ríos, audio de Danny Poot.", det:"wa-hourly-2026-11-24-1925.md", ts:"7:29 PM" },
   { id:"w-1124-1805-danny-audio", urg:"amarillo", whatsapp:{ chat:"O. Danny Poot", verificado:true, nota:"chat" }, txt:"PENDIENTE — O. Danny Poot 6:05 PM: nota de voz (1:02) en respuesta a tu pregunta de las 5:03 sobre el material que necesita Jesús (pedido el sábado). No se pudo escuchar; mañana antes del mediodía Samuel te manda la información que pediste.", det:"wa-hourly-2026-11-24-1827.md", ts:"6:05 PM" },
   { id:"w-1124-1827-ronda", urg:"amarillo", whatsapp:{ chat:"Sweet home / O. Danny Poot / O.Mary Perera", verificado:true, nota:"ronda" }, txt:"Ronda mar 24 nov 6:27–6:31 PM (home's pro; Juan's offline): Arely cerró y salió 6:12 PM (sin confirmar owalas). Danny Poot mandó audio sobre el material de Jesús. Don Fernando no aceptó el préstamo de 80. Siguen: promedio de nómina a Ángeles, IMSS del Secre de Santiago, costo para doña Aida Ríos.", det:"wa-hourly-2026-11-24-1827.md", ts:"6:31 PM" },
   { id:"w-1124-1730-ronda", urg:"amarillo", whatsapp:{ chat:"Carteras credimotors / VA CIRCUITO / Mau y Juan / O.Mary Perera", verificado:true, nota:"ronda" }, txt:"Ronda mar 24 nov 5:30–5:37 PM (home's pro): Carteras credimotors: Fátima pide a Vero la cuenta de las botellas (te tocan 20). VA: aún no hay lista de limpieza, Ángeles compra papel. O.Mary: préstamo de 80 confirmado. Siguen: promedio de nómina a Ángeles (3:00 PM), IMSS del Secre de Santiago y costo para doña Aida Ríos, cobro de Josué.", det:"wa-hourly-2026-11-24-1730.md", ts:"5:37 PM" },
