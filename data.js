@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Jueves 26 de noviembre de 2026",
-  updated: "jue 26 nov 2026, 10:09 AM (paneles; correos, calendario, tarjetas, gastos, uso, hechos 9:56 AM; WhatsApp/salud según su frescura)",
+  updated: "jue 26 nov 2026, 10:48 AM (correos, calendario, tarjetas, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -17,12 +17,12 @@ const META = {
 /* REGLA (5 nov 2026, voz Mauricio): mesActual/mesAnterior totals MUST come from
    Luxpowertek AÑO (year) chart / official month totals — NEVER by summing incomplete porDia. */
 const SOLAR = {
-  fuente: "Luxpowertek web (Juan's MacBook Pro N64WLHQ0DV, JS en pestaña monitor w1t1 en segundo plano, sin traer Chrome al frente) jue 26 nov 10:09 AM: hoy gen 15.1 / cons 7.9 / exp 13.0 / desc 0 · bat 100% · live PV 10230 W · consumo 593 W · red 9294 W exportando (pToGrid 9294; pToUser 0) · 235.4 Vac / 59.97 Hz; Información del sistema / deviceTime 10:07:27; mes Nov y Oct oficiales AÑO yearColumn releyídos 10:09 AM",
-  leido: "jue 26 nov, 10:09 AM (hoy live energy/runtime deviceTime 10:07:27, leído 10:09:01; AÑO/mes oficiales yearColumn 10:09 AM: Nov 1261.9/1053.6/984.7/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
-  hoy:  { generado: 15.1, consumido: 7.9, exportada: 13.0, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t1, JS en segundo plano sin traer Chrome al frente, Juan's MacBook Pro N64WLHQ0DV) 10:09:01, deviceTime 10:07:27: gen 15.1 / cons 7.9 / exp 13.0 / desc 0 · bat 100% (54.5 Vdc) · PV 10230 W (PV1 4575+PV2 2720+PV3 2935) · consumo 593 W · red 9294 W exportando (pToGrid 9294; pToUser 0) · 235.4 Vac / 59.97 Hz; instalación 53423E0096; día en curso (parcial 10:09 AM)." },
+  fuente: "Luxpowertek web (home's pro LK2TXYMG7R, JS en pestaña monitor w1t2 en segundo plano, sin traer Chrome al frente) jue 26 nov 10:39 AM: hoy gen 18.0 / cons 8.2 / exp 15.6 / desc 0 · bat 100% · live PV 4131 W · consumo 387 W · red 3663 W exportando (pToGrid 3663; pToUser 0) · 226.9 Vac / 59.98 Hz; Información del sistema / deviceTime 10:39:41; mes Nov y Oct oficiales AÑO yearColumn releyídos 10:39 AM",
+  leido: "jue 26 nov, 10:39 AM (hoy live energy/runtime deviceTime 10:39:41, leído 10:39:52; AÑO/mes oficiales yearColumn 10:39 AM: Nov 1264.8/1054.0/987.4/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
+  hoy:  { generado: 18.0, consumido: 8.2, exportada: 15.6, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t2, JS en segundo plano sin traer Chrome al frente, home's pro LK2TXYMG7R) 10:39:52, deviceTime 10:39:41: gen 18.0 / cons 8.2 / exp 15.6 / desc 0 · bat 100% (54.0 Vdc) · PV 4131 W (PV1 1974+PV2 1025+PV3 1132) · consumo 387 W · red 3663 W exportando (pToGrid 3663; pToUser 0) · 226.9 Vac / 59.98 Hz; instalación 53423E0096; día en curso (parcial 10:39 AM)." },
   ayer: { generado: 44.3, consumido: 31.5, exportada: 38.2, descargada: 0, nota: "mié 25 nov · cierre oficial Luxpowertek monthColumn día 25: gen 44.3 / cons 31.5 / exp 38.2 / desc 0. El mar 24 cerró oficial en gen 26.0 / cons 23.9 / exp 20.4 / desc 0." },
-  mesActual:   { nombre: "Noviembre", dias: "1–26", gen: 1261.9, cons: 1053.6, exportada: 984.7, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos jue 26 nov 10:09 AM Mérida: Producción solar 1261.9 / Consumo 1053.6 / Exportada 984.7 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 26 nov parcial; no suma porDia" },
-  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos jue 26 nov 10:09 AM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
+  mesActual:   { nombre: "Noviembre", dias: "1–26", gen: 1264.8, cons: 1054.0, exportada: 987.4, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos jue 26 nov 10:39 AM Mérida: Producción solar 1264.8 / Consumo 1054.0 / Exportada 987.4 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 26 nov parcial; no suma porDia" },
+  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos jue 26 nov 10:39 AM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
   porDia: [
     { dia: 1, gen: 51.4, cons: 51.0 },
     { dia: 2, gen: 52.9, cons: 65.5 },
@@ -49,7 +49,7 @@ const SOLAR = {
     { dia: 23, gen: 57.3, cons: 31.4 },
     { dia: 24, gen: 26.0, cons: 23.9 },
     { dia: 25, gen: 44.3, cons: 31.5 },
-    { dia: 26, gen: 15.1, cons: 7.9, enCurso: true }
+    { dia: 26, gen: 18.0, cons: 8.2, enCurso: true }
   ],
   bateria: 100
 };
@@ -307,6 +307,7 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-1126-1125-ronda", urg:"rojo", whatsapp:{ chat:"Mau y Juan / March / Surtido Herramax", verificado:true, nota:"ronda" }, txt:"Ronda jue 26 nov 11:25 AM: Mau y Juan 11:31–11:32, Mauricio Izzi pregunta «¿nos vamos a cambiar a Mapfre todos?» y «¿nos van a respetar la antigüedad?» (le mandaste la cotización; lo de los boletos de Las Vegas: «Ahora te digo»). March 10:43: alerta de Buró de Crédito, consulta nueva de Banorte del 24 nov a tu nombre; si no la reconoces, contacta a Banorte al 81 8319 7200. CERRADO: no llevas a Vero a la Lincoln (tienes clientes gringos).", det:"wa-hourly-2026-11-26-1125.md", ts:"11:32 AM" },
   { id:"w-1126-1025-ronda", urg:"rojo", whatsapp:{ chat:"Ángeles / Carteras credimotors / Liz Caja Chica / March", verificado:true, nota:"ronda" }, txt:"Ronda jue 26 nov 10:25 AM: Ángeles (1:1) 10:25 «¿estás ocupado?». Carteras credimotors 10:09, Gabriel Canto pide verificar si alguna factura de la relación de trámite de placas (26 nov) es tuya para devolverla. Liz Caja Chica 10:17: le dieron dos cheques a Mari para la caja de ahorro ($111,134 por saldar). March: ¿cancela Apple Family ($169, renueva mañana)? y token BBVA activado hoy 9:15 (si no fuiste tú, llama a Línea BBVA).", det:"wa-hourly-2026-11-26-1025.md", ts:"10:25 AM" },
   { id:"w-1126-0926-ronda", urg:"rojo", whatsapp:{ chat:"Match Veronica / VA CIRCUITO / Nacho", verificado:true, nota:"ronda" }, txt:"Ronda jue 26 nov 9:26 AM (home's pro): Vero 9:23 «¿me puedes llevar tú a la Lincoln?» sin respuesta. VA CIRCUITO 9:05, Ángeles pide decirle a don Enrique que vaya por la camioneta. Nacho 9:03 pasa hoy temprano (él o su mamá) por ellas y mañana las regresa: avisarle a Arely. Ojo: la lista de clientes abiertos se le mandó a Ángeles dos veces hoy (8:29 y 9:18 AM).", det:"wa-hourly-2026-11-26-0926.md", ts:"9:23 AM" },
   { id:"w-1126-0822-ronda", urg:"amarillo", whatsapp:{ chat:"Mau y Juan / VA CIRCUITO / Sweet home / Eddie", verificado:true, nota:"ronda" }, txt:"Ronda jue 26 nov 8:22–8:35 AM (home's pro): sigue pendiente pasarle a Mauricio Izzi lo de los boletos de Las Vegas (desde ayer 7:33 PM). VA CIRCUITO 7:17 AM, Ángeles reenvía cambio de vidrio tintex 82 x 1.32 y ajuste de barandal («ya se pasó»); falta el informe de Josué para cotizar y cobrar a Doña Aida Ríos (Progreso). Siguen: cotización Biomédicos al cliente; compras de Arely (detergente ropa blanca, Fabuloso, fibra); Eddie «¿Qué te pareció?» (ayer 2:56 PM) sin respuesta. Agenda VAC hoy: Elsy Ripoll 9 AM – Armando; Sr. Josué 10 AM – Josué; Basterrechea; Taller; 10 AM cliente de Freddy; vence el pago No. 9 de March (Vazquez Borges). CERRADO: Vero preguntó el tiempo USA–Mérida y le contestaste «Un día».", det:"wa-hourly-2026-11-26-0822.md", ts:"8:35 AM" },
