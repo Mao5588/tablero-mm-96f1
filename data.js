@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Lunes 23 de noviembre de 2026",
-  updated: "mié 25 nov 2026, 6:49 PM (correos, calendario, tarjetas, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
+  updated: "mié 25 nov 2026, 7:49 PM (correos, calendario, tarjetas, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -17,12 +17,12 @@ const META = {
 /* REGLA (5 nov 2026, voz Mauricio): mesActual/mesAnterior totals MUST come from
    Luxpowertek AÑO (year) chart / official month totals — NEVER by summing incomplete porDia. */
 const SOLAR = {
-  fuente: "Luxpowertek web (Juan's N64WLHQ0DV, JS en pestaña monitor w1t1 en segundo plano, sin traer Chrome al frente) mié 25 nov 6:40 PM: hoy gen 44.3 / cons 15.7 / exp 38.2 / desc 0 · bat 100% · live PV 0 W · consumo 4357 W · red 4357 W importando (pToUser 4357; pToGrid 0) · 216.0 Vac / 60.01 Hz; Información del sistema / deviceTime 18:40:08; mes Nov y Oct oficiales AÑO yearColumn releyídos 6:40 PM",
-  leido: "mié 25 nov, 6:40 PM (hoy live energy/runtime deviceTime 18:40:08, leído 18:40:37; AÑO/mes oficiales yearColumn 6:40 PM: Nov 1247.1/1030.0/972.0/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
-  hoy:  { generado: 44.3, consumido: 15.7, exportada: 38.2, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t1, JS en segundo plano sin traer Chrome al frente, Juan's N64WLHQ0DV) 18:40:37, deviceTime 18:40:08: gen 44.3 / cons 15.7 / exp 38.2 / desc 0 · bat 100% (55.1 Vdc) · PV 0 W (PV1 0+PV2 0+PV3 0) · consumo 4357 W · red 4357 W importando (pToUser 4357; pToGrid 0) · 216.0 Vac / 60.01 Hz; instalación 53423E0096; día en curso (parcial 6:40 PM)." },
+  fuente: "Luxpowertek web (Juan's N64WLHQ0DV, JS en pestaña monitor w1t1 en segundo plano, sin traer Chrome al frente) mié 25 nov 7:45 PM: hoy gen 44.3 / cons 20.0 / exp 38.2 / desc 0 · bat 100% · live PV 0 W · consumo 4184 W · red 4184 W importando (pToUser 4184; pToGrid 0) · 219.8 Vac / 60.01 Hz; Información del sistema / deviceTime 19:44:35; mes Nov y Oct oficiales AÑO yearColumn releyídos 7:45 PM",
+  leido: "mié 25 nov, 7:45 PM (hoy live energy/runtime deviceTime 19:44:35, leído 19:45:40; AÑO/mes oficiales yearColumn 7:45 PM: Nov 1247.1/1034.0/972.0/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
+  hoy:  { generado: 44.3, consumido: 20.0, exportada: 38.2, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t1, JS en segundo plano sin traer Chrome al frente, Juan's N64WLHQ0DV) 19:45:40, deviceTime 19:44:35: gen 44.3 / cons 20.0 / exp 38.2 / desc 0 · bat 100% (53.5 Vdc) · PV 0 W (PV1 0+PV2 0+PV3 0) · consumo 4184 W · red 4184 W importando (pToUser 4184; pToGrid 0) · 219.8 Vac / 60.01 Hz; instalación 53423E0096; día en curso (parcial 7:45 PM)." },
   ayer: { generado: 26.0, consumido: 23.9, exportada: 20.4, descargada: 0, nota: "mar 24 nov · cierre oficial Luxpowertek monthColumn día 24: gen 26.0 / cons 23.9 / exp 20.4 / desc 0. El lun 23 cerró oficial en gen 57.3 / cons 31.4 / exp 48.2 / desc 0." },
-  mesActual:   { nombre: "Noviembre", dias: "1–25", gen: 1247.1, cons: 1030.0, exportada: 972.0, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos mié 25 nov 6:40 PM Mérida: Producción solar 1247.1 / Consumo 1030.0 / Exportada 972.0 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 25 nov parcial; no suma porDia" },
-  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos mié 25 nov 6:40 PM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
+  mesActual:   { nombre: "Noviembre", dias: "1–25", gen: 1247.1, cons: 1034.0, exportada: 972.0, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos mié 25 nov 7:45 PM Mérida: Producción solar 1247.1 / Consumo 1034.0 / Exportada 972.0 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 25 nov parcial; no suma porDia" },
+  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos mié 25 nov 7:45 PM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
   porDia: [
     { dia: 1, gen: 51.4, cons: 51.0 },
     { dia: 2, gen: 52.9, cons: 65.5 },
@@ -48,7 +48,7 @@ const SOLAR = {
     { dia: 22, gen: 56.6, cons: 30.5 },
     { dia: 23, gen: 57.3, cons: 31.4 },
     { dia: 24, gen: 26.0, cons: 23.9 },
-    { dia: 25, gen: 44.3, cons: 15.7, enCurso: true }
+    { dia: 25, gen: 44.3, cons: 20.0, enCurso: true }
   ],
   bateria: 100
 };
@@ -295,6 +295,7 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-1125-1933-izzi-vegas", urg:"amarillo", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"PENDIENTE — Mauricio Izzi 7:33 PM: te pide que le des lo de los boletos del show de Las Vegas («para que no se me olvide»). 8:09: pregunta si le cuentan a Plinio el chisme de Raúl.", det:"wa-hourly-2026-11-25-2022.md", ts:"8:09 PM" },
   { id:"w-1125-1828-ronda", urg:"amarillo", whatsapp:{ chat:"Mau y Juan / Erika Lopez Gener / Amazon México / Plinio Lavin", verificado:true, nota:"ronda" }, txt:"Ronda mié 25 nov 6:28–6:31 PM (home's pro; Juan's sin WhatsApp): Mauricio Izzi mandó un audio (0:07, no escuchado). Erika contestó «Ok» a tu «Te llamo ahora». Amazon: pedido 702-4423873-1769014 llega el 30 nov. Plinio ya llegó a tu casa.", det:"wa-hourly-2026-11-25-1828.md", ts:"6:31 PM" },
   { id:"w-1125-1710-arely-compras", urg:"rojo", whatsapp:{ chat:"Sweet home", verificado:true, nota:"chat" }, txt:"PENDIENTE — Arely 5:10 PM (Sweet home) hace falta: detergente para ropa blanca, Fabuloso y fibra para trastes. Estás en Costco.", det:"wa-hourly-2026-11-25-1724.md", ts:"5:10 PM" },
   { id:"w-1125-1710-va-biomedicos", urg:"amarillo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"chat" }, txt:"VA CIRCUITO 5:10 PM: el Mostrador le mandó a Ángeles la cotización «Presu 18462 BIOMEDICOS.pdf». Falta que llegue al cliente.", det:"wa-hourly-2026-11-25-1724.md", ts:"5:10 PM" },
