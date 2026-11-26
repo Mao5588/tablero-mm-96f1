@@ -295,6 +295,7 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-1125-1828-ronda", urg:"amarillo", whatsapp:{ chat:"Mau y Juan / Erika Lopez Gener / Amazon México / Plinio Lavin", verificado:true, nota:"ronda" }, txt:"Ronda mié 25 nov 6:28–6:31 PM (home's pro; Juan's sin WhatsApp): Mauricio Izzi mandó un audio (0:07, no escuchado). Erika contestó «Ok» a tu «Te llamo ahora». Amazon: pedido 702-4423873-1769014 llega el 30 nov. Plinio ya llegó a tu casa.", det:"wa-hourly-2026-11-25-1828.md", ts:"6:31 PM" },
   { id:"w-1125-1710-arely-compras", urg:"rojo", whatsapp:{ chat:"Sweet home", verificado:true, nota:"chat" }, txt:"PENDIENTE — Arely 5:10 PM (Sweet home) hace falta: detergente para ropa blanca, Fabuloso y fibra para trastes. Estás en Costco.", det:"wa-hourly-2026-11-25-1724.md", ts:"5:10 PM" },
   { id:"w-1125-1710-va-biomedicos", urg:"amarillo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"chat" }, txt:"VA CIRCUITO 5:10 PM: el Mostrador le mandó a Ángeles la cotización «Presu 18462 BIOMEDICOS.pdf». Falta que llegue al cliente.", det:"wa-hourly-2026-11-25-1724.md", ts:"5:10 PM" },
   { id:"w-1125-1724-ronda", urg:"amarillo", whatsapp:{ chat:"Sweet home / VA CIRCUITO / Surtido tienda Herramax / Mau y Juan", verificado:true, nota:"ronda" }, txt:"Ronda mié 25 nov 5:24–5:26 PM (home's pro): Arely pide detergente ropa blanca, Fabuloso y fibra. Cotización Biomédicos lista (PDF 5:10). CERRADO: Giovanni recibió todo el stock de piso de venta; ya estás con Juan en Costco.", det:"wa-hourly-2026-11-25-1724.md", ts:"5:26 PM" },
