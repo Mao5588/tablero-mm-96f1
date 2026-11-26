@@ -7,8 +7,8 @@
 (function(){
 const META = {
   nombre: "Mau",
-  fecha: "Lunes 23 de noviembre de 2026",
-  updated: "jue 26 nov 2026, 8:21 AM (hoja TC; correos, calendario, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
+  fecha: "Jueves 26 de noviembre de 2026",
+  updated: "jue 26 nov 2026, 9:06 AM (paneles, Whoop, Withings chequeo, correos, calendario, tarjetas, paquetes, uso; WhatsApp 8:30 AM; Roms 8:35 AM)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -17,12 +17,12 @@ const META = {
 /* REGLA (5 nov 2026, voz Mauricio): mesActual/mesAnterior totals MUST come from
    Luxpowertek AÑO (year) chart / official month totals — NEVER by summing incomplete porDia. */
 const SOLAR = {
-  fuente: "Luxpowertek web (Juan's N64WLHQ0DV, JS en pestaña monitor w1t1 en segundo plano, sin traer Chrome al frente) mié 25 nov 9:45 PM: hoy gen 44.3 / cons 28.3 / exp 38.2 / desc 0 · bat 100% · live PV 0 W · consumo 886 W · red 886 W importando (pToUser 886; pToGrid 0) · 223.6 Vac / 59.99 Hz; Información del sistema / deviceTime 21:43:20; mes Nov y Oct oficiales AÑO yearColumn releyídos 9:45 PM",
-  leido: "mié 25 nov, 9:45 PM (hoy live energy/runtime deviceTime 21:43:20, leído 21:44:59; AÑO/mes oficiales yearColumn 9:45 PM: Nov 1247.1/1042.6/972.0/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
-  hoy:  { generado: 44.3, consumido: 28.3, exportada: 38.2, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t1, JS en segundo plano sin traer Chrome al frente, Juan's N64WLHQ0DV) 21:44:59, deviceTime 21:43:20: gen 44.3 / cons 28.3 / exp 38.2 / desc 0 · bat 100% (54.5 Vdc) · PV 0 W (PV1 0+PV2 0+PV3 0) · consumo 886 W · red 886 W importando (pToUser 886; pToGrid 0) · 223.6 Vac / 59.99 Hz; instalación 53423E0096; día en curso (parcial 9:45 PM)." },
-  ayer: { generado: 26.0, consumido: 23.9, exportada: 20.4, descargada: 0, nota: "mar 24 nov · cierre oficial Luxpowertek monthColumn día 24: gen 26.0 / cons 23.9 / exp 20.4 / desc 0. El lun 23 cerró oficial en gen 57.3 / cons 31.4 / exp 48.2 / desc 0." },
-  mesActual:   { nombre: "Noviembre", dias: "1–25", gen: 1247.1, cons: 1042.6, exportada: 972.0, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos mié 25 nov 9:45 PM Mérida: Producción solar 1247.1 / Consumo 1042.6 / Exportada 972.0 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 25 nov parcial; no suma porDia" },
-  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos mié 25 nov 9:45 PM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
+  fuente: "Luxpowertek web (Juan's N64WLHQ0DV, JS en pestaña monitor w1t1 en segundo plano, sin traer Chrome al frente) jue 26 nov 9:06 AM: hoy gen 7.9 / cons 7.4 / exp 6.5 / desc 0 · bat 100% · live PV 9521 W · consumo 296 W · red 8928 W exportando (pToGrid 8928; pToUser 0) · 235.0 Vac / 60.02 Hz; Información del sistema / deviceTime 09:05:37; mes Nov y Oct oficiales AÑO yearColumn releyídos 9:06 AM",
+  leido: "jue 26 nov, 9:06 AM (hoy live energy/runtime deviceTime 09:05:37, leído 09:06:05; AÑO/mes oficiales yearColumn 9:06 AM: Nov 1255.0/1053.2/978.5/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
+  hoy:  { generado: 7.9, consumido: 7.4, exportada: 6.5, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w1t1, JS en segundo plano sin traer Chrome al frente, Juan's N64WLHQ0DV) 09:06:05, deviceTime 09:05:37: gen 7.9 / cons 7.4 / exp 6.5 / desc 0 · bat 100% (53.7 Vdc) · PV 9521 W (PV1 4284+PV2 2498+PV3 2739) · consumo 296 W · red 8928 W exportando (pToGrid 8928; pToUser 0) · 235.0 Vac / 60.02 Hz; instalación 53423E0096; día en curso (parcial 9:06 AM)." },
+  ayer: { generado: 44.3, consumido: 31.5, exportada: 38.2, descargada: 0, nota: "mié 25 nov · cierre oficial Luxpowertek monthColumn día 25: gen 44.3 / cons 31.5 / exp 38.2 / desc 0 (el consumo de anoche después de las 9:45 PM subió el cierre de 28.3 a 31.5). El mar 24 cerró oficial en gen 26.0 / cons 23.9 / exp 20.4 / desc 0." },
+  mesActual:   { nombre: "Noviembre", dias: "1–26", gen: 1255.0, cons: 1053.2, exportada: 978.5, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos jue 26 nov 9:06 AM Mérida: Producción solar 1255.0 / Consumo 1053.2 / Exportada 978.5 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 26 nov parcial; no suma porDia" },
+  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos jue 26 nov 9:06 AM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
   porDia: [
     { dia: 1, gen: 51.4, cons: 51.0 },
     { dia: 2, gen: 52.9, cons: 65.5 },
@@ -48,7 +48,8 @@ const SOLAR = {
     { dia: 22, gen: 56.6, cons: 30.5 },
     { dia: 23, gen: 57.3, cons: 31.4 },
     { dia: 24, gen: 26.0, cons: 23.9 },
-    { dia: 25, gen: 44.3, cons: 28.3, enCurso: true }
+    { dia: 25, gen: 44.3, cons: 31.5 },
+    { dia: 26, gen: 7.9, cons: 7.4, enCurso: true }
   ],
   bateria: 100
 };
@@ -64,6 +65,15 @@ const OUTM = m => ({ cuenta:"mau5588@hotmail.com", conector:"user-Outlook-xai", 
 const CAL = e  => "https://www.google.com/calendar/event?eid=" + e + "&ctz=America/Merida";
 const TC_SHEET = "https://docs.google.com/spreadsheets/d/1Dro8qc3SM1SRV93KK0NRl4APLwNyNUEYJHVjCZuSRwM/edit";
 const RECORDATORIOS = [
+  { id:"r-1126-1400-arely-ahorro", urg:"amarillo", dia:"HOY jue 26 nov 2:00–2:15 PM", txt:"Pedirle a Arely en Ahorro Areli cuánto va a ahorrar y cuánto se le va a pagar, y que suba una foto.", det:"Google Calendar", link:CAL("ZDRuaW1rdDBtajFocjA3YjZpZjFmYW03ZGdfMjAyNjExMjZUMjAwMDAwWiBtYXU1NTg4QG0") },
+  { id:"r-1126-tc-sab28", urg:"rojo", dia:"sáb 28 nov (aviso hoy)", txt:"Por pagar el sábado 28: $209,866.15 (AMEX $71,200.29, Volaris INVEX $56,856.12, Inbursa Juan $41,747.46, Volaris J $21,798.56, Signature SC $9,500, Rappi $7,233.03, Scotia Juan $1,530.69). Telcel, Coche Kix Nr y BBVA CASA también vencen el 28, sin monto en la hoja.", det:"Hoja TC Sheet1 leída 9:06 AM", link:TC_SHEET },
+  { id:"r-1126-arely-compras", urg:"amarillo", dia:"HOY jue 26 nov (pendiente de ayer 5:10 PM)", txt:"Compras de Arely: detergente para ropa blanca, Fabuloso y fibra para trastes.", det:"WhatsApp Sweet home" },
+  { id:"r-1126-izzi-vegas", urg:"amarillo", dia:"HOY (desde ayer 7:33 PM)", txt:"Pasarle a Mauricio Izzi lo de los boletos del show de Las Vegas.", det:"WhatsApp Mau y Juan" },
+  { id:"r-1127-m365", urg:"amarillo", dia:"vie 27 nov (renovación); cancelar a más tardar HOY", txt:"Microsoft 365 Family se renueva mañana por $169/mes. Si no lo quieres conservar, cancélalo hoy en el enlace de Apple.", det:"Apple / correo 21 nov" },
+  { id:"r-1127-walmart", urg:"amarillo", dia:"dom 29 nov (aviso mañana vie 27)", txt:"Pagar TC WALMART $2,587.44 (vence domingo 29).", det:"Hoja TC Sheet1 leída 9:06 AM", link:TC_SHEET },
+  { id:"r-1128-carol", urg:"amarillo", dia:"sáb 28 nov 7:00–10:00 PM", txt:"Cumpleaños 39 de Carol en Sushi Sama, Francisco de Montejo.", det:"Google Calendar", link:CAL("cDQ3ODdidGFtZHFibTZtdDg5cnN2Z21yZHMgbWF1NTU4OEBt") },
+  { id:"r-1130-gema", urg:"amarillo", dia:"lun 30 nov (límite)", txt:"Pago Gema Celeste (compromiso de pago a más tardar el 30 de noviembre).", det:"Google Calendar / WhatsApp", link:CAL("MnBsNXR0b2wwNjJhc3JhNTFqcWRqaXVsOG8gbWF1NTU4OEBt") },
+  { id:"r-1206-oura", urg:"verde", dia:"dom 6 dic (renovación)", txt:"La suscripción a Oura se renueva el 6 de diciembre (aviso de Oura hoy en Hotmail).", det:"Hotmail" },
   { id:"r-1123-1200-unani", urg:"amarillo", dia:"HOY lun 23 nov 12:00–14:00", txt:"Unani – Clase dinámica con asesores (calendario). March la marca dudosa (las clases son los miércoles); confirmar con la academia.", det:"Google Calendar · March" },
   { id:"r-1124-0900-gabri", urg:"amarillo", dia:"mañana mar 24 nov 9:00 AM", txt:"Darle las carteras a Gabri", det:"Google Calendar" },
   { id:"r-1127-pavo-macarrones", urg:"amarillo", dia:"vie 27 nov (Thanksgiving)", txt:"Club privee: a Mau y Juan les tocan los macarrones. Tía Gaby confirmó que la comida es el viernes.", det:"WhatsApp Club privee" },
@@ -101,6 +111,8 @@ const RECORDATORIOS = [
 
 /* 2) CORREOS IMPORTANTES — solo lectura; links directos al mensaje */
 const CORREOS = [
+  { id:"c-1126-0846-tatiana-vtc", urg:"amarillo", de:"Tatiana Lopez (costos8@corah.com.mx)", cuenta:"Gmail mau5588", cuando:"hoy jue 26 nov, 8:46 AM · sin leer", asunto:"Salidas. Almacen VTC", porque:"Tatiana anexa las salidas de almacén VTC y pide validar los movimientos y confirmar de recibido.", link:G("1a21852f8d173438"), gmail:GM("1a21852f8d173438","1a21852f8d173438") },
+  { id:"c-1126-0727-uber-scotia", urg:"verde", de:"Uber + PayPal + Scotiabank", cuenta:"Gmail mau5588 + Hotmail", cuando:"hoy jue 26 nov, 7:27–7:46 AM", asunto:"Viaje Uber $45.43 · PayPal UBR Flex · Alerta Scotia TDC 1586", porque:"Uber de esta mañana (7:27 AM) por $45.43 MXN; PayPal lo autorizó y Scotiabank avisó la compra PAYPAL *UBRFLEXMEXI en TDC terminación 1586 el 26/11.", link:G("1a2181b72a49815c"), gmail:GM("1a2181b72a49815c","1a2181b72a49815c") },
   { id:"c-1123-0700-scotia-fashionnova", urg:"amarillo", de:"Scotiabank + PayPal + Fashion Nova", cuenta:"Gmail mau5588 + Hotmail", cuando:"hoy lun 23 nov, 6:45–6:58 AM · sin leer", asunto:"Alerta ScotiaWeb: 2 compras PAYPAL*FASHIONNOVA ($1,313.00 y $1,666.72, TDC 1586) · pedido #201577053", porque:"Dos cargos seguidos de Fashion Nova por PayPal en la TDC Scotiabank 1586 (suman $2,979.72); Fashion Nova confirmó el pedido #201577053 y llegaron 3 códigos de verificación (6:36–6:39 AM). Confirma que los reconoces. También: 2 cargos automáticos de Amazon en TDC 8664 ($299.91 y $20.00) y pedido Amazon 701-1404356-6026668 (llega hoy).", link:G("1a20875709a784a7"), gmail:GM("1a20875709a784a7","1a20875709a784a7") },
   { id:"c-1123-0457-apple-substack", urg:"amarillo", de:"Apple (no_reply@email.apple.com)", cuenta:"Hotmail / Gmail mau5588", cuando:"dom 22 nov, 10:57 PM · sin leer", asunto:"Tu recibo de Apple", porque:"Acción: confirma que reconoces el cargo de $265 de Substack Ultra Successful (terminó la prueba gratis). Se renueva el 22 dic a Visa ••••1586 (Apple Pay). Pedido MVS3G0TYBH, recibo 22/11/2026. Coincide con la alerta Scotia $265 APPLE.COM/BILL del 22 nov 3:57 PM.", gmail:GM("1a206c46029314df","1a206c46029314df"), link:G("1a206c46029314df") },
   { id:"c-1122-1542-telmex-nov", urg:"rojo", de:"TELMEX (informacion@aviso.telmex.com)", cuenta:"Gmail mau5588 (spam)", cuando:"dom 22 nov, 3:42 PM · sin leer · spam", asunto:"Tu Recibo Telmex ya esta disponible", porque:"Pago pendiente: falta pagar antes del 11 dic el recibo Telmex Infinitum de noviembre, $899, número 9999446330 (corte 18 nov). El aviso llegó a spam de Mauricio Mendicuti (mau5588) el dom 22 a las 3:42 PM.", gmail:GM("1a20535c2ad77f3d","1a20535c2ad77f3d"), link:G("1a20535c2ad77f3d") },
@@ -295,6 +307,8 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-1126-0822-ronda", urg:"amarillo", whatsapp:{ chat:"Mau y Juan / VA CIRCUITO / Sweet home / Eddie", verificado:true, nota:"ronda" }, txt:"Ronda jue 26 nov 8:22–8:35 AM (home's pro): sigue pendiente pasarle a Mauricio Izzi lo de los boletos de Las Vegas (desde ayer 7:33 PM). VA CIRCUITO 7:17 AM, Ángeles reenvía cambio de vidrio tintex 82 x 1.32 y ajuste de barandal («ya se pasó»); falta el informe de Josué para cotizar y cobrar a Doña Aida Ríos (Progreso). Siguen: cotización Biomédicos al cliente; compras de Arely (detergente ropa blanca, Fabuloso, fibra); Eddie «¿Qué te pareció?» (ayer 2:56 PM) sin respuesta. Agenda VAC hoy: Elsy Ripoll 9 AM – Armando; Sr. Josué 10 AM – Josué; Basterrechea; Taller; 10 AM cliente de Freddy; vence el pago No. 9 de March (Vazquez Borges). CERRADO: Vero preguntó el tiempo USA–Mérida y le contestaste «Un día».", det:"wa-hourly-2026-11-26-0822.md", ts:"8:35 AM" },
+  { id:"w-1126-0717-va-aida-tintex", urg:"amarillo", whatsapp:{ chat:"VA CIRCUITO", verificado:true, nota:"chat" }, txt:"VA CIRCUITO 7:17 AM (Ángeles): ya se pasó la solicitud de cambio de vidrio tintex de 82 x 1.32 en ventana de proyección segundo nivel y ajuste de barandal (remaches vencidos). Además, a las 6:35 AM se mandó el pendiente de Doña Aida Ríos (Progreso): falta el informe de Josué para cotizar y cobrar.", det:"wa-hourly-2026-11-26-0822.md", ts:"7:17 AM" },
   { id:"w-1125-1933-izzi-vegas", urg:"amarillo", whatsapp:{ chat:"Mau y Juan", verificado:true, nota:"chat" }, txt:"PENDIENTE — Mauricio Izzi 7:33 PM: te pide que le des lo de los boletos del show de Las Vegas («para que no se me olvide»). 8:09: pregunta si le cuentan a Plinio el chisme de Raúl.", det:"wa-hourly-2026-11-25-2022.md", ts:"8:09 PM" },
   { id:"w-1125-1828-ronda", urg:"amarillo", whatsapp:{ chat:"Mau y Juan / Erika Lopez Gener / Amazon México / Plinio Lavin", verificado:true, nota:"ronda" }, txt:"Ronda mié 25 nov 6:28–6:31 PM (home's pro; Juan's sin WhatsApp): Mauricio Izzi mandó un audio (0:07, no escuchado). Erika contestó «Ok» a tu «Te llamo ahora». Amazon: pedido 702-4423873-1769014 llega el 30 nov. Plinio ya llegó a tu casa.", det:"wa-hourly-2026-11-25-1828.md", ts:"6:31 PM" },
   { id:"w-1125-1710-arely-compras", urg:"rojo", whatsapp:{ chat:"Sweet home", verificado:true, nota:"chat" }, txt:"PENDIENTE — Arely 5:10 PM (Sweet home) hace falta: detergente para ropa blanca, Fabuloso y fibra para trastes. Estás en Costco.", det:"wa-hourly-2026-11-25-1724.md", ts:"5:10 PM" },
@@ -596,14 +610,14 @@ const WHATSAPP = [
 
 /* 4) SUGERENCIAS */
 const SUGERENCIAS = [
-  { id:"s-1123-1055-jose", txt:"El papá de Jose Sabido iba a quirófano hoy lun 23, 5:00–6:00 AM. Se abrió el 1:1 a las 6:26 AM: el último mensaje sigue siendo el «Si» de Mauricio de ayer 9:38 PM; no hay ningún mensaje de hoy ni update de la cirugía.", urg:"rojo" },
-  { id:"s-1123-1055-unani", txt:"Hoy lun 23 a las 12:00 (en poco más de una hora), el calendario trae Unani «clase dinámica con asesores». March la marca dudosa porque las clases son los miércoles; conviene confirmarlo con la academia.", urg:"amarillo" },
-  { id:"s-1123-1055-gabri", txt:"Mañana mar 24 a las 9:00: darle las carteras a Gabri (está en el calendario).", urg:"amarillo" },
-  { id:"s-1123-1055-pavo", txt:"En Club privee armaron el menú del Thanksgiving del vie 27: a Mau y Juan les tocan los macarrones. Tía Gaby le confirmó a Roddolfo a las 4:49 AM que es el viernes. Sin mensajes nuevos después de esa hora (re-leído 6:25 AM).", urg:"amarillo" },
-  { id:"s-1123-1055-signature", txt:"En la hoja TC, Signature SC vence el sáb 28 con saldo $9,500. No está en el recuento de March de los 5 pagos del jue 26; conviene no pasarlo por alto.", urg:"amarillo" },
-  { id:"s-1123-1055-m365", txt:"Microsoft 365 Family se renueva el vie 27 por $169/mes. Si no lo quieres conservar, hay que cancelarlo a más tardar el jue 26 en el enlace de Apple.", urg:"amarillo" },
-  { id:"s-1123-1055-aquatru", txt:"Amazon ya aceptó la devolución del AquaTru (pedido 701-6722111-8125032): hay que enviarla a más tardar el dom 20 dic; el reembolso sale cuando la reciba GLOBAL TAN LLC.", urg:"amarillo" },
-  { id:"s-1123-1055-telmex", txt:"Llegó a spam (dom 22, 3:42 PM) el recibo Telmex Infinitum de noviembre: $899, número 9999446330, corte 18 nov, límite de pago 11 dic.", urg:"amarillo" },
+  { id:"s-1126-tc-sab28", txt:"El sábado 28 vencen $209,866.15 en 7 tarjetas: AMEX $71,200.29, Volaris INVEX $56,856.12, Inbursa Juan $41,747.46, Volaris J $21,798.56, Signature SC $9,500, Rappi $7,233.03 y Scotia Juan $1,530.69. Telcel, Coche Kix Nr y BBVA CASA también vencen el 28, pero la hoja no trae monto.", urg:"rojo" },
+  { id:"s-1126-arely-ahorro", txt:"Hoy a las 2:00 PM: pedirle a Arely en Ahorro Areli cuánto va a ahorrar y cuánto se le va a pagar, y que suba una foto.", urg:"amarillo" },
+  { id:"s-1126-arely-compras", txt:"Arely pidió ayer a las 5:10 PM (Sweet home) detergente para ropa blanca, Fabuloso y fibra para trastes. Si pasas al súper o todavía estás cerca de Costco, puedes llevarlo.", urg:"amarillo" },
+  { id:"s-1126-izzi-vegas", txt:"Sigue pendiente pasarle a Mauricio Izzi lo de los boletos del show de Las Vegas (te lo pidió ayer a las 7:33 PM «para que no se me olvide»).", urg:"amarillo" },
+  { id:"s-1126-agenda-vac", txt:"Agenda VAC de hoy: Elsy Ripoll 9 AM (Armando), Sr. Josué 10 AM (Josué), Basterrechea (Emmanuel, Enrique, Jonatan, Ángeles) y Taller (Santiago y Jesús). También 10 AM el cliente de Freddy, y vence el pago No. 9 de March (Vazquez Borges).", urg:"amarillo" },
+  { id:"s-1126-biomedicos", txt:"La cotización de Biomédicos (PDF de ayer 5:10 PM) ya se la mandó el Mostrador a Ángeles; falta que le llegue al cliente.", urg:"amarillo" },
+  { id:"s-1126-pavo", txt:"Mañana vie 27 es el Thanksgiving de Club privee: a Mau y Juan les tocan los macarrones. Tía Gaby ya confirmó que es el viernes.", urg:"amarillo" },
+  { id:"s-1126-m365", txt:"Microsoft 365 Family se renueva mañana vie 27 por $169/mes. Si no lo quieres conservar, hay que cancelarlo hoy en el enlace de Apple.", urg:"amarillo" }
 ];const SALUD = {
   avisos: [
     "Sin acceso a Apple Watch / Apple Health.",
