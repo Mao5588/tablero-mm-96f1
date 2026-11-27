@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Viernes 27 de noviembre de 2026",
-  updated: "vie 27 nov 2026, 3:44 PM (paneles; correos, calendario, tarjetas, gastos, uso, hechos 2:52 PM; WhatsApp/salud según su frescura)",
+  updated: "vie 27 nov 2026, 3:52 PM (correos, calendario, tarjetas, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -318,6 +318,7 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-1127-1624-ronda", urg:"rojo", whatsapp:{ chat:"Mau y Juan / FAMILIA / Plinio Lavin", verificado:true, nota:"ronda" }, txt:"Ronda vie 27 nov 4:24 PM (home's pro): Mau y Juan 3:53–4:09, le ofreciste a Juan depositarle 30 a su Santander y contestó «Yes» (4:07). Falta el depósito. Mauricio Izzi pregunta «¿Para guardarlos? ¿Depositarlos?» (4:09). FAMILIA: la cena de hoy es a las 8:00 PM (Nacho «Gracias» 3:42). CERRADO: Plinio, el correo a Tesla USA ya se mandó.", det:"wa-hourly-2026-11-27-1624.md", ts:"4:09 PM" },
   { id:"w-1127-1531-ronda", urg:"amarillo", whatsapp:{ chat:"FAMILIA / Match Veronica / Amanda Paquetería / VA CIRCUITO", verificado:true, nota:"ronda" }, txt:"Ronda vie 27 nov 3:31 PM (home's pro): IMPORTANTE — FAMILIA 3:32, Tía Gaby Nuevo: la cena de hoy se recorre a las 8:00 PM, pide puntualidad. Vero 2:44–2:47 te mandó 4 tenis adidas Adizero Evo SL, «¿los ves bonitos?», sin respuesta. Amanda Paquetería Cruce Laredo: el iPhone de tu hermana no cruza hoy; está en Monterrey, lo envía el lunes y llegaría el martes 1 dic. VA CIRCUITO 3:30, Lizzzeth Tzel pide el número de Emmanuel. CERRADO: autorizaste la camioneta para que Don Enrique le enseñe a manejar a Emmanuel (Enrique «Ok» 2:56).", det:"wa-hourly-2026-11-27-1531.md", ts:"3:39 PM" },
   { id:"w-1126-1827-ronda", urg:"amarillo", whatsapp:{ chat:"Amazon México", verificado:true, nota:"ronda" }, txt:"Ronda jue 26 nov 6:27 PM (home's pro): Amazon 5:58, pedido 701-9903275-1370602 recibido, entrega estimada 27 nov (otro pedido 702-4423873-1769014 llega el 30 nov). Había un borrador del mensaje solar («109 %… 303 %») pegado en el chat de Amazon: no se mandó y se borró. Sigue: promedio de la nómina a Ángeles.", det:"wa-hourly-2026-11-26-1827.md", ts:"5:58 PM" },
   { id:"w-1126-1728-ronda", urg:"amarillo", whatsapp:{ chat:"VA CIRCUITO / Dario", verificado:true, nota:"ronda" }, txt:"Ronda jue 26 nov 5:28 PM (home's pro): VA CIRCUITO 4:46, Ángeles mandó la disponibilidad (ella no está; Josué y Jesús no vienen) y pide que Armando vaya con Elsy Ripoll a terminar de instalar y que le pregunten a la señora si ya se arregló lo de la corriente. Dario 5:30 «Oki» (control del garage). Sigue: promedio de la nómina a Ángeles. CERRADO: Mauricio Izzi (Mau y Juan) leído 5:17; René «Voy» 5:28.", det:"wa-hourly-2026-11-26-1728.md", ts:"5:30 PM" },
