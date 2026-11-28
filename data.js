@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Viernes 27 de noviembre de 2026",
-  updated: "sáb 28 nov 2026, 8:21 AM (hoja TC; correos, calendario, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
+  updated: "sáb 28 nov 2026, 8:40 AM (paneles; hoja TC; correos, calendario, gastos, uso, hechos; WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -17,12 +17,12 @@ const META = {
 /* REGLA (5 nov 2026, voz Mauricio): mesActual/mesAnterior totals MUST come from
    Luxpowertek AÑO (year) chart / official month totals — NEVER by summing incomplete porDia. */
 const SOLAR = {
-  fuente: "Luxpowertek web (home's pro LK2TXYMG7R, JS en pestaña monitor w2t2 en segundo plano, sin traer Chrome al frente; Juan's N64WLHQ0DV no estaba conectada) sáb 28 nov 7:42 AM: hoy gen 1.3 / cons 6.1 / exp 0.8 / desc 0 · bat 100% · live PV 2193 W (PV1 1110+PV2 490+PV3 593) · consumo 435 W · red 1716 W exportando (pToGrid 1716; pToUser 0) · 228.2 Vac / 59.97 Hz; Información del sistema / deviceTime 07:41:28; mes Nov y Oct oficiales AÑO yearColumn releyídos 7:42 AM",
-  leido: "sáb 28 nov, 7:42 AM (hoy live energy/runtime deviceTime 07:41:28, leído 07:42:18; AÑO/mes oficiales yearColumn 7:42 AM: Nov 1364.8/1090.6/1074.7/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
-  hoy:  { generado: 1.3, consumido: 6.1, exportada: 0.8, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w2t2, JS en segundo plano sin traer Chrome al frente, home's pro LK2TXYMG7R) 07:42:18, deviceTime 07:41:28: gen 1.3 / cons 6.1 / exp 0.8 / desc 0 · bat 100% (53.4 Vdc) · PV 2193 W (PV1 1110+PV2 490+PV3 593) · consumo 435 W · red 1716 W exportando (pToGrid 1716; pToUser 0) · 228.2 Vac / 59.97 Hz; instalación 53423E0096; día en curso (parcial 7:42 AM)." },
+  fuente: "Luxpowertek web (home's pro LK2TXYMG7R, JS en pestaña monitor w2t2 en segundo plano, sin traer Chrome al frente; Juan's N64WLHQ0DV no estaba conectada) sáb 28 nov 8:40 AM: hoy gen 5.5 / cons 6.5 / exp 4.6 / desc 0 · bat 100% · live PV 4065 W (PV1 1929+PV2 1011+PV3 1125) · consumo 515 W · red 3471 W exportando (pToGrid 3471; pToUser 0) · 230.8 Vac / 60.05 Hz; Información del sistema / deviceTime 08:39:51; mes Nov y Oct oficiales AÑO yearColumn releyídos 8:40 AM",
+  leido: "sáb 28 nov, 8:40 AM (hoy live energy/runtime deviceTime 08:39:51, leído 08:39:59; AÑO/mes oficiales yearColumn 8:40 AM: Nov 1368.7/1091.0/1078.2/3.3 · Oct 1737.9/1127.7/1430.1/3.6)",
+  hoy:  { generado: 5.5, consumido: 6.5, exportada: 4.6, descargada: 0, nota: "Luxpowertek getInverterEnergyInfo + getInverterRuntime (pestaña monitor w2t2, JS en segundo plano sin traer Chrome al frente, home's pro LK2TXYMG7R) 08:39:59, deviceTime 08:39:51: gen 5.5 / cons 6.5 / exp 4.6 / desc 0 · bat 100% (54.1 Vdc) · PV 4065 W (PV1 1929+PV2 1011+PV3 1125) · consumo 515 W · red 3471 W exportando (pToGrid 3471; pToUser 0) · 230.8 Vac / 60.05 Hz; instalación 53423E0096; día en curso (parcial 8:40 AM)." },
   ayer: { generado: 59.7, consumido: 18.6, exportada: 52.2, descargada: 0, nota: "vie 27 nov · cierre oficial Luxpowertek monthColumn día 27: gen 59.7 / cons 18.6 / exp 52.2 / desc 0. El jue 26 cerró oficial en gen 56.7 / cons 20.1 / exp 49.7 / desc 0." },
-  mesActual:   { nombre: "Noviembre", dias: "1–28", gen: 1364.8, cons: 1090.6, exportada: 1074.7, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos sáb 28 nov 7:42 AM Mérida: Producción solar 1364.8 / Consumo 1090.6 / Exportada 1074.7 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 28 nov parcial; no suma porDia" },
-  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos sáb 28 nov 7:42 AM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
+  mesActual:   { nombre: "Noviembre", dias: "1–28", gen: 1368.7, cons: 1091.0, exportada: 1078.2, bateriaDescargada: 3.3, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 11) leídos sáb 28 nov 8:40 AM Mérida: Producción solar 1368.7 / Consumo 1091.0 / Exportada 1078.2 / Batería Descargada 3.3 / AC acoplado/Generador 0 — incluye hoy 28 nov parcial; no suma porDia" },
+  mesAnterior: { nombre: "Octubre", dias: "1–31", gen: 1737.9, cons: 1127.7, exportada: 1430.1, bateriaDescargada: 3.6, nota: "totales oficiales Luxpowertek AÑO yearColumn (mes 10) releyídos sáb 28 nov 8:40 AM Mérida: Producción solar 1737.9 / Consumo 1127.7 / Exportada 1430.1 / Batería Descargada 3.6 / AC acoplado/Generador 0 (sin cambio, mismos totales oficiales de Octubre)" },
   porDia: [
     { dia: 1, gen: 51.4, cons: 51.0 },
     { dia: 2, gen: 52.9, cons: 65.5 },
@@ -51,7 +51,7 @@ const SOLAR = {
     { dia: 25, gen: 44.3, cons: 31.5 },
     { dia: 26, gen: 56.7, cons: 20.1 },
     { dia: 27, gen: 59.7, cons: 18.6 },
-    { dia: 28, gen: 1.3, cons: 6.1, enCurso: true },
+    { dia: 28, gen: 5.5, cons: 6.5, enCurso: true },
   ],
   bateria: 100
 };
@@ -317,6 +317,7 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-1128-0826-ronda", urg:"rojo", whatsapp:{ chat:"Amazon México / Bubuland / Mau y Juan / FAMILIA", verificado:true, nota:"ronda" }, txt:"Ronda sáb 28 nov 8:26 AM (home's pro): IMPORTANTE. Amazon México 12:53 AM: el pago del pedido 701-6099222-5885850 NO fue autorizado; revisa o actualiza tu método de pago. HOY 12:00 es la cita en Bubuland con Vero (atienden hasta 12:30) y no se ve que se la hayas confirmado a Bubuland. Sigue: decirle a Juan dónde está tu control (ayer 8:26 PM). Juan's MacBook Pro sigue offline con WhatsApp abierto desde anoche; cárgala. Sin acción: FAMILIA (fotos de anoche, Mary 8:01 «Amo») y otros 2 pedidos de Amazon recibidos (llegan el 28 nov y el 2 dic).", det:"wa-hourly-2026-11-28-0826.md", ts:"12:53 AM" },
   { id:"w-1127-2126-ronda", urg:"rojo", whatsapp:{ chat:"FAMILIA / Paca del Bienestar / Mau y Juan", verificado:true, nota:"ronda" }, txt:"Ronda vie 27 nov 9:26 PM (Juan's): Juan's MacBook Pro se quedó sin batería a media ronda y WhatsApp quedó ABIERTO ahí (puede silenciar tu teléfono); conéctala al cargador. Sigue: decirle a Juan dónde está tu control (8:26) y confirmar Bubuland mañana 12:00. Sin acción: FAMILIA 8:40 (Manuel «Voy saliendo») y Paca del Bienestar 9:13 (link de Haemanthus).", det:"wa-hourly-2026-11-27-2126.md", ts:"9:13 PM" },
   { id:"w-1127-2024-ronda", urg:"rojo", whatsapp:{ chat:"Mau y Juan / Paca del Bienestar / FAMILIA", verificado:true, nota:"ronda" }, txt:"Ronda vie 27 nov 8:24 PM (Juan's): Mau y Juan 8:26 PM, Juan pregunta «¿Dónde está tu control? Para que cierren» y te dejó una llamada perdida; dile dónde está. Sigue: confirmar a Bubuland la cita de mañana sáb 28 nov 12:00 y el depósito de 30 a Juan. Sin acción: Paca del Bienestar (8:12) y FAMILIA (7:39).", det:"wa-hourly-2026-11-27-2024.md", ts:"8:26 PM" },
   { id:"w-1127-1931-ronda", urg:"rojo", whatsapp:{ chat:"Match Veronica / Bubuland / FAMILIA / Paca del Bienestar / Mau y Juan", verificado:true, nota:"ronda" }, txt:"Ronda vie 27 nov 7:31 PM (Juan's): IMPORTANTE. Vero aceptó ir a Bubuland MAÑANA sáb 28 nov (le dijiste «Creo que mañana» y contestó «Oki» a las 6:37); falta confirmarle a Bubuland la cita de las 12:00 (atienden 9:30 AM–12:30 PM). FAMILIA 7:32: Nacho avisa que van atrasados a la cena de las 8 PM. Paca del Bienestar 7:16: Jose Sabido invita al cine a ver Los Juegos del Hambre (opcional). Sigue pendiente el depósito de 30 a Juan.", det:"wa-hourly-2026-11-27-1931.md", ts:"7:32 PM" },
