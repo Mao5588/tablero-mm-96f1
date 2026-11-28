@@ -8,7 +8,7 @@
 const META = {
   nombre: "Mau",
   fecha: "Viernes 27 de noviembre de 2026",
-  updated: "vie 27 nov 2026, 8:50 PM (paneles; WhatsApp 8:29 PM; correos, calendario, tarjetas, gastos, uso, hechos 7:52 PM; salud según su frescura)",
+  updated: "vie 27 nov 2026, 8:56 PM (correos, calendario, tarjetas, gastos, uso, hechos; paneles/WhatsApp/salud según su frescura)",
   filtro: "Solo pendientes; lo que ya marcaste/atendiste se oculta.",
   ciudad: "Mérida",
   ntfyTopic: "mm-dash-610df2ac31de195df08b959e"   // avisos de "Hecho" → https://ntfy.sh/<topic> (ver HECHOS_README.md)
@@ -316,6 +316,7 @@ const CORREOS = [
 
 /* 3) COMPROMISOS EN WHATSAPP */
 const WHATSAPP = [
+  { id:"w-1127-2126-ronda", urg:"rojo", whatsapp:{ chat:"FAMILIA / Paca del Bienestar / Mau y Juan", verificado:true, nota:"ronda" }, txt:"Ronda vie 27 nov 9:26 PM (Juan's): Juan's MacBook Pro se quedó sin batería a media ronda y WhatsApp quedó ABIERTO ahí (puede silenciar tu teléfono); conéctala al cargador. Sigue: decirle a Juan dónde está tu control (8:26) y confirmar Bubuland mañana 12:00. Sin acción: FAMILIA 8:40 (Manuel «Voy saliendo») y Paca del Bienestar 9:13 (link de Haemanthus).", det:"wa-hourly-2026-11-27-2126.md", ts:"9:13 PM" },
   { id:"w-1127-2024-ronda", urg:"rojo", whatsapp:{ chat:"Mau y Juan / Paca del Bienestar / FAMILIA", verificado:true, nota:"ronda" }, txt:"Ronda vie 27 nov 8:24 PM (Juan's): Mau y Juan 8:26 PM, Juan pregunta «¿Dónde está tu control? Para que cierren» y te dejó una llamada perdida; dile dónde está. Sigue: confirmar a Bubuland la cita de mañana sáb 28 nov 12:00 y el depósito de 30 a Juan. Sin acción: Paca del Bienestar (8:12) y FAMILIA (7:39).", det:"wa-hourly-2026-11-27-2024.md", ts:"8:26 PM" },
   { id:"w-1127-1931-ronda", urg:"rojo", whatsapp:{ chat:"Match Veronica / Bubuland / FAMILIA / Paca del Bienestar / Mau y Juan", verificado:true, nota:"ronda" }, txt:"Ronda vie 27 nov 7:31 PM (Juan's): IMPORTANTE. Vero aceptó ir a Bubuland MAÑANA sáb 28 nov (le dijiste «Creo que mañana» y contestó «Oki» a las 6:37); falta confirmarle a Bubuland la cita de las 12:00 (atienden 9:30 AM–12:30 PM). FAMILIA 7:32: Nacho avisa que van atrasados a la cena de las 8 PM. Paca del Bienestar 7:16: Jose Sabido invita al cine a ver Los Juegos del Hambre (opcional). Sigue pendiente el depósito de 30 a Juan.", det:"wa-hourly-2026-11-27-1931.md", ts:"7:32 PM" },
   { id:"w-1127-1822-ronda", urg:"amarillo", whatsapp:{ chat:"Match Veronica / Bubuland / Carteras credimotors", verificado:true, nota:"ronda" }, txt:"Ronda vie 27 nov 6:22 PM (Juan's): a las 5:49 le propusiste a Vero ir a Bubuland mañana a las 12:00 o el lunes, y no ha contestado. Bubuland sigue esperando que le confirmes la cita (desde las 5:17). Sigue pendiente el depósito de 30 a Juan. CERRADO: Carteras credimotors, la tarjeta de circulación que reenvió Gabriel Canto no es de nadie del grupo (6:03).", det:"wa-hourly-2026-11-27-1822.md", ts:"6:03 PM" },
